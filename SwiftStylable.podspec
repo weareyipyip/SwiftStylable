@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStylable'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'Swift framework to enable project wide styles that can be used in storyboards.'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swift framework to enable project wide styles that can be used in storyboards. You can predefine styles in a property list and use them in your project as well as in the interface builder.
                        DESC
 
   s.homepage         = 'https://gitlab.com/weareyipyip/SwiftStylable'
