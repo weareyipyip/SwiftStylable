@@ -24,23 +24,24 @@ public class Styles {
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	private init() {
-        
-        let bundle = NSBundle(forClass: self.dynamicType)
-        if let filePath = bundle.pathForResource("styles", ofType: "plist") {
-            if let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject], styleDatas = data["styles"] as? [[String:AnyObject]] {
-                
-                // Read color strings
-                let colorStrings:[String:String]
-                if let colorEntries = data["colors"] as? [String:String] {
-                    colorStrings = colorEntries
-                } else {
-                    colorStrings = [String:String]()
-                }
-                
-                // Read styles
-                for styleData in styleDatas {
-                    let style = Style(data: styleData, colorStrings: colorStrings)
-                    self._styles[style.name] = style
+        if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
+            let bundle = NSBundle(forClass: helper.anyProjectClass())
+            if let filePath = bundle.pathForResource("styles", ofType: "plist") {
+                if let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject], styleDatas = data["styles"] as? [[String:AnyObject]] {
+                    
+                    // Read color strings
+                    let colorStrings:[String:String]
+                    if let colorEntries = data["colors"] as? [String:String] {
+                        colorStrings = colorEntries
+                    } else {
+                        colorStrings = [String:String]()
+                    }
+                    
+                    // Read styles
+                    for styleData in styleDatas {
+                        let style = Style(data: styleData, colorStrings: colorStrings)
+                        self._styles[style.name] = style
+                    }
                 }
             }
         }

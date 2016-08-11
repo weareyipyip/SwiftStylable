@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol ImageProvider {
+public protocol SwiftStylableHelper {
     func imageNamed(name:String)->UIImage?
+    func anyProjectClass()->AnyClass
 }
