@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStylable'
-  s.version          = '0.0.7'
+  s.version          = '0.0.8'
   s.summary          = 'Swift framework to enable project wide styles that can be used in storyboards.'
 
 # This description is used to generate tags and improve search results.
