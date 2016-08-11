@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-public class STImageProvider {
+public class STHelper {
     
-    public static let sharedImageProvider:AnyObject = STImageProvider()
+    public static let sharedHelper:AnyObject = STHelper()
     
     
     // -----------------------------------------------------------------------------------------------------------------------
