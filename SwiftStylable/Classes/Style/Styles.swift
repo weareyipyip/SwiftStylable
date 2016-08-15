@@ -24,10 +24,13 @@ public class Styles {
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	private init() {
-        if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
+        if let helper = STHelper.sharedHelper as? SwiftStylableHelper
+        {
             let bundle = NSBundle(forClass: helper.anyProjectClass())
-            if let filePath = bundle.pathForResource("styles", ofType: "plist") {
-                if let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject], styleDatas = data["styles"] as? [[String:AnyObject]] {
+            if let filePath = bundle.pathForResource("styles", ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
+                var styleDatas = data["styles"] as? [String:[String:AnyObject]]
+                
+                if styleDatas != nil {
                     
                     // Read color strings
                     let colorStrings:[String:String]
@@ -38,42 +41,33 @@ public class Styles {
                     }
                     
                     // Read styles
-                    for styleData in styleDatas {
-                        let style = Style(data: styleData, colorStrings: colorStrings)
-                        self._styles[style.name] = style
+                    var numParsedStyles = 1
+                    while styleDatas!.count > 0 && numParsedStyles > 0 {
+                        let styleDatasCopy = styleDatas!
+                        numParsedStyles = 0
+                        for (name, styleData) in styleDatasCopy {
+                            if let parentName = styleData["parent"] as? String {
+                                if let parentStyle = self._styles[parentName] {
+                                    let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData, colorStrings: colorStrings)
+                                    self._styles[name] = style
+                                    styleDatas!.removeValueForKey(name)
+                                    numParsedStyles += 1
+                                }
+                            } else {
+                                let style = Style(name: name, data: styleData, colorStrings: colorStrings)
+                                self._styles[name] = style
+                                styleDatas!.removeValueForKey(name)
+                                numParsedStyles += 1
+                            }
+                        }
+                    }
+                    if styleDatas!.count > 0 {
+                        // Not everything was parsed in the above code, this means there are unsatifyable parent child cycles
+                        print("WARNING: not all styles could be parsed, this probably means there are 2 or more styles referring to eachother as a parentStyle.")
                     }
                 }
             }
         }
-       
-        /*
-        // Views
-		let viewStyle = Style(name: "view")
-		viewStyle.backgroundColor = WT_DEFAULT_APP_BACKGROUND_COLOR
-		self.addStyle(viewStyle)
-		
-        // Content
-		let contentStyle = Style(name: "content")
-		contentStyle.foregroundColor = WT_DEFAULT_FOREGROUND_COLOR
-		contentStyle.backgroundColor = WT_DEFAULT_CONTENT_BACKGROUND_COLOR
-		contentStyle.font = UIFont(name: "DINRoundOT", size: 20.0)!
-		self.addStyle(contentStyle)
-		
-        // Header 2
-		let header2Style = Style(name: "header 2")
-		header2Style.foregroundColor = WT_DEFAULT_FOREGROUND_COLOR
-		header2Style.font = UIFont(name: "DINRoundOT-Medium", size: 20.0)!
-		self.addStyle(header2Style)
-        
-        // TableViews
-        let tableViewStyle = Style(name: "tableView")
-        tableViewStyle.backgroundColor = WT_DEFAULT_CONTENT_BACKGROUND_COLOR
-        tableViewStyle.selectedBackgroundColor = WT_EMPHASIS_COLOR
-        tableViewStyle.highlightedBackgroundColor = WT_EMPHASIS_COLOR
-        tableViewStyle.tableViewSeparatorStyle = .None
-        self.addStyle(tableViewStyle)
- */
- 
 	}
 	
 	
