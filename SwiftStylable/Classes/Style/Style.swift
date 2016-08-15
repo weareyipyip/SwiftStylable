@@ -51,9 +51,59 @@ public class Style {
 		self.name = name
 	}
     
-    public init(data:[String:AnyObject], colorStrings:[String:String]) {
-        self.name = data["name"] as! String
+    public init(name:String, data:[String:AnyObject], colorStrings:[String:String]) {
+        self.name = name
+        self.parseData(data, colorStrings: colorStrings)
+    }
+    
+    public init(name:String, parentStyle:Style, overridesData:[String:AnyObject], colorStrings:[String:String]) {
+        self.name = name
+     
+        // Set properties from parent
         
+        // - foreground colors
+        self.foregroundColor = parentStyle.foregroundColor
+        self.highlightedForegroundColor = parentStyle.highlightedForegroundColor
+        self.selectedForegroundColor = parentStyle.selectedForegroundColor
+        self.disabledForegroundColor = parentStyle.disabledForegroundColor
+        
+        // - background colors
+        self.backgroundColor = parentStyle.backgroundColor
+        self.highlightedBackgroundColor = parentStyle.highlightedBackgroundColor
+        self.selectedBackgroundColor = parentStyle.selectedBackgroundColor
+        self.disabledBackgroundColor = parentStyle.disabledBackgroundColor
+        
+        // - border style
+        self.borderWidth = parentStyle.borderWidth
+        self.borderColor = parentStyle.borderColor
+        self.highlightedBorderColor = parentStyle.highlightedBorderColor
+        self.selectedBorderColor = parentStyle.selectedBorderColor
+        self.disabledBorderColor = parentStyle.disabledBorderColor
+        
+        // - cell separator style
+        self.tableViewSeparatorStyle = parentStyle.tableViewSeparatorStyle
+        self.tableViewSeparatorColor = parentStyle.tableViewSeparatorColor
+        
+        // - font
+        self.font = parentStyle.font
+        
+        // - other
+        self.cornerRadius = parentStyle.cornerRadius
+        
+        
+        // Set overrides
+        self.parseData(overridesData, colorStrings: colorStrings)
+    }
+    
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Private methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    private func parseData(data:[String:AnyObject], colorStrings:[String:String]) {
         // Foreground colors
         if let foregroundColor = self.parseColor(data: data, key: "foregroundColor", colorStrings: colorStrings) {
             self.foregroundColor = foregroundColor
@@ -129,14 +179,6 @@ public class Style {
             self.cornerRadius = cornerRadius
         }
     }
-    
-    
-    
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Private methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
     
     private func parseColor(data data:[String:AnyObject], key:String, colorStrings:[String:String])->UIColor? {
         if let colorName = data[key] as? String {
