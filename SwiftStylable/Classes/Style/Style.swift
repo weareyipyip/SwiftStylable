@@ -193,7 +193,9 @@ public class Style {
     }
     
     private func parseFont(data data:[String:AnyObject], key:String)->UIFont? {
-        if let fontData = data[key] as? [String:AnyObject], name = fontData["name"] as? String, size = fontData["size"] as? CGFloat {
+		if let fontData = data[key] as? [String:AnyObject] {
+			let name = fontData["name"] as? String ?? self.font.fontName
+			let size = fontData["size"] as? CGFloat ?? self.font.pointSize
             return UIFont(name: name, size: size)
         } else {
             return nil
