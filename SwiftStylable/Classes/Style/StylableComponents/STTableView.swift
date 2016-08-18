@@ -14,11 +14,9 @@ import UIKit
 {
     @IBInspectable public var styleName:String? {
         didSet {
-            #if !TARGET_INTERFACE_BUILDER
-                if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-                    self.applyStyle(style)
-                }
-            #endif
+            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+                self.applyStyle(style)
+            }
         }
     }
     
@@ -36,13 +34,5 @@ import UIKit
         self.layer.cornerRadius = style.cornerRadius
         self.separatorStyle = style.tableViewSeparatorStyle
         self.separatorColor = style.tableViewSeparatorColor
-    }
-
-    public override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-            self.applyStyle(style)
-        }
     }
 }
