@@ -20,9 +20,7 @@ import UIKit
         didSet {
             if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
                 self._style = style
-                #if !TARGET_INTERFACE_BUILDER
-                    self.applyStyle(style)
-                #endif
+                self.applyStyle(style)
             } else {
                 self._style = nil
             }
@@ -67,14 +65,6 @@ import UIKit
         self.layer.borderWidth = style.borderWidth
         self.layer.borderColor = style.borderColor.CGColor
         self.layer.cornerRadius = style.cornerRadius
-    }
-    
-    public override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-            self.applyStyle(style)
-        }
     }
     
     
