@@ -13,15 +13,24 @@ import UIKit
 
     @IBInspectable public var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-                self.applyStyle(style)
-            }
+            #if !TARGET_INTERFACE_BUILDER
+                if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+                    self.applyStyle(style)
+                }
+            #endif
         }
     }
 
-    
     public func applyStyle(style:Style) {
         self.font = style.font
         self.textColor = style.foregroundColor
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
+        if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            self.applyStyle(style)
+        }
     }
 }

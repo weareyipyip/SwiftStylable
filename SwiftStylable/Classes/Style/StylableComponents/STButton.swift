@@ -19,9 +19,11 @@ import Foundation
     
     @IBInspectable public var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-                self.applyStyle(style)
-            }
+            #if !TARGET_INTERFACE_BUILDER
+                if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+                    self.applyStyle(style)
+                }
+            #endif
         }
     }
     
@@ -75,6 +77,14 @@ import Foundation
         self.titleLabel?.font = style.font
         
         self.layer.cornerRadius = style.cornerRadius
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
+        if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            self.applyStyle(style)
+        }
     }
     
     
