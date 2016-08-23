@@ -71,6 +71,8 @@ import Foundation
         self.setTitleColor(style.highlightedForegroundColor, forState: .Highlighted)
         self.setTitleColor(style.selectedForegroundColor, forState: .Selected)
         self.setTitleColor(style.disabledForegroundColor, forState: .Disabled)
+		
+		self.tintImageWithTitleColor = style.tintImageWithForegroundColor
         
         self.titleLabel?.font = style.font
         
