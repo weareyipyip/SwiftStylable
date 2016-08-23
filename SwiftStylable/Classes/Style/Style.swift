@@ -32,6 +32,9 @@ public class Style {
 	public var selectedBorderColor = UIColor.clearColor()
 	public var disabledBorderColor = UIColor.clearColor()
     
+	// Image tinting
+	public var tintImageWithForegroundColor:Bool = false
+	
     // Cell separator style
     public var tableViewSeparatorStyle = UITableViewCellSeparatorStyle.SingleLine
     public var tableViewSeparatorColor = UIColor.lightGrayColor()
@@ -79,6 +82,9 @@ public class Style {
         self.highlightedBorderColor = parentStyle.highlightedBorderColor
         self.selectedBorderColor = parentStyle.selectedBorderColor
         self.disabledBorderColor = parentStyle.disabledBorderColor
+		
+		// - image tinting
+		self.tintImageWithForegroundColor = parentStyle.tintImageWithForegroundColor
         
         // - cell separator style
         self.tableViewSeparatorStyle = parentStyle.tableViewSeparatorStyle
@@ -148,6 +154,11 @@ public class Style {
         if let disabledBorderColor = self.parseColor(data: data, key: "disabledBorderColor", colorStrings: colorStrings) {
             self.disabledBorderColor = disabledBorderColor
         }
+		
+		// Image tinting
+		if let tintImageWithForegroundColor = data["tintImageWithForegroundColor"] as? Bool {
+			self.tintImageWithForegroundColor = tintImageWithForegroundColor
+		}
         
         // TableView style
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
