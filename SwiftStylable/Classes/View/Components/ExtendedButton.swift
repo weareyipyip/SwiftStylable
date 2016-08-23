@@ -196,7 +196,7 @@ public class ExtendedButton: UIButton {
 	private func updateImageRenderingModeForState(state:UIControlState) {
 		if let image = self.imageForState(state) {
 			let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.AlwaysTemplate : UIImageRenderingMode.AlwaysOriginal
-			self.setImage(image.imageWithRenderingMode(renderingMode), forState: state)
+			super.setImage(image.imageWithRenderingMode(renderingMode), forState: state)
 		}
 	}
 }
