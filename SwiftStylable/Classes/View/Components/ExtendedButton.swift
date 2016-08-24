@@ -80,6 +80,7 @@ public class ExtendedButton: UIButton {
                 self.updateImageRenderingModeForState(.Selected)
                 self.updateImageRenderingModeForState(.Disabled)
             }
+            self.updateColors()
         }
     }
     
