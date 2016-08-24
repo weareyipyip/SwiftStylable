@@ -31,6 +31,7 @@ public class Style {
 	public var highlightedBorderColor = UIColor.clearColor()
 	public var selectedBorderColor = UIColor.clearColor()
 	public var disabledBorderColor = UIColor.clearColor()
+    public var borderStyle = UITextBorderStyle.RoundedRect
     
 	// Image tinting
 	public var tintImageWithForegroundColor:Bool = false
@@ -82,6 +83,8 @@ public class Style {
         self.highlightedBorderColor = parentStyle.highlightedBorderColor
         self.selectedBorderColor = parentStyle.selectedBorderColor
         self.disabledBorderColor = parentStyle.disabledBorderColor
+        self.borderStyle = parentStyle.borderStyle
+        
 		
 		// - image tinting
 		self.tintImageWithForegroundColor = parentStyle.tintImageWithForegroundColor
@@ -153,6 +156,25 @@ public class Style {
         }
         if let disabledBorderColor = self.parseColor(data: data, key: "disabledBorderColor", colorStrings: colorStrings) {
             self.disabledBorderColor = disabledBorderColor
+        }
+        if let borderStyle = data["borderStyle"] as? String {
+            switch borderStyle {
+            case "None":
+                self.borderStyle = .None
+                
+            case "Line":
+                self.borderStyle = .Line
+                
+            case "Bezel":
+                self.borderStyle = .Bezel
+                
+            case "RoundedRect":
+                self.borderStyle = .RoundedRect
+                
+            default:
+                break
+
+            }
         }
 		
 		// Image tinting
