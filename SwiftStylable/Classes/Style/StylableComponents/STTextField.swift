@@ -24,7 +24,7 @@ import UIKit
         self.backgroundColor = style.backgroundColor
         self.font = style.font
         self.textColor = style.foregroundColor
-        self.layer.borderColor = style.borderColor
+        self.layer.borderColor = style.borderColor.CGColor
         self.borderStyle = style.borderStyle
     }
 }
