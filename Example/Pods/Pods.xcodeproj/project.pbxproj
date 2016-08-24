@@ -26,6 +26,7 @@
 		F747E8CA1D5C98AB006AA9DC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BB1D5C98AB006AA9DC /* Style.swift */; };
 		F747E8CB1D5C98AB006AA9DC /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BC1D5C98AB006AA9DC /* Styles.swift */; };
 		F747E8CC1D5C98AB006AA9DC /* ExtendedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BF1D5C98AB006AA9DC /* ExtendedButton.swift */; };
+		F75F24461D6DB97B00717EB4 /* STTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24451D6DB97B00717EB4 /* STTextField.swift */; };
 		F7EA1E1A1D5CB24F00EC586F /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA1E191D5CB24F00EC586F /* STImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		F747E8BB1D5C98AB006AA9DC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		F747E8BC1D5C98AB006AA9DC /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F747E8BF1D5C98AB006AA9DC /* ExtendedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedButton.swift; sourceTree = "<group>"; };
+		F75F24451D6DB97B00717EB4 /* STTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTextField.swift; sourceTree = "<group>"; };
 		F7EA1E191D5CB24F00EC586F /* STImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STImageView.swift; sourceTree = "<group>"; };
 		FF6E88794104CCE4619A4C0BA096A950 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +241,7 @@
 				F747E8B91D5C98AB006AA9DC /* STTableViewCell.swift */,
 				F747E8BA1D5C98AB006AA9DC /* STView.swift */,
 				F7EA1E191D5CB24F00EC586F /* STImageView.swift */,
+				F75F24451D6DB97B00717EB4 /* STTextField.swift */,
 			);
 			path = StylableComponents;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				670ACB8426DA009DCB203518CEFA526A /* Pods-SwiftStylable_Tests-dummy.m in Sources */,
+				F75F24461D6DB97B00717EB4 /* STTextField.swift in Sources */,
 				F7EA1E1A1D5CB24F00EC586F /* STImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
