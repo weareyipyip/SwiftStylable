@@ -15,6 +15,7 @@ public class Styles {
 	public static let sharedStyles = Styles()
 	
 	private var _styles = [String:Style]()
+    private var _colors = [String:UIColor]()
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -32,12 +33,11 @@ public class Styles {
                 
                 if styleDatas != nil {
                     
-                    // Read color strings
-                    let colorStrings:[String:String]
+                    // Parse color strings
                     if let colorEntries = data["colors"] as? [String:String] {
-                        colorStrings = colorEntries
-                    } else {
-                        colorStrings = [String:String]()
+                        for (name, colorString) in colorEntries {
+                            self._colors[name] = UIColor(hexString: colorString)
+                        }
                     }
                     
                     // Read styles
@@ -48,13 +48,13 @@ public class Styles {
                         for (name, styleData) in styleDatasCopy {
                             if let parentName = styleData["parent"] as? String {
                                 if let parentStyle = self._styles[parentName] {
-                                    let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData, colorStrings: colorStrings)
+                                    let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData, colors: self._colors)
                                     self._styles[name] = style
                                     styleDatas!.removeValueForKey(name)
                                     numParsedStyles += 1
                                 }
                             } else {
-                                let style = Style(name: name, data: styleData, colorStrings: colorStrings)
+                                let style = Style(name: name, data: styleData, colors: self._colors)
                                 self._styles[name] = style
                                 styleDatas!.removeValueForKey(name)
                                 numParsedStyles += 1
@@ -89,4 +89,8 @@ public class Styles {
 	public func styleNamed(name:String)->Style? {
 		return self._styles[name]
 	}
+    
+    public func colorNamed(name:String)->UIColor? {
+        return self._colors[name]
+    }
 }
