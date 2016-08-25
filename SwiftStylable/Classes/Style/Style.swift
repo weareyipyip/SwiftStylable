@@ -55,12 +55,12 @@ public class Style {
 		self.name = name
 	}
     
-    public init(name:String, data:[String:AnyObject], colorStrings:[String:String]) {
+    public init(name:String, data:[String:AnyObject], colors:[String:UIColor]) {
         self.name = name
-        self.parseData(data, colorStrings: colorStrings)
+        self.parseData(data, colors: colors)
     }
     
-    public init(name:String, parentStyle:Style, overridesData:[String:AnyObject], colorStrings:[String:String]) {
+    public init(name:String, parentStyle:Style, overridesData:[String:AnyObject], colors:[String:UIColor]) {
         self.name = name
      
         // Set properties from parent
@@ -101,7 +101,7 @@ public class Style {
         
         
         // Set overrides
-        self.parseData(overridesData, colorStrings: colorStrings)
+        self.parseData(overridesData, colors: colors)
     }
     
     
@@ -112,32 +112,32 @@ public class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func parseData(data:[String:AnyObject], colorStrings:[String:String]) {
+    private func parseData(data:[String:AnyObject], colors:[String:UIColor]) {
         // Foreground colors
-        if let foregroundColor = self.parseColor(data: data, key: "foregroundColor", colorStrings: colorStrings) {
+        if let foregroundColor = self.parseColor(data: data, key: "foregroundColor", colors: colors) {
             self.foregroundColor = foregroundColor
         }
-        if let highlightedForegroundColor = self.parseColor(data: data, key: "highlightedForegroundColor", colorStrings: colorStrings) {
+        if let highlightedForegroundColor = self.parseColor(data: data, key: "highlightedForegroundColor", colors: colors) {
             self.highlightedForegroundColor = highlightedForegroundColor
         }
-        if let selectedForegroundColor = self.parseColor(data: data, key: "selectedForegroundColor", colorStrings: colorStrings) {
+        if let selectedForegroundColor = self.parseColor(data: data, key: "selectedForegroundColor", colors: colors) {
             self.selectedForegroundColor = selectedForegroundColor
         }
-        if let disabledForegroundColor = self.parseColor(data: data, key: "disabledForegroundColor", colorStrings: colorStrings) {
+        if let disabledForegroundColor = self.parseColor(data: data, key: "disabledForegroundColor", colors: colors) {
             self.disabledForegroundColor = disabledForegroundColor
         }
         
         // Foreground colors
-        if let backgroundColor = self.parseColor(data: data, key: "backgroundColor", colorStrings: colorStrings) {
+        if let backgroundColor = self.parseColor(data: data, key: "backgroundColor", colors: colors) {
             self.backgroundColor = backgroundColor
         }
-        if let highlightedBackgroundColor = self.parseColor(data: data, key: "highlightedBackgroundColor", colorStrings: colorStrings) {
+        if let highlightedBackgroundColor = self.parseColor(data: data, key: "highlightedBackgroundColor", colors: colors) {
             self.highlightedBackgroundColor = highlightedBackgroundColor
         }
-        if let selectedBackgroundColor = self.parseColor(data: data, key: "selectedBackgroundColor", colorStrings: colorStrings) {
+        if let selectedBackgroundColor = self.parseColor(data: data, key: "selectedBackgroundColor", colors: colors) {
             self.selectedBackgroundColor = selectedBackgroundColor
         }
-        if let disabledBackgroundColor = self.parseColor(data: data, key: "disabledBackgroundColor", colorStrings: colorStrings) {
+        if let disabledBackgroundColor = self.parseColor(data: data, key: "disabledBackgroundColor", colors: colors) {
             self.disabledBackgroundColor = disabledBackgroundColor
         }
         
@@ -145,16 +145,16 @@ public class Style {
         if let borderWidth = data["borderWidth"] as? CGFloat {
             self.borderWidth = borderWidth
         }
-        if let borderColor = self.parseColor(data: data, key: "borderColor", colorStrings: colorStrings) {
+        if let borderColor = self.parseColor(data: data, key: "borderColor", colors: colors) {
             self.borderColor = borderColor
         }
-        if let highlightedBorderColor = self.parseColor(data: data, key: "highlightedBorderColor", colorStrings: colorStrings) {
+        if let highlightedBorderColor = self.parseColor(data: data, key: "highlightedBorderColor", colors: colors) {
             self.highlightedBorderColor = highlightedBorderColor
         }
-        if let selectedBorderColor = self.parseColor(data: data, key: "selectedBorderColor", colorStrings: colorStrings) {
+        if let selectedBorderColor = self.parseColor(data: data, key: "selectedBorderColor", colors: colors) {
             self.selectedBorderColor = selectedBorderColor
         }
-        if let disabledBorderColor = self.parseColor(data: data, key: "disabledBorderColor", colorStrings: colorStrings) {
+        if let disabledBorderColor = self.parseColor(data: data, key: "disabledBorderColor", colors: colors) {
             self.disabledBorderColor = disabledBorderColor
         }
         if let borderStyle = data["borderStyle"] as? String {
@@ -198,7 +198,7 @@ public class Style {
                 break
             }
         }
-        if let tableViewSeparatorColor = self.parseColor(data: data, key: "tableViewSeparatorColor", colorStrings: colorStrings) {
+        if let tableViewSeparatorColor = self.parseColor(data: data, key: "tableViewSeparatorColor", colors: colors) {
             self.tableViewSeparatorColor = tableViewSeparatorColor
         }
         
@@ -213,10 +213,10 @@ public class Style {
         }
     }
     
-    private func parseColor(data data:[String:AnyObject], key:String, colorStrings:[String:String])->UIColor? {
+    private func parseColor(data data:[String:AnyObject], key:String, colors:[String:UIColor])->UIColor? {
         if let colorName = data[key] as? String {
-            if let colorString = colorStrings[colorName] {
-                return UIColor(hexString: colorString)
+            if let color = colors[colorName] {
+                return color
             } else {
                 return UIColor(hexString: colorName)
             }
