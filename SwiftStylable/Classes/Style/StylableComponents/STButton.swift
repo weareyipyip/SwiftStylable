@@ -75,7 +75,8 @@ import Foundation
 		self.tintImageWithTitleColor = style.tintImageWithForegroundColor
         
         self.titleLabel?.font = style.font
-        
+
+		self.layer.borderWidth = style.borderWidth
         self.layer.cornerRadius = style.cornerRadius
     }
     
