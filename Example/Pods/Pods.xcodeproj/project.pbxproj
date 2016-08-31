@@ -13,6 +13,9 @@
 		83C6FA0D65D084994F0525CEA6435A80 /* Pods-SwiftStylable_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C49ED6F99621AE3A98F2C36AB4B18C5C /* Pods-SwiftStylable_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B190D5983B89057F049DBA75099D8356 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		DE60820F701CB89889765878FE56BF49 /* SwiftStylable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3930B398A898AFBA29E2BFA45D075929 /* SwiftStylable-dummy.m */; };
+		F72A428E1D76CEEF009E1BF9 /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA1E191D5CB24F00EC586F /* STImageView.swift */; };
+		F72A428F1D76CEF2009E1BF9 /* STTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24451D6DB97B00717EB4 /* STTextField.swift */; };
+		F72A42901D76CEF5009E1BF9 /* STActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */; };
 		F747E8C01D5C98AB006AA9DC /* UIColor+HexInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8AF1D5C98AB006AA9DC /* UIColor+HexInit.swift */; };
 		F747E8C11D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B01D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift */; };
 		F747E8C21D5C98AB006AA9DC /* STHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B21D5C98AB006AA9DC /* STHelper.swift */; };
@@ -26,8 +29,6 @@
 		F747E8CA1D5C98AB006AA9DC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BB1D5C98AB006AA9DC /* Style.swift */; };
 		F747E8CB1D5C98AB006AA9DC /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BC1D5C98AB006AA9DC /* Styles.swift */; };
 		F747E8CC1D5C98AB006AA9DC /* ExtendedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8BF1D5C98AB006AA9DC /* ExtendedButton.swift */; };
-		F75F24461D6DB97B00717EB4 /* STTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24451D6DB97B00717EB4 /* STTextField.swift */; };
-		F7EA1E1A1D5CB24F00EC586F /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA1E191D5CB24F00EC586F /* STImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		D78A3CA4D7B2DDF6BC0A28D614C1C7F1 /* Pods-SwiftStylable_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftStylable_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EF479D43AB05F49E6CF034922868E678 /* Pods-SwiftStylable_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftStylable_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F718F39B0F2FF44AC0A370F79FEF4E1B /* SwiftStylable.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftStylable.xcconfig; sourceTree = "<group>"; };
+		F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STActivityIndicator.swift; sourceTree = "<group>"; };
 		F747E8AF1D5C98AB006AA9DC /* UIColor+HexInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexInit.swift"; sourceTree = "<group>"; };
 		F747E8B01D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageWithTintColor.swift"; sourceTree = "<group>"; };
 		F747E8B21D5C98AB006AA9DC /* STHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STHelper.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				F747E8BA1D5C98AB006AA9DC /* STView.swift */,
 				F7EA1E191D5CB24F00EC586F /* STImageView.swift */,
 				F75F24451D6DB97B00717EB4 /* STTextField.swift */,
+				F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */,
 			);
 			path = StylableComponents;
 			sourceTree = "<group>";
@@ -352,8 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				670ACB8426DA009DCB203518CEFA526A /* Pods-SwiftStylable_Tests-dummy.m in Sources */,
-				F75F24461D6DB97B00717EB4 /* STTextField.swift in Sources */,
-				F7EA1E1A1D5CB24F00EC586F /* STImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72A42901D76CEF5009E1BF9 /* STActivityIndicator.swift in Sources */,
 				F747E8C31D5C98AB006AA9DC /* Stylable.swift in Sources */,
 				F747E8C71D5C98AB006AA9DC /* STTableView.swift in Sources */,
 				F747E8CB1D5C98AB006AA9DC /* Styles.swift in Sources */,
@@ -373,8 +375,10 @@
 				F747E8C51D5C98AB006AA9DC /* STButton.swift in Sources */,
 				F747E8CC1D5C98AB006AA9DC /* ExtendedButton.swift in Sources */,
 				F747E8C11D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift in Sources */,
+				F72A428F1D76CEF2009E1BF9 /* STTextField.swift in Sources */,
 				F747E8C01D5C98AB006AA9DC /* UIColor+HexInit.swift in Sources */,
 				F747E8C61D5C98AB006AA9DC /* STLabel.swift in Sources */,
+				F72A428E1D76CEEF009E1BF9 /* STImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
