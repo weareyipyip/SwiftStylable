@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 
+internal let STYLES_DID_UPDATE = "stylesDidUpdate"
+
+
 public class Styles {
 	
 	public static let sharedStyles = Styles()
@@ -29,7 +32,7 @@ public class Styles {
         {
             let bundle = NSBundle(forClass: helper.anyProjectClass())
             if let filePath = bundle.pathForResource("styles", ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
-                self.processStyleData(data)
+                self.processStyleData(data, publishUpdate: false)
             }
         }
 	}
@@ -62,7 +65,7 @@ public class Styles {
         {
             let bundle = NSBundle(forClass: helper.anyProjectClass())
             if let filePath = bundle.pathForResource(fileName, ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
-                self.processStyleData(data)
+                self.processStyleData(data, publishUpdate: true)
             }
         }
     }
@@ -74,7 +77,7 @@ public class Styles {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func processStyleData(styleData:[String:AnyObject]) {
+    private func processStyleData(styleData:[String:AnyObject], publishUpdate:Bool) {
         
         // Parse color strings
         if let colorEntries = styleData["colors"] as? [String:String] {
@@ -121,6 +124,7 @@ public class Styles {
                 print("WARNING: not all styles could be parsed, this probably means a parent style does not exist, or there are 2 or more styles referring to eachother as a parentStyle.")
             }
         }
-
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(STYLES_DID_UPDATE, object: self)
     }
 }

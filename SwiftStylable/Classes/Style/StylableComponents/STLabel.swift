@@ -11,6 +11,36 @@ import UIKit
 
 @IBDesignable public class STLabel : UILabel, Stylable {
 
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Initializers & deinit
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
     @IBInspectable public var styleName:String? {
         didSet {
             if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
@@ -20,8 +50,27 @@ import UIKit
     }
 
     
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Public properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
     public func applyStyle(style:Style) {
         self.font = style.font
         self.textColor = style.foregroundColor
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Internal methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    func stylesDidUpdate(notification:NSNotification) {
+        // Set styleName to itself, to force re-acquiring the style from Styles class
+        let styleName = self.styleName
+        self.styleName = styleName
     }
 }

@@ -16,6 +16,30 @@ import UIKit
     private var _highlighted = false
     private var _style:Style?
     
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Initializers & deinit
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STTableViewCell.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+    }
+        
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+
     @IBInspectable public var styleName:String? {
         didSet {
             if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
@@ -30,7 +54,7 @@ import UIKit
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
-    // MARK: - Internal methods
+    // MARK: - Public methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
@@ -68,6 +92,19 @@ import UIKit
     }
     
     
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Internal methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    func stylesDidUpdate(notification:NSNotification) {
+        // Set styleName to itself, to force re-acquiring the style from Styles class
+        let styleName = self.styleName
+        self.styleName = styleName
+    }
+    
+
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Private methods
