@@ -104,15 +104,7 @@ public class Style {
         self.parseData(overridesData, colors: colors)
     }
     
-    
-    
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Private methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-    private func parseData(data:[String:AnyObject], colors:[String:UIColor]) {
+    func parseData(data:[String:AnyObject], colors:[String:UIColor]) {
         // Foreground colors
         if let foregroundColor = self.parseColor(data: data, key: "foregroundColor", colors: colors) {
             self.foregroundColor = foregroundColor
@@ -173,14 +165,14 @@ public class Style {
                 
             default:
                 break
-
+                
             }
         }
-		
-		// Image tinting
-		if let tintImageWithForegroundColor = data["tintImageWithForegroundColor"] as? Bool {
-			self.tintImageWithForegroundColor = tintImageWithForegroundColor
-		}
+        
+        // Image tinting
+        if let tintImageWithForegroundColor = data["tintImageWithForegroundColor"] as? Bool {
+            self.tintImageWithForegroundColor = tintImageWithForegroundColor
+        }
         
         // TableView style
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
@@ -212,6 +204,14 @@ public class Style {
             self.cornerRadius = cornerRadius
         }
     }
+    
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Private methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
     
     private func parseColor(data data:[String:AnyObject], key:String, colors:[String:UIColor])->UIColor? {
         if let colorName = data[key] as? String {
