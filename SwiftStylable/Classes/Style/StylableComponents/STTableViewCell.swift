@@ -14,9 +14,15 @@ import UIKit
 {
     private var _selected = false
     private var _highlighted = false
-    private var _style:Style?
-    
-    
+	
+	private var _backgroundColor:UIColor!
+	private var _borderColor:UIColor!
+	private var _highlightedBackgroundColor:UIColor!
+	private var _highlightedBorderColor:UIColor!
+	private var _selectedBackgroundColor:UIColor!
+	private var _selectedBorderColor:UIColor!
+	
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Initializers & deinit
@@ -43,10 +49,7 @@ import UIKit
     @IBInspectable public var styleName:String? {
         didSet {
             if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
-                self._style = style
                 self.applyStyle(style)
-            } else {
-                self._style = nil
             }
         }
     }
@@ -64,8 +67,8 @@ import UIKit
     
     override public func setSelected(selected: Bool, animated: Bool) {
         self._selected = selected
-        if let style = self._style {
-            self.updateColors(style)
+		if self.styleName != nil {
+            self.updateColors()
         } else {
             super.setSelected(selected, animated: animated)
         }
@@ -73,8 +76,8 @@ import UIKit
     
     override public func setHighlighted(highlighted: Bool, animated: Bool) {
         self._highlighted = highlighted
-        if let style = self._style {
-            self.updateColors(style)
+		if self.styleName != nil {
+            self.updateColors()
         } else {
             super.setHighlighted(highlighted, animated: animated)
         }
@@ -85,12 +88,19 @@ import UIKit
     // -----------------------------------------------------------
     
     public func applyStyle(style:Style) {
-        self.backgroundColor = style.backgroundColor
-        self.layer.borderWidth = style.borderWidth
-        self.layer.borderColor = style.borderColor.CGColor
-        self.layer.cornerRadius = style.cornerRadius
+		self.layer.borderWidth = style.borderWidth
+		self.layer.cornerRadius = style.cornerRadius
+		
+		self._backgroundColor = style.backgroundColor
+		self._borderColor = style.borderColor
+		self._highlightedBackgroundColor = style.highlightedBackgroundColor
+		self._highlightedBorderColor = style.highlightedBorderColor
+		self._selectedBackgroundColor = style.selectedBackgroundColor
+		self._selectedBorderColor = style.selectedBorderColor
+		
+		self.updateColors()
     }
-    
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -111,16 +121,16 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func updateColors(style:Style) {
+    private func updateColors() {
         if self._highlighted {
-            self.backgroundColor = style.highlightedBackgroundColor
-            self.layer.borderColor = style.highlightedBorderColor.CGColor
+            self.backgroundColor = self._highlightedBackgroundColor
+            self.layer.borderColor = self._highlightedBorderColor.CGColor
         } else if self._selected {
-            self.backgroundColor = style.selectedBackgroundColor
-            self.layer.borderColor = style.selectedBorderColor.CGColor
+            self.backgroundColor = self._selectedBackgroundColor
+            self.layer.borderColor = self._selectedBorderColor.CGColor
         } else {
-            self.backgroundColor = style.backgroundColor
-            self.layer.borderColor = style.borderColor.CGColor
+            self.backgroundColor = self._backgroundColor
+            self.layer.borderColor = self._borderColor.CGColor
         }
     }
 }

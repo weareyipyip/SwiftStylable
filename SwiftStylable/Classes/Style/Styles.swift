@@ -124,7 +124,9 @@ public class Styles {
                 print("WARNING: not all styles could be parsed, this probably means a parent style does not exist, or there are 2 or more styles referring to eachother as a parentStyle.")
             }
         }
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(STYLES_DID_UPDATE, object: self)
+		
+		if publishUpdate {
+			NSNotificationCenter.defaultCenter().postNotificationName(STYLES_DID_UPDATE, object: self)
+		}
     }
 }
