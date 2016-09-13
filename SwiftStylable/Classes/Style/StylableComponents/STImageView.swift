@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable public class STImageView : UIImageView {
+@IBDesignable public class STImageView : UIImageView, Stylable {
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,6 +18,14 @@ import UIKit
 	// MARK: Computed properties
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
+	
+	@IBInspectable public var styleName:String? {
+		didSet {
+			if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+				self.applyStyle(style)
+			}
+		}
+	}
 	
 	@IBInspectable public var imageName:String? {
         didSet {
@@ -41,6 +49,18 @@ import UIKit
 		didSet {
 			self.updateImageRenderingMode()
 		}
+	}
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Public methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	public func applyStyle(style:Style) {
+		self.tintImageWithForegroundColor = style.tintImageWithForegroundColor
+		self.tintColor = style.foregroundColor
 	}
 	
 	
