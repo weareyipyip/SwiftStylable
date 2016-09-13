@@ -31,6 +31,10 @@ import UIKit
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
 	}
 	
+	public override init(image: UIImage?) {
+		super.init(image: image)
+	}
+	
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
