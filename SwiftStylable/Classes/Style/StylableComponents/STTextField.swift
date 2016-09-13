@@ -61,6 +61,8 @@ import UIKit
         self.font = style.font
         self.textColor = style.foregroundColor
         self.layer.borderColor = style.borderColor.CGColor
+		self.layer.borderWidth = style.borderWidth
+		self.layer.masksToBounds = true
         self.borderStyle = style.borderStyle
     }
     
