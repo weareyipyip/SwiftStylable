@@ -67,9 +67,9 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    func stylesDidUpdate(notification:NSNotification) {
-        // Set styleName to itself, to force re-acquiring the style from Styles class
-        let styleName = self.styleName
-        self.styleName = styleName
-    }
+	func stylesDidUpdate(notification:NSNotification) {
+		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+			self.applyStyle(style)
+		}
+	}
 }
