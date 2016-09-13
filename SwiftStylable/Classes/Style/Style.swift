@@ -13,36 +13,43 @@ import UIKit
 public class Style {
 	public let name:String
 	
-	// Foreground colors
-	public var foregroundColor = UIColor.darkGrayColor()
-	public var highlightedForegroundColor = UIColor.blackColor()
-	public var selectedForegroundColor = UIColor.blueColor()
-	public var disabledForegroundColor = UIColor.lightGrayColor()
-	
-    // Background colors
-	public var backgroundColor = UIColor.whiteColor()
-	public var highlightedBackgroundColor = UIColor.lightGrayColor()
-	public var selectedBackgroundColor = UIColor.lightGrayColor()
-	public var disabledBackgroundColor = UIColor.whiteColor()
-	
     // Border style
 	public var borderWidth:CGFloat = 0.0
-	public var borderColor = UIColor.clearColor()
-	public var highlightedBorderColor = UIColor.clearColor()
-	public var selectedBorderColor = UIColor.clearColor()
-	public var disabledBorderColor = UIColor.clearColor()
     public var borderStyle = UITextBorderStyle.RoundedRect
-    
+	
 	// Image tinting
 	public var tintImageWithForegroundColor:Bool = false
 	
     // Cell separator style
     public var tableViewSeparatorStyle = UITableViewCellSeparatorStyle.SingleLine
-    public var tableViewSeparatorColor = UIColor.lightGrayColor()
 	
+	// Text
 	public var font:UIFont = UIFont.systemFontOfSize(16.0)
 	
+	// Corners
 	public var cornerRadius:CGFloat = 0.0
+	
+	
+	// Foreground color names
+	private (set) var foregroundColorName:String?
+	private (set) var highlightedForegroundColorName:String?
+	private (set) var selectedForegroundColorName:String?
+	private (set) var disabledForegroundColorName:String?
+	
+	// Background color names
+	private (set) var backgroundColorName:String?
+	private (set) var highlightedBackgroundColorName:String?
+	private (set) var selectedBackgroundColorName:String?
+	private (set) var disabledBackgroundColorName:String?
+	
+	// Border color names
+	private (set) var borderColorName:String?
+	private (set) var highlightedBorderColorName:String?
+	private (set) var selectedBorderColorName:String?
+	private (set) var disabledBorderColorName:String?
+	
+	// Cell style color names
+	private (set) var tableViewSeparatorColorName:String?
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -66,23 +73,23 @@ public class Style {
         // Set properties from parent
         
         // - foreground colors
-        self.foregroundColor = parentStyle.foregroundColor
-        self.highlightedForegroundColor = parentStyle.highlightedForegroundColor
-        self.selectedForegroundColor = parentStyle.selectedForegroundColor
-        self.disabledForegroundColor = parentStyle.disabledForegroundColor
+        self.foregroundColorName = parentStyle.foregroundColorName
+        self.highlightedForegroundColorName = parentStyle.highlightedForegroundColorName
+        self.selectedForegroundColorName = parentStyle.selectedForegroundColorName
+        self.disabledForegroundColorName = parentStyle.disabledForegroundColorName
         
         // - background colors
-        self.backgroundColor = parentStyle.backgroundColor
-        self.highlightedBackgroundColor = parentStyle.highlightedBackgroundColor
-        self.selectedBackgroundColor = parentStyle.selectedBackgroundColor
-        self.disabledBackgroundColor = parentStyle.disabledBackgroundColor
+        self.backgroundColorName = parentStyle.backgroundColorName
+        self.highlightedBackgroundColorName = parentStyle.highlightedBackgroundColorName
+        self.selectedBackgroundColorName = parentStyle.selectedBackgroundColorName
+        self.disabledBackgroundColorName = parentStyle.disabledBackgroundColorName
         
         // - border style
         self.borderWidth = parentStyle.borderWidth
-        self.borderColor = parentStyle.borderColor
-        self.highlightedBorderColor = parentStyle.highlightedBorderColor
-        self.selectedBorderColor = parentStyle.selectedBorderColor
-        self.disabledBorderColor = parentStyle.disabledBorderColor
+        self.borderColorName = parentStyle.borderColorName
+        self.highlightedBorderColorName = parentStyle.highlightedBorderColorName
+        self.selectedBorderColorName = parentStyle.selectedBorderColorName
+        self.disabledBorderColorName = parentStyle.disabledBorderColorName
         self.borderStyle = parentStyle.borderStyle
         
 		
@@ -91,7 +98,7 @@ public class Style {
         
         // - cell separator style
         self.tableViewSeparatorStyle = parentStyle.tableViewSeparatorStyle
-        self.tableViewSeparatorColor = parentStyle.tableViewSeparatorColor
+        self.tableViewSeparatorColorName = parentStyle.tableViewSeparatorColorName
         
         // - font
         self.font = parentStyle.font
@@ -103,52 +110,99 @@ public class Style {
         // Set overrides
         self.parseData(overridesData, colors: colors)
     }
-    
-    func parseData(data:[String:AnyObject], colors:[String:UIColor]) {
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Computed properties
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	// Foreground colors
+	public var foregroundColor:UIColor {
+		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.darkGrayColor())
+	}
+	
+	public var highlightedForegroundColor:UIColor {
+		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: UIColor.blackColor())
+	}
+	
+	public var selectedForegroundColor:UIColor {
+		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: UIColor.blueColor())
+	}
+	
+	public var disabledForegroundColor:UIColor {
+		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: UIColor.lightGrayColor())
+	}
+	
+	// Background colors
+	public var backgroundColor:UIColor {
+		return self.colorWithName(self.backgroundColorName, orDefaultColor: UIColor.whiteColor())
+	}
+	
+	public var highlightedBackgroundColor:UIColor {
+		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: UIColor.lightGrayColor())
+	}
+	
+	public var selectedBackgroundColor:UIColor {
+		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: UIColor.lightGrayColor())
+	}
+	
+	public var disabledBackgroundColor:UIColor {
+		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: UIColor.whiteColor())
+	}
+	
+	// Border style
+	public var borderColor:UIColor {
+		return self.colorWithName(self.borderColorName, orDefaultColor: UIColor.clearColor())
+	}
+	
+	public var highlightedBorderColor:UIColor {
+		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: UIColor.clearColor())
+	}
+	
+	public var selectedBorderColor:UIColor {
+		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: UIColor.clearColor())
+	}
+	
+	public var disabledBorderColor:UIColor {
+		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: UIColor.clearColor())
+	}
+	
+	// Cell separator style
+	public var tableViewSeparatorColor:UIColor {
+		return self.colorWithName(self.tableViewSeparatorColorName, orDefaultColor: UIColor.lightGrayColor())
+	}
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Internal methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	func parseData(data:[String:AnyObject], colors:[String:UIColor]) {
         // Foreground colors
-        if let foregroundColor = self.parseColor(data: data, key: "foregroundColor", colors: colors) {
-            self.foregroundColor = foregroundColor
-        }
-        if let highlightedForegroundColor = self.parseColor(data: data, key: "highlightedForegroundColor", colors: colors) {
-            self.highlightedForegroundColor = highlightedForegroundColor
-        }
-        if let selectedForegroundColor = self.parseColor(data: data, key: "selectedForegroundColor", colors: colors) {
-            self.selectedForegroundColor = selectedForegroundColor
-        }
-        if let disabledForegroundColor = self.parseColor(data: data, key: "disabledForegroundColor", colors: colors) {
-            self.disabledForegroundColor = disabledForegroundColor
-        }
-        
+		self.foregroundColorName = data["foregroundColor"] as? String
+        self.highlightedForegroundColorName = data["highlightedForegroundColor"] as? String
+        self.selectedForegroundColorName = data["selectedForegroundColor"] as? String
+        self.disabledForegroundColorName = data["disabledForegroundColor"] as? String
+		
         // Foreground colors
-        if let backgroundColor = self.parseColor(data: data, key: "backgroundColor", colors: colors) {
-            self.backgroundColor = backgroundColor
-        }
-        if let highlightedBackgroundColor = self.parseColor(data: data, key: "highlightedBackgroundColor", colors: colors) {
-            self.highlightedBackgroundColor = highlightedBackgroundColor
-        }
-        if let selectedBackgroundColor = self.parseColor(data: data, key: "selectedBackgroundColor", colors: colors) {
-            self.selectedBackgroundColor = selectedBackgroundColor
-        }
-        if let disabledBackgroundColor = self.parseColor(data: data, key: "disabledBackgroundColor", colors: colors) {
-            self.disabledBackgroundColor = disabledBackgroundColor
-        }
-        
+        self.backgroundColorName = data["backgroundColor"] as? String
+        self.highlightedBackgroundColorName = data["highlightedBackgroundColor"] as? String
+        self.selectedBackgroundColorName = data["selectedBackgroundColor"] as? String
+        self.disabledBackgroundColorName = data["disabledBackgroundColor"] as? String
+		
         // Border style
         if let borderWidth = data["borderWidth"] as? CGFloat {
             self.borderWidth = borderWidth
         }
-        if let borderColor = self.parseColor(data: data, key: "borderColor", colors: colors) {
-            self.borderColor = borderColor
-        }
-        if let highlightedBorderColor = self.parseColor(data: data, key: "highlightedBorderColor", colors: colors) {
-            self.highlightedBorderColor = highlightedBorderColor
-        }
-        if let selectedBorderColor = self.parseColor(data: data, key: "selectedBorderColor", colors: colors) {
-            self.selectedBorderColor = selectedBorderColor
-        }
-        if let disabledBorderColor = self.parseColor(data: data, key: "disabledBorderColor", colors: colors) {
-            self.disabledBorderColor = disabledBorderColor
-        }
+        self.borderColorName = data["borderColor"] as? String
+        self.highlightedBorderColorName = data["highlightedBorderColor"] as? String
+        self.selectedBorderColorName = data["selectedBorderColor"] as? String
+        self.disabledBorderColorName = data["disabledBorderColor"] as? String
+		
         if let borderStyle = data["borderStyle"] as? String {
             switch borderStyle {
             case "None":
@@ -190,10 +244,8 @@ public class Style {
                 break
             }
         }
-        if let tableViewSeparatorColor = self.parseColor(data: data, key: "tableViewSeparatorColor", colors: colors) {
-            self.tableViewSeparatorColor = tableViewSeparatorColor
-        }
-        
+        self.tableViewSeparatorColorName = data["tableViewSeparatorColor"] as? String
+		
         // Fonts
         if let font = self.parseFont(data: data, key: "font") {
             self.font = font
@@ -212,19 +264,15 @@ public class Style {
     // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
-    private func parseColor(data data:[String:AnyObject], key:String, colors:[String:UIColor])->UIColor? {
-        if let colorName = data[key] as? String {
-            if let color = colors[colorName] {
-                return color
-            } else {
-                return UIColor(hexString: colorName)
-            }
-        } else {
-            return nil
-        }
-    }
-    
+
+	private func colorWithName(name:String?, orDefaultColor defaultColor:UIColor)->UIColor {
+		if let colorName = name, color = Styles.sharedStyles.colorNamed(colorName) {
+			return color
+		} else {
+			return defaultColor
+		}
+	}
+	
     private func parseFont(data data:[String:AnyObject], key:String)->UIFont? {
 		if let fontData = data[key] as? [String:AnyObject] {
 			let name = fontData["name"] as? String ?? self.font.fontName
