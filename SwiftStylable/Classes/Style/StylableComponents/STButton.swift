@@ -11,6 +11,30 @@ import Foundation
 
 @IBDesignable public class STButton : ExtendedButton, Stylable {
     
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Initializers & deinit
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Computed properties
@@ -78,6 +102,18 @@ import Foundation
 
 		self.layer.borderWidth = style.borderWidth
         self.layer.cornerRadius = style.cornerRadius
+    }
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Internal methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    func stylesDidUpdate(notification:NSNotification) {
+		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+			self.applyStyle(style)
+		}
     }
     
     

@@ -10,14 +10,49 @@ import Foundation
 import UIKit
 
 
-@IBDesignable public class STImageView : UIImageView {
+@IBDesignable public class STImageView : UIImageView, Stylable {
 	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: - Initializers & deinit
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+	}
+	
+	override public init(frame: CGRect) {
+		super.init(frame: frame)
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+	}
+	
+	public override init(image: UIImage?) {
+		super.init(image: image)
+	}
+	
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
 	// MARK: Computed properties
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
+	
+	@IBInspectable public var styleName:String? {
+		didSet {
+			if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+				self.applyStyle(style)
+			}
+		}
+	}
 	
 	@IBInspectable public var imageName:String? {
         didSet {
@@ -43,6 +78,31 @@ import UIKit
 		}
 	}
 	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Public methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	public func applyStyle(style:Style) {
+		self.tintImageWithForegroundColor = style.tintImageWithForegroundColor
+		self.tintColor = style.foregroundColor
+	}
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: - Internal methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	func stylesDidUpdate(notification:NSNotification) {
+		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+			self.applyStyle(style)
+		}
+	}
+
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
