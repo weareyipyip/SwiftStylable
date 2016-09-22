@@ -31,20 +31,9 @@ public class Styles {
         if let helper = STHelper.sharedHelper as? SwiftStylableHelper
         {
             let bundle = NSBundle(forClass: helper.anyProjectClass())
-            if let filePath = bundle.pathForResource("styles", ofType: "plist"), url = NSURL(string: filePath) {
-                do {
-                    let plistText = try String(contentsOfURL: url)
-                    if let data = plistText.propertyList() as? [String:AnyObject] {
-                        self.processStyleData(data, publishUpdate: false)
-                    }
-                } catch _ {
-                    
-                }
-                
+            if let filePath = bundle.pathForResource("styles", ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
+                self.processStyleData(data, publishUpdate: false)
             }
-//            if let filePath = bundle.pathForResource("styles", ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
-//                self.processStyleData(data, publishUpdate: false)
-//            }
         }
 	}
 	
