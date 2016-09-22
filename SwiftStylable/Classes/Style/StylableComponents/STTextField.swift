@@ -43,7 +43,7 @@ import UIKit
     
     @IBInspectable public var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
                 self.applyStyle(style)
             }
         }
@@ -74,7 +74,7 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
 	func stylesDidUpdate(notification:NSNotification) {
-		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
 	}
