@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable public class STTableViewCell : UITableViewCell, Stylable
+@IBDesignable open class STTableViewCell : UITableViewCell, Stylable
 {
     private var _selected = false
     private var _highlighted = false
@@ -32,11 +32,11 @@ import UIKit
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STTableViewCell.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STTableViewCell.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
         
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -46,9 +46,9 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
 
-    @IBInspectable public var styleName:String? {
+    @IBInspectable open var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
                 self.applyStyle(style)
             }
         }
@@ -65,7 +65,7 @@ import UIKit
     // -- TableViewCell overrides
     // -----------------------------------------------------------
     
-    override public func setSelected(selected: Bool, animated: Bool) {
+    override open func setSelected(_ selected: Bool, animated: Bool) {
         self._selected = selected
 		if self.styleName != nil {
             self.updateColors()
@@ -74,7 +74,7 @@ import UIKit
         }
     }
     
-    override public func setHighlighted(highlighted: Bool, animated: Bool) {
+    override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
         self._highlighted = highlighted
 		if self.styleName != nil {
             self.updateColors()
@@ -87,7 +87,7 @@ import UIKit
     // -- Stylable implementation
     // -----------------------------------------------------------
     
-    public func applyStyle(style:Style) {
+    open func applyStyle(_ style:Style) {
 		self.layer.borderWidth = style.borderWidth
 		self.layer.cornerRadius = style.cornerRadius
 		
@@ -108,8 +108,8 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(notification:NSNotification) {
-		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+	func stylesDidUpdate(_ notification:Notification) {
+		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
 	}
@@ -121,16 +121,16 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func updateColors() {
+    fileprivate func updateColors() {
         if self._highlighted {
             self.backgroundColor = self._highlightedBackgroundColor
-            self.layer.borderColor = self._highlightedBorderColor.CGColor
+            self.layer.borderColor = self._highlightedBorderColor.cgColor
         } else if self._selected {
             self.backgroundColor = self._selectedBackgroundColor
-            self.layer.borderColor = self._selectedBorderColor.CGColor
+            self.layer.borderColor = self._selectedBorderColor.cgColor
         } else {
             self.backgroundColor = self._backgroundColor
-            self.layer.borderColor = self._borderColor.CGColor
+            self.layer.borderColor = self._borderColor.cgColor
         }
     }
 }

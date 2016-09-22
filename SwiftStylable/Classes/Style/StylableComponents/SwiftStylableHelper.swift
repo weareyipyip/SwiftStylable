@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 public protocol SwiftStylableHelper {
-    func imageNamed(name:String)->UIImage?
+    func imageNamed(_ name:String)->UIImage?
     func anyProjectClass()->AnyClass
 }

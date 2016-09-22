@@ -12,5 +12,5 @@ import Foundation
 public protocol Stylable {
 	var styleName:String? { get set }
 	
-	func applyStyle(style:Style)
+	func applyStyle(_ style:Style)
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable public class STTextField : UITextField, Stylable {
+@IBDesignable open class STTextField : UITextField, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -21,17 +21,17 @@ import UIKit
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -41,7 +41,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable public var styleName:String? {
+    @IBInspectable open var styleName:String? {
         didSet {
             if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
                 self.applyStyle(style)
@@ -56,11 +56,11 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func applyStyle(style:Style) {
+    open func applyStyle(_ style:Style) {
         self.backgroundColor = style.backgroundColor
         self.font = style.font
         self.textColor = style.foregroundColor
-        self.layer.borderColor = style.borderColor.CGColor
+        self.layer.borderColor = style.borderColor.cgColor
 		self.layer.borderWidth = style.borderWidth
 		self.layer.masksToBounds = true
         self.borderStyle = style.borderStyle
@@ -73,7 +73,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(notification:NSNotification) {
+	func stylesDidUpdate(_ notification:Notification) {
 		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}

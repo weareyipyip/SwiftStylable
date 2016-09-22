@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable public class STActivityIndicator : UIActivityIndicatorView, Stylable {
+@IBDesignable open class STActivityIndicator : UIActivityIndicatorView, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -21,17 +21,17 @@ import UIKit
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -41,9 +41,9 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable public var styleName:String? {
+    @IBInspectable open var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
                 self.applyStyle(style)
             }
         }
@@ -56,7 +56,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func applyStyle(style:Style) {
+    open func applyStyle(_ style:Style) {
         self.tintColor = style.foregroundColor
     }
     
@@ -67,8 +67,8 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(notification:NSNotification) {
-		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+	func stylesDidUpdate(_ notification:Notification) {
+		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
 	}
