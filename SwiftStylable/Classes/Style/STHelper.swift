@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-public class STHelper {
+open class STHelper {
     
-    public static let sharedHelper:AnyObject = STHelper()
+    open static let sharedHelper:AnyObject = STHelper()
     
     
     // -----------------------------------------------------------------------------------------------------------------------

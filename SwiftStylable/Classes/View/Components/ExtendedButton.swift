@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-public class ExtendedButton: UIButton {
-    private var _normalBackgroundColor:UIColor = UIColor.blackColor()
-    private var _highlightedBackgroundColor:UIColor = UIColor.whiteColor()
-    private var _selectedBackgroundColor:UIColor = UIColor.whiteColor()
-    private var _disabledBackgroundColor:UIColor = UIColor.whiteColor()
+open class ExtendedButton: UIButton {
+    private var _normalBackgroundColor:UIColor = UIColor.black
+    private var _highlightedBackgroundColor:UIColor = UIColor.white
+    private var _selectedBackgroundColor:UIColor = UIColor.white
+    private var _disabledBackgroundColor:UIColor = UIColor.white
     
-    private var _normalBorderColor:UIColor = UIColor.whiteColor()
-    private var _highlightedBorderColor:UIColor = UIColor.whiteColor()
-    private var _selectedBorderColor:UIColor = UIColor.whiteColor()
-    private var _disabledBorderColor:UIColor = UIColor.whiteColor()
+    private var _normalBorderColor:UIColor = UIColor.white
+    private var _highlightedBorderColor:UIColor = UIColor.white
+    private var _selectedBorderColor:UIColor = UIColor.white
+    private var _disabledBorderColor:UIColor = UIColor.white
     
     
     
@@ -28,57 +28,57 @@ public class ExtendedButton: UIButton {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable public var placeImageOnTheRight:Bool = false	{
+    @IBInspectable open var placeImageOnTheRight:Bool = false	{
         didSet {
             if self.placeImageOnTheRight {
-                self.transform = CGAffineTransformMakeScale(-1.0, 1.0)
-                self.titleLabel?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
-                self.imageView?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
+                self.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                self.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                self.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
             } else {
-                self.transform = CGAffineTransformIdentity
-                self.titleLabel?.transform = CGAffineTransformIdentity
-                self.imageView?.transform = CGAffineTransformIdentity
+                self.transform = CGAffineTransform.identity
+                self.titleLabel?.transform = CGAffineTransform.identity
+                self.imageView?.transform = CGAffineTransform.identity
             }
         }
     }
     
-    override public var highlighted:Bool {
+    override open var isHighlighted:Bool {
         get	{
-            return super.highlighted
+            return super.isHighlighted
         }
         set(value) {
-            super.highlighted = value
+            super.isHighlighted = value
             self.updateColors()
         }
     }
     
-    override public var selected:Bool {
+    override open var isSelected:Bool {
         get	{
-            return super.selected
+            return super.isSelected
         }
         set(value) {
-            super.selected = value
+            super.isSelected = value
             self.updateColors()
         }
     }
     
-    override public var enabled:Bool {
+    override open var isEnabled:Bool {
         get	{
-            return super.enabled
+            return super.isEnabled
         }
         set(value) {
-            super.enabled = value
+            super.isEnabled = value
             self.updateColors()
         }
     }
     
-    @IBInspectable public var tintImageWithTitleColor:Bool = false {
+    @IBInspectable open var tintImageWithTitleColor:Bool = false {
         didSet {
             if self.tintImageWithTitleColor != oldValue {
-                self.updateImageRenderingModeForState(.Normal)
-                self.updateImageRenderingModeForState(.Highlighted)
-                self.updateImageRenderingModeForState(.Selected)
-                self.updateImageRenderingModeForState(.Disabled)
+                self.updateImageRenderingModeForState(UIControlState())
+                self.updateImageRenderingModeForState(.highlighted)
+                self.updateImageRenderingModeForState(.selected)
+                self.updateImageRenderingModeForState(.disabled)
             }
             self.updateColors()
         }
@@ -99,23 +99,23 @@ public class ExtendedButton: UIButton {
     //  Extra state color properties
     // -----------------------------------------------------------
     
-    public func setBackgroundColor(color:UIColor, forState:UIControlState)
+    open func setBackgroundColor(_ color:UIColor, forState:UIControlState)
     {
         switch (forState)
         {
-        case UIControlState.Normal:
+        case UIControlState():
             _normalBackgroundColor = color
             break
             
-        case UIControlState.Highlighted:
+        case UIControlState.highlighted:
             _highlightedBackgroundColor = color
             break
             
-        case UIControlState.Selected:
+        case UIControlState.selected:
             _selectedBackgroundColor = color
             break
             
-        case UIControlState.Disabled:
+        case UIControlState.disabled:
             _disabledBackgroundColor = color
             break
             
@@ -125,23 +125,23 @@ public class ExtendedButton: UIButton {
         self.updateColors()
     }
     
-    public func setBorderColor(color:UIColor, forState:UIControlState)
+    open func setBorderColor(_ color:UIColor, forState:UIControlState)
     {
         switch (forState)
         {
-        case UIControlState.Normal:
+        case UIControlState():
             _normalBorderColor = color
             break
             
-        case UIControlState.Highlighted:
+        case UIControlState.highlighted:
             _highlightedBorderColor = color
             break
             
-        case UIControlState.Selected:
+        case UIControlState.selected:
             _selectedBorderColor = color
             break
             
-        case UIControlState.Disabled:
+        case UIControlState.disabled:
             _disabledBorderColor = color
             break
             
@@ -151,8 +151,8 @@ public class ExtendedButton: UIButton {
         self.updateColors()
     }
     
-    public override func setImage(image: UIImage?, forState state: UIControlState) {
-        super.setImage(image, forState: state)
+    open override func setImage(_ image: UIImage?, for state: UIControlState) {
+        super.setImage(image, for: state)
         self.updateImageRenderingModeForState(state)
         self.updateColors()
     }
@@ -164,41 +164,41 @@ public class ExtendedButton: UIButton {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func updateColors()
+    fileprivate func updateColors()
     {
-        if self.enabled
+        if self.isEnabled
         {
-            if (self.highlighted)
+            if (self.isHighlighted)
             {
                 self.backgroundColor = _highlightedBackgroundColor
-                self.layer.borderColor = _highlightedBorderColor.CGColor
-                self.imageView?.tintColor = self.titleColorForState(.Highlighted)
+                self.layer.borderColor = _highlightedBorderColor.cgColor
+                self.imageView?.tintColor = self.titleColor(for: .highlighted)
             }
-            else if (self.selected)
+            else if (self.isSelected)
             {
                 self.backgroundColor = _selectedBackgroundColor
-                self.layer.borderColor = _selectedBorderColor.CGColor
-                self.imageView?.tintColor = self.titleColorForState(.Selected)
+                self.layer.borderColor = _selectedBorderColor.cgColor
+                self.imageView?.tintColor = self.titleColor(for: .selected)
             }
             else
             {
                 self.backgroundColor = _normalBackgroundColor
-                self.layer.borderColor = _normalBorderColor.CGColor
-                self.imageView?.tintColor = self.titleColorForState(.Normal)
+                self.layer.borderColor = _normalBorderColor.cgColor
+                self.imageView?.tintColor = self.titleColor(for: UIControlState())
             }
         }
         else
         {
             self.backgroundColor = self._disabledBackgroundColor
-            self.layer.borderColor = self._disabledBorderColor.CGColor
-            self.imageView?.tintColor = self.titleColorForState(.Disabled)
+            self.layer.borderColor = self._disabledBorderColor.cgColor
+            self.imageView?.tintColor = self.titleColor(for: .disabled)
         }
     }
     
-    private func updateImageRenderingModeForState(state:UIControlState) {
-        if let image = self.imageForState(state) {
-            let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.AlwaysTemplate : UIImageRenderingMode.AlwaysOriginal
-            super.setImage(image.imageWithRenderingMode(renderingMode), forState: state)
+    fileprivate func updateImageRenderingModeForState(_ state:UIControlState) {
+        if let image = self.image(for: state) {
+            let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+            super.setImage(image.withRenderingMode(renderingMode), for: state)
         }
     }
 }

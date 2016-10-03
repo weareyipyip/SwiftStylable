@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable public class STImageView : UIImageView, Stylable {
+@IBDesignable open class STImageView : UIImageView, Stylable {
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -22,13 +22,13 @@ import UIKit
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
 	}
 	
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
 	}
 	
 	public override init(image: UIImage?) {
@@ -36,7 +36,7 @@ import UIKit
 	}
 	
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 
 	
@@ -46,17 +46,17 @@ import UIKit
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	@IBInspectable public var styleName:String? {
+	@IBInspectable open var styleName:String? {
 		didSet {
-			if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+			if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 				self.applyStyle(style)
 			}
 		}
 	}
 	
-	@IBInspectable public var imageName:String? {
+	@IBInspectable open var imageName:String? {
         didSet {
-            if let imageName = self.imageName, helper = STHelper.sharedHelper as? SwiftStylableHelper {
+            if let imageName = self.imageName, let helper = STHelper.sharedHelper as? SwiftStylableHelper {
                 self.image = helper.imageNamed(imageName)
             } else {
                 self.image = nil
@@ -64,7 +64,7 @@ import UIKit
         }
     }
 	
-	@IBInspectable public var tintImageWithForegroundColor = false {
+	@IBInspectable open var tintImageWithForegroundColor = false {
 		didSet {
 			if self.tintImageWithForegroundColor != oldValue {
 				self.updateImageRenderingMode()
@@ -72,7 +72,7 @@ import UIKit
 		}
 	}
 	
-	public override var image: UIImage? {
+	open override var image: UIImage? {
 		didSet {
 			self.updateImageRenderingMode()
 		}
@@ -85,7 +85,7 @@ import UIKit
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	public func applyStyle(style:Style) {
+	open func applyStyle(_ style:Style) {
 		self.tintImageWithForegroundColor = style.tintImageWithForegroundColor
 		self.tintColor = style.foregroundColor
 	}
@@ -97,8 +97,8 @@ import UIKit
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	func stylesDidUpdate(notification:NSNotification) {
-		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+	func stylesDidUpdate(_ notification:Notification) {
+		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
 	}
@@ -110,10 +110,10 @@ import UIKit
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	private func updateImageRenderingMode() {
+	fileprivate func updateImageRenderingMode() {
 		if let image = self.image {
-			let renderingMode = self.tintImageWithForegroundColor ? UIImageRenderingMode.AlwaysTemplate : UIImageRenderingMode.AlwaysOriginal
-			super.image = image.imageWithRenderingMode(renderingMode)
+			let renderingMode = self.tintImageWithForegroundColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+			super.image = image.withRenderingMode(renderingMode)
 		}
 	}
 }
