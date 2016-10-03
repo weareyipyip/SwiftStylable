@@ -9,7 +9,7 @@
 import Foundation
 
 
-@IBDesignable public class STButton : ExtendedButton, Stylable {
+@IBDesignable open class STButton : ExtendedButton, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -21,17 +21,17 @@ import Foundation
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -41,35 +41,35 @@ import Foundation
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable public var styleName:String? {
+    @IBInspectable open var styleName:String? {
         didSet {
-            if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+            if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
                 self.applyStyle(style)
             }
         }
     }
     
-    @IBInspectable public var imageName:String? {
+    @IBInspectable open var imageName:String? {
         didSet {
-            self.processImageName(self.imageName, forState: .Normal)
+            self.processImageName(self.imageName, forState: UIControlState())
         }
     }
     
-    @IBInspectable public var highlightedImageName:String? {
+    @IBInspectable open var highlightedImageName:String? {
         didSet {
-            self.processImageName(self.highlightedImageName, forState: .Highlighted)
+            self.processImageName(self.highlightedImageName, forState: .highlighted)
         }
     }
     
-    @IBInspectable public var selectedImageName:String? {
+    @IBInspectable open var selectedImageName:String? {
         didSet {
-            self.processImageName(self.selectedImageName, forState: .Selected)
+            self.processImageName(self.selectedImageName, forState: .selected)
         }
     }
     
-    @IBInspectable public var disabledImageName:String? {
+    @IBInspectable open var disabledImageName:String? {
         didSet {
-            self.processImageName(self.disabledImageName, forState: .Disabled)
+            self.processImageName(self.disabledImageName, forState: .disabled)
         }
     }
     
@@ -80,21 +80,21 @@ import Foundation
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func applyStyle(style:Style) {
-        self.setBackgroundColor(style.backgroundColor, forState: .Normal)
-        self.setBackgroundColor(style.highlightedBackgroundColor, forState: .Highlighted)
-        self.setBackgroundColor(style.selectedBackgroundColor, forState: .Selected)
-        self.setBackgroundColor(style.disabledBackgroundColor, forState: .Disabled)
+    open func applyStyle(_ style:Style) {
+        self.setBackgroundColor(style.backgroundColor, forState: UIControlState())
+        self.setBackgroundColor(style.highlightedBackgroundColor, forState: .highlighted)
+        self.setBackgroundColor(style.selectedBackgroundColor, forState: .selected)
+        self.setBackgroundColor(style.disabledBackgroundColor, forState: .disabled)
         
-        self.setBorderColor(style.borderColor, forState: .Normal)
-        self.setBorderColor(style.highlightedBorderColor, forState: .Highlighted)
-        self.setBorderColor(style.selectedBorderColor, forState: .Selected)
-        self.setBorderColor(style.disabledBorderColor, forState: .Disabled)
+        self.setBorderColor(style.borderColor, forState: UIControlState())
+        self.setBorderColor(style.highlightedBorderColor, forState: .highlighted)
+        self.setBorderColor(style.selectedBorderColor, forState: .selected)
+        self.setBorderColor(style.disabledBorderColor, forState: .disabled)
         
-        self.setTitleColor(style.foregroundColor, forState: .Normal)
-        self.setTitleColor(style.highlightedForegroundColor, forState: .Highlighted)
-        self.setTitleColor(style.selectedForegroundColor, forState: .Selected)
-        self.setTitleColor(style.disabledForegroundColor, forState: .Disabled)
+        self.setTitleColor(style.foregroundColor, for: UIControlState())
+        self.setTitleColor(style.highlightedForegroundColor, for: .highlighted)
+        self.setTitleColor(style.selectedForegroundColor, for: .selected)
+        self.setTitleColor(style.disabledForegroundColor, for: .disabled)
 		
 		self.tintImageWithTitleColor = style.tintImageWithForegroundColor
         
@@ -110,8 +110,8 @@ import Foundation
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    func stylesDidUpdate(notification:NSNotification) {
-		if let styleName = self.styleName, style = Styles.sharedStyles.styleNamed(styleName) {
+    func stylesDidUpdate(_ notification:Notification) {
+		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
     }
@@ -123,11 +123,11 @@ import Foundation
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func processImageName(imageName:String?, forState state: UIControlState) {
-        if let name = imageName, helper = STHelper.sharedHelper as? SwiftStylableHelper, image = helper.imageNamed(name) {
-            self.setImage(image, forState: state)
+    fileprivate func processImageName(_ imageName:String?, forState state: UIControlState) {
+        if let name = imageName, let helper = STHelper.sharedHelper as? SwiftStylableHelper, let image = helper.imageNamed(name) {
+            self.setImage(image, for: state)
         } else {
-            self.setImage(nil, forState: state)
+            self.setImage(nil, for: state)
         }
     }
 }

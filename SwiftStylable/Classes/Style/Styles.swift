@@ -13,9 +13,9 @@ import UIKit
 internal let STYLES_DID_UPDATE = "stylesDidUpdate"
 
 
-public class Styles {
+open class Styles {
 	
-	public static let sharedStyles = Styles()
+	open static let sharedStyles = Styles()
 	
 	private var _styles = [String:Style]()
     private var _colors = [String:UIColor]()
@@ -30,8 +30,8 @@ public class Styles {
 	private init() {
         if let helper = STHelper.sharedHelper as? SwiftStylableHelper
         {
-            let bundle = NSBundle(forClass: helper.anyProjectClass())
-            if let filePath = bundle.pathForResource("styles", ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
+            let bundle = Bundle(for: helper.anyProjectClass())
+            if let filePath = bundle.path(forResource: "styles", ofType: "plist"), let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
                 self.processStyleData(data, publishUpdate: false)
             }
         }
@@ -44,7 +44,7 @@ public class Styles {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	public func addStyle(style:Style) {
+	open func addStyle(_ style:Style) {
 		if self._styles[style.name] == nil {
 			self._styles[style.name] = style
 		} else {
@@ -52,19 +52,19 @@ public class Styles {
 		}
 	}
 	
-	public func styleNamed(name:String)->Style? {
+	open func styleNamed(_ name:String)->Style? {
 		return self._styles[name]
 	}
     
-    public func colorNamed(name:String)->UIColor? {
+    open func colorNamed(_ name:String)->UIColor? {
         return self._colors[name]
     }
     
-    public func processStyleDataWithFileNamed(fileName:String) {
+    open func processStyleDataWithFileNamed(_ fileName:String) {
         if let helper = STHelper.sharedHelper as? SwiftStylableHelper
         {
-            let bundle = NSBundle(forClass: helper.anyProjectClass())
-            if let filePath = bundle.pathForResource(fileName, ofType: "plist"), data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
+            let bundle = Bundle(for: helper.anyProjectClass())
+            if let filePath = bundle.path(forResource: fileName, ofType: "plist"), let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
                 self.processStyleData(data, publishUpdate: true)
             }
         }
@@ -77,7 +77,7 @@ public class Styles {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func processStyleData(styleData:[String:AnyObject], publishUpdate:Bool) {
+    private func processStyleData(_ styleData:[String:AnyObject], publishUpdate:Bool) {
         
         // Parse color strings
         if let colorEntries = styleData["colors"] as? [String:String] {
@@ -103,7 +103,7 @@ public class Styles {
                             }
                             let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData, colors: self._colors)
                             self._styles[name] = style
-                            styleDatas!.removeValueForKey(name)
+                            styleDatas!.removeValue(forKey: name)
                             numParsedStyles += 1
                         }
                     } else {
@@ -114,7 +114,7 @@ public class Styles {
                             style!.parseData(styleData, colors: self._colors)
                         }
                         self._styles[name] = style!
-                        styleDatas!.removeValueForKey(name)
+                        styleDatas!.removeValue(forKey: name)
                         numParsedStyles += 1
                     }
                 }
@@ -126,7 +126,7 @@ public class Styles {
         }
 		
 		if publishUpdate {
-			NSNotificationCenter.defaultCenter().postNotificationName(STYLES_DID_UPDATE, object: self)
+			NotificationCenter.default.post(name: Notification.Name(rawValue: STYLES_DID_UPDATE), object: self)
 		}
     }
 }
