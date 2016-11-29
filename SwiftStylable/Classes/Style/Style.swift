@@ -125,19 +125,19 @@ open class Style {
 	
 	// Foreground colors
 	open var foregroundColor:UIColor {
-		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.darkGray)
+		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.black)
 	}
 	
 	open var highlightedForegroundColor:UIColor {
-		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: UIColor.black)
+		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	open var selectedForegroundColor:UIColor {
-		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: UIColor.blue)
+		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	open var disabledForegroundColor:UIColor {
-		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	// Background colors
@@ -146,15 +146,15 @@ open class Style {
 	}
 	
 	open var highlightedBackgroundColor:UIColor {
-		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	open var selectedBackgroundColor:UIColor {
-		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	open var disabledBackgroundColor:UIColor {
-		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: UIColor.white)
+		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	// Border style
@@ -163,15 +163,15 @@ open class Style {
 	}
 	
 	open var highlightedBorderColor:UIColor {
-		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	open var selectedBorderColor:UIColor {
-		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	open var disabledBorderColor:UIColor {
-		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	// Cell separator style
