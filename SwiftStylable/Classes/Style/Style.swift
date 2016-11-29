@@ -323,6 +323,27 @@ open class Style {
 			case "italicSystemFont":
 				return UIFont.italicSystemFont(ofSize: size)
 				
+			case "thinSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+				
+			case "blackSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightBlack)
+				
+			case "heavySystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightHeavy)
+				
+			case "lightSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightLight)
+				
+			case "mediumSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightMedium)
+				
+			case "semiboldSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightSemibold)
+				
+			case "ultraLightSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightUltraLight)
+				
 			default:
 				return UIFont(name: name, size: size)
 			}
