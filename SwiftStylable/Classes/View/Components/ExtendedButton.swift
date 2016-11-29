@@ -11,14 +11,14 @@ import UIKit
 
 open class ExtendedButton: UIButton {
     private var _normalBackgroundColor:UIColor = UIColor.black
-    private var _highlightedBackgroundColor:UIColor = UIColor.white
-    private var _selectedBackgroundColor:UIColor = UIColor.white
-    private var _disabledBackgroundColor:UIColor = UIColor.white
+    private var _highlightedBackgroundColor:UIColor?
+    private var _selectedBackgroundColor:UIColor?
+    private var _disabledBackgroundColor:UIColor?
     
-    private var _normalBorderColor:UIColor = UIColor.white
-    private var _highlightedBorderColor:UIColor = UIColor.white
-    private var _selectedBorderColor:UIColor = UIColor.white
-    private var _disabledBorderColor:UIColor = UIColor.white
+    private var _normalBorderColor:UIColor = UIColor.clear
+    private var _highlightedBorderColor:UIColor?
+    private var _selectedBorderColor:UIColor?
+    private var _disabledBorderColor:UIColor?
     
     
     
@@ -90,7 +90,11 @@ open class ExtendedButton: UIButton {
     // MARK: Methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
+	
+	open override func awakeFromNib() {
+		super.awakeFromNib()
+	}
+	
     // -----------------------------------------------------------
     //  UIButton overrides
     // -----------------------------------------------------------
@@ -170,27 +174,27 @@ open class ExtendedButton: UIButton {
         {
             if (self.isHighlighted)
             {
-                self.backgroundColor = _highlightedBackgroundColor
-                self.layer.borderColor = _highlightedBorderColor.cgColor
+                self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
+                self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
                 self.imageView?.tintColor = self.titleColor(for: .highlighted)
             }
             else if (self.isSelected)
             {
-                self.backgroundColor = _selectedBackgroundColor
-                self.layer.borderColor = _selectedBorderColor.cgColor
+                self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
+                self.layer.borderColor = self._selectedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
                 self.imageView?.tintColor = self.titleColor(for: .selected)
             }
             else
             {
-                self.backgroundColor = _normalBackgroundColor
-                self.layer.borderColor = _normalBorderColor.cgColor
+                self.backgroundColor = self._normalBackgroundColor
+                self.layer.borderColor = self._normalBorderColor.cgColor
                 self.imageView?.tintColor = self.titleColor(for: UIControlState())
             }
         }
         else
         {
-            self.backgroundColor = self._disabledBackgroundColor
-            self.layer.borderColor = self._disabledBorderColor.cgColor
+            self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
+            self.layer.borderColor = self._disabledBorderColor?.cgColor ?? self._normalBorderColor.cgColor
             self.imageView?.tintColor = self.titleColor(for: .disabled)
         }
     }
