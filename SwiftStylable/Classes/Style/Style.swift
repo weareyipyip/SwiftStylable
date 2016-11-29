@@ -313,7 +313,19 @@ open class Style {
 		if let fontData = data[key] as? [String:AnyObject] {
 			let name = fontData["name"] as? String ?? self.font.fontName
 			let size = fontData["size"] as? CGFloat ?? self.font.pointSize
-            return UIFont(name: name, size: size)
+			switch name {
+			case "systemFont":
+				return UIFont.systemFont(ofSize: size)
+				
+			case "boldSystemFont":
+				return UIFont.boldSystemFont(ofSize: size)
+				
+			case "italicSystemFont":
+				return UIFont.italicSystemFont(ofSize: size)
+				
+			default:
+				return UIFont(name: name, size: size)
+			}
         } else {
             return nil
         }
