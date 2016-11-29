@@ -25,7 +25,9 @@ open class Style {
 	
 	// Text
 	open var font:UIFont = UIFont.systemFont(ofSize: 16.0)
+	open var fullUppercaseText = false
 	
+
 	// Corners
 	open var cornerRadius:CGFloat = 0.0
 	
@@ -102,6 +104,9 @@ open class Style {
         
         // - font
         self.font = parentStyle.font
+		
+		// - text
+		self.fullUppercaseText = parentStyle.fullUppercaseText
         
         // - other
         self.cornerRadius = parentStyle.cornerRadius
@@ -276,6 +281,11 @@ open class Style {
         if let font = self.parseFont(data: data, key: "font") {
             self.font = font
         }
+		
+		// Text
+		if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
+			self.fullUppercaseText = fullUppercaseText
+		}
         
         // CornerRadius
         if let cornerRadius = data["cornerRadius"] as? CGFloat {

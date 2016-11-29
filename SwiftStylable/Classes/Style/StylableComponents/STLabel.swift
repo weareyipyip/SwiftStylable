@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable open class STLabel : UILabel, Stylable {
+	private var _text:String?
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -20,13 +21,15 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+		
+		self._text = super.text
         NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
+		self._text = super.text
         NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: NSNotification.Name(rawValue: STYLES_DID_UPDATE), object: nil)
     }
     
@@ -48,6 +51,16 @@ import UIKit
             }
         }
     }
+	
+	open override var text: String? {
+		set {
+			self._text = newValue
+			super.text = newValue?.uppercased()
+		}
+		get {
+			return self._text
+		}
+	}
 
     
     // -----------------------------------------------------------------------------------------------------------------------
