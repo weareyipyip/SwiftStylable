@@ -11,8 +11,6 @@ import UIKit
 
 @IBDesignable open class STLabel : UILabel, Stylable {
 	
-	var fullUppercaseText = false
-	
 	private var _text:String?
 
     
@@ -64,6 +62,14 @@ import UIKit
 			return self._text
 		}
 	}
+	
+	open var fullUppercaseText = false {
+		didSet {
+			self.text = self._text
+		}
+	}
+	
+
 
     
     // -----------------------------------------------------------------------------------------------------------------------
