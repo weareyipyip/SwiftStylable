@@ -75,6 +75,7 @@ import UIKit
     open func applyStyle(_ style:Style) {
         self.font = style.font
         self.textColor = style.foregroundColor
+		self.fullUppercaseText = style.fullUppercaseText
     }
     
     
