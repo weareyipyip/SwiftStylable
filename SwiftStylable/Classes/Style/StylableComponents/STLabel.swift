@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 @IBDesignable open class STLabel : UILabel, Stylable {
+	
+	var fullUppercaseText = false
+	
 	private var _text:String?
 
     
@@ -55,7 +58,7 @@ import UIKit
 	open override var text: String? {
 		set {
 			self._text = newValue
-			super.text = newValue?.uppercased()
+			super.text = self.fullUppercaseText ? newValue?.uppercased() : newValue
 		}
 		get {
 			return self._text
