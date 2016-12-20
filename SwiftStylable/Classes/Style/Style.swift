@@ -25,7 +25,9 @@ open class Style {
 	
 	// Text
 	open var font:UIFont = UIFont.systemFont(ofSize: 16.0)
+	open var fullUppercaseText = false
 	
+
 	// Corners
 	open var cornerRadius:CGFloat = 0.0
 	
@@ -102,6 +104,9 @@ open class Style {
         
         // - font
         self.font = parentStyle.font
+		
+		// - text
+		self.fullUppercaseText = parentStyle.fullUppercaseText
         
         // - other
         self.cornerRadius = parentStyle.cornerRadius
@@ -120,19 +125,19 @@ open class Style {
 	
 	// Foreground colors
 	open var foregroundColor:UIColor {
-		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.darkGray)
+		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.black)
 	}
 	
 	open var highlightedForegroundColor:UIColor {
-		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: UIColor.black)
+		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	open var selectedForegroundColor:UIColor {
-		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: UIColor.blue)
+		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	open var disabledForegroundColor:UIColor {
-		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: self.foregroundColor)
 	}
 	
 	// Background colors
@@ -141,15 +146,15 @@ open class Style {
 	}
 	
 	open var highlightedBackgroundColor:UIColor {
-		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	open var selectedBackgroundColor:UIColor {
-		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: UIColor.lightGray)
+		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	open var disabledBackgroundColor:UIColor {
-		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: UIColor.white)
+		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: self.backgroundColor)
 	}
 	
 	// Border style
@@ -158,15 +163,15 @@ open class Style {
 	}
 	
 	open var highlightedBorderColor:UIColor {
-		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	open var selectedBorderColor:UIColor {
-		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	open var disabledBorderColor:UIColor {
-		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: UIColor.clear)
+		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: self.borderColor)
 	}
 	
 	// Cell separator style
@@ -276,6 +281,11 @@ open class Style {
         if let font = self.parseFont(data: data, key: "font") {
             self.font = font
         }
+		
+		// Text
+		if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
+			self.fullUppercaseText = fullUppercaseText
+		}
         
         // CornerRadius
         if let cornerRadius = data["cornerRadius"] as? CGFloat {
@@ -303,7 +313,40 @@ open class Style {
 		if let fontData = data[key] as? [String:AnyObject] {
 			let name = fontData["name"] as? String ?? self.font.fontName
 			let size = fontData["size"] as? CGFloat ?? self.font.pointSize
-            return UIFont(name: name, size: size)
+			switch name {
+			case "systemFont":
+				return UIFont.systemFont(ofSize: size)
+				
+			case "boldSystemFont":
+				return UIFont.boldSystemFont(ofSize: size)
+				
+			case "italicSystemFont":
+				return UIFont.italicSystemFont(ofSize: size)
+				
+			case "thinSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+				
+			case "blackSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightBlack)
+				
+			case "heavySystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightHeavy)
+				
+			case "lightSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightLight)
+				
+			case "mediumSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightMedium)
+				
+			case "semiboldSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightSemibold)
+				
+			case "ultraLightSystemFont":
+				return UIFont.systemFont(ofSize: size, weight: UIFontWeightUltraLight)
+				
+			default:
+				return UIFont(name: name, size: size)
+			}
         } else {
             return nil
         }

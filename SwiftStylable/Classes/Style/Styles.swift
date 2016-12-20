@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-internal let STYLES_DID_UPDATE = "stylesDidUpdate"
+internal let STYLES_DID_UPDATE = Notification.Name(rawValue: "stylesDidUpdate")
 
 
 open class Styles {
@@ -126,7 +126,7 @@ open class Styles {
         }
 		
 		if publishUpdate {
-			NotificationCenter.default.post(name: Notification.Name(rawValue: STYLES_DID_UPDATE), object: self)
+			NotificationCenter.default.post(name: STYLES_DID_UPDATE, object: self)
 		}
     }
 }
