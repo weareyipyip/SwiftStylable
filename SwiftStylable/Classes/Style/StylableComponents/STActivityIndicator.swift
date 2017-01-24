@@ -57,7 +57,7 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.tintColor = style.foregroundColor
+        self.color = style.foregroundColor
     }
     
     
