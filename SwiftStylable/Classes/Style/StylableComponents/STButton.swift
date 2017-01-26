@@ -24,7 +24,7 @@ import Foundation
         NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
-    override public init(frame: CGRect) {
+    required public init(frame: CGRect) {
         super.init(frame: frame)
         
         NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
@@ -95,12 +95,13 @@ import Foundation
         self.setTitleColor(style.highlightedForegroundColor, for: .highlighted)
         self.setTitleColor(style.selectedForegroundColor, for: .selected)
         self.setTitleColor(style.disabledForegroundColor, for: .disabled)
-		
-		self.tintImageWithTitleColor = style.tintImageWithForegroundColor
+        
+        self.tintImageWithTitleColor = style.tintImageWithForegroundColor
         
         self.titleLabel?.font = style.font
-
-		self.layer.borderWidth = style.borderWidth
+        self.fullUppercaseText = style.fullUppercaseText
+        
+        self.layer.borderWidth = style.borderWidth
         self.layer.cornerRadius = style.cornerRadius
     }
     
@@ -111,9 +112,9 @@ import Foundation
     // -----------------------------------------------------------------------------------------------------------------------
     
     func stylesDidUpdate(_ notification:Notification) {
-		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
-			self.applyStyle(style)
-		}
+        if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
+            self.applyStyle(style)
+        }
     }
     
     
