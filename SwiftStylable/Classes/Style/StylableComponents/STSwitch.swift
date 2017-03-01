@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class STHorizontalHairline : UIView, Stylable {
+@IBDesignable class STHorizontalHairline : UISwitch, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ import UIKit
     // MARK: - Computed properties
     //
     // -----------------------------------------------------------------------------------------------------------------------
-
+    
     override var intrinsicContentSize:CGSize {
         get {
             return CGSize(width: 1.0, height: CGFloat(1.0 / UIScreen.main.nativeScale))
@@ -77,6 +77,8 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.backgroundColor = style.backgroundColor
+        self.tintColor = style.backgroundColor
+        self.onTintColor = style.selectedBackgroundColor
+        self.thumbTintColor = style.foregroundColor
     }
 }
