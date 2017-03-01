@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class STHorizontalHairline : UISwitch, Stylable {
+@IBDesignable class STSwitch : UISwitch, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
