@@ -42,12 +42,6 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    override var intrinsicContentSize:CGSize {
-        get {
-            return CGSize(width: 1.0, height: CGFloat(1.0 / UIScreen.main.nativeScale))
-        }
-    }
-    
     @IBInspectable open var styleName:String? {
         didSet {
             if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
