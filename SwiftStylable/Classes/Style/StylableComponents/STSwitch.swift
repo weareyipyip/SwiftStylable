@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class STSwitch : UISwitch, Stylable {
+@IBDesignable open class STSwitch : UISwitch, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
