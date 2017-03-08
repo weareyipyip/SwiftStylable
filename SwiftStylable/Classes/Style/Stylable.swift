@@ -17,7 +17,7 @@ public protocol Stylable {
 }
 
 extension Stylable {
-	func updateStyles() {
+	public func updateStyles() {
 		if let styleName = self.styleName, let style = Styles.shared.styleNamed(styleName) {
 			self.applyStyle(style)
 		}
