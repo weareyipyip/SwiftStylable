@@ -88,15 +88,30 @@ import UIKit
     // -----------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		self.layer.borderWidth = style.borderWidth
-		self.layer.cornerRadius = style.cornerRadius
-		
-		self._backgroundColor = style.backgroundColor
-		self._borderColor = style.borderColor
-		self._highlightedBackgroundColor = style.highlightedBackgroundColor
-		self._highlightedBorderColor = style.highlightedBorderColor
-		self._selectedBackgroundColor = style.selectedBackgroundColor
-		self._selectedBorderColor = style.selectedBorderColor
+		if let borderWidth = style.borderWidth {
+			self.layer.borderWidth = borderWidth
+		}
+		if let cornerRadius = style.cornerRadius {
+			self.layer.cornerRadius = cornerRadius
+		}
+		if let backgroundColor = style.backgroundColor {
+			self._backgroundColor = backgroundColor
+		}
+		if let borderColor = style.borderColor {
+			self._borderColor = borderColor
+		}
+		if let highlightedBackgroundColor = style.highlightedBackgroundColor {
+			self._highlightedBackgroundColor = highlightedBackgroundColor
+		}
+		if let highlightedBorderColor = style.highlightedBorderColor {
+			self._highlightedBorderColor = highlightedBorderColor
+		}
+		if let selectedBackgroundColor = style.selectedBackgroundColor {
+			self._selectedBackgroundColor = selectedBackgroundColor
+		}
+		if let selectedBorderColor = style.selectedBorderColor {
+			self._selectedBorderColor = selectedBorderColor
+		}
 		
 		self.updateColors()
     }

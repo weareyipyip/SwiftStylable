@@ -86,8 +86,12 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	open func applyStyle(_ style:Style) {
-		self.tintImageWithForegroundColor = style.tintImageWithForegroundColor
-		self.tintColor = style.foregroundColor
+		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
+			self.tintImageWithForegroundColor = tintImageWithForegroundColor
+		}
+		if let foregroundColor = style.foregroundColor {
+			self.tintColor = foregroundColor
+		}
 	}
 	
 	

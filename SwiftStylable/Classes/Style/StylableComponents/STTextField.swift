@@ -57,13 +57,25 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.backgroundColor = style.backgroundColor
-        self.font = style.font
-        self.textColor = style.foregroundColor
-        self.layer.borderColor = style.borderColor.cgColor
-		self.layer.borderWidth = style.borderWidth
-		self.layer.masksToBounds = true
-        self.borderStyle = style.borderStyle
+		if let backgroundColor = style.backgroundColor {
+			self.backgroundColor = backgroundColor
+		}
+		if let font = style.font {
+			self.font = font
+		}
+		if let foregroundColor = style.foregroundColor {
+			self.textColor = foregroundColor
+		}
+		if let borderColor = style.borderColor {
+			self.layer.borderColor = borderColor.cgColor
+		}
+		if let borderWidth = style.borderWidth {
+			self.layer.borderWidth = borderWidth
+		}
+		if let borderStyle = style.borderStyle {
+			self.layer.masksToBounds = true
+			self.borderStyle = borderStyle
+		}
     }
     
     

@@ -79,9 +79,15 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.font = style.font
-        self.textColor = style.foregroundColor
-		self.fullUppercaseText = style.fullUppercaseText
+		if let font = style.font {
+			self.font = font
+		}
+		if let foregroundColor = style.foregroundColor {
+			self.textColor = foregroundColor
+		}
+		if let fullUppercaseText = style.fullUppercaseText {
+			self.fullUppercaseText = fullUppercaseText
+		}
     }
     
     

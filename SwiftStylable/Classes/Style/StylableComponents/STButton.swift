@@ -81,28 +81,67 @@ import Foundation
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.setBackgroundColor(style.backgroundColor, forState: UIControlState())
-        self.setBackgroundColor(style.highlightedBackgroundColor, forState: .highlighted)
-        self.setBackgroundColor(style.selectedBackgroundColor, forState: .selected)
-        self.setBackgroundColor(style.disabledBackgroundColor, forState: .disabled)
-        
-        self.setBorderColor(style.borderColor, forState: UIControlState())
-        self.setBorderColor(style.highlightedBorderColor, forState: .highlighted)
-        self.setBorderColor(style.selectedBorderColor, forState: .selected)
-        self.setBorderColor(style.disabledBorderColor, forState: .disabled)
-        
-        self.setTitleColor(style.foregroundColor, for: UIControlState())
-        self.setTitleColor(style.highlightedForegroundColor, for: .highlighted)
-        self.setTitleColor(style.selectedForegroundColor, for: .selected)
-        self.setTitleColor(style.disabledForegroundColor, for: .disabled)
-        
-        self.tintImageWithTitleColor = style.tintImageWithForegroundColor
-        
-        self.titleLabel?.font = style.font
-        self.fullUppercaseText = style.fullUppercaseText
-        
-        self.layer.borderWidth = style.borderWidth
-        self.layer.cornerRadius = style.cornerRadius
+		
+		// Background colors
+		if let backgroundColor = style.backgroundColor {
+			self.setBackgroundColor(backgroundColor, forState: UIControlState())
+		}
+		if let highlightedBackgroundColor = style.highlightedBackgroundColor {
+			self.setBackgroundColor(highlightedBackgroundColor, forState: .highlighted)
+		}
+		if let selectedBackgroundColor = style.selectedBackgroundColor {
+			self.setBackgroundColor(selectedBackgroundColor, forState: .selected)
+		}
+		if let disabledBackgroundColor = style.disabledBackgroundColor {
+			self.setBackgroundColor(disabledBackgroundColor, forState: .disabled)
+		}
+		
+		// Border style
+		if let borderColor = style.borderColor {
+			self.setBorderColor(borderColor, forState: UIControlState())
+		}
+		if let highlightedBorderColor = style.highlightedBorderColor {
+			self.setBorderColor(highlightedBorderColor, forState: .highlighted)
+		}
+		if let selectedBorderColor = style.selectedBorderColor {
+			self.setBorderColor(selectedBorderColor, forState: .selected)
+		}
+		if let disabledBorderColor = style.disabledBorderColor {
+			self.setBorderColor(disabledBorderColor, forState: .disabled)
+		}
+		if let borderWidth = style.borderWidth {
+			self.layer.borderWidth = borderWidth
+		}
+		
+		// Foreground colors
+		if let foregroundColor = style.foregroundColor {
+			self.setTitleColor(foregroundColor, for: UIControlState())
+		}
+		if let highlightedForegroundColor = style.highlightedForegroundColor {
+			self.setTitleColor(highlightedForegroundColor, for: .highlighted)
+		}
+		if let selectedForegroundColor = style.selectedForegroundColor {
+			self.setTitleColor(selectedForegroundColor, for: .selected)
+		}
+		if let disabledForegroundColor = style.disabledForegroundColor {
+			self.setTitleColor(disabledForegroundColor, for: .disabled)
+		}
+		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
+			self.tintImageWithTitleColor = tintImageWithForegroundColor
+		}
+
+		// Text
+		if let font = style.font {
+			self.titleLabel?.font = font
+		}
+		if let fullUppercaseText = style.fullUppercaseText {
+			self.fullUppercaseText = fullUppercaseText
+		}
+		
+		// Corner radius
+		if let cornerRadius = style.cornerRadius {
+			self.layer.cornerRadius = cornerRadius
+		}
     }
     
     // -----------------------------------------------------------------------------------------------------------------------

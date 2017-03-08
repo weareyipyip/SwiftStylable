@@ -71,9 +71,17 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.backgroundColor = style.backgroundColor
-        self.layer.borderWidth = style.borderWidth
-        self.layer.borderColor = style.borderColor.cgColor
-        self.layer.cornerRadius = style.cornerRadius
+		if let backgroundColor = style.backgroundColor {
+			self.backgroundColor = backgroundColor
+		}
+		if let borderWidth = style.borderWidth {
+			self.layer.borderWidth = borderWidth
+		}
+		if let borderColor = style.borderColor {
+			self.layer.borderColor = borderColor.cgColor
+		}
+		if let cornerRadius = style.cornerRadius {
+			self.layer.cornerRadius = cornerRadius
+		}
     }
 }
