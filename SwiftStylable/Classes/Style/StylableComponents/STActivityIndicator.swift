@@ -41,14 +41,18 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable open var styleName:String? {
-        didSet {
-            if let styleName = self.styleName, let style = Styles.shared.styleNamed(styleName) {
-                self.applyStyle(style)
-            }
-        }
-    }
-    
+	@IBInspectable open var styleName:String? {
+		didSet {
+			self.updateStyles()
+		}
+	}
+	
+	@IBInspectable open var substyleName:String? {
+		didSet {
+			self.updateStyles()
+		}
+	}
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -68,8 +72,6 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
 	func stylesDidUpdate(_ notification:Notification) {
-		if let styleName = self.styleName, let style = Styles.shared.styleNamed(styleName) {
-			self.applyStyle(style)
-		}
+		self.updateStyles()
 	}
 }
