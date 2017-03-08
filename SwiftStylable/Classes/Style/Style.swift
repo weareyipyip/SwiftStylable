@@ -302,7 +302,7 @@ open class Style {
     // -----------------------------------------------------------------------------------------------------------------------
 
 	private func colorWithName(_ name:String?)->UIColor? {
-		return name == nil ? nil : Styles.sharedStyles.colorNamed(name!)
+		return name == nil ? nil : Styles.shared.colorNamed(name!)
 	}
 	
     private func parseFont(data:[String:AnyObject], key:String)->UIFont? {
