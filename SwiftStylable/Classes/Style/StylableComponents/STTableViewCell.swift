@@ -15,12 +15,12 @@ import UIKit
     private var _selected = false
     private var _highlighted = false
 	
-	private var _backgroundColor:UIColor!
-	private var _borderColor:UIColor!
-	private var _highlightedBackgroundColor:UIColor!
-	private var _highlightedBorderColor:UIColor!
-	private var _selectedBackgroundColor:UIColor!
-	private var _selectedBorderColor:UIColor!
+	private var _backgroundColor = UIColor.white
+	private var _borderColor:UIColor = UIColor.clear
+	private var _highlightedBackgroundColor:UIColor?
+	private var _highlightedBorderColor:UIColor?
+	private var _selectedBackgroundColor:UIColor?
+	private var _selectedBorderColor:UIColor?
 	
 	
     // -----------------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ import UIKit
     // -----------------------------------------------------------
     // -- TableViewCell overrides
     // -----------------------------------------------------------
-    
+	
     override open func setSelected(_ selected: Bool, animated: Bool) {
         self._selected = selected
 		if self.styleName != nil {
@@ -140,11 +140,11 @@ import UIKit
     
     fileprivate func updateColors() {
         if self._highlighted {
-            self.backgroundColor = self._highlightedBackgroundColor
-            self.layer.borderColor = self._highlightedBorderColor.cgColor
+            self.backgroundColor = self._highlightedBackgroundColor ?? self._backgroundColor
+            self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._borderColor.cgColor
         } else if self._selected {
-            self.backgroundColor = self._selectedBackgroundColor
-            self.layer.borderColor = self._selectedBorderColor.cgColor
+            self.backgroundColor = self._selectedBackgroundColor ?? self._backgroundColor
+            self.layer.borderColor = self._selectedBorderColor?.cgColor ?? self._borderColor.cgColor
         } else {
             self.backgroundColor = self._backgroundColor
             self.layer.borderColor = self._borderColor.cgColor
