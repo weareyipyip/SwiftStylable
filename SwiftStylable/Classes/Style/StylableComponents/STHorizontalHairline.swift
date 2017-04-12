@@ -48,6 +48,14 @@ import UIKit
         }
     }
     
+    override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
+        return CGSize(width: targetSize.width, height: CGFloat(1.0 / UIScreen.main.nativeScale))
+    }
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        return CGSize(width: targetSize.width, height: CGFloat(1.0 / UIScreen.main.nativeScale))
+    }
+    
 	@IBInspectable open var styleName:String? {
 		didSet {
 			self.updateStyles()
