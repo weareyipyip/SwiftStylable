@@ -39,8 +39,8 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    override public init(frame: CGRect, textContainer:NSTextContainer?) {
+        super.init(frame: frame, textContainer: nil)
         
         self._text = super.text
         NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
