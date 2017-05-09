@@ -187,6 +187,11 @@ open class ExtendedButton: UIButton {
         }
         self.updateColors()
     }
+	
+	open override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+		super.setTitleColor(color, for: state)
+		self.updateColors()
+	}
     
     open override func setImage(_ image: UIImage?, for state: UIControlState) {
         super.setImage(image, for: state)
