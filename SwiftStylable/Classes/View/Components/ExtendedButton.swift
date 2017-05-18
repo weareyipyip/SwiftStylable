@@ -70,7 +70,7 @@ open class ExtendedButton: UIButton {
         }
         set(value) {
             super.isHighlighted = value
-            self.updateColors()
+            self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
         }
     }
     
@@ -80,7 +80,7 @@ open class ExtendedButton: UIButton {
         }
         set(value) {
             super.isSelected = value
-            self.updateColors()
+            self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
         }
     }
     
@@ -90,7 +90,7 @@ open class ExtendedButton: UIButton {
         }
         set(value) {
             super.isEnabled = value
-            self.updateColors()
+            self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
         }
     }
     
@@ -102,7 +102,7 @@ open class ExtendedButton: UIButton {
                 self.updateImageRenderingModeForState(.selected)
                 self.updateImageRenderingModeForState(.disabled)
             }
-            self.updateColors()
+            self.updateColors(updateImageTintColor: true)
         }
     }
     
@@ -159,7 +159,7 @@ open class ExtendedButton: UIButton {
         default:
             break;
         }
-        self.updateColors()
+        self.updateColors(updateImageTintColor: false)
     }
     
     open func setBorderColor(_ color:UIColor, forState:UIControlState)
@@ -185,18 +185,18 @@ open class ExtendedButton: UIButton {
         default:
             break
         }
-        self.updateColors()
+        self.updateColors(updateImageTintColor: false)
     }
-	
-	open override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
-		super.setTitleColor(color, for: state)
-		self.updateColors()
-	}
+    
+    open override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+        super.setTitleColor(color, for: state)
+        self.updateColors(updateImageTintColor: self.tintImageWithTitleColor && self.state == state)
+    }
     
     open override func setImage(_ image: UIImage?, for state: UIControlState) {
         super.setImage(image, for: state)
         self.updateImageRenderingModeForState(state)
-        self.updateColors()
+        self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
     }
     
     open override func setTitle(_ title: String?, for state: UIControlState) {
@@ -248,7 +248,7 @@ open class ExtendedButton: UIButton {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    fileprivate func updateColors()
+    fileprivate func updateColors(updateImageTintColor:Bool)
     {
         if self.isEnabled
         {
@@ -256,32 +256,40 @@ open class ExtendedButton: UIButton {
             {
                 self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
                 self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
-                self.imageView?.tintColor = self.titleColor(for: .highlighted)
+                if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
+                    imageView.tintColor = self.titleColor(for: .highlighted)
+                }
             }
             else if (self.isSelected)
             {
                 self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
                 self.layer.borderColor = self._selectedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
-                self.imageView?.tintColor = self.titleColor(for: .selected)
+                if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
+                    imageView.tintColor = self.titleColor(for: .selected)
+                }
             }
             else
             {
                 self.backgroundColor = self._normalBackgroundColor
                 self.layer.borderColor = self._normalBorderColor.cgColor
-                self.imageView?.tintColor = self.titleColor(for: UIControlState())
+                if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
+                    imageView.tintColor = self.titleColor(for: UIControlState())
+                }
             }
         }
         else
         {
             self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
             self.layer.borderColor = self._disabledBorderColor?.cgColor ?? self._normalBorderColor.cgColor
-            self.imageView?.tintColor = self.titleColor(for: .disabled)
+            if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
+                imageView.tintColor = self.titleColor(for: .disabled)
+            }
         }
     }
     
     fileprivate func updateImageRenderingModeForState(_ state:UIControlState) {
-        if let image = self.image(for: state) {
-            let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+        let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+        if let image = self.image(for: state), image.renderingMode != renderingMode {
             super.setImage(image.withRenderingMode(renderingMode), for: state)
         }
     }
