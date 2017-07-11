@@ -60,7 +60,7 @@ open class Styles {
         return self._colors[name]
     }
 	
-	open func imageName(_ name:String)->UIImage? {
+	open func imageNamed(_ name:String)->UIImage? {
 		var image:UIImage?
 		
 		if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
