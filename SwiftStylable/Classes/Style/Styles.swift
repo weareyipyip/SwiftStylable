@@ -59,6 +59,15 @@ open class Styles {
     open func colorNamed(_ name:String)->UIColor? {
         return self._colors[name]
     }
+	
+	open func imageName(_ name:String)->UIImage? {
+		var image:UIImage?
+		
+		if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
+			image = helper.imageNamed(name)
+		}
+		return image
+	}
     
     open func processStyleDataWithFileNamed(_ fileName:String) {
         if let helper = STHelper.sharedHelper as? SwiftStylableHelper
