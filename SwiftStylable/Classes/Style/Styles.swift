@@ -28,12 +28,16 @@ open class Styles {
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	private init() {
-        if let helper = STHelper.sharedHelper as? SwiftStylableHelper
-        {
-            let bundle = Bundle(for: helper.anyProjectClass())
-            if let filePath = bundle.path(forResource: "styles", ofType: "plist"), let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
-                self.processStyleData(data, publishUpdate: false)
-            }
+        var data:[String:AnyObject]?
+        if let interfaceBuilderProjectResourcePath = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"] {
+            let filePath = interfaceBuilderProjectResourcePath + "/styles.plist"
+            data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject]
+        } else if let filePath = Bundle.main.path(forResource: "styles", ofType: "plist") {
+            data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject]
+        }
+        
+        if let data = data {
+            self.processStyleData(data, publishUpdate: false)
         }
 	}
 	
