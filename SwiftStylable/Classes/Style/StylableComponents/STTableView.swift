@@ -24,7 +24,11 @@ import UIKit
         
         NotificationCenter.default.addObserver(self, selector: #selector(STTableView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
-        
+    
+    public override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -36,18 +40,18 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
-	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
+    @IBInspectable open var styleName:String? {
+        didSet {
+            self.updateStyles()
+        }
+    }
+    
+    @IBInspectable open var substyleName:String? {
+        didSet {
+            self.updateStyles()
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -56,24 +60,24 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		if let backgroundColor = style.backgroundColor {
-			self.backgroundColor = backgroundColor
-		}
-		if let borderWidth = style.borderWidth {
-			self.layer.borderWidth = borderWidth
-		}
-		if let borderColor = style.borderColor {
-			self.layer.borderColor = borderColor.cgColor
-		}
-		if let cornerRadius = style.cornerRadius {
-			self.layer.cornerRadius = cornerRadius
-		}
-		if let tableViewSeparatorStyle = style.tableViewSeparatorStyle {
-			self.separatorStyle = tableViewSeparatorStyle
-		}
-		if let tableViewSeparatorColor = style.tableViewSeparatorColor {
-			self.separatorColor = tableViewSeparatorColor
-		}
+        if let backgroundColor = style.backgroundColor {
+            self.backgroundColor = backgroundColor
+        }
+        if let borderWidth = style.borderWidth {
+            self.layer.borderWidth = borderWidth
+        }
+        if let borderColor = style.borderColor {
+            self.layer.borderColor = borderColor.cgColor
+        }
+        if let cornerRadius = style.cornerRadius {
+            self.layer.cornerRadius = cornerRadius
+        }
+        if let tableViewSeparatorStyle = style.tableViewSeparatorStyle {
+            self.separatorStyle = tableViewSeparatorStyle
+        }
+        if let tableViewSeparatorColor = style.tableViewSeparatorColor {
+            self.separatorColor = tableViewSeparatorColor
+        }
     }
     
     
@@ -83,7 +87,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
+    func stylesDidUpdate(_ notification:Notification) {
+        self.updateStyles()
+    }
 }

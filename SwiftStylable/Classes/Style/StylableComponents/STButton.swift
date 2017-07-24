@@ -148,6 +148,11 @@ import Foundation
 		}
     }
     
+    open func paintCodeImageNamed(_ name:String)->UIImage? {
+        return nil
+    }
+    
+
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Internal methods
@@ -166,7 +171,7 @@ import Foundation
     // -----------------------------------------------------------------------------------------------------------------------
     
     fileprivate func processImageName(_ imageName:String?, forState state: UIControlState) {
-        if let name = imageName, let helper = STHelper.sharedHelper as? SwiftStylableHelper, let image = helper.imageNamed(name) {
+        if let name = imageName, let image = self.paintCodeImageNamed(name) {
             self.setImage(image, for: state)
         } else {
             self.setImage(nil, for: state)
