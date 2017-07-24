@@ -1,15 +1,16 @@
 //
-//  STActivityIndicator.swift
+//  STHorizontalHairline.swift
 //  Pods
 //
-//  Created by Marcel Bloemendaal on 31/08/16.
+//  Created by Marcel Bloemendaal on 27/02/2017.
 //
 //
 
 import Foundation
 import UIKit
 
-@IBDesignable open class STActivityIndicator : UIActivityIndicatorView, Stylable {
+
+@IBDesignable open class STSwitch : UISwitch, Stylable {
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,16 +19,16 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     deinit {
@@ -60,8 +61,8 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    open func applyStyle(_ style:Style) {
-        self.color = style.foregroundColor
+    func stylesDidUpdate(_ notification:Notification) {
+        self.updateStyles()
     }
     
     
@@ -71,7 +72,9 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
+    open func applyStyle(_ style:Style) {
+        self.tintColor = style.backgroundColor
+        self.onTintColor = style.selectedBackgroundColor
+        self.thumbTintColor = style.foregroundColor
+    }
 }

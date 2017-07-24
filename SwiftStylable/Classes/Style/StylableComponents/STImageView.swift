@@ -48,9 +48,13 @@ import UIKit
 	
 	@IBInspectable open var styleName:String? {
 		didSet {
-			if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
-				self.applyStyle(style)
-			}
+			self.updateStyles()
+		}
+	}
+	
+	@IBInspectable open var substyleName:String? {
+		didSet {
+			self.updateStyles()
 		}
 	}
 	
@@ -86,8 +90,12 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	open func applyStyle(_ style:Style) {
-		self.tintImageWithForegroundColor = style.tintImageWithForegroundColor
-		self.tintColor = style.foregroundColor
+		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
+			self.tintImageWithForegroundColor = tintImageWithForegroundColor
+		}
+		if let foregroundColor = style.foregroundColor {
+			self.tintColor = foregroundColor
+		}
 	}
 	
 	
@@ -98,9 +106,7 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	func stylesDidUpdate(_ notification:Notification) {
-		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
-			self.applyStyle(style)
-		}
+		self.updateStyles()
 	}
 
 	

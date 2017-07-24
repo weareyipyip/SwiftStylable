@@ -14,22 +14,22 @@ open class Style {
 	open let name:String
 	
     // Border style
-	open var borderWidth:CGFloat = 0.0
-    open var borderStyle = UITextBorderStyle.roundedRect
+	open var borderWidth:CGFloat?
+	open var borderStyle:UITextBorderStyle?
 	
 	// Image tinting
-	open var tintImageWithForegroundColor:Bool = false
+	open var tintImageWithForegroundColor:Bool?
 	
     // Cell separator style
-    open var tableViewSeparatorStyle = UITableViewCellSeparatorStyle.singleLine
+	open var tableViewSeparatorStyle:UITableViewCellSeparatorStyle?
 	
 	// Text
-	open var font:UIFont = UIFont.systemFont(ofSize: 16.0)
-	open var fullUppercaseText = false
+	open var font:UIFont?
+	open var fullUppercaseText:Bool?
 	
 
 	// Corners
-	open var cornerRadius:CGFloat = 0.0
+	open var cornerRadius:CGFloat?
 	
 	
 	// Foreground color names
@@ -124,59 +124,59 @@ open class Style {
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	// Foreground colors
-	open var foregroundColor:UIColor {
-		return self.colorWithName(self.foregroundColorName, orDefaultColor: UIColor.black)
+	open var foregroundColor:UIColor? {
+		return self.colorWithName(self.foregroundColorName)
 	}
 	
-	open var highlightedForegroundColor:UIColor {
-		return self.colorWithName(self.highlightedForegroundColorName, orDefaultColor: self.foregroundColor)
+	open var highlightedForegroundColor:UIColor? {
+		return self.colorWithName(self.highlightedForegroundColorName)
 	}
 	
-	open var selectedForegroundColor:UIColor {
-		return self.colorWithName(self.selectedForegroundColorName, orDefaultColor: self.foregroundColor)
+	open var selectedForegroundColor:UIColor? {
+		return self.colorWithName(self.selectedForegroundColorName)
 	}
 	
-	open var disabledForegroundColor:UIColor {
-		return self.colorWithName(self.disabledForegroundColorName, orDefaultColor: self.foregroundColor)
+	open var disabledForegroundColor:UIColor? {
+		return self.colorWithName(self.disabledForegroundColorName)
 	}
 	
 	// Background colors
-	open var backgroundColor:UIColor {
-		return self.colorWithName(self.backgroundColorName, orDefaultColor: UIColor.white)
+	open var backgroundColor:UIColor? {
+		return self.colorWithName(self.backgroundColorName)
 	}
 	
-	open var highlightedBackgroundColor:UIColor {
-		return self.colorWithName(self.highlightedBackgroundColorName, orDefaultColor: self.backgroundColor)
+	open var highlightedBackgroundColor:UIColor? {
+		return self.colorWithName(self.highlightedBackgroundColorName)
 	}
 	
-	open var selectedBackgroundColor:UIColor {
-		return self.colorWithName(self.selectedBackgroundColorName, orDefaultColor: self.backgroundColor)
+	open var selectedBackgroundColor:UIColor? {
+		return self.colorWithName(self.selectedBackgroundColorName)
 	}
 	
-	open var disabledBackgroundColor:UIColor {
-		return self.colorWithName(self.disabledBackgroundColorName, orDefaultColor: self.backgroundColor)
+	open var disabledBackgroundColor:UIColor? {
+		return self.colorWithName(self.disabledBackgroundColorName)
 	}
 	
 	// Border style
-	open var borderColor:UIColor {
-		return self.colorWithName(self.borderColorName, orDefaultColor: UIColor.clear)
+	open var borderColor:UIColor? {
+		return self.colorWithName(self.borderColorName)
 	}
 	
-	open var highlightedBorderColor:UIColor {
-		return self.colorWithName(self.highlightedBorderColorName, orDefaultColor: self.borderColor)
+	open var highlightedBorderColor:UIColor? {
+		return self.colorWithName(self.highlightedBorderColorName)
 	}
 	
-	open var selectedBorderColor:UIColor {
-		return self.colorWithName(self.selectedBorderColorName, orDefaultColor: self.borderColor)
+	open var selectedBorderColor:UIColor? {
+		return self.colorWithName(self.selectedBorderColorName)
 	}
 	
-	open var disabledBorderColor:UIColor {
-		return self.colorWithName(self.disabledBorderColorName, orDefaultColor: self.borderColor)
+	open var disabledBorderColor:UIColor? {
+		return self.colorWithName(self.disabledBorderColorName)
 	}
 	
 	// Cell separator style
-	open var tableViewSeparatorColor:UIColor {
-		return self.colorWithName(self.tableViewSeparatorColorName, orDefaultColor: UIColor.lightGray)
+	open var tableViewSeparatorColor:UIColor? {
+		return self.colorWithName(self.tableViewSeparatorColorName)
 	}
 	
 	
@@ -301,54 +301,50 @@ open class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
 
-	fileprivate func colorWithName(_ name:String?, orDefaultColor defaultColor:UIColor)->UIColor {
-		if let colorName = name, let color = Styles.sharedStyles.colorNamed(colorName) {
-			return color
-		} else {
-			return defaultColor
-		}
+	private func colorWithName(_ name:String?)->UIColor? {
+		return name == nil ? nil : Styles.shared.colorNamed(name!)
 	}
 	
-    fileprivate func parseFont(data:[String:AnyObject], key:String)->UIFont? {
+    private func parseFont(data:[String:AnyObject], key:String)->UIFont? {
 		if let fontData = data[key] as? [String:AnyObject] {
-			let name = fontData["name"] as? String ?? self.font.fontName
-			let size = fontData["size"] as? CGFloat ?? self.font.pointSize
-			switch name {
-			case "systemFont":
-				return UIFont.systemFont(ofSize: size)
-				
-			case "boldSystemFont":
-				return UIFont.boldSystemFont(ofSize: size)
-				
-			case "italicSystemFont":
-				return UIFont.italicSystemFont(ofSize: size)
-				
-			case "thinSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
-				
-			case "blackSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightBlack)
-				
-			case "heavySystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightHeavy)
-				
-			case "lightSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightLight)
-				
-			case "mediumSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightMedium)
-				
-			case "semiboldSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightSemibold)
-				
-			case "ultraLightSystemFont":
-				return UIFont.systemFont(ofSize: size, weight: UIFontWeightUltraLight)
-				
-			default:
-				return UIFont(name: name, size: size)
+			if let name = fontData["name"] as? String ?? self.font?.fontName,
+				let size = fontData["size"] as? CGFloat ?? self.font?.pointSize {
+				switch name {
+				case "systemFont":
+					return UIFont.systemFont(ofSize: size)
+					
+				case "boldSystemFont":
+					return UIFont.boldSystemFont(ofSize: size)
+					
+				case "italicSystemFont":
+					return UIFont.italicSystemFont(ofSize: size)
+					
+				case "thinSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+					
+				case "blackSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightBlack)
+					
+				case "heavySystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightHeavy)
+					
+				case "lightSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightLight)
+					
+				case "mediumSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightMedium)
+					
+				case "semiboldSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightSemibold)
+					
+				case "ultraLightSystemFont":
+					return UIFont.systemFont(ofSize: size, weight: UIFontWeightUltraLight)
+					
+				default:
+					return UIFont(name: name, size: size)
+				}
 			}
-        } else {
-            return nil
         }
+		return nil
     }
 }

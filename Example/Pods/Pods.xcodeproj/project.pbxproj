@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		375B3BEE5CA02D5CD5FB9D94BE079B30 /* SwiftStylable-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D733F23794B2B798AA881C03491CA6 /* SwiftStylable-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B6F8647AECD781921E5DA10D2C20126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		663989EA1E67311400915AD9 /* STSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663989E91E67311400915AD9 /* STSwitch.swift */; };
+		6658E1D71EC08C23008BCB92 /* STTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6658E1D61EC08C23008BCB92 /* STTextView.swift */; };
+		6660C9151E64567700FA0373 /* STHorizontalHairline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660C9141E64567700FA0373 /* STHorizontalHairline.swift */; };
 		670ACB8426DA009DCB203518CEFA526A /* Pods-SwiftStylable_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777D34DBFA9C32168038E2C9AB5B3B3 /* Pods-SwiftStylable_Tests-dummy.m */; };
 		83C6FA0D65D084994F0525CEA6435A80 /* Pods-SwiftStylable_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C49ED6F99621AE3A98F2C36AB4B18C5C /* Pods-SwiftStylable_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B190D5983B89057F049DBA75099D8356 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -50,6 +53,9 @@
 		479676804050F0BC774364B6FF78C5CD /* Pods-SwiftStylable_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftStylable_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A257C74EE2B99C7FDB57913FD443F8E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6236B38924797C702AB889F84A673E88 /* Pods-SwiftStylable_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftStylable_Tests-resources.sh"; sourceTree = "<group>"; };
+		663989E91E67311400915AD9 /* STSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STSwitch.swift; sourceTree = "<group>"; };
+		6658E1D61EC08C23008BCB92 /* STTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTextView.swift; sourceTree = "<group>"; };
+		6660C9141E64567700FA0373 /* STHorizontalHairline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STHorizontalHairline.swift; sourceTree = "<group>"; };
 		753366F027482AA39E9E032A28065808 /* Pods-SwiftStylable_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftStylable_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		8C22ACE88C3E9A33028170968D02AFA2 /* Pods-SwiftStylable_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftStylable_Tests.modulemap"; sourceTree = "<group>"; };
 		90EA72DB9C7E1739DB78BF224B8DA21C /* SwiftStylable-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftStylable-prefix.pch"; sourceTree = "<group>"; };
@@ -245,6 +251,9 @@
 				F7EA1E191D5CB24F00EC586F /* STImageView.swift */,
 				F75F24451D6DB97B00717EB4 /* STTextField.swift */,
 				F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */,
+				6660C9141E64567700FA0373 /* STHorizontalHairline.swift */,
+				663989E91E67311400915AD9 /* STSwitch.swift */,
+				6658E1D61EC08C23008BCB92 /* STTextView.swift */,
 			);
 			path = StylableComponents;
 			sourceTree = "<group>";
@@ -334,6 +343,9 @@
 					173B9AC8A3B6043AFBC83A322968EBF5 = {
 						LastSwiftMigration = 0800;
 					};
+					D4C33E38D32CAAA85AC5197682F5763C = {
+						LastSwiftMigration = 0820;
+					};
 				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -359,6 +371,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6660C9151E64567700FA0373 /* STHorizontalHairline.swift in Sources */,
+				663989EA1E67311400915AD9 /* STSwitch.swift in Sources */,
+				6658E1D71EC08C23008BCB92 /* STTextView.swift in Sources */,
 				670ACB8426DA009DCB203518CEFA526A /* Pods-SwiftStylable_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +443,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -500,6 +516,7 @@
 				PRODUCT_NAME = Pods_SwiftStylable_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

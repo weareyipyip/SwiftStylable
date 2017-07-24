@@ -15,12 +15,12 @@ import UIKit
     private var _selected = false
     private var _highlighted = false
 	
-	private var _backgroundColor:UIColor!
-	private var _borderColor:UIColor!
-	private var _highlightedBackgroundColor:UIColor!
-	private var _highlightedBorderColor:UIColor!
-	private var _selectedBackgroundColor:UIColor!
-	private var _selectedBorderColor:UIColor!
+	private var _backgroundColor = UIColor.white
+	private var _borderColor:UIColor = UIColor.clear
+	private var _highlightedBackgroundColor:UIColor?
+	private var _highlightedBorderColor:UIColor?
+	private var _selectedBackgroundColor:UIColor?
+	private var _selectedBorderColor:UIColor?
 	
 	
     // -----------------------------------------------------------------------------------------------------------------------
@@ -46,14 +46,18 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
 
-    @IBInspectable open var styleName:String? {
-        didSet {
-            if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
-                self.applyStyle(style)
-            }
-        }
-    }
-    
+	@IBInspectable open var styleName:String? {
+		didSet {
+			self.updateStyles()
+		}
+	}
+	
+	@IBInspectable open var substyleName:String? {
+		didSet {
+			self.updateStyles()
+		}
+	}
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -64,7 +68,7 @@ import UIKit
     // -----------------------------------------------------------
     // -- TableViewCell overrides
     // -----------------------------------------------------------
-    
+	
     override open func setSelected(_ selected: Bool, animated: Bool) {
         self._selected = selected
 		if self.styleName != nil {
@@ -88,15 +92,30 @@ import UIKit
     // -----------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		self.layer.borderWidth = style.borderWidth
-		self.layer.cornerRadius = style.cornerRadius
-		
-		self._backgroundColor = style.backgroundColor
-		self._borderColor = style.borderColor
-		self._highlightedBackgroundColor = style.highlightedBackgroundColor
-		self._highlightedBorderColor = style.highlightedBorderColor
-		self._selectedBackgroundColor = style.selectedBackgroundColor
-		self._selectedBorderColor = style.selectedBorderColor
+		if let borderWidth = style.borderWidth {
+			self.layer.borderWidth = borderWidth
+		}
+		if let cornerRadius = style.cornerRadius {
+			self.layer.cornerRadius = cornerRadius
+		}
+		if let backgroundColor = style.backgroundColor {
+			self._backgroundColor = backgroundColor
+		}
+		if let borderColor = style.borderColor {
+			self._borderColor = borderColor
+		}
+		if let highlightedBackgroundColor = style.highlightedBackgroundColor {
+			self._highlightedBackgroundColor = highlightedBackgroundColor
+		}
+		if let highlightedBorderColor = style.highlightedBorderColor {
+			self._highlightedBorderColor = highlightedBorderColor
+		}
+		if let selectedBackgroundColor = style.selectedBackgroundColor {
+			self._selectedBackgroundColor = selectedBackgroundColor
+		}
+		if let selectedBorderColor = style.selectedBorderColor {
+			self._selectedBorderColor = selectedBorderColor
+		}
 		
 		self.updateColors()
     }
@@ -109,9 +128,7 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
 	func stylesDidUpdate(_ notification:Notification) {
-		if let styleName = self.styleName, let style = Styles.sharedStyles.styleNamed(styleName) {
-			self.applyStyle(style)
-		}
+		self.updateStyles()
 	}
 	
 
@@ -123,11 +140,11 @@ import UIKit
     
     fileprivate func updateColors() {
         if self._highlighted {
-            self.backgroundColor = self._highlightedBackgroundColor
-            self.layer.borderColor = self._highlightedBorderColor.cgColor
+            self.backgroundColor = self._highlightedBackgroundColor ?? self._backgroundColor
+            self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._borderColor.cgColor
         } else if self._selected {
-            self.backgroundColor = self._selectedBackgroundColor
-            self.layer.borderColor = self._selectedBorderColor.cgColor
+            self.backgroundColor = self._selectedBackgroundColor ?? self._backgroundColor
+            self.layer.borderColor = self._selectedBorderColor?.cgColor ?? self._borderColor.cgColor
         } else {
             self.backgroundColor = self._backgroundColor
             self.layer.borderColor = self._borderColor.cgColor
