@@ -14,73 +14,66 @@ internal let STYLES_DID_UPDATE = Notification.Name(rawValue: "stylesDidUpdate")
 
 
 open class Styles {
-	
-	open static let shared = Styles()
-	
-	private var _styles = [String:Style]()
+    
+    open static let shared = Styles()
+    
+    private var _styles = [String:Style]()
     private var _colors = [String:UIColor]()
-	
-	
-	// -----------------------------------------------------------------------------------------------------------------------
-	//
-	// MARK: Initializers
-	//
-	// -----------------------------------------------------------------------------------------------------------------------
-	
-	private init() {
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: Initializers
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    private init() {
         var data:[String:AnyObject]?
-        if let interfaceBuilderProjectResourcePath = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"] {
-            let filePath = interfaceBuilderProjectResourcePath + "/styles.plist"
-            data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject]
-        } else if let filePath = Bundle.main.path(forResource: "styles", ofType: "plist") {
-            data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject]
-        }
         
-        if let data = data {
-            self.processStyleData(data, publishUpdate: false)
+        self.processStyleDataWithFileNamed("styles", publishUpdate: false)
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: Public methods
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    open func addStyle(_ style:Style) {
+        if self._styles[style.name] == nil {
+            self._styles[style.name] = style
+        } else {
+            print("A style named: '\(style.name)' already exists!")
         }
-	}
-	
-	
-	// -----------------------------------------------------------------------------------------------------------------------
-	//
-	// MARK: Public methods
-	//
-	// -----------------------------------------------------------------------------------------------------------------------
-	
-	open func addStyle(_ style:Style) {
-		if self._styles[style.name] == nil {
-			self._styles[style.name] = style
-		} else {
-			print("A style named: '\(style.name)' already exists!")
-		}
-	}
-	
-	open func styleNamed(_ name:String)->Style? {
-		return self._styles[name]
-	}
+    }
+    
+    open func styleNamed(_ name:String)->Style? {
+        return self._styles[name]
+    }
     
     open func colorNamed(_ name:String)->UIColor? {
         return self._colors[name]
     }
-	
-	open func imageNamed(_ name:String)->UIImage? {
-		var image:UIImage?
-		
-		if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
-			image = helper.imageNamed(name)
-		}
-		return image
-	}
+    
+    open func imageNamed(_ name:String)->UIImage? {
+        var image:UIImage?
+        
+        if let helper = STHelper.sharedHelper as? SwiftStylableHelper {
+            image = helper.imageNamed(name)
+        }
+        return image
+    }
     
     open func processStyleDataWithFileNamed(_ fileName:String) {
-        if let helper = STHelper.sharedHelper as? SwiftStylableHelper
-        {
-            let bundle = Bundle(for: helper.anyProjectClass())
-            if let filePath = bundle.path(forResource: fileName, ofType: "plist"), let data = NSDictionary(contentsOfFile: filePath) as? [String:AnyObject] {
-                self.processStyleData(data, publishUpdate: true)
-            }
-        }
+        self.processStyleDataWithFileNamed(fileName, publishUpdate: true)
     }
     
     
@@ -90,7 +83,23 @@ open class Styles {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    private func processStyleData(_ styleData:[String:AnyObject], publishUpdate:Bool) {
+    private func pathForStylesDescriptorNamed(_ name:String)->String? {
+        var filePath:String?
+        if let interfaceBuilderProjectResourcePaths = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"] {
+            let url = URL(fileURLWithPath: interfaceBuilderProjectResourcePaths)
+            filePath = url.deletingLastPathComponent().appendingPathComponent(name + ".plist").path
+        } else {
+            filePath = Bundle.main.path(forResource: name, ofType: "plist")
+        }
+        return filePath
+    }
+    
+    private func processStyleDataWithFileNamed(_ name:String, publishUpdate:Bool) {
+        
+        guard let stylesFilePath = self.pathForStylesDescriptorNamed("styles"),
+            let styleData = NSDictionary(contentsOfFile: stylesFilePath) as? [String:AnyObject] else {
+                return
+        }
         
         // Parse color strings
         if let colorEntries = styleData["colors"] as? [String:String] {
@@ -137,9 +146,9 @@ open class Styles {
                 print("WARNING: not all styles could be parsed, this probably means a parent style does not exist, or there are 2 or more styles referring to eachother as a parentStyle.")
             }
         }
-		
-		if publishUpdate {
-			NotificationCenter.default.post(name: STYLES_DID_UPDATE, object: self)
-		}
+        
+        if publishUpdate {
+            NotificationCenter.default.post(name: STYLES_DID_UPDATE, object: self)
+        }
     }
 }
