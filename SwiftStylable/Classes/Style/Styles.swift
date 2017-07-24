@@ -76,9 +76,13 @@ open class Styles {
     
     private func pathForStylesDescriptorNamed(_ name:String)->String? {
         var filePath:String?
-        if let interfaceBuilderProjectResourcePaths = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"] {
-            let url = URL(fileURLWithPath: interfaceBuilderProjectResourcePaths)
-            filePath = url.deletingLastPathComponent().appendingPathComponent(name + ".plist").path
+        if let interfaceBuilderProjectResourcePaths = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"]?.components(separatedBy: ":") {
+            for path in interfaceBuilderProjectResourcePaths {
+                let url = URL(fileURLWithPath: path)
+                if url.lastPathComponent == "Pods" {
+                    filePath = url.deletingLastPathComponent().appendingPathComponent(name + ".plist").path
+                }
+            }
         } else {
             filePath = Bundle.main.path(forResource: name, ofType: "plist")
         }
