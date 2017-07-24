@@ -21,9 +21,7 @@
 		F72A42901D76CEF5009E1BF9 /* STActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */; };
 		F747E8C01D5C98AB006AA9DC /* UIColor+HexInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8AF1D5C98AB006AA9DC /* UIColor+HexInit.swift */; };
 		F747E8C11D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B01D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift */; };
-		F747E8C21D5C98AB006AA9DC /* STHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B21D5C98AB006AA9DC /* STHelper.swift */; };
 		F747E8C31D5C98AB006AA9DC /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B31D5C98AB006AA9DC /* Stylable.swift */; };
-		F747E8C41D5C98AB006AA9DC /* SwiftStylableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B51D5C98AB006AA9DC /* SwiftStylableHelper.swift */; };
 		F747E8C51D5C98AB006AA9DC /* STButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B61D5C98AB006AA9DC /* STButton.swift */; };
 		F747E8C61D5C98AB006AA9DC /* STLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B71D5C98AB006AA9DC /* STLabel.swift */; };
 		F747E8C71D5C98AB006AA9DC /* STTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747E8B81D5C98AB006AA9DC /* STTableView.swift */; };
@@ -70,9 +68,7 @@
 		F72A428C1D76CE7C009E1BF9 /* STActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STActivityIndicator.swift; sourceTree = "<group>"; };
 		F747E8AF1D5C98AB006AA9DC /* UIColor+HexInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexInit.swift"; sourceTree = "<group>"; };
 		F747E8B01D5C98AB006AA9DC /* UIImage+ImageWithTintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageWithTintColor.swift"; sourceTree = "<group>"; };
-		F747E8B21D5C98AB006AA9DC /* STHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STHelper.swift; sourceTree = "<group>"; };
 		F747E8B31D5C98AB006AA9DC /* Stylable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
-		F747E8B51D5C98AB006AA9DC /* SwiftStylableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftStylableHelper.swift; sourceTree = "<group>"; };
 		F747E8B61D5C98AB006AA9DC /* STButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STButton.swift; sourceTree = "<group>"; };
 		F747E8B71D5C98AB006AA9DC /* STLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STLabel.swift; sourceTree = "<group>"; };
 		F747E8B81D5C98AB006AA9DC /* STTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTableView.swift; sourceTree = "<group>"; };
@@ -230,7 +226,6 @@
 		F747E8B11D5C98AB006AA9DC /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				F747E8B21D5C98AB006AA9DC /* STHelper.swift */,
 				F747E8B31D5C98AB006AA9DC /* Stylable.swift */,
 				F747E8B41D5C98AB006AA9DC /* StylableComponents */,
 				F747E8BB1D5C98AB006AA9DC /* Style.swift */,
@@ -242,7 +237,6 @@
 		F747E8B41D5C98AB006AA9DC /* StylableComponents */ = {
 			isa = PBXGroup;
 			children = (
-				F747E8B51D5C98AB006AA9DC /* SwiftStylableHelper.swift */,
 				F747E8B61D5C98AB006AA9DC /* STButton.swift */,
 				F747E8B71D5C98AB006AA9DC /* STLabel.swift */,
 				F747E8B81D5C98AB006AA9DC /* STTableView.swift */,
@@ -388,9 +382,7 @@
 				F747E8CB1D5C98AB006AA9DC /* Styles.swift in Sources */,
 				F747E8C91D5C98AB006AA9DC /* STView.swift in Sources */,
 				DE60820F701CB89889765878FE56BF49 /* SwiftStylable-dummy.m in Sources */,
-				F747E8C41D5C98AB006AA9DC /* SwiftStylableHelper.swift in Sources */,
 				F747E8C81D5C98AB006AA9DC /* STTableViewCell.swift in Sources */,
-				F747E8C21D5C98AB006AA9DC /* STHelper.swift in Sources */,
 				F747E8CA1D5C98AB006AA9DC /* Style.swift in Sources */,
 				F747E8C51D5C98AB006AA9DC /* STButton.swift in Sources */,
 				F747E8CC1D5C98AB006AA9DC /* ExtendedButton.swift in Sources */,
