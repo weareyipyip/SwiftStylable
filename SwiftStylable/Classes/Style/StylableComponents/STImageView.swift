@@ -60,8 +60,8 @@ import UIKit
 	
 	@IBInspectable open var imageName:String? {
         didSet {
-            if let imageName = self.imageName, let helper = STHelper.sharedHelper as? SwiftStylableHelper {
-                self.image = helper.imageNamed(imageName)
+            if let imageName = self.imageName {
+                self.image = self.paintCodeImageNamed(imageName)
             } else {
                 self.image = nil
             }
@@ -97,6 +97,10 @@ import UIKit
 			self.tintColor = foregroundColor
 		}
 	}
+    
+    open func paintCodeImageNamed(_ name:String)->UIImage? {
+        return nil
+    }
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
