@@ -27,10 +27,9 @@ open class Style {
 	open var font:UIFont?
 	open var fullUppercaseText:Bool?
 	
-
 	// Corners
 	open var cornerRadius:CGFloat?
-	
+    open var clipsToBounds:Bool?
 	
 	// Foreground color names
 	private (set) var foregroundColorName:String?
@@ -110,7 +109,7 @@ open class Style {
         
         // - other
         self.cornerRadius = parentStyle.cornerRadius
-        
+        self.clipsToBounds = parentStyle.clipsToBounds
         
         // Set overrides
         self.parseData(overridesData, colors: colors)
@@ -290,6 +289,9 @@ open class Style {
         // CornerRadius
         if let cornerRadius = data["cornerRadius"] as? CGFloat {
             self.cornerRadius = cornerRadius
+        }
+        if let clipsToBounds = data["clipsToBounds"] as? Bool {
+            self.clipsToBounds = clipsToBounds
         }
     }
     

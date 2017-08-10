@@ -85,5 +85,8 @@ import UIKit
 		if let cornerRadius = style.cornerRadius {
 			self.layer.cornerRadius = cornerRadius
 		}
+        if let clipsToBounds = style.clipsToBounds {
+            self.clipsToBounds = clipsToBounds
+        }
     }
 }
