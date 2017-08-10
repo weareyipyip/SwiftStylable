@@ -322,25 +322,25 @@ open class Style {
 					return UIFont.italicSystemFont(ofSize: size)
 					
 				case "thinSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.thin)
 					
 				case "blackSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightBlack)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.black)
 					
 				case "heavySystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightHeavy)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
 					
 				case "lightSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightLight)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
 					
 				case "mediumSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightMedium)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
 					
 				case "semiboldSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightSemibold)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
 					
 				case "ultraLightSystemFont":
-					return UIFont.systemFont(ofSize: size, weight: UIFontWeightUltraLight)
+					return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
 					
 				default:
 					return UIFont(name: name, size: size)

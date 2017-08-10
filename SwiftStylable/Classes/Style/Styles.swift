@@ -28,8 +28,6 @@ open class Styles {
     // -----------------------------------------------------------------------------------------------------------------------
     
     private init() {
-        var data:[String:AnyObject]?
-        
         self.processStyleDataWithFileNamed("styles", publishUpdate: false)
     }
     
