@@ -89,7 +89,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(_ notification:Notification) {
+	@objc func stylesDidUpdate(_ notification:Notification) {
 		self.updateStyles()
 	}
 }
