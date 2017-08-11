@@ -132,13 +132,24 @@ The following components are currently available:
 
 ## PaintCode support
 
-If you like to use PaintCode images
+If you like to use PaintCode images in your projects, you can easily add support for them. To add support for PaintCode images in Buttons and Images, add the 'PaintCodeHelper.swift', 'PCImage.swift' and 'PCImage.swift' files from the Example Project to your own project. Then change the imageNamed(_ name:String)->UIImage function in the PaintCodeHelper class to return the images in your own StyleKit for their appropriate names. This should be pretty straight forward.
+
+When you want to use images from your StyleKit in your project, be sure to use PCImage or PCButton as custom class for your image / button component, instead of the normal STImage or STButton. In these components you can set imageName.
 
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+An example project is available at: https://github.com/weareyipyip/SwiftStylableExample
 
 ## Trouble shooting
+
+When a component doesn't look the way you expected, check if the following things are in order:
+
+- Does the component have the appropriate 'ST...' custom class set in Interface Builder?
+- Has the Module for the custom class of the component been set to SwiftStylable? (Be careful: when using PCImage or Button from your own project, or a ST[Component] subclass from your own project, the module should be set to your own app's module.)
+- Is the styles.plist file at the appropriate location? It should sit next to the XCode project file for SwiftStylable to be able to find it. (You may make a reference to it from a group in XCode, as long as the actual file is at this location.)
+- Did you check the spelling and casing of your style name and any properties of your style? Has it also been spelled correctly in the 'styleName' property of your component?
+- Are the value types of all properties in your style set to the correct types? A common mistake is to have (for example) the size property of a font set as a string, while it should be a number. It won't work when it is a string.
+
 
 
