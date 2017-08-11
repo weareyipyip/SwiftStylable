@@ -5,20 +5,31 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftStylable.svg?style=flat)](http://cocoapods.org/pods/SwiftStylable)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftStylable.svg?style=flat)](http://cocoapods.org/pods/SwiftStylable)
 
-## Example
+## Purpose
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+SwiftStylable is a framework for defining styles in XCode projects using a property list. It contains a set of UIKit component subclasses that have a 'styleName' property. Setting the propery to the name of a style will make the component adapt the style at runtime, as well as in Interface Builder.
 
-## Requirements
+## Features
+- Define styles in property list
+- Named colors in property list
+- Extensive list of supported visual properties
+- Style inheritance
+- Substyle property allows for variations on a main style
+- Styles are visible in Interface Builder!
+- Change styles at runtime by simply loading a different styles descriptor
+- Easily adaptable to support PaintCode images (see below)
 
 ## Installation
 
 SwiftStylable is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, make sure you have in your Podfile, and simply add the following to your Podfile:
 
 ```ruby
+use_frameworks!
 pod "SwiftStylable"
 ```
+## Requirements
+- iOS 9 or higher
 
 ## Author
 
@@ -27,3 +38,107 @@ Marcel Bloemendaal, m.bloemendaal@yipyip.nl
 ## License
 
 SwiftStylable is available under the MIT license. See the LICENSE file for more info.
+
+## How to use
+
+### Styles descriptor
+
+To define your styles you need to create a 'styles.plist' file in your project. This file MUST sit next to your XCode project file for SwiftStylable to work. The file should have the following structure:
+
+- Root
+	- colors (Dictionary)
+	- styles (Dictionary)
+
+### Colors
+
+Colors can be defined as strings in the colors dictionary of your styles descriptor file. You can choose names freely, and set hex strings as values, in the format '#XXXXXX' (fully opaque) or '#XXXXXXXX' (with alpha digits). For example, you can have a color named 'defaultForegroundColor' with a value of '#ffa8bb'.
+
+### Styles
+
+Styles are defined as dictionaries in the styles dictionary of your styles descriptor file. You can choose the names of your styles freely. Child properties of your styles determine the visual properties of your styled components. All properties are optional, and will only be set when actually defined. If a property is not defined, the default of the component will be used. Supported properties are:
+
+- parent (string, name of another style)
+- foregroundColor (string)
+- highlightedForegroundColor (string)
+- selectedForegroundColor (string)
+- disabledForegroundColor (string)
+- backgroundColor (string)
+- highlightedBackgroundColor (string)
+- selectedBackgroundColor (string)
+- disabledBackgroundColor (string)
+- borderColor (string)
+- highlightedBorderColor (string)
+- selectedBorderColorName (string)
+- disabledBorderColor (string)
+- borderWidth (number)
+- borderStyle (string: "none", "line", "bezel" or "roundedRect")
+- cornerRadius (number)
+- clipsToBounds (boolean)
+- tintImageWithForegroundColor (boolean)
+- tableViewSeparatorStyle (string: "none", "singleLine", "singleLineEtched")
+- tableViewSeparatorColor (string)
+- font (dictionary)
+	- name (string, PostScript name of the font
+	- size (number)
+- fullUppercaseText (boolean)
+	
+#### Colors
+All color properties should reference a named color from the colors section of the styles descriptor. For most colors there are 3 varieties besided the normal one: highlighted, selected and disabled. Most components do not use these varieties. They are mainly meant to define button states.
+
+#### The tintImageWithForegroundColor property
+This property is meant for images and buttons. When this property is set to true, the image will be tinted with the foregroundColor. When used in buttons, the image will also adopt the various colors set for highlighted, selected or disabled states.
+
+#### Buttons
+When styling buttons, keep in mind that you have to set the type of your button to 'custom' when your button is created in Interface Builder. You also have to disable the 'Highlighted Ajusts Image' and 'Disabled Adjusts Image', unless this is the behaviour you desire.
+
+#### Fonts
+Fonts contain a name and a size. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.
+Instead of specifying a postScriptName, you can also use the system font by using predefined strings. The available strings for system fonts are:
+
+- "systemFont"
+- "boldSystemFont"
+- "italicSystemFont"
+- "thinSystemFont"
+- "blackSystemFont"
+- "heavySystemFont"
+- "lightSystemFont"
+- "mediumSystemFont"
+- "semiboldSystemFont"
+- "ultraLightSystemFont"
+
+#### Style inheritance
+
+If you want to define a style that is much like a previously defined style, you can use this previous style as a parent. This way you only have to set the properties that are different from the parent style, in the new style you are creating. The other properties will simply be inherited from the parent style. To set a parent syle, just add a 'parent' property to your style definition, with the name of the desired parent style as the value.
+
+## Using styles in your project
+
+To use your defined styles in a component in Interface Builder, change the class of the component to the SwiftStylable version of the component. (For example: to style a UIButton, you change its class to 'STButton') Make sure the Module field (underneith the Class field) is then set to 'SwiftStylable'. This usually happens automatically. The component should now have a 'styleName' and a 'substyleName' property. To apply the desired style to your component, you now simply set the 'styleName' property of the component to the name of the style. You may have to refresh the views in your Storyboard for styles to take effect. (With Interface Builder in focus, select Editor->Refresh all views.)
+
+### Stylable components
+
+The following components are currently available:
+
+- STView
+- STLabel
+- STTextField
+- STTextView
+- STButtonp
+- STImageView
+- STActivityIndicator
+- STSwitch
+- STTableView
+- STTableViewCell
+- STHorizontalHairline
+
+## PaintCode support
+
+If you like to use PaintCode images
+
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Trouble shooting
+
+

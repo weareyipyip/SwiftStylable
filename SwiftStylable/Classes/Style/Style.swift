@@ -233,16 +233,16 @@ open class Style {
 		
         if let borderStyle = data["borderStyle"] as? String {
             switch borderStyle {
-            case "None":
+            case "none":
                 self.borderStyle = .none
                 
-            case "Line":
+            case "line":
                 self.borderStyle = .line
                 
-            case "Bezel":
+            case "bezel":
                 self.borderStyle = .bezel
                 
-            case "RoundedRect":
+            case "roundedRect":
                 self.borderStyle = .roundedRect
                 
             default:
@@ -259,13 +259,13 @@ open class Style {
         // TableView style
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
             switch tableViewSeparatorStyleString {
-            case "None":
+            case "none":
                 self.tableViewSeparatorStyle = .none
                 
-            case "SingleLine":
+            case "singleLine":
                 self.tableViewSeparatorStyle = .singleLine
                 
-            case "SingleLineEtched":
+            case "singleLineEtched":
                 self.tableViewSeparatorStyle = .singleLineEtched
                 
             default:
