@@ -27,10 +27,9 @@ open class Style {
 	open var font:UIFont?
 	open var fullUppercaseText:Bool?
 	
-
 	// Corners
 	open var cornerRadius:CGFloat?
-	
+    open var clipsToBounds:Bool?
 	
 	// Foreground color names
 	private (set) var foregroundColorName:String?
@@ -110,7 +109,7 @@ open class Style {
         
         // - other
         self.cornerRadius = parentStyle.cornerRadius
-        
+        self.clipsToBounds = parentStyle.clipsToBounds
         
         // Set overrides
         self.parseData(overridesData, colors: colors)
@@ -234,16 +233,16 @@ open class Style {
 		
         if let borderStyle = data["borderStyle"] as? String {
             switch borderStyle {
-            case "None":
+            case "none":
                 self.borderStyle = .none
                 
-            case "Line":
+            case "line":
                 self.borderStyle = .line
                 
-            case "Bezel":
+            case "bezel":
                 self.borderStyle = .bezel
                 
-            case "RoundedRect":
+            case "roundedRect":
                 self.borderStyle = .roundedRect
                 
             default:
@@ -260,13 +259,13 @@ open class Style {
         // TableView style
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
             switch tableViewSeparatorStyleString {
-            case "None":
+            case "none":
                 self.tableViewSeparatorStyle = .none
                 
-            case "SingleLine":
+            case "singleLine":
                 self.tableViewSeparatorStyle = .singleLine
                 
-            case "SingleLineEtched":
+            case "singleLineEtched":
                 self.tableViewSeparatorStyle = .singleLineEtched
                 
             default:
@@ -290,6 +289,9 @@ open class Style {
         // CornerRadius
         if let cornerRadius = data["cornerRadius"] as? CGFloat {
             self.cornerRadius = cornerRadius
+        }
+        if let clipsToBounds = data["clipsToBounds"] as? Bool {
+            self.clipsToBounds = clipsToBounds
         }
     }
     

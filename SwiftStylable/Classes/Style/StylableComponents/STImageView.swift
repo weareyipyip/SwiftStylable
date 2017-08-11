@@ -90,6 +90,21 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	open func applyStyle(_ style:Style) {
+        if let backgroundColor = style.backgroundColor {
+            self.backgroundColor = backgroundColor
+        }
+        if let borderWidth = style.borderWidth {
+            self.layer.borderWidth = borderWidth
+        }
+        if let borderColor = style.borderColor {
+            self.layer.borderColor = borderColor.cgColor
+        }
+        if let cornerRadius = style.cornerRadius {
+            self.layer.cornerRadius = cornerRadius
+        }
+        if let clipsToBounds = style.clipsToBounds {
+            self.clipsToBounds = clipsToBounds
+        }
 		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
 			self.tintImageWithForegroundColor = tintImageWithForegroundColor
 		}
@@ -109,7 +124,7 @@ import UIKit
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	func stylesDidUpdate(_ notification:Notification) {
+	@objc func stylesDidUpdate(_ notification:Notification) {
 		self.updateStyles()
 	}
 

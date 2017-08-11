@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 open class ExtendedButton: UIButton {
-    private var _normalBackgroundColor:UIColor = UIColor.black
+    private var _normalBackgroundColor:UIColor?
     private var _highlightedBackgroundColor:UIColor?
     private var _selectedBackgroundColor:UIColor?
     private var _disabledBackgroundColor:UIColor?

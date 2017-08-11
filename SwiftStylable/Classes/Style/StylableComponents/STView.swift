@@ -61,7 +61,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	func stylesDidUpdate(_ notification:Notification) {
+	@objc func stylesDidUpdate(_ notification:Notification) {
 		self.updateStyles()
 	}
 	
@@ -85,5 +85,8 @@ import UIKit
 		if let cornerRadius = style.cornerRadius {
 			self.layer.cornerRadius = cornerRadius
 		}
+        if let clipsToBounds = style.clipsToBounds {
+            self.clipsToBounds = clipsToBounds
+        }
     }
 }
