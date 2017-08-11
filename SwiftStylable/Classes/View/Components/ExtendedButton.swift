@@ -34,6 +34,7 @@ open class ExtendedButton: UIButton {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self._normalBackgroundColor = self.backgroundColor
         self._normalTitle = super.title(for: .normal)
         self._highlightedTitle = super.title(for: .highlighted)
         self._selectedTitle = super.title(for: .selected)
