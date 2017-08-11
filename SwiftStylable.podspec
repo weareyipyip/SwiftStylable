@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftStylable'
   s.version          = '0.0.30'
-  s.summary          = 'Swift framework to enable project wide styles that can be used in storyboards.'
+  s.summary          = 'Swift framework to enable project wide styles that can be used in Interface Builder.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 Swift framework to enable project wide styles that can be used in storyboards. You can predefine styles in a property list and use them in your project as well as in the interface builder.
                        DESC
 
-  s.homepage         = 'https://gitlab.com/weareyipyip/SwiftStylable'
+  s.homepage         = 'https://github.com/weareyipyip/SwiftStylable'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Marcel Bloemendaal' => 'm.bloemendaal@yipyip.nl' }
