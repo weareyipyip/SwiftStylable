@@ -36,14 +36,14 @@ import UIKit
         super.init(coder: aDecoder)
         
         self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STTextView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     override public init(frame: CGRect, textContainer:NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
         
         self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STTextView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     deinit {
