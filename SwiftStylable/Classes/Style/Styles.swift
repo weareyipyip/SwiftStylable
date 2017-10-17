@@ -62,8 +62,12 @@ open class Styles {
     }
         
     open func processStyleDataWithFileNamed(_ fileName:String) {
-        self.processStyleDataWithFileNamed(fileName, publishUpdate: true)
+		self.processStyleDataWithFileNamed(fileName, publishUpdate: true)
     }
+	
+	open func processStyleDataWithFileAtPath(_ path:String) {
+		self.processStyleDataWithFileAtPath(path, publishUpdate: true)
+	}
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -86,11 +90,16 @@ open class Styles {
         }
         return filePath
     }
-    
-    private func processStyleDataWithFileNamed(_ name:String, publishUpdate:Bool) {
-        
-        guard let stylesFilePath = self.pathForStylesDescriptorNamed(name),
-            let styleData = NSDictionary(contentsOfFile: stylesFilePath) as? [String:AnyObject] else {
+	
+	private func processStyleDataWithFileNamed(_ fileName:String, publishUpdate:Bool) {
+		if let stylesFilePath = self.pathForStylesDescriptorNamed(fileName) {
+			self.processStyleDataWithFileAtPath(stylesFilePath, publishUpdate: publishUpdate)
+		}
+	}
+	
+	private func processStyleDataWithFileAtPath(_ path:String, publishUpdate:Bool) {
+		
+        guard let styleData = NSDictionary(contentsOfFile: path) as? [String:AnyObject] else {
                 return
         }
         
