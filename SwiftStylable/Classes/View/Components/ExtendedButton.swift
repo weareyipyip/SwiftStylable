@@ -88,7 +88,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var customItemPlacement:Bool = false {
+	@IBInspectable open var customItemPlacement:Bool = false {
 		didSet {
 			if self.customItemPlacement {
 				super.contentHorizontalAlignment = .center
@@ -100,7 +100,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var titlePlacementIndex:Int = 4 {
+	@IBInspectable open var titlePlacementIndex:Int = 4 {
 		didSet {
 			if self.titlePlacementIndex > -1 && self.titlePlacementIndex < 9 {
 				switch self.titlePlacementIndex % 3 {
@@ -131,7 +131,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var imagePlacementIndex:Int = 4 {
+	@IBInspectable open var imagePlacementIndex:Int = 4 {
 		didSet {
 			if self.imagePlacementIndex > -1 && self.imagePlacementIndex < 9 {
 				switch self.imagePlacementIndex % 3 {
