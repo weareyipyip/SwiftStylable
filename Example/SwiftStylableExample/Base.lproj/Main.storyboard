@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Contact info-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Contact info" id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftStylableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3f7-Fe-EMZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QoM-mn-acl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="STView" customModule="SwiftStylable">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u62-Nb-TLZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phoebe" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-h9-Np0" customClass="STImageView" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="16" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="5rp-wn-JXJ"/>
+                                            <constraint firstAttribute="height" constant="96" id="94P-Rz-ayl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="avatarPhoto"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phoebe Buffay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="57" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="header1Text"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (mobile)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-ca-RSP" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="144" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)612345678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAQ-E3-Oxc" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="144" width="125" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (home)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzj-S4-M0l" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="166.5" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)54123456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT4-in-JBj" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="167" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (work)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSR-mo-9SI" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="189" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)1053377882" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enw-CD-tGE" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="189" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHY-4r-woC" customClass="STHorizontalHairline" customModule="SwiftStylable">
+                                        <rect key="frame" x="0.0" y="219.5" width="375" height="1"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentDivider"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bw-v6-zBI" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="236.5" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Park Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esU-It-iqQ" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="236.5" width="183" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xe-9u-BaK" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="259" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiA-Du-V0Z" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="259" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f6-DV-Owx" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="281.5" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEa-Nu-Syl" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="281.5" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbm-s9-SWE" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="304" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwP-D0-17n" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="304" width="231" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbA-rc-rAC" customClass="STHorizontalHairline" customModule="SwiftStylable">
+                                        <rect key="frame" x="0.0" y="334" width="375" height="1"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentDivider"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-BM-6dF" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="351" width="96.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="itemLabelText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoebe.buffay@e-mail.us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-mB-fHb" customClass="STLabel" customModule="SwiftStylable">
+                                        <rect key="frame" x="128" y="351" width="183" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentText"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-Ld-B2L" customClass="STButton" customModule="SwiftStylable">
+                                        <rect key="frame" x="16" y="397.5" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="f1m-TM-ryH"/>
+                                        </constraints>
+                                        <state key="normal" title="Delete contact"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="roundedButton"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac4-FE-PXR" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="603"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="KYi-sB-37f"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-tM-snC" userLabel="bottomBar" customClass="STView" customModule="SwiftStylable">
+                                        <rect key="frame" x="0.0" y="473.5" width="375" height="129.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share this contact:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pac-Nr-5To" customClass="STLabel" customModule="SwiftStylable">
+                                                <rect key="frame" x="16" y="16" width="215" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="highlightedContentItemLabelText"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyE-NU-fNI" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                                <rect key="frame" x="247" y="16" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="Ro3-dy-rQJ"/>
+                                                    <constraint firstAttribute="height" constant="32" id="ZnW-vX-Jjf"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="highlightedAreaIconButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="facebookIcon"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhW-IR-pEp" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                                <rect key="frame" x="327" y="16" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Qw0-Sa-y5h"/>
+                                                    <constraint firstAttribute="width" constant="32" id="osP-L0-UJP"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="highlightedAreaIconButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="linkedInIcon"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgK-ob-GiK" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                                <rect key="frame" x="287" y="16" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="CBv-nM-9Se"/>
+                                                    <constraint firstAttribute="width" constant="32" id="Gth-Ur-8WH"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="highlightedAreaIconButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="twitterIcon"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="zgK-ob-GiK" firstAttribute="leading" secondItem="TyE-NU-fNI" secondAttribute="trailing" constant="8" id="2y2-vq-XqL"/>
+                                            <constraint firstItem="fhW-IR-pEp" firstAttribute="leading" secondItem="zgK-ob-GiK" secondAttribute="trailing" constant="8" id="Idl-li-cFj"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="J1o-n6-kIt"/>
+                                            <constraint firstAttribute="trailing" secondItem="fhW-IR-pEp" secondAttribute="trailing" constant="16" id="Qzr-Da-d7j"/>
+                                            <constraint firstItem="pac-Nr-5To" firstAttribute="leading" secondItem="Yeb-tM-snC" secondAttribute="leading" constant="16" id="bCb-pX-jVE"/>
+                                            <constraint firstItem="TyE-NU-fNI" firstAttribute="leading" secondItem="pac-Nr-5To" secondAttribute="trailing" constant="16" id="gf7-SG-0on"/>
+                                            <constraint firstItem="pac-Nr-5To" firstAttribute="top" secondItem="TyE-NU-fNI" secondAttribute="top" id="iCt-Gh-k5D"/>
+                                            <constraint firstItem="zgK-ob-GiK" firstAttribute="top" secondItem="fhW-IR-pEp" secondAttribute="top" id="o21-ge-OSk"/>
+                                            <constraint firstItem="TyE-NU-fNI" firstAttribute="top" secondItem="zgK-ob-GiK" secondAttribute="top" id="qHy-tX-xtV"/>
+                                            <constraint firstItem="pac-Nr-5To" firstAttribute="top" secondItem="Yeb-tM-snC" secondAttribute="top" constant="16" id="rWC-7p-gXL"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="highlightedContentArea"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-IN-22t" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                        <rect key="frame" x="327" y="135" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="0kc-nQ-ob8"/>
+                                            <constraint firstAttribute="width" constant="32" id="Wbp-uy-aFR"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="actionIconButton"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="callIcon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t85-J6-aiu" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                        <rect key="frame" x="327" y="228" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="1GV-Zy-sdp"/>
+                                            <constraint firstAttribute="width" constant="32" id="Shd-ib-Bv4"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="actionIconButton"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="homeIcon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goM-NE-dVA" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
+                                        <rect key="frame" x="327" y="342.5" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Xk6-Iv-lCO"/>
+                                            <constraint firstAttribute="width" constant="32" id="m3H-iQ-mFb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="actionIconButton"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="eMailIcon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mbA-rc-rAC" firstAttribute="leading" secondItem="RHY-4r-woC" secondAttribute="leading" id="0YY-4U-qP1"/>
+                                    <constraint firstItem="mbA-rc-rAC" firstAttribute="trailing" secondItem="RHY-4r-woC" secondAttribute="trailing" id="0vR-6R-2gh"/>
+                                    <constraint firstItem="QwP-D0-17n" firstAttribute="leading" secondItem="QEa-Nu-Syl" secondAttribute="leading" id="1Ba-aD-Yc9"/>
+                                    <constraint firstItem="i9r-mB-fHb" firstAttribute="leading" secondItem="QwP-D0-17n" secondAttribute="leading" id="1Zs-4t-SmR"/>
+                                    <constraint firstItem="Nid-BM-6dF" firstAttribute="trailing" secondItem="fbm-s9-SWE" secondAttribute="trailing" id="3KI-gk-MHF"/>
+                                    <constraint firstItem="goM-NE-dVA" firstAttribute="leading" secondItem="i9r-mB-fHb" secondAttribute="trailing" constant="16" id="3ZJ-3L-sf7"/>
+                                    <constraint firstItem="v9r-OP-m5c" firstAttribute="leading" secondItem="e9L-h9-Np0" secondAttribute="trailing" constant="16" id="3bM-Wp-pyE"/>
+                                    <constraint firstItem="tNb-ca-RSP" firstAttribute="top" secondItem="e9L-h9-Np0" secondAttribute="bottom" constant="32" id="3ek-ds-gG1"/>
+                                    <constraint firstItem="fzj-S4-M0l" firstAttribute="trailing" secondItem="tNb-ca-RSP" secondAttribute="trailing" id="5Tq-gt-cQD"/>
+                                    <constraint firstItem="Nid-BM-6dF" firstAttribute="top" secondItem="mbA-rc-rAC" secondAttribute="bottom" constant="16" id="A8y-sn-MRa"/>
+                                    <constraint firstItem="enw-CD-tGE" firstAttribute="leading" secondItem="wT4-in-JBj" secondAttribute="leading" id="Bbe-f4-lz1"/>
+                                    <constraint firstItem="e9L-h9-Np0" firstAttribute="leading" secondItem="u62-Nb-TLZ" secondAttribute="leading" constant="16" id="Bo8-a3-zlu"/>
+                                    <constraint firstItem="i9r-mB-fHb" firstAttribute="centerY" secondItem="goM-NE-dVA" secondAttribute="centerY" id="CD9-LU-4eo"/>
+                                    <constraint firstItem="wT4-in-JBj" firstAttribute="leading" secondItem="nAQ-E3-Oxc" secondAttribute="leading" id="CY7-gG-Y5r"/>
+                                    <constraint firstItem="nAQ-E3-Oxc" firstAttribute="baseline" secondItem="tNb-ca-RSP" secondAttribute="baseline" id="DBo-Xn-o0f"/>
+                                    <constraint firstItem="QEa-Nu-Syl" firstAttribute="baseline" secondItem="1f6-DV-Owx" secondAttribute="baseline" id="Ds0-lo-yDK"/>
+                                    <constraint firstItem="8xe-9u-BaK" firstAttribute="top" secondItem="9bw-v6-zBI" secondAttribute="bottom" constant="8" id="EV0-ue-yAb"/>
+                                    <constraint firstItem="esU-It-iqQ" firstAttribute="leading" secondItem="enw-CD-tGE" secondAttribute="leading" id="ObO-iE-Oog"/>
+                                    <constraint firstItem="QwP-D0-17n" firstAttribute="trailing" secondItem="QEa-Nu-Syl" secondAttribute="trailing" id="Ou0-GV-EXO"/>
+                                    <constraint firstItem="ac4-FE-PXR" firstAttribute="height" secondItem="u62-Nb-TLZ" secondAttribute="height" id="POR-oV-yL2"/>
+                                    <constraint firstItem="fbm-s9-SWE" firstAttribute="top" secondItem="1f6-DV-Owx" secondAttribute="bottom" constant="8" id="PiA-SQ-WGA"/>
+                                    <constraint firstItem="fbm-s9-SWE" firstAttribute="leading" secondItem="1f6-DV-Owx" secondAttribute="leading" id="Pp9-T3-5MS"/>
+                                    <constraint firstItem="ac4-FE-PXR" firstAttribute="leading" secondItem="u62-Nb-TLZ" secondAttribute="leading" id="RXu-dJ-ijL"/>
+                                    <constraint firstItem="8xe-9u-BaK" firstAttribute="trailing" secondItem="9bw-v6-zBI" secondAttribute="trailing" id="Rx5-7M-d2m"/>
+                                    <constraint firstItem="esU-It-iqQ" firstAttribute="centerY" secondItem="t85-J6-aiu" secondAttribute="centerY" id="SZM-0V-zTv"/>
+                                    <constraint firstItem="oSR-mo-9SI" firstAttribute="trailing" secondItem="fzj-S4-M0l" secondAttribute="trailing" id="SdM-M3-RXP"/>
+                                    <constraint firstItem="e9L-h9-Np0" firstAttribute="top" secondItem="u62-Nb-TLZ" secondAttribute="top" constant="16" id="Stk-1g-0b2"/>
+                                    <constraint firstItem="oSR-mo-9SI" firstAttribute="leading" secondItem="fzj-S4-M0l" secondAttribute="leading" id="T5U-qB-1Vi"/>
+                                    <constraint firstItem="ac4-FE-PXR" firstAttribute="top" secondItem="u62-Nb-TLZ" secondAttribute="top" id="U3m-1L-CGQ"/>
+                                    <constraint firstItem="9bw-v6-zBI" firstAttribute="trailing" secondItem="oSR-mo-9SI" secondAttribute="trailing" id="U5O-hw-pRk"/>
+                                    <constraint firstAttribute="trailing" secondItem="RHY-4r-woC" secondAttribute="trailing" id="UGL-ru-CWq"/>
+                                    <constraint firstItem="9bw-v6-zBI" firstAttribute="leading" secondItem="oSR-mo-9SI" secondAttribute="leading" id="Uq7-OI-ct7"/>
+                                    <constraint firstItem="1f6-DV-Owx" firstAttribute="top" secondItem="8xe-9u-BaK" secondAttribute="bottom" constant="8" id="V3x-ql-aRp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yeb-tM-snC" secondAttribute="trailing" id="W2F-9B-1t2"/>
+                                    <constraint firstItem="nAQ-E3-Oxc" firstAttribute="leading" secondItem="v9r-OP-m5c" secondAttribute="leading" id="WPt-hu-YPE"/>
+                                    <constraint firstItem="e9L-h9-Np0" firstAttribute="centerY" secondItem="v9r-OP-m5c" secondAttribute="centerY" id="ZFK-YM-Otn"/>
+                                    <constraint firstItem="nAQ-E3-Oxc" firstAttribute="centerY" secondItem="uoV-IN-22t" secondAttribute="centerY" id="a15-Lz-Vkh"/>
+                                    <constraint firstItem="Yeb-tM-snC" firstAttribute="leading" secondItem="u62-Nb-TLZ" secondAttribute="leading" id="azL-3z-Z20"/>
+                                    <constraint firstItem="RHY-4r-woC" firstAttribute="width" secondItem="u62-Nb-TLZ" secondAttribute="width" id="cBN-9w-0Ek"/>
+                                    <constraint firstItem="tNb-ca-RSP" firstAttribute="leading" secondItem="e9L-h9-Np0" secondAttribute="leading" id="cFt-dy-dYX"/>
+                                    <constraint firstItem="RHY-4r-woC" firstAttribute="top" secondItem="oSR-mo-9SI" secondAttribute="bottom" constant="16" id="dAg-cc-831"/>
+                                    <constraint firstItem="uoV-IN-22t" firstAttribute="leading" secondItem="nAQ-E3-Oxc" secondAttribute="trailing" constant="74" id="dHy-n3-T70"/>
+                                    <constraint firstItem="Nid-BM-6dF" firstAttribute="leading" secondItem="fbm-s9-SWE" secondAttribute="leading" id="dhj-0j-dLd"/>
+                                    <constraint firstItem="9bw-v6-zBI" firstAttribute="top" secondItem="RHY-4r-woC" secondAttribute="bottom" constant="16" id="eHE-ct-hJW"/>
+                                    <constraint firstItem="fbm-s9-SWE" firstAttribute="trailing" secondItem="1f6-DV-Owx" secondAttribute="trailing" id="eOd-MO-mvj"/>
+                                    <constraint firstItem="Yeb-tM-snC" firstAttribute="bottom" secondItem="ac4-FE-PXR" secondAttribute="bottom" priority="750" id="fyH-Pp-6Qo"/>
+                                    <constraint firstItem="1f6-DV-Owx" firstAttribute="trailing" secondItem="8xe-9u-BaK" secondAttribute="trailing" id="g9j-2n-H0L"/>
+                                    <constraint firstItem="UiA-Du-V0Z" firstAttribute="baseline" secondItem="8xe-9u-BaK" secondAttribute="baseline" id="gRF-8N-5Tw"/>
+                                    <constraint firstItem="fzj-S4-M0l" firstAttribute="leading" secondItem="tNb-ca-RSP" secondAttribute="leading" id="ga9-T9-aN2"/>
+                                    <constraint firstItem="1f6-DV-Owx" firstAttribute="leading" secondItem="8xe-9u-BaK" secondAttribute="leading" id="gbk-f2-Vdy"/>
+                                    <constraint firstItem="i9r-mB-fHb" firstAttribute="baseline" secondItem="Nid-BM-6dF" secondAttribute="baseline" id="gvJ-Jc-OWF"/>
+                                    <constraint firstItem="8xe-9u-BaK" firstAttribute="leading" secondItem="9bw-v6-zBI" secondAttribute="leading" id="hZH-Ne-wvx"/>
+                                    <constraint firstItem="uoV-IN-22t" firstAttribute="trailing" secondItem="v9r-OP-m5c" secondAttribute="trailing" id="iPq-jh-iZe"/>
+                                    <constraint firstItem="QEa-Nu-Syl" firstAttribute="leading" secondItem="UiA-Du-V0Z" secondAttribute="leading" id="ie1-9V-tGS"/>
+                                    <constraint firstItem="enw-CD-tGE" firstAttribute="trailing" secondItem="wT4-in-JBj" secondAttribute="trailing" id="jo9-H3-WMj"/>
+                                    <constraint firstItem="RHY-4r-woC" firstAttribute="leading" secondItem="u62-Nb-TLZ" secondAttribute="leading" id="kq9-fc-goM"/>
+                                    <constraint firstItem="UiA-Du-V0Z" firstAttribute="trailing" secondItem="t85-J6-aiu" secondAttribute="trailing" id="lTT-nv-lDa"/>
+                                    <constraint firstItem="wT4-in-JBj" firstAttribute="baseline" secondItem="fzj-S4-M0l" secondAttribute="baseline" id="lWf-Me-bQv"/>
+                                    <constraint firstItem="t85-J6-aiu" firstAttribute="leading" secondItem="esU-It-iqQ" secondAttribute="trailing" constant="16" id="p7F-tc-Mv3"/>
+                                    <constraint firstItem="enw-CD-tGE" firstAttribute="baseline" secondItem="oSR-mo-9SI" secondAttribute="baseline" id="pXB-3z-Az2"/>
+                                    <constraint firstItem="esU-It-iqQ" firstAttribute="baseline" secondItem="9bw-v6-zBI" secondAttribute="baseline" id="qfw-TZ-pdP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yeb-tM-snC" secondAttribute="bottom" id="rc8-Gs-4s1"/>
+                                    <constraint firstItem="Yeb-tM-snC" firstAttribute="top" secondItem="7I1-Ld-B2L" secondAttribute="bottom" constant="32" id="suG-cX-bTl"/>
+                                    <constraint firstItem="oSR-mo-9SI" firstAttribute="top" secondItem="fzj-S4-M0l" secondAttribute="bottom" constant="8" id="tHW-0t-3Up"/>
+                                    <constraint firstItem="QwP-D0-17n" firstAttribute="baseline" secondItem="fbm-s9-SWE" secondAttribute="baseline" id="vSU-lM-VZb"/>
+                                    <constraint firstItem="7I1-Ld-B2L" firstAttribute="top" secondItem="Nid-BM-6dF" secondAttribute="bottom" constant="32" id="vbz-r8-WAU"/>
+                                    <constraint firstItem="t85-J6-aiu" firstAttribute="trailing" secondItem="enw-CD-tGE" secondAttribute="trailing" id="vgQ-Qo-Ekb"/>
+                                    <constraint firstItem="tNb-ca-RSP" firstAttribute="trailing" secondItem="e9L-h9-Np0" secondAttribute="trailing" id="vvh-Mj-G83"/>
+                                    <constraint firstItem="QEa-Nu-Syl" firstAttribute="trailing" secondItem="UiA-Du-V0Z" secondAttribute="trailing" id="wwv-KI-TAH"/>
+                                    <constraint firstItem="UiA-Du-V0Z" firstAttribute="leading" secondItem="esU-It-iqQ" secondAttribute="leading" id="xMM-Er-mbX"/>
+                                    <constraint firstItem="7I1-Ld-B2L" firstAttribute="leading" secondItem="Nid-BM-6dF" secondAttribute="leading" id="xTp-mf-g9H"/>
+                                    <constraint firstItem="goM-NE-dVA" firstAttribute="trailing" secondItem="QwP-D0-17n" secondAttribute="trailing" id="xyX-39-AG1"/>
+                                    <constraint firstItem="7I1-Ld-B2L" firstAttribute="trailing" secondItem="goM-NE-dVA" secondAttribute="trailing" id="ybh-b0-VvM"/>
+                                    <constraint firstItem="fzj-S4-M0l" firstAttribute="top" secondItem="tNb-ca-RSP" secondAttribute="bottom" constant="8" id="zPt-aT-7ZO"/>
+                                    <constraint firstItem="mbA-rc-rAC" firstAttribute="top" secondItem="QwP-D0-17n" secondAttribute="bottom" constant="16" id="zbM-YW-WyU"/>
+                                    <constraint firstItem="wT4-in-JBj" firstAttribute="trailing" secondItem="uoV-IN-22t" secondAttribute="trailing" id="zeW-Ac-MBn"/>
+                                    <constraint firstAttribute="trailing" secondItem="v9r-OP-m5c" secondAttribute="trailing" constant="16" id="zqK-6l-ZCe"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="u62-Nb-TLZ" secondAttribute="bottom" id="7JG-54-2NX"/>
+                            <constraint firstItem="u62-Nb-TLZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Hf4-C3-oFb"/>
+                            <constraint firstAttribute="trailing" secondItem="u62-Nb-TLZ" secondAttribute="trailing" id="bKK-UC-hxC"/>
+                            <constraint firstItem="u62-Nb-TLZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rj7-AM-jGY"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentArea"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" id="czl-vb-0xd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="421.60000000000002" y="-99.400299850074973"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tHc-dn-I4p">
+            <objects>
+                <navigationController id="5oM-D5-avw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tiL-5D-081">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.93333333333333335" green="0.22745098039215686" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P1t-8d-Fdy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="guL-0T-1n5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-386" y="-99"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Phoebe" width="300" height="415"/>
+    </resources>
+</document>

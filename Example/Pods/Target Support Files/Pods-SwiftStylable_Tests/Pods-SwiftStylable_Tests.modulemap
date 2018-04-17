@@ -1,6 +1,0 @@
-framework module Pods_SwiftStylable_Tests {
-  umbrella header "Pods-SwiftStylable_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
