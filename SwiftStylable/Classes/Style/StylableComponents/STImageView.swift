@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 
-@IBDesignable open class STImageView : UIImageView, Stylable {
+@IBDesignable open class STImageView : UIImageView, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable {
+
+	private var _stComponentHelper: STComponentHelper!
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -21,24 +23,18 @@ import UIKit
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
 	}
 	
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(STImageView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
 	}
 	
 	public override init(image: UIImage?) {
 		super.init(image: image)
 	}
 	
-	deinit {
-		NotificationCenter.default.removeObserver(self)
-	}
-
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
@@ -47,14 +43,20 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.styleName = newValue
+		}
+		get {
+			return self._stComponentHelper.styleName
 		}
 	}
 	
 	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.substyleName = newValue
+		}
+		get {
+			return self._stComponentHelper.substyleName
 		}
 	}
 	
@@ -82,6 +84,15 @@ import UIKit
 		}
 	}
 	
+	var foregroundColor: UIColor? {
+		set {
+			self.tintColor = newValue
+		}
+		get {
+			return self.tintColor
+		}
+	}
+	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
@@ -90,27 +101,7 @@ import UIKit
 	// -----------------------------------------------------------------------------------------------------------------------
 	
 	open func applyStyle(_ style:Style) {
-        if let backgroundColor = style.backgroundColor {
-            self.backgroundColor = backgroundColor
-        }
-        if let borderWidth = style.borderWidth {
-            self.layer.borderWidth = borderWidth
-        }
-        if let borderColor = style.borderColor {
-            self.layer.borderColor = borderColor.cgColor
-        }
-        if let cornerRadius = style.cornerRadius {
-            self.layer.cornerRadius = cornerRadius
-        }
-        if let clipsToBounds = style.clipsToBounds {
-            self.clipsToBounds = clipsToBounds
-        }
-		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
-			self.tintImageWithForegroundColor = tintImageWithForegroundColor
-		}
-		if let foregroundColor = style.foregroundColor {
-			self.tintColor = foregroundColor
-		}
+		self._stComponentHelper.applyStyle(style)
 	}
     
     open func paintCodeImageNamed(_ name:String)->UIImage? {
@@ -120,25 +111,22 @@ import UIKit
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
-	// MARK: - Internal methods
-	//
-	// -----------------------------------------------------------------------------------------------------------------------
-	
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
-
-	
-	// -----------------------------------------------------------------------------------------------------------------------
-	//
 	// MARK: Private methods
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	fileprivate func updateImageRenderingMode() {
+	private func updateImageRenderingMode() {
 		if let image = self.image {
 			let renderingMode = self.tintImageWithForegroundColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
 			super.image = image.withRenderingMode(renderingMode)
 		}
+	}
+	
+	private func setUpSTComponentHelper() {
+		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+			BackgroundAndBorderStylePropertySet(self),
+			ForegroundStylePropertySet(self),
+			ImageStylePropertySet(self)
+		])
 	}
 }

@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 
-@IBDesignable open class STTableView : UITableView, Stylable
+@IBDesignable open class STTableView : UITableView, Stylable, BackgroundAndBorderStylable, TableViewSeparatorStylable
 {
+    private var _stComponentHelper: STComponentHelper!
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -21,16 +23,12 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STTableView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        self.setUpSTComponentHelper()
     }
     
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.setUpSTComponentHelper()
     }
     
     
@@ -41,17 +39,23 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     @IBInspectable open var styleName:String? {
-        didSet {
-            self.updateStyles()
+        set {
+            self._stComponentHelper.styleName = newValue
+        }
+        get {
+            return self._stComponentHelper.styleName
         }
     }
     
     @IBInspectable open var substyleName:String? {
-        didSet {
-            self.updateStyles()
+        set {
+            self._stComponentHelper.substyleName = newValue
+        }
+        get {
+            return self._stComponentHelper.substyleName
         }
     }
-    
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -60,34 +64,20 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        if let backgroundColor = style.backgroundColor {
-            self.backgroundColor = backgroundColor
-        }
-        if let borderWidth = style.borderWidth {
-            self.layer.borderWidth = borderWidth
-        }
-        if let borderColor = style.borderColor {
-            self.layer.borderColor = borderColor.cgColor
-        }
-        if let cornerRadius = style.cornerRadius {
-            self.layer.cornerRadius = cornerRadius
-        }
-        if let tableViewSeparatorStyle = style.tableViewSeparatorStyle {
-            self.separatorStyle = tableViewSeparatorStyle
-        }
-        if let tableViewSeparatorColor = style.tableViewSeparatorColor {
-            self.separatorColor = tableViewSeparatorColor
-        }
+        self._stComponentHelper.applyStyle(style)
     }
     
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
-    // MARK: - Internal methods
+    // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @objc func stylesDidUpdate(_ notification:Notification) {
-        self.updateStyles()
+    private func setUpSTComponentHelper() {
+        self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+            BackgroundAndBorderStylePropertySet(self),
+            TableViewSeparatorStylePropertySet(self)
+        ])
     }
 }

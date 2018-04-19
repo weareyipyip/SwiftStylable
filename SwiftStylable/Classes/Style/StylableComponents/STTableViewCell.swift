@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 
-@IBDesignable open class STTableViewCell : UITableViewCell, Stylable
+@IBDesignable open class STTableViewCell : UITableViewCell, Stylable, BackgroundAndBorderStylable
 {
+    private var _stComponentHelper: STComponentHelper!
+    
     private var _selected = false
     private var _highlighted = false
 	
@@ -31,12 +33,7 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STTableViewCell.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
-    }
-        
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.setUpSTComponentHelper()
     }
     
     
@@ -46,18 +43,24 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
 
-	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
-	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
+    @IBInspectable open var styleName:String? {
+        set {
+            self._stComponentHelper.styleName = newValue
+        }
+        get {
+            return self._stComponentHelper.styleName
+        }
+    }
+    
+    @IBInspectable open var substyleName:String? {
+        set {
+            self._stComponentHelper.substyleName = newValue
+        }
+        get {
+            return self._stComponentHelper.substyleName
+        }
+    }
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -92,53 +95,24 @@ import UIKit
     // -----------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		if let borderWidth = style.borderWidth {
-			self.layer.borderWidth = borderWidth
-		}
-		if let cornerRadius = style.cornerRadius {
-			self.layer.cornerRadius = cornerRadius
-		}
-		if let backgroundColor = style.backgroundColor {
-			self._backgroundColor = backgroundColor
-		}
-		if let borderColor = style.borderColor {
-			self._borderColor = borderColor
-		}
-		if let highlightedBackgroundColor = style.highlightedBackgroundColor {
-			self._highlightedBackgroundColor = highlightedBackgroundColor
-		}
-		if let highlightedBorderColor = style.highlightedBorderColor {
-			self._highlightedBorderColor = highlightedBorderColor
-		}
-		if let selectedBackgroundColor = style.selectedBackgroundColor {
-			self._selectedBackgroundColor = selectedBackgroundColor
-		}
-		if let selectedBorderColor = style.selectedBorderColor {
-			self._selectedBorderColor = selectedBorderColor
-		}
-		
+        self._stComponentHelper.applyStyle(style)
 		self.updateColors()
     }
 	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
-    // MARK: - Internal methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
-	
-
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
     // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    fileprivate func updateColors() {
+    private func setUpSTComponentHelper() {
+        self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+            BackgroundAndBorderStylePropertySet(self, canBeHighlighted: true, canBeSelected: true)
+        ])
+    }
+    
+    private func updateColors() {
         if self._highlighted {
             self.backgroundColor = self._highlightedBackgroundColor ?? self._backgroundColor
             self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._borderColor.cgColor

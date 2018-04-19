@@ -9,7 +9,9 @@
 import Foundation
 
 
-@IBDesignable open class STButton : ExtendedButton, Stylable {
+@IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable {
+	
+	private var _stComponentHelper:STComponentHelper!
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -20,18 +22,12 @@ import Foundation
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
     }
     
     required public init(frame: CGRect) {
         super.init(frame: frame)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STButton.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+		self.setUpSTComponentHelper()
     }
     
     
@@ -42,14 +38,20 @@ import Foundation
     // -----------------------------------------------------------------------------------------------------------------------
     
 	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.styleName = newValue
+		}
+		get {
+			return self._stComponentHelper.styleName
 		}
 	}
 	
 	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.substyleName = newValue
+		}
+		get {
+			return self._stComponentHelper.substyleName
 		}
 	}
 	
@@ -76,7 +78,123 @@ import Foundation
             self.processImageName(self.disabledImageName, forState: .disabled)
         }
     }
-    
+	
+	open var foregroundColor: UIColor? {
+		get {
+			return self.titleColor(for: .normal)
+		}
+		set {
+			self.setTitleColor(newValue, for: .normal)
+		}
+	}
+	
+	open var highlightedForegroundColor: UIColor? {
+		get {
+			return self.titleColor(for: .highlighted)
+		}
+		set {
+			self.setTitleColor(newValue, for: .highlighted)
+		}
+	}
+	
+	open var selectedForegroundColor: UIColor? {
+		get {
+			return self.titleColor(for: .selected)
+		}
+		set {
+			self.setTitleColor(newValue, for: .selected)
+		}
+	}
+	
+	open var disabledForegroundColor: UIColor? {
+		get {
+			return self.titleColor(for: .disabled)
+		}
+		set {
+			self.setTitleColor(newValue, for: .disabled)
+		}
+	}
+	
+	var normalBackgroundColor: UIColor? {
+		get {
+			return self.backgroundColor(for: .normal)
+		}
+		set {
+			self.setBackgroundColor(newValue, for: .normal)
+		}
+	}
+	
+	open var highlightedBackgroundColor: UIColor? {
+		get {
+			return self.backgroundColor(for: .highlighted)
+		}
+		set {
+			self.setBackgroundColor(newValue, for: .highlighted)
+		}
+	}
+	
+	open var selectedBackgroundColor: UIColor? {
+		get {
+			return self.backgroundColor(for: .selected)
+		}
+		set {
+			self.setBackgroundColor(newValue, for: .selected)
+		}
+	}
+	
+	open var disabledBackgroundColor: UIColor? {
+		get {
+			return self.backgroundColor(for: .disabled)
+		}
+		set {
+			self.setBackgroundColor(newValue, for: .disabled)
+		}
+	}
+	
+	open var borderColor: UIColor? {
+		get {
+			return self.borderColor(for: .normal)
+		}
+		set {
+			self.setBorderColor(newValue, for: .normal)
+		}
+	}
+	
+	open var highlightedBorderColor: UIColor? {
+		get {
+			return self.borderColor(for: .highlighted)
+		}
+		set {
+			self.setBorderColor(newValue, for: .highlighted)
+		}
+	}
+	open var selectedBorderColor: UIColor? {
+		get {
+			return self.borderColor(for: .selected)
+		}
+		set {
+			self.setBorderColor(newValue, for: .selected)
+		}
+	}
+	
+	open var disabledBorderColor: UIColor? {
+		get {
+			return self.borderColor(for: .disabled)
+		}
+		set {
+			self.setBorderColor(newValue, for: .disabled)
+		}
+	}
+	
+	var tintImageWithForegroundColor: Bool {
+		get {
+			return self.tintImageWithTitleColor
+		}
+		set {
+			self.tintImageWithTitleColor = newValue
+		}
+	}
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -85,92 +203,29 @@ import Foundation
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		
-		// Background colors
-		if let backgroundColor = style.backgroundColor {
-			self.setBackgroundColor(backgroundColor, forState: UIControlState())
-		}
-		if let highlightedBackgroundColor = style.highlightedBackgroundColor {
-			self.setBackgroundColor(highlightedBackgroundColor, forState: .highlighted)
-		}
-		if let selectedBackgroundColor = style.selectedBackgroundColor {
-			self.setBackgroundColor(selectedBackgroundColor, forState: .selected)
-		}
-		if let disabledBackgroundColor = style.disabledBackgroundColor {
-			self.setBackgroundColor(disabledBackgroundColor, forState: .disabled)
-		}
-		
-		// Border style
-		if let borderColor = style.borderColor {
-			self.setBorderColor(borderColor, forState: UIControlState())
-		}
-		if let highlightedBorderColor = style.highlightedBorderColor {
-			self.setBorderColor(highlightedBorderColor, forState: .highlighted)
-		}
-		if let selectedBorderColor = style.selectedBorderColor {
-			self.setBorderColor(selectedBorderColor, forState: .selected)
-		}
-		if let disabledBorderColor = style.disabledBorderColor {
-			self.setBorderColor(disabledBorderColor, forState: .disabled)
-		}
-		if let borderWidth = style.borderWidth {
-			self.layer.borderWidth = borderWidth
-		}
-		
-		// Foreground colors
-		if let foregroundColor = style.foregroundColor {
-			self.setTitleColor(foregroundColor, for: UIControlState())
-		}
-		if let highlightedForegroundColor = style.highlightedForegroundColor {
-			self.setTitleColor(highlightedForegroundColor, for: .highlighted)
-		}
-		if let selectedForegroundColor = style.selectedForegroundColor {
-			self.setTitleColor(selectedForegroundColor, for: .selected)
-		}
-		if let disabledForegroundColor = style.disabledForegroundColor {
-			self.setTitleColor(disabledForegroundColor, for: .disabled)
-		}
-		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
-			self.tintImageWithTitleColor = tintImageWithForegroundColor
-		}
-
-		// Text
-		if let font = style.font {
-			self.titleLabel?.font = font
-		}
-		if let fullUppercaseText = style.fullUppercaseText {
-			self.fullUppercaseText = fullUppercaseText
-		}
-		
-		// Corner radius
-		if let cornerRadius = style.cornerRadius {
-			self.layer.cornerRadius = cornerRadius
-		}
+		self._stComponentHelper.applyStyle(style)
     }
-    
+	
     open func paintCodeImageNamed(_ name:String)->UIImage? {
         return nil
     }
     
-
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Internal methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-    @objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-    }
-    
-    
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
-    fileprivate func processImageName(_ imageName:String?, forState state: UIControlState) {
+	
+	private func setUpSTComponentHelper() {
+        self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+			BackgroundAndBorderStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
+			ForegroundStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
+			ImageStylePropertySet(self)
+		])
+	}
+	
+    private func processImageName(_ imageName:String?, forState state: UIControlState) {
         if let name = imageName, let image = self.paintCodeImageNamed(name) {
             self.setImage(image, for: state)
         } else {

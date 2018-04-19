@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class STHorizontalHairline : UIView, Stylable {
-    
+@IBDesignable class STHorizontalHairline : UIView, Stylable, BackgroundAndBorderStylable {
+	
+	private var _stComponentHelper: STComponentHelper!
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -21,20 +23,14 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STHorizontalHairline.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setupSTComponentHelper()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STHorizontalHairline.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setupSTComponentHelper()
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -68,18 +64,7 @@ import UIKit
 		}
 	}
 	
-    
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Public methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-    @objc func stylesDidUpdate(_ notification:Notification) {
-        self.updateStyles()
-    }
-    
-    
+        
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Internal methods
@@ -87,6 +72,20 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.backgroundColor = style.backgroundColor
+		self._stComponentHelper.applyStyle(style)
     }
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Private methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	private func setupSTComponentHelper() {
+		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+			BackgroundAndBorderStylePropertySet(self)
+		])
+	}
+
 }

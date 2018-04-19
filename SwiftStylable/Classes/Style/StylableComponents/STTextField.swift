@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextField : UITextField, Stylable {
+@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable {
+    
+    private var _stComponentHelper: STComponentHelper!
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -20,18 +22,12 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STTextField.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.setUpSTComponentHelper()
     }
     
     
@@ -41,18 +37,24 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
-	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
+    @IBInspectable open var styleName:String? {
+        set {
+            self._stComponentHelper.styleName = newValue
+        }
+        get {
+            return self._stComponentHelper.styleName
+        }
+    }
+    
+    @IBInspectable open var substyleName:String? {
+        set {
+            self._stComponentHelper.substyleName = newValue
+        }
+        get {
+            return self._stComponentHelper.substyleName
+        }
+    }
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -61,35 +63,20 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-		if let backgroundColor = style.backgroundColor {
-			self.backgroundColor = backgroundColor
-		}
-		if let font = style.font {
-			self.font = font
-		}
-		if let foregroundColor = style.foregroundColor {
-			self.textColor = foregroundColor
-		}
-		if let borderColor = style.borderColor {
-			self.layer.borderColor = borderColor.cgColor
-		}
-		if let borderWidth = style.borderWidth {
-			self.layer.borderWidth = borderWidth
-		}
-		if let borderStyle = style.borderStyle {
-			self.layer.masksToBounds = true
-			self.borderStyle = borderStyle
-		}
+        self._stComponentHelper.applyStyle(style)
     }
     
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
-    // MARK: - Internal methods
+    // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
+    private func setUpSTComponentHelper() {
+        self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+            BackgroundAndBorderStylePropertySet(self),
+            TextBorderStylePropertySet(self)
+        ])
+    }
 }

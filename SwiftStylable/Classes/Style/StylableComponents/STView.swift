@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 
-@IBDesignable open class STView : UIView, Stylable
-{
+@IBDesignable open class STView : UIView, Stylable, BackgroundAndBorderStylable {
+	
+	private var _stComponentHelper: STComponentHelper!
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -21,20 +23,14 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(STView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+	
     
    // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -43,50 +39,44 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
 	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.styleName = newValue
+		}
+		get {
+			return self._stComponentHelper.styleName
 		}
 	}
 	
 	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.substyleName = newValue
+		}
+		get {
+			return self._stComponentHelper.substyleName
 		}
 	}
-	
+		
     
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Internal methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
-	
-
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Public methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
+	
     open func applyStyle(_ style:Style) {
-		if let backgroundColor = style.backgroundColor {
-			self.backgroundColor = backgroundColor
-		}
-		if let borderWidth = style.borderWidth {
-			self.layer.borderWidth = borderWidth
-		}
-		if let borderColor = style.borderColor {
-			self.layer.borderColor = borderColor.cgColor
-		}
-		if let cornerRadius = style.cornerRadius {
-			self.layer.cornerRadius = cornerRadius
-		}
-        if let clipsToBounds = style.clipsToBounds {
-            self.clipsToBounds = clipsToBounds
-        }
+		self._stComponentHelper.applyStyle(style)
     }
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Private methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	private func setUpSTComponentHelper() {
+		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+			BackgroundAndBorderStylePropertySet(self)
+		])
+	}
 }

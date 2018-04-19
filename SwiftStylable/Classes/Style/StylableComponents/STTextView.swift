@@ -21,8 +21,9 @@ import UIKit
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextView : UITextView, Stylable {
-    
+@IBDesignable open class STTextView : UITextView, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable {
+
+    private var _stComponentHelper: STComponentHelper!
     private var _text:String?
     
     
@@ -36,18 +37,14 @@ import UIKit
         super.init(coder: aDecoder)
         
         self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STTextView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect, textContainer:NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
         
         self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STTextView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.setUpSTComponentHelper()
     }
     
     
@@ -58,17 +55,23 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     @IBInspectable open var styleName:String? {
-        didSet {
-            self.updateStyles()
+        set {
+            self._stComponentHelper.styleName = newValue
+        }
+        get {
+            return self._stComponentHelper.styleName
         }
     }
     
     @IBInspectable open var substyleName:String? {
-        didSet {
-            self.updateStyles()
+        set {
+            self._stComponentHelper.substyleName = newValue
+        }
+        get {
+            return self._stComponentHelper.substyleName
         }
     }
-    
+
     open override var text: String? {
         set {
             self._text = newValue
@@ -79,13 +82,29 @@ import UIKit
         }
     }
     
+    var foregroundColor: UIColor? {
+        set {
+            self.textColor = newValue ?? UIColor.black
+        }
+        get {
+            return self.textColor
+        }
+    }
+    
+    var textFont: UIFont? {
+        set {
+            self.font = font
+        }
+        get {
+            return self.font
+        }
+    }
+
     open var fullUppercaseText = false {
         didSet {
             self.text = self._text
         }
     }
-    
-    
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -109,11 +128,15 @@ import UIKit
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
-    // MARK: - Internal methods
+    // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @objc func stylesDidUpdate(_ notification:Notification) {
-        self.updateStyles()
+    private func setUpSTComponentHelper() {
+        self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+            BackgroundAndBorderStylePropertySet(self),
+            ForegroundStylePropertySet(self),
+            TextStylePropertySet(self)
+        ])
     }
 }

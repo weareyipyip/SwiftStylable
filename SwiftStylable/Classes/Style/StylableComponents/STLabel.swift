@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class STLabel : UILabel, Stylable {
+@IBDesignable open class STLabel : UILabel, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable {
 	
+	private var _stComponentHelper: STComponentHelper!
 	private var _text:String?
 
     
@@ -22,16 +23,14 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-		
 		self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
 		self._text = super.text
-        NotificationCenter.default.addObserver(self, selector: #selector(STLabel.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+		self.setUpSTComponentHelper()
     }
     
     deinit {
@@ -46,14 +45,20 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
 	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.styleName = newValue
+		}
+		get {
+			return self._stComponentHelper.styleName
 		}
 	}
 	
 	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
+		set {
+			self._stComponentHelper.substyleName = newValue
+		}
+		get {
+			return self._stComponentHelper.substyleName
 		}
 	}
 	
@@ -73,7 +78,25 @@ import UIKit
 		}
 	}
 	
-
+	var foregroundColor: UIColor? {
+		set {
+			self.textColor = newValue ?? UIColor.black
+		}
+		get {
+			return self.textColor
+		}
+	}
+    
+    var textFont: UIFont? {
+        set {
+            if let font = newValue {
+                self.font = font
+            }
+        }
+        get {
+            return self.font
+        }
+    }
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -83,37 +106,22 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        if let backgroundColor = style.backgroundColor {
-            self.backgroundColor = backgroundColor
-        }
-        if let borderWidth = style.borderWidth {
-            self.layer.borderWidth = borderWidth
-        }
-        if let borderColor = style.borderColor {
-            self.layer.borderColor = borderColor.cgColor
-        }
-        if let cornerRadius = style.cornerRadius {
-            self.layer.cornerRadius = cornerRadius
-        }
-		if let font = style.font {
-			self.font = font
-		}
-		if let foregroundColor = style.foregroundColor {
-			self.textColor = foregroundColor
-		}
-		if let fullUppercaseText = style.fullUppercaseText {
-			self.fullUppercaseText = fullUppercaseText
-		}
+		self._stComponentHelper.applyStyle(style)
     }
     
-    
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Internal methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
+	
+	// -----------------------------------------------------------------------------------------------------------------------
+	//
+	// MARK: Private methods
+	//
+	// -----------------------------------------------------------------------------------------------------------------------
+	
+	private func setUpSTComponentHelper() {
+		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
+			BackgroundAndBorderStylePropertySet(self),
+			ForegroundStylePropertySet(self),
+			TextStylePropertySet(self)
+		])
 	}
+
 }

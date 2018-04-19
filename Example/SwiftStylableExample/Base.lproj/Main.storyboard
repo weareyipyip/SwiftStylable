@@ -35,7 +35,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phoebe Buffay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="57" width="231" height="14"/>
+                                        <rect key="frame" x="128" y="50" width="231" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -280,7 +280,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-IN-22t" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="135" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="135.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="0kc-nQ-ob8"/>
                                             <constraint firstAttribute="width" constant="32" id="Wbp-uy-aFR"/>
@@ -291,7 +291,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t85-J6-aiu" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="228" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="227.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="1GV-Zy-sdp"/>
                                             <constraint firstAttribute="width" constant="32" id="Shd-ib-Bv4"/>
@@ -302,7 +302,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goM-NE-dVA" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="342.5" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="342" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Xk6-Iv-lCO"/>
                                             <constraint firstAttribute="width" constant="32" id="m3H-iQ-mFb"/>
