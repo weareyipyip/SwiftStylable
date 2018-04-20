@@ -2,6 +2,12 @@
 
 Significant changes to the project will be documented here.
 
+## [1.1.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
+
+- Added a (this) changelog
+- Renamed the styledText property of a style to styledTextAttributes
+- Added styledText support to STTextView
+
 ## [1.1.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.0)
 
 - Refactored STComponents to a more component bases architecture, to avoid duplicate code
