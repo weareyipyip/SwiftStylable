@@ -81,7 +81,16 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- name (string, PostScript name of the font
 	- size (number)
 - fullUppercaseText (boolean)
-	
+- styledTextAttributes (dictionary --> see 'Styled text' below)
+	- foregroundColor (string)
+	- font (dictionary)
+		- name (string)
+		- size (number)
+	- lineSpacing (number)
+	- kern (number)
+	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
+	- underlineColor (string)
+
 #### Colors
 All color properties should reference a named color from the colors section of the styles descriptor. For most colors there are 3 varieties besided the normal one: highlighted, selected and disabled. Most components do not use these varieties. They are mainly meant to define button states.
 
@@ -106,6 +115,10 @@ Instead of specifying a postScriptName, you can also use the system font by usin
 - "semiboldSystemFont"
 - "ultraLightSystemFont"
 
+#### Styled text
+The STLabel and the STTextView both support 'styled text'. This is basically attributedText, set with the attributes specified for this in a style. A normal Label / TextView has a 'text' property and an 'attributedText' property. The corresponding STComponents have an additional 'styledText' property (also available in the Interface Builder inspector). If you use this property for setting the component's text, the 'styledTextAttributes' from the selected style will automatically be applied. Setting the styledText will create the attributedText for you, this then becomes available through the attributedText property. The styledText property itself will contain the string you set it to, until you set any of the other text properties (text / attributedText), then it will be nilled. See the 'styledTextAttributes' property in the 'Styles' section of this document for a list of supported text attributes.
+
+
 #### Style inheritance
 
 If you want to define a style that is much like a previously defined style, you can use this previous style as a parent. This way you only have to set the properties that are different from the parent style, in the new style you are creating. The other properties will simply be inherited from the parent style. To set a parent syle, just add a 'parent' property to your style definition, with the name of the desired parent style as the value.
@@ -122,7 +135,7 @@ The following components are currently available:
 - STLabel
 - STTextField
 - STTextView
-- STButtonp
+- STButton
 - STImageView
 - STActivityIndicator
 - STSwitch

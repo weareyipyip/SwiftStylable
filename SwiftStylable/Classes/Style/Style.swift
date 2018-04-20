@@ -307,7 +307,7 @@ open class Style {
         }
         
         // Styled text
-        if let styledTextDictionary = data["styledText"] as? [String:Any] {
+        if let styledTextDictionary = data["styledTextAttributes"] as? [String:Any] {
             self.styledTextDictionary = styledTextDictionary
         }
     }
@@ -402,6 +402,7 @@ open class Style {
             attributes[NSAttributedStringKey.foregroundColor] = color
         }
         
+        // Kern
         if let kern = data["kern"] as? CGFloat {
             attributes[NSAttributedStringKey.kern] = kern
         }
