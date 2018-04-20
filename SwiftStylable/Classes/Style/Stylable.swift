@@ -9,7 +9,7 @@
 import Foundation
 
 
-public protocol Stylable {
+public protocol Stylable : class {
 	var styleName:String? { get set }
 	var substyleName:String? { get set }
 	

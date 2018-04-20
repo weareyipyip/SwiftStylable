@@ -17,7 +17,7 @@ import UIKit
 	private var _selectedBackgroundColor:UIColor?
 	private var _disabledBackgroundColor:UIColor?
 	
-	private var _normalBorderColor:UIColor = UIColor.clear
+	private var _normalBorderColor:UIColor?
 	private var _highlightedBorderColor:UIColor?
 	private var _selectedBorderColor:UIColor?
 	private var _disabledBorderColor:UIColor?
@@ -239,25 +239,21 @@ import UIKit
 	//  Extra state color properties
 	// -----------------------------------------------------------
 	
-	open func setBackgroundColor(_ color:UIColor, forState:UIControlState)
+	open func setBackgroundColor(_ color:UIColor?, for state:UIControlState)
 	{
-		switch (forState)
+		switch (state)
 		{
 		case UIControlState():
 			_normalBackgroundColor = color
-			break
 			
 		case UIControlState.highlighted:
 			_highlightedBackgroundColor = color
-			break
 			
 		case UIControlState.selected:
 			_selectedBackgroundColor = color
-			break
 			
 		case UIControlState.disabled:
 			_disabledBackgroundColor = color
-			break
 			
 		default:
 			break;
@@ -265,9 +261,32 @@ import UIKit
 		self.updateColors(updateImageTintColor: false)
 	}
 	
-	open func setBorderColor(_ color:UIColor, forState:UIControlState)
+	open func backgroundColor(for state:UIControlState)->UIColor? {
+		var color:UIColor?
+		
+		switch (state)
+		{
+		case UIControlState():
+			color = self._normalBackgroundColor
+			
+		case UIControlState.highlighted:
+			color = self._highlightedBackgroundColor
+			
+		case UIControlState.selected:
+			color = self._selectedBackgroundColor
+			
+		case UIControlState.disabled:
+			color = self._disabledBackgroundColor
+			
+		default:
+			color = nil
+		}
+		return color
+	}
+	
+	open func setBorderColor(_ color:UIColor?, for state:UIControlState)
 	{
-		switch (forState)
+		switch (state)
 		{
 		case UIControlState():
 			_normalBorderColor = color
@@ -291,6 +310,29 @@ import UIKit
 		self.updateColors(updateImageTintColor: false)
 	}
 	
+	open func borderColor(for state:UIControlState)->UIColor? {
+		var color:UIColor?
+		
+		switch (state)
+		{
+		case UIControlState():
+			color = self._normalBorderColor
+			
+		case UIControlState.highlighted:
+			color = self._highlightedBorderColor
+			
+		case UIControlState.selected:
+			color = self._selectedBorderColor
+			
+		case UIControlState.disabled:
+			color = self._disabledBorderColor
+			
+		default:
+			color = nil
+		}
+		return color
+	}
+
 	open override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
 		super.setTitleColor(color, for: state)
 		self.updateColors(updateImageTintColor: self.tintImageWithTitleColor && self.state == state)
@@ -452,7 +494,7 @@ import UIKit
 			if (self.isHighlighted)
 			{
 				self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
-				self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
+				self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
 				if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
 					imageView.tintColor = self.titleColor(for: .highlighted)
 				}
@@ -460,7 +502,7 @@ import UIKit
 			else if (self.isSelected)
 			{
 				self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
-				self.layer.borderColor = self._selectedBorderColor?.cgColor ?? self._normalBorderColor.cgColor
+				self.layer.borderColor = self._selectedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
 				if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
 					imageView.tintColor = self.titleColor(for: .selected)
 				}
@@ -468,7 +510,7 @@ import UIKit
 			else
 			{
 				self.backgroundColor = self._normalBackgroundColor
-				self.layer.borderColor = self._normalBorderColor.cgColor
+				self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
 				if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
 					imageView.tintColor = self.titleColor(for: UIControlState())
 				}
@@ -477,7 +519,7 @@ import UIKit
 		else
 		{
 			self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
-			self.layer.borderColor = self._disabledBorderColor?.cgColor ?? self._normalBorderColor.cgColor
+			self.layer.borderColor = self._disabledBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
 			if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
 				imageView.tintColor = self.titleColor(for: .disabled)
 			}
