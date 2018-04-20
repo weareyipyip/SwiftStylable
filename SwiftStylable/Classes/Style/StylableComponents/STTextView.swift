@@ -21,11 +21,12 @@ import UIKit
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextView : UITextView, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable {
+@IBDesignable open class STTextView : UITextView, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable {
 
     private var _stComponentHelper: STComponentHelper!
     private var _text:String?
-    
+    private var _styledText:String?
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -76,9 +77,16 @@ import UIKit
         set {
             self._text = newValue
             super.text = self.fullUppercaseText ? newValue?.uppercased() : newValue
+            self._styledText = nil
         }
         get {
             return self._text
+        }
+    }
+    
+    open override var attributedText: NSAttributedString? {
+        didSet {
+            self._styledText = nil
         }
     }
     
@@ -99,6 +107,14 @@ import UIKit
             return self.font
         }
     }
+    
+    var styledTextAttributes:[NSAttributedStringKey:Any]? {
+        didSet {
+            if self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
 
     open var fullUppercaseText = false {
         didSet {
@@ -106,6 +122,19 @@ import UIKit
         }
     }
     
+    @IBInspectable var styledText:String? {
+        set {
+            self._styledText = newValue
+            self._text = newValue
+            if let text = newValue {
+                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedStringKey:Any]())
+            }
+        }
+        get {
+            return self._styledText
+        }
+    }
+
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -136,7 +165,8 @@ import UIKit
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
             BackgroundAndBorderStylePropertySet(self),
             ForegroundStylePropertySet(self),
-            TextStylePropertySet(self)
+            TextStylePropertySet(self),
+            StyledTextStylePropertySet(self)
         ])
     }
 }

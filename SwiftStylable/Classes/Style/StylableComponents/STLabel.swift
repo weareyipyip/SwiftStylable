@@ -108,6 +108,9 @@ import UIKit
     
     var styledTextAttributes:[NSAttributedStringKey:Any]? {
         didSet {
+            if self._styledText != nil {
+                self.styledText = self._styledText
+            }
         }
     }
 

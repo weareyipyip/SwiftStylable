@@ -23,10 +23,10 @@
 	<dict>
 		<key>testText</key>
 		<dict>
-			<key>styledText</key>
+			<key>styledTextAttributes</key>
 			<dict>
 				<key>lineSpacing</key>
-				<integer>5</integer>
+				<integer>15</integer>
 			</dict>
 		</dict>
 		<key>contentArea</key>
