@@ -52,6 +52,9 @@ open class Style {
     // Cell style color names
     private (set) var tableViewSeparatorColorString:String?
     
+    // Styled text
+    private (set) var styledTextDictionary:[String:Any]?
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -63,12 +66,12 @@ open class Style {
         self.name = name
     }
     
-    public init(name:String, data:[String:AnyObject], colors:[String:UIColor]) {
+    public init(name:String, data:[String:Any], colors:[String:UIColor]) {
         self.name = name
         self.parseData(data, colors: colors)
     }
     
-    public init(name:String, parentStyle:Style, overridesData:[String:AnyObject], colors:[String:UIColor]) {
+    public init(name:String, parentStyle:Style, overridesData:[String:Any], colors:[String:UIColor]) {
         self.name = name
      
         // Set properties from parent
@@ -178,6 +181,15 @@ open class Style {
         return self.colorFromString(self.tableViewSeparatorColorString)
     }
     
+    // Styled text
+    open var styledTextAttributes:[NSAttributedStringKey:Any]? {
+        if let styledTextDictionary = self.styledTextDictionary {
+            return self.stringAttributesFromDictionary(styledTextDictionary)
+        } else {
+            return nil
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -185,7 +197,7 @@ open class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    func parseData(_ data:[String:AnyObject], colors:[String:UIColor]) {
+    func parseData(_ data:[String:Any], colors:[String:UIColor]) {
         // Foreground colors
         if let foregroundColorString = data["foregroundColor"] as? String {
             self.foregroundColorString = foregroundColorString
@@ -293,6 +305,11 @@ open class Style {
         if let clipsToBounds = data["clipsToBounds"] as? Bool {
             self.clipsToBounds = clipsToBounds
         }
+        
+        // Styled text
+        if let styledTextDictionary = data["styledText"] as? [String:Any] {
+            self.styledTextDictionary = styledTextDictionary
+        }
     }
     
     
@@ -318,8 +335,86 @@ open class Style {
         return color
     }
     
-    private func parseFont(data:[String:AnyObject], key:String)->UIFont? {
-        if let fontData = data[key] as? [String:AnyObject] {
+    private func stringAttributesFromDictionary(_ data:[String:Any]?)->[NSAttributedStringKey:Any]? {
+        guard let data = data else {
+            return nil
+        }
+
+        var attributes = [NSAttributedStringKey:Any]()
+        
+        var paragraphStyleNeeded = false
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        // Line spacing
+        if let lineSpacing = data["lineSpacing"] as? CGFloat {
+            paragraphStyle.lineSpacing = lineSpacing
+            paragraphStyleNeeded = true
+        }
+        
+        // Underline style
+        if let underlineStyleString = data["underlineStyle"] as? String {
+            let underlineStyle:Int
+            switch underlineStyleString {
+            case "byWord":
+                underlineStyle = NSUnderlineStyle.byWord.rawValue
+                
+            case "patternDash":
+                underlineStyle = NSUnderlineStyle.patternDash.rawValue
+                
+            case "patternDashDot":
+                underlineStyle = NSUnderlineStyle.patternDashDot.rawValue
+                
+            case "patternDashDotDot":
+                underlineStyle = NSUnderlineStyle.patternDashDotDot.rawValue
+                
+            case "patternDot":
+                underlineStyle = NSUnderlineStyle.patternDot.rawValue
+                
+            case "double":
+                underlineStyle = NSUnderlineStyle.styleDouble.rawValue
+                
+            case "single":
+                underlineStyle = NSUnderlineStyle.styleSingle.rawValue
+                
+            case "thick":
+                underlineStyle = NSUnderlineStyle.styleThick.rawValue
+
+            case "none":
+                fallthrough
+            default:
+                underlineStyle = NSUnderlineStyle.styleNone.rawValue
+            }
+            attributes[NSAttributedStringKey.underlineStyle] = underlineStyle
+        }
+        
+        // Underline color
+        if let underlineColorString = data["underlineColor"] as? String, let color = self.colorFromString(underlineColorString) {
+            attributes[NSAttributedStringKey.underlineColor] = color
+        }
+        
+        // Font
+        if let font = self.parseFont(data: data, key: "font") {
+            attributes[NSAttributedStringKey.font] = font
+        }
+        
+        // ForegroundColor
+        if let foregroundColorString = data["foregroundColor"] as? String, let color = self.colorFromString(foregroundColorString) {
+            attributes[NSAttributedStringKey.foregroundColor] = color
+        }
+        
+        if let kern = data["kern"] as? CGFloat {
+            attributes[NSAttributedStringKey.kern] = kern
+        }
+        
+        if paragraphStyleNeeded {
+            attributes[NSAttributedStringKey.paragraphStyle] = paragraphStyle
+        }
+        
+        return attributes
+    }
+    
+    private func parseFont(data:[String:Any], key:String)->UIFont? {
+        if let fontData = data[key] as? [String:Any] {
             if let name = fontData["name"] as? String ?? self.font?.fontName,
                 let size = fontData["size"] as? CGFloat ?? self.font?.pointSize {
                 switch name {

@@ -21,6 +21,14 @@
 	</dict>
 	<key>styles</key>
 	<dict>
+		<key>testText</key>
+		<dict>
+			<key>styledText</key>
+			<dict>
+				<key>lineSpacing</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
 		<key>contentArea</key>
 		<dict>
 			<key>backgroundColor</key>

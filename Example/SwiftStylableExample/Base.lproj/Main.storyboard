@@ -35,7 +35,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phoebe Buffay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="57" width="231" height="14"/>
+                                        <rect key="frame" x="128" y="50" width="231" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -280,7 +280,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-IN-22t" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="135" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="135.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="0kc-nQ-ob8"/>
                                             <constraint firstAttribute="width" constant="32" id="Wbp-uy-aFR"/>
@@ -394,12 +394,30 @@
                                     <constraint firstAttribute="trailing" secondItem="v9r-OP-m5c" secondAttribute="trailing" constant="16" id="zqK-6l-ZCe"/>
                                 </constraints>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Np-vu-iRt" customClass="STLabel" customModule="SwiftStylable">
+                                <rect key="frame" x="62" y="151" width="250" height="302.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="WVu-16-YBm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="testText"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styledText">
+                                        <string key="value">Lorem ipsum dolor sit amet boterham met mpindakaas en hagelslag en doe er ook nog maar een laagje jam op dat vult het vakje lekker!</string>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7Np-vu-iRt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Er-VL-Dcy"/>
                             <constraint firstAttribute="bottom" secondItem="u62-Nb-TLZ" secondAttribute="bottom" id="7JG-54-2NX"/>
                             <constraint firstItem="u62-Nb-TLZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Hf4-C3-oFb"/>
                             <constraint firstAttribute="trailing" secondItem="u62-Nb-TLZ" secondAttribute="trailing" id="bKK-UC-hxC"/>
+                            <constraint firstItem="7Np-vu-iRt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rVm-Uq-oZ6"/>
                             <constraint firstItem="u62-Nb-TLZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rj7-AM-jGY"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
