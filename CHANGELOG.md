@@ -2,11 +2,16 @@
 
 Significant changes to the project will be documented here.
 
-## [1.1.3](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
+## [1.1.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.4)
+
+- Fixed another issue causing the borderColor not to work correctly on some components
+- Fixed an issue causing text properties to fail on STButtons
+
+## [1.1.3](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.3)
 
 - Fixed an issue causing the borderColor not to work correctly on some components
 
-## [1.1.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
+## [1.1.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.2)
 
 - Added support for lineHeightMultiple to styledTextAttributes
 - Fixed access modifiers for styledText properties of STLabel and STTextView
