@@ -351,6 +351,12 @@ open class Style {
             paragraphStyleNeeded = true
         }
         
+        // Line height multiple
+        if let lineHeightMultiple = data["lineHeightMultiple"] as? CGFloat {
+            paragraphStyle.lineHeightMultiple = lineHeightMultiple
+            paragraphStyleNeeded = true
+        }
+
         // Underline style
         if let underlineStyleString = data["underlineStyle"] as? String {
             let underlineStyle:Int

@@ -114,7 +114,7 @@ import UIKit
         }
     }
 
-    @IBInspectable var styledText:String? {
+    @IBInspectable open var styledText:String? {
         set {
             self._styledText = newValue
             self._text = newValue
