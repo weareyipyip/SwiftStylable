@@ -9,7 +9,7 @@
 import Foundation
 
 
-@IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable {
+@IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable {
 	
 	private var _stComponentHelper:STComponentHelper!
     
@@ -221,7 +221,8 @@ import Foundation
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
 			BackgroundAndBorderStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ForegroundStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
-			ImageStylePropertySet(self)
+			ImageStylePropertySet(self),
+            ButtonTextStylePropertySet(self)
 		])
 	}
 	
