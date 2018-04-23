@@ -2,6 +2,11 @@
 
 Significant changes to the project will be documented here.
 
+## [1.1.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
+
+- Added support for lineHeightMultiple to styledTextAttributes
+- Fixed access modifiers for styledText properties of STLabel and STTextView
+
 ## [1.1.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
 
 - Added a (this) changelog
