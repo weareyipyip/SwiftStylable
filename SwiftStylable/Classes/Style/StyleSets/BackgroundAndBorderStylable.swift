@@ -83,7 +83,7 @@ extension BackgroundAndBorderStylable {
 			return color
 		}
 		set {
-			self.layer.borderColor = self.borderColor?.cgColor
+			self.layer.borderColor = newValue?.cgColor
 		}
 	}
 
