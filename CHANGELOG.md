@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.1.3](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
+
+- Fixed an issue causing the borderColor not to work correctly on some components
+
 ## [1.1.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.1)
 
 - Added support for lineHeightMultiple to styledTextAttributes

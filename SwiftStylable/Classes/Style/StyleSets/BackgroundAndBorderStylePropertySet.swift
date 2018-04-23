@@ -48,7 +48,7 @@ class BackgroundAndBorderStylePropertySet : StylePropertySet {
 			view.layer.borderWidth = borderWidth
 		}
 		if let borderColor = style.borderColor {
-			view.layer.borderColor = borderColor.cgColor
+			view.borderColor = borderColor
 		}
 		if let cornerRadius = style.cornerRadius {
 			view.layer.cornerRadius = cornerRadius
