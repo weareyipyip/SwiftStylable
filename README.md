@@ -87,6 +87,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 		- name (string)
 		- size (number)
 	- lineSpacing (number)
+	- lineHeightMultiple (number)
 	- kern (number)
 	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
 	- underlineColor (string)
