@@ -26,7 +26,9 @@
 			<key>styledTextAttributes</key>
 			<dict>
 				<key>lineSpacing</key>
-				<integer>15</integer>
+				<integer>0</integer>
+				<key>lineHeightMultiple</key>
+				<real>0.5</real>
 			</dict>
 		</dict>
 		<key>contentArea</key>
