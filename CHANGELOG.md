@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.2.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- You can now define a color with a color name instead of a hex value, as long as you define a color for this name elsewhere in the colors dictionary
+
 ## [1.1.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.1.4)
 
 - Fixed another issue causing the borderColor not to work correctly on some components
