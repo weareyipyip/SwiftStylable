@@ -66,12 +66,12 @@ open class Style {
         self.name = name
     }
     
-    public init(name:String, data:[String:Any], colors:[String:UIColor]) {
+    public init(name:String, data:[String:Any]) {
         self.name = name
-        self.parseData(data, colors: colors)
+        self.parseData(data)
     }
     
-    public init(name:String, parentStyle:Style, overridesData:[String:Any], colors:[String:UIColor]) {
+    public init(name:String, parentStyle:Style, overridesData:[String:Any]) {
         self.name = name
      
         // Set properties from parent
@@ -115,7 +115,7 @@ open class Style {
         self.clipsToBounds = parentStyle.clipsToBounds
         
         // Set overrides
-        self.parseData(overridesData, colors: colors)
+        self.parseData(overridesData)
     }
     
     
@@ -197,7 +197,7 @@ open class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    func parseData(_ data:[String:Any], colors:[String:UIColor]) {
+    func parseData(_ data:[String:Any]) {
         // Foreground colors
         if let foregroundColorString = data["foregroundColor"] as? String {
             self.foregroundColorString = foregroundColorString
