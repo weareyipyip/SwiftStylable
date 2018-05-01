@@ -399,25 +399,25 @@ import UIKit
 			let height:CGFloat = min(titleSize.height, contentRect.height)
 			switch self._customHorizontalTitleAlignment {
 			case .left:
-				x = contentRect.minX
+				x = contentRect.minX + self.titleEdgeInsets.left
 				
 			case .right:
-				x = contentRect.maxX - width
+				x = contentRect.maxX - width - self.titleEdgeInsets.right
 				
 			default:
 				// Center
-				x = contentRect.midX - width * 0.5
+				x = ((contentRect.minX + self.titleEdgeInsets.left) + (contentRect.maxX - self.titleEdgeInsets.right)) * 0.5 - width * 0.5
 			}
 			switch self._customVerticalTitleAlignment {
 			case .top:
-				y = contentRect.minY
+				y = contentRect.minY + self.titleEdgeInsets.top
 				
 			case .bottom:
-				y = contentRect.maxY - height
+				y = contentRect.maxY - height - self.titleEdgeInsets.bottom
 				
 			default:
 				// Center
-				y = contentRect.midY - height * 0.5
+				y = ((contentRect.minY + self.titleEdgeInsets.top) + (contentRect.maxY - self.titleEdgeInsets.bottom)) * 0.5 - height * 0.5
 			}
 			
 			return CGRect(x: x,
@@ -439,25 +439,25 @@ import UIKit
 			let height:CGFloat = min(imageSize.height, contentRect.height)
 			switch self._customHorizontalImageAlignment {
 			case .left:
-				x = contentRect.minX
+				x = contentRect.minX + self.imageEdgeInsets.left
 				
 			case .right:
-				x = contentRect.maxX - width
+				x = contentRect.maxX - width - self.imageEdgeInsets.right
 				
 			default:
 				// Center
-				x = contentRect.midX - width * 0.5
+				x = ((contentRect.minX + self.imageEdgeInsets.left) + (contentRect.maxX - self.imageEdgeInsets.right)) * 0.5 - width * 0.5
 			}
 			switch self._customVerticalImageAlignment {
 			case .top:
-				y = contentRect.minY
+				y = contentRect.minY + self.imageEdgeInsets.top
 				
 			case .bottom:
-				y = contentRect.maxY - height
+				y = contentRect.maxY - height - self.imageEdgeInsets.bottom
 				
 			default:
 				// Center
-				y = contentRect.midY - height * 0.5
+				y = ((contentRect.minY + self.imageEdgeInsets.top) + (contentRect.maxY - self.imageEdgeInsets.bottom)) * 0.5 - height * 0.5
 			}
 			
 			return CGRect(x: x,
