@@ -1,6 +1,6 @@
 {
   "name": "SwiftStylable",
-  "version": "1.0.5",
+  "version": "1.2.0",
   "summary": "Swift framework to enable project wide styles that can be used in Interface Builder.",
   "description": "Swift framework to enable project wide styles that can be used in storyboards. You can predefine styles in a property list and use them in your project as well as in the interface builder.",
   "homepage": "https://github.com/weareyipyip/SwiftStylable",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/weareyipyip/SwiftStylable.git",
-    "tag": "1.0.5"
+    "tag": "1.2.0"
   },
   "platforms": {
     "ios": "9.0"
