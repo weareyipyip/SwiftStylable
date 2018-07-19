@@ -23,6 +23,8 @@
 	<dict>
 		<key>textfieldplaceholderStyle</key>
 		<dict>
+			<key>foregroundColor</key>
+			<string>secondaryActionForegroundColor</string>
 			<key>font</key>
 			<dict>
 				<key>name</key>

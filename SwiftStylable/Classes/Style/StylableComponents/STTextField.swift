@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable, PlaceholderTextStylable {
+@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, PlaceholderTextStylable  {
     
     private var _stComponentHelper: STComponentHelper!
-    
+    private var _text:String?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -55,15 +55,51 @@ import UIKit
         }
     }
     
-    open var attributedPlaceholderString: NSAttributedString? {
-        get {
-            return self.attributedPlaceholder
+    open override var text: String? {
+        set {
+            self._text = newValue
+            super.text = self.fullUppercaseText ? newValue?.uppercased() : newValue
         }
+        get {
+            return self._text
+        }
+    }
+    
+    open var foregroundColor: UIColor? {
+        set {
+            self.textColor = newValue ?? UIColor.black
+        }
+        get {
+            return self.textColor
+        }
+    }
+    
+    open var attributedPlaceholderString:NSAttributedString? {
         set {
             self.attributedPlaceholder = newValue
         }
+        get {
+            return self.attributedPlaceholder
+        }
     }
-
+    
+    open var textFont:UIFont? {
+        set {
+            if let font = newValue {
+                self.font = font
+            }
+        }
+        get {
+            return self.font
+        }
+    }
+    
+    open var fullUppercaseText:Bool = false {
+        didSet {
+            self.text = self._text
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -86,6 +122,8 @@ import UIKit
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
             BackgroundAndBorderStylePropertySet(self),
             TextBorderStylePropertySet(self),
+            ForegroundStylePropertySet(self),
+            TextStylePropertySet(self),
             PlaceholderTextStylePropertySet(self)
         ])
     }
