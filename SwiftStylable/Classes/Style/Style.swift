@@ -55,6 +55,9 @@ open class Style {
     // Styled text
     private (set) var styledTextDictionary:[String:Any]?
     
+    // Placeholder
+    open var placeholderFont:UIFont?
+    private (set) var placeholderColorString:String?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -113,6 +116,10 @@ open class Style {
         // - other
         self.cornerRadius = parentStyle.cornerRadius
         self.clipsToBounds = parentStyle.clipsToBounds
+        
+        // - placeholder
+        self.placeholderColorString = parentStyle.placeholderColorString
+        self.placeholderFont = parentStyle.placeholderFont
         
         // Set overrides
         self.parseData(overridesData)
@@ -188,6 +195,11 @@ open class Style {
         } else {
             return nil
         }
+    }
+    
+    // Placeholder color
+    open var placeholderColor:UIColor? {
+        return self.colorFromString(self.placeholderColorString)
     }
     
     
@@ -309,6 +321,14 @@ open class Style {
         // Styled text
         if let styledTextDictionary = data["styledTextAttributes"] as? [String:Any] {
             self.styledTextDictionary = styledTextDictionary
+        }
+        
+        // Placeholder
+        if let placeholderColorString = data["placeholderColor"] as? String {
+            self.placeholderColorString = placeholderColorString
+        }
+        if let placeholderFont = self.parseFont(data: data, key: "placeholderFont") {
+            self.placeholderFont = placeholderFont
         }
     }
     

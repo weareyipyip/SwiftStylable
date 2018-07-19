@@ -21,6 +21,27 @@
 	</dict>
 	<key>styles</key>
 	<dict>
+		<key>textfieldplaceholderStyle</key>
+		<dict>
+			<key>foregroundColor</key>
+			<string>secondaryActionForegroundColor</string>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>AmericanTypewriter-CondensedBold</string>
+				<key>size</key>
+				<integer>12</integer>
+			</dict>
+			<key>placeholderColor</key>
+			<string>emphasisColor</string>
+			<key>placeholderFont</key>
+			<dict>
+				<key>name</key>
+				<string>AmericanTypewriter-Bold</string>
+				<key>size</key>
+				<integer>12</integer>
+			</dict>
+		</dict>
 		<key>testText</key>
 		<dict>
 			<key>styledTextAttributes</key>
