@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable {
+@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable, PlaceholderTextStylable {
     
     private var _stComponentHelper: STComponentHelper!
     
@@ -54,6 +54,15 @@ import UIKit
             return self._stComponentHelper.substyleName
         }
     }
+    
+    open var attributedPlaceholderString: NSAttributedString? {
+        get {
+            return self.attributedPlaceholder
+        }
+        set {
+            self.attributedPlaceholder = newValue
+        }
+    }
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -76,7 +85,8 @@ import UIKit
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
             BackgroundAndBorderStylePropertySet(self),
-            TextBorderStylePropertySet(self)
+            TextBorderStylePropertySet(self),
+            PlaceholderTextStylePropertySet(self)
         ])
     }
 }
