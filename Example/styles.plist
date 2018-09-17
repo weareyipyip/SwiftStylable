@@ -23,6 +23,8 @@
 	<dict>
 		<key>testText</key>
 		<dict>
+			<key>foregroundColor</key>
+			<string>emphasisColor</string>
 			<key>styledTextAttributes</key>
 			<dict>
 				<key>lineSpacing</key>

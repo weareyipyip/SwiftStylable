@@ -45,7 +45,6 @@ class ForegroundStylePropertySet : StylePropertySet {
 			view.foregroundColor = foregroundColor
 		}
 		
-		
 		if self._canBeHighlighted {
 			if let highlightedForegroundColor = style.highlightedForegroundColor {
 				view.highlightedForegroundColor = highlightedForegroundColor
