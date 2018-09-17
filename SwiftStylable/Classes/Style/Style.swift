@@ -426,8 +426,12 @@ open class Style {
     
     private func parseFont(data:[String:Any], key:String)->UIFont? {
         if let fontData = data[key] as? [String:Any] {
-            if let name = fontData["name"] as? String {
-                if let size = fontData["size"] as? CGFloat {
+            if let name = fontData["name"] as? String ?? self.font?.fontName {
+                let newSize = fontData["size"]
+                if newSize != nil && !(newSize is CGFloat) {
+                    print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
+                }
+                if let size = newSize as? CGFloat ?? self.font?.pointSize  {
                     switch name {
                     case "systemFont":
                         return UIFont.systemFont(ofSize: size)
@@ -462,9 +466,6 @@ open class Style {
                     default:
                         return UIFont(name: name, size: size)
                     }
-                } else if fontData["size"] as? String != nil {
-                    // Common mistake to not change the type in the styles.plist to Number therefore this worning
-                    print("WARNING: \(self.name) font size is a String, change to a Number in the styles.plist")
                 }
             }
         }
