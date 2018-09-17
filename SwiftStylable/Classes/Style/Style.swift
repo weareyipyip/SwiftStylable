@@ -331,6 +331,10 @@ open class Style {
             color = namedColor
         } else {
             color = UIColor(hexString: string)
+            // If the hexString color is not valid, could be wrong name or invalid hexString
+            if color == nil {
+                print("WARNING: Color named \(string) could not be found/parsed")
+            }
         }
         return color
     }
@@ -422,41 +426,46 @@ open class Style {
     
     private func parseFont(data:[String:Any], key:String)->UIFont? {
         if let fontData = data[key] as? [String:Any] {
-            if let name = fontData["name"] as? String ?? self.font?.fontName,
-                let size = fontData["size"] as? CGFloat ?? self.font?.pointSize {
-                switch name {
-                case "systemFont":
-                    return UIFont.systemFont(ofSize: size)
-                    
-                case "boldSystemFont":
-                    return UIFont.boldSystemFont(ofSize: size)
-                    
-                case "italicSystemFont":
-                    return UIFont.italicSystemFont(ofSize: size)
-                    
-                case "thinSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.thin)
-                    
-                case "blackSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.black)
-                    
-                case "heavySystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
-                    
-                case "lightSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
-                    
-                case "mediumSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
-                    
-                case "semiboldSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
-                    
-                case "ultraLightSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
-                    
-                default:
-                    return UIFont(name: name, size: size)
+            if let name = fontData["name"] as? String ?? self.font?.fontName {
+                let newSize = fontData["size"]
+                if newSize != nil && !(newSize is CGFloat) {
+                    print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
+                }
+                if let size = newSize as? CGFloat ?? self.font?.pointSize  {
+                    switch name {
+                    case "systemFont":
+                        return UIFont.systemFont(ofSize: size)
+    
+                    case "boldSystemFont":
+                        return UIFont.boldSystemFont(ofSize: size)
+    
+                    case "italicSystemFont":
+                        return UIFont.italicSystemFont(ofSize: size)
+    
+                    case "thinSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.thin)
+    
+                    case "blackSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.black)
+    
+                    case "heavySystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
+    
+                    case "lightSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
+    
+                    case "mediumSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
+    
+                    case "semiboldSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
+    
+                    case "ultraLightSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
+    
+                    default:
+                        return UIFont(name: name, size: size)
+                    }
                 }
             }
         }
