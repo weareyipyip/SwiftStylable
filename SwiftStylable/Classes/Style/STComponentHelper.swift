@@ -80,13 +80,21 @@ class STComponentHelper {
 	// MARK: Private methods
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
-	
+    
 	private func updateStyles() {
-		if let styleName = self.styleName, let style = Styles.shared.styleNamed(styleName) {
-			self.applyStyle(style)
+        if let styleName = self.styleName {
+            if let style = Styles.shared.styleNamed(styleName) {
+                self.applyStyle(style)
+            } else {
+                print("WARNING: Style \(styleName) does not exist.")
+            }
 		}
-		if let substyleName = self.substyleName, let substyle = Styles.shared.styleNamed(substyleName) {
-			self.applyStyle(substyle)
-		}
+        if let substyleName = self.substyleName {
+            if let substyle = Styles.shared.styleNamed(substyleName) {
+                self.applyStyle(substyle)
+            } else {
+                print("WARNING: Substyle \(substyleName) does not exist")
+            }
+        }
 	}
 }

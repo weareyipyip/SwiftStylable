@@ -11,7 +11,7 @@ import UIKit
 
 
 open class Style {
-    open let name:String
+    public let name:String
     
     // Border style
     open var borderWidth:CGFloat?
@@ -26,6 +26,9 @@ open class Style {
     // Text
     open var font:UIFont?
     open var fullUppercaseText:Bool?
+    
+    // Placeholder
+    open var fullUppercasePlaceholder:Bool?
     
     // Corners
     open var cornerRadius:CGFloat?
@@ -54,6 +57,9 @@ open class Style {
     
     // Styled text
     private (set) var styledTextDictionary:[String:Any]?
+    
+    // Placeholder
+    private (set) var styledPlaceholderDictionary:[String:Any]?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -95,8 +101,7 @@ open class Style {
         self.selectedBorderColorString = parentStyle.selectedBorderColorString
         self.disabledBorderColorString = parentStyle.disabledBorderColorString
         self.borderStyle = parentStyle.borderStyle
-        
-        
+		
         // - image tinting
         self.tintImageWithForegroundColor = parentStyle.tintImageWithForegroundColor
         
@@ -109,7 +114,14 @@ open class Style {
         
         // - text
         self.fullUppercaseText = parentStyle.fullUppercaseText
-        
+		
+		// - styled text
+		self.styledTextDictionary = parentStyle.styledTextDictionary
+		
+		// - styled placeholder
+		self.styledPlaceholderDictionary = parentStyle.styledPlaceholderDictionary
+		self.fullUppercasePlaceholder = parentStyle.fullUppercasePlaceholder
+		
         // - other
         self.cornerRadius = parentStyle.cornerRadius
         self.clipsToBounds = parentStyle.clipsToBounds
@@ -190,7 +202,16 @@ open class Style {
         }
     }
     
+    // Styled placeholder
+    open var styledPlaceholderAttributes:[NSAttributedStringKey:Any]? {
+        if let styledPlaceholderDictionary = self.styledPlaceholderDictionary {
+            return self.stringAttributesFromDictionary(styledPlaceholderDictionary)
+        } else {
+            return nil
+        }
+    }
     
+
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: Internal methods
@@ -246,16 +267,16 @@ open class Style {
         if let borderStyle = data["borderStyle"] as? String {
             switch borderStyle {
             case "none":
-                self.borderStyle = .none
+                self.borderStyle = UITextBorderStyle.none
                 
             case "line":
-                self.borderStyle = .line
+                self.borderStyle = UITextBorderStyle.line
                 
             case "bezel":
-                self.borderStyle = .bezel
+                self.borderStyle = UITextBorderStyle.bezel
                 
             case "roundedRect":
-                self.borderStyle = .roundedRect
+                self.borderStyle = UITextBorderStyle.roundedRect
                 
             default:
                 break
@@ -272,13 +293,13 @@ open class Style {
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
             switch tableViewSeparatorStyleString {
             case "none":
-                self.tableViewSeparatorStyle = .none
+                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.none
                 
             case "singleLine":
-                self.tableViewSeparatorStyle = .singleLine
+                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.singleLine
                 
             case "singleLineEtched":
-                self.tableViewSeparatorStyle = .singleLineEtched
+                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
                 
             default:
                 break
@@ -310,6 +331,14 @@ open class Style {
         if let styledTextDictionary = data["styledTextAttributes"] as? [String:Any] {
             self.styledTextDictionary = styledTextDictionary
         }
+        
+        // Placeholder
+        if let styledPlaceholderDictionary = data["styledPlaceholderAttributes"] as? [String:Any] {
+            self.styledPlaceholderDictionary = styledPlaceholderDictionary
+        }
+        if let fullUppercasePlaceholder = data["fullUppercasePlaceholder"] as? Bool {
+            self.fullUppercasePlaceholder = fullUppercasePlaceholder
+        }
     }
     
     
@@ -331,6 +360,10 @@ open class Style {
             color = namedColor
         } else {
             color = UIColor(hexString: string)
+            // If the hexString color is not valid, could be wrong name or invalid hexString
+            if color == nil {
+                print("WARNING: Color named \(string) could not be found/parsed")
+            }
         }
         return color
     }
@@ -422,41 +455,46 @@ open class Style {
     
     private func parseFont(data:[String:Any], key:String)->UIFont? {
         if let fontData = data[key] as? [String:Any] {
-            if let name = fontData["name"] as? String ?? self.font?.fontName,
-                let size = fontData["size"] as? CGFloat ?? self.font?.pointSize {
-                switch name {
-                case "systemFont":
-                    return UIFont.systemFont(ofSize: size)
-                    
-                case "boldSystemFont":
-                    return UIFont.boldSystemFont(ofSize: size)
-                    
-                case "italicSystemFont":
-                    return UIFont.italicSystemFont(ofSize: size)
-                    
-                case "thinSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.thin)
-                    
-                case "blackSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.black)
-                    
-                case "heavySystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
-                    
-                case "lightSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
-                    
-                case "mediumSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
-                    
-                case "semiboldSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
-                    
-                case "ultraLightSystemFont":
-                    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
-                    
-                default:
-                    return UIFont(name: name, size: size)
+            if let name = fontData["name"] as? String ?? self.font?.fontName {
+                let newSize = fontData["size"]
+                if newSize != nil && !(newSize is CGFloat) {
+                    print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
+                }
+                if let size = newSize as? CGFloat ?? self.font?.pointSize  {
+                    switch name {
+                    case "systemFont":
+                        return UIFont.systemFont(ofSize: size)
+    
+                    case "boldSystemFont":
+                        return UIFont.boldSystemFont(ofSize: size)
+    
+                    case "italicSystemFont":
+                        return UIFont.italicSystemFont(ofSize: size)
+    
+                    case "thinSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.thin)
+    
+                    case "blackSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.black)
+    
+                    case "heavySystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
+    
+                    case "lightSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
+    
+                    case "mediumSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
+    
+                    case "semiboldSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
+    
+                    case "ultraLightSystemFont":
+                        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
+    
+                    default:
+                        return UIFont(name: name, size: size)
+                    }
                 }
             }
         }

@@ -2,6 +2,13 @@
 
 Significant changes to the project will be documented here.
 
+## [1.3.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- Improved error warnings in logs
+- Fixed some missing style properties in STTextField
+- STTextField now has a styledPlaceholder property that works similar to STLabels styledText property
+- styles descriptor now has an additional styledPlaceholderAttributes field to support STTextField's styledPlaceholder
+
 ## [1.2.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
 
 - You can now define a color with a color name instead of a hex value, as long as you define a color for this name elsewhere in the colors dictionary
