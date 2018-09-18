@@ -60,7 +60,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    open func applyStyle(_ style:Style) {
+    public func applyStyle(_ style:SwiftStylable.Style) {
         self.color = style.foregroundColor
     }
     
