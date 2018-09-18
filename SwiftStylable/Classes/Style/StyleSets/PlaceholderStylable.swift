@@ -9,5 +9,5 @@ import Foundation
 
 protocol PlaceholderStylable : class {
     var fullUppercasePlaceholder:Bool { get set }
-    var styledPlaceholderAttributes:[NSAttributedStringKey:Any]? { get set }
+    var styledPlaceholderAttributes:[NSAttributedString.Key:Any]? { get set }
 }

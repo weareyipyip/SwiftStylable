@@ -27,13 +27,13 @@ import UIKit
 	private var _selectedTitle:String?
 	private var _disabledTitle:String?
 	
-	private var _customHorizontalTitleAlignment:UIControlContentHorizontalAlignment = .center
-	private var _customVerticalTitleAlignment:UIControlContentVerticalAlignment = .center
-	private var _customHorizontalImageAlignment:UIControlContentHorizontalAlignment = .center
-	private var _customVerticalImageAlignment:UIControlContentVerticalAlignment = .center
+	private var _customHorizontalTitleAlignment:UIControl.ContentHorizontalAlignment = .center
+	private var _customVerticalTitleAlignment:UIControl.ContentVerticalAlignment = .center
+	private var _customHorizontalImageAlignment:UIControl.ContentHorizontalAlignment = .center
+	private var _customVerticalImageAlignment:UIControl.ContentVerticalAlignment = .center
 	
-	private var _defaultHorizontalContentAlignment = UIControlContentHorizontalAlignment.center
-	private var _defaultVerticalContentAlignment = UIControlContentVerticalAlignment.center
+	private var _defaultHorizontalContentAlignment = UIControl.ContentHorizontalAlignment.center
+	private var _defaultVerticalContentAlignment = UIControl.ContentVerticalAlignment.center
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ import UIKit
 	// MARK: -- Layout
 	// -----------------------------------------------------------
 	
-	@IBInspectable override open var contentHorizontalAlignment: UIControlContentHorizontalAlignment {
+	@IBInspectable override open var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment {
 		get {
 			return super.contentHorizontalAlignment
 		}
@@ -76,7 +76,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable override open var contentVerticalAlignment: UIControlContentVerticalAlignment {
+	@IBInspectable override open var contentVerticalAlignment: UIControl.ContentVerticalAlignment {
 		get {
 			return super.contentVerticalAlignment
 		}
@@ -200,7 +200,7 @@ import UIKit
 	@IBInspectable open var tintImageWithTitleColor:Bool = false {
 		didSet {
 			if self.tintImageWithTitleColor != oldValue {
-				self.updateImageRenderingModeForState(UIControlState())
+				self.updateImageRenderingModeForState(UIControl.State())
 				self.updateImageRenderingModeForState(.highlighted)
 				self.updateImageRenderingModeForState(.selected)
 				self.updateImageRenderingModeForState(.disabled)
@@ -239,20 +239,20 @@ import UIKit
 	//  Extra state color properties
 	// -----------------------------------------------------------
 	
-	open func setBackgroundColor(_ color:UIColor?, for state:UIControlState)
+	open func setBackgroundColor(_ color:UIColor?, for state:UIControl.State)
 	{
 		switch (state)
 		{
-		case UIControlState():
+		case UIControl.State.normal:
 			_normalBackgroundColor = color
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			_highlightedBackgroundColor = color
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			_selectedBackgroundColor = color
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			_disabledBackgroundColor = color
 			
 		default:
@@ -261,21 +261,21 @@ import UIKit
 		self.updateColors(updateImageTintColor: false)
 	}
 	
-	open func backgroundColor(for state:UIControlState)->UIColor? {
+	open func backgroundColor(for state:UIControl.State)->UIColor? {
 		var color:UIColor?
 		
 		switch (state)
 		{
-		case UIControlState():
+		case UIControl.State.normal:
 			color = self._normalBackgroundColor
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			color = self._highlightedBackgroundColor
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			color = self._selectedBackgroundColor
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			color = self._disabledBackgroundColor
 			
 		default:
@@ -284,23 +284,23 @@ import UIKit
 		return color
 	}
 	
-	open func setBorderColor(_ color:UIColor?, for state:UIControlState)
+	open func setBorderColor(_ color:UIColor?, for state:UIControl.State)
 	{
 		switch (state)
 		{
-		case UIControlState():
+		case UIControl.State.normal:
 			_normalBorderColor = color
 			break
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			_highlightedBorderColor = color
 			break
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			_selectedBorderColor = color
 			break
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			_disabledBorderColor = color
 			break
 			
@@ -310,21 +310,21 @@ import UIKit
 		self.updateColors(updateImageTintColor: false)
 	}
 	
-	open func borderColor(for state:UIControlState)->UIColor? {
+	open func borderColor(for state:UIControl.State)->UIColor? {
 		var color:UIColor?
 		
 		switch (state)
 		{
-		case UIControlState():
+		case UIControl.State.normal:
 			color = self._normalBorderColor
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			color = self._highlightedBorderColor
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			color = self._selectedBorderColor
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			color = self._disabledBorderColor
 			
 		default:
@@ -333,32 +333,32 @@ import UIKit
 		return color
 	}
 
-	open override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+	open override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
 		super.setTitleColor(color, for: state)
 		self.updateColors(updateImageTintColor: self.tintImageWithTitleColor && self.state == state)
 	}
 	
-	open override func setImage(_ image: UIImage?, for state: UIControlState) {
+	open override func setImage(_ image: UIImage?, for state: UIControl.State) {
 		super.setImage(image, for: state)
 		self.updateImageRenderingModeForState(state)
 		self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
 	}
 	
-	open override func setTitle(_ title: String?, for state: UIControlState) {
+	open override func setTitle(_ title: String?, for state: UIControl.State) {
 		switch state {
-		case UIControlState.normal:
+		case UIControl.State.normal:
 			self._normalTitle = title
 			super.setTitle(self.fullUppercaseText ? title?.uppercased() : title, for: state)
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			self._highlightedTitle = title
 			super.setTitle(self.fullUppercaseText ? title?.uppercased() : title, for: state)
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			self._selectedTitle = title
 			super.setTitle(self.fullUppercaseText ? title?.uppercased() : title, for: state)
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			self._disabledTitle = title
 			super.setTitle(self.fullUppercaseText ? title?.uppercased() : title, for: state)
 			
@@ -367,18 +367,18 @@ import UIKit
 		}
 	}
 	
-	open override func title(for state: UIControlState)->String? {
+	open override func title(for state: UIControl.State)->String? {
 		switch state {
-		case UIControlState.normal:
+		case UIControl.State.normal:
 			return self._normalTitle
 			
-		case UIControlState.highlighted:
+		case UIControl.State.highlighted:
 			return self._highlightedTitle
 			
-		case UIControlState.selected:
+		case UIControl.State.selected:
 			return self._selectedTitle
 			
-		case UIControlState.disabled:
+		case UIControl.State.disabled:
 			return self._disabledTitle
 			
 		default:
@@ -512,7 +512,7 @@ import UIKit
 				self.backgroundColor = self._normalBackgroundColor
 				self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
 				if updateImageTintColor, let imageView = self.imageView, imageView.image != nil {
-					imageView.tintColor = self.titleColor(for: UIControlState())
+					imageView.tintColor = self.titleColor(for: UIControl.State())
 				}
 			}
 		}
@@ -526,8 +526,8 @@ import UIKit
 		}
 	}
 	
-	private func updateImageRenderingModeForState(_ state:UIControlState) {
-		let renderingMode = self.tintImageWithTitleColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+	private func updateImageRenderingModeForState(_ state:UIControl.State) {
+		let renderingMode = self.tintImageWithTitleColor ? UIImage.RenderingMode.alwaysTemplate : UIImage.RenderingMode.alwaysOriginal
 		if let image = self.image(for: state), image.renderingMode != renderingMode {
 			super.setImage(image.withRenderingMode(renderingMode), for: state)
 		}

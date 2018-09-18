@@ -76,7 +76,7 @@ import UIKit
         }
     }
 
-    var styledTextAttributes:[NSAttributedStringKey:Any]? {
+    var styledTextAttributes:[NSAttributedString.Key:Any]? {
         didSet {
             if self._styledText != nil {
                 self.styledText = self._styledText
@@ -89,7 +89,7 @@ import UIKit
             self._styledText = newValue
             self._text = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedStringKey:Any]())
+                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
             }
         }
         get {
@@ -140,7 +140,7 @@ import UIKit
         }
     }
     
-    var styledPlaceholderAttributes:[NSAttributedStringKey:Any]? {
+    var styledPlaceholderAttributes:[NSAttributedString.Key:Any]? {
         didSet {
             if self._styledPlaceholder != nil {
                 self.styledPlaceholder = self._styledPlaceholder
@@ -153,7 +153,7 @@ import UIKit
             self._styledPlaceholder = newValue
             self._placeholder = newValue
             if let placeholder = newValue {
-                super.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: self.styledPlaceholderAttributes ?? [NSAttributedStringKey:Any]())
+                super.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: self.styledPlaceholderAttributes ?? [NSAttributedString.Key:Any]())
             }
         }
         get {

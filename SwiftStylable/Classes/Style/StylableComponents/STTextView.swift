@@ -108,7 +108,7 @@ import UIKit
         }
     }
     
-    var styledTextAttributes:[NSAttributedStringKey:Any]? {
+    var styledTextAttributes:[NSAttributedString.Key:Any]? {
         didSet {
             if self._styledText != nil {
                 self.styledText = self._styledText
@@ -127,7 +127,7 @@ import UIKit
             self._styledText = newValue
             self._text = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedStringKey:Any]())
+                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
             }
         }
         get {

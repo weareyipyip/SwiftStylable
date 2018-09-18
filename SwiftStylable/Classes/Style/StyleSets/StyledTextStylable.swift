@@ -8,5 +8,5 @@
 import Foundation
 
 protocol StyledTextStylable : class {
-    var styledTextAttributes:[NSAttributedStringKey:Any]? { get set }
+    var styledTextAttributes:[NSAttributedString.Key:Any]? { get set }
 }
