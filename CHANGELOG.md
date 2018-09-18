@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.3.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- Fixed .swift-version file for cocoapods
+
 ## [1.3.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
 
 - Migrated to Swift 4.2
