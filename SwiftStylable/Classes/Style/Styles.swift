@@ -15,7 +15,7 @@ internal let STYLES_DID_UPDATE = Notification.Name(rawValue: "stylesDidUpdate")
 
 open class Styles {
     
-    open static let shared = Styles()
+    public static let shared = Styles()
     
     private var _styles = [String:Style]()
     private var _colorHolders = [String:ColorHolder]()

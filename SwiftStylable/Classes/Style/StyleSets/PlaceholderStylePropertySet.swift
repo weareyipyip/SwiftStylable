@@ -9,7 +9,7 @@ import Foundation
 
 class PlaceholderTextStylePropertySet : StylePropertySet {
     
-    private weak var _view: PlaceholderTextStylable?
+    private weak var _view: PlaceholderStylable?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class PlaceholderTextStylePropertySet : StylePropertySet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(_ view: PlaceholderTextStylable) {
+    init(_ view: PlaceholderStylable) {
         self._view = view
     }
     
@@ -35,18 +35,11 @@ class PlaceholderTextStylePropertySet : StylePropertySet {
             return
         }
         
-        if let placeholder = view.placeholder {
-            let attributedPlaceholderString = NSMutableAttributedString(string: placeholder)
-            
-            if let font = style.placeholderFont {
-                attributedPlaceholderString.addAttribute(.font, value: font, range: NSRange(location: 0, length: placeholder.count))
-            }
-            
-            if let color = style.placeholderColor {
-                attributedPlaceholderString.addAttribute(.foregroundColor, value: color, range: NSRange(location: 0, length: placeholder.count))
-            }
-            
-            view.attributedPlaceholderString = attributedPlaceholderString
+        if let fullUppercasePlaceholder = style.fullUppercasePlaceholder {
+            view.fullUppercasePlaceholder = fullUppercasePlaceholder
+        }
+        if let styledPlaceholderAttributes = style.styledPlaceholderAttributes {
+            view.styledPlaceholderAttributes = styledPlaceholderAttributes
         }
     }
 }

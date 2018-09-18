@@ -24,7 +24,6 @@ extension Stylable {
 		if let substyleName = self.substyleName, let substyle = Styles.shared.styleNamed(substyleName) {
 			self.applyStyle(substyle)
 		}
-		
 	}
 }
 

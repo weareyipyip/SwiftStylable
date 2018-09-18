@@ -21,23 +21,19 @@
 	</dict>
 	<key>styles</key>
 	<dict>
-		<key>textfieldplaceholderStyle</key>
+		<key>textfieldStyle</key>
 		<dict>
 			<key>foregroundColor</key>
 			<string>secondaryActionForegroundColor</string>
+			<key>styledPlaceholderAttributes</key>
+			<dict>
+				<key>foregroundColor</key>
+				<string>#ff0000</string>
+			</dict>
 			<key>font</key>
 			<dict>
 				<key>name</key>
 				<string>AmericanTypewriter-CondensedBold</string>
-				<key>size</key>
-				<integer>12</integer>
-			</dict>
-			<key>placeholderColor</key>
-			<string>emphasisColor</string>
-			<key>placeholderFont</key>
-			<dict>
-				<key>name</key>
-				<string>AmericanTypewriter-Bold</string>
 				<key>size</key>
 				<integer>12</integer>
 			</dict>

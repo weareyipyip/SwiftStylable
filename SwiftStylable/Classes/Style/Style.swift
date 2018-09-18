@@ -11,7 +11,7 @@ import UIKit
 
 
 open class Style {
-    open let name:String
+    public let name:String
     
     // Border style
     open var borderWidth:CGFloat?
@@ -26,6 +26,9 @@ open class Style {
     // Text
     open var font:UIFont?
     open var fullUppercaseText:Bool?
+    
+    // Placeholder
+    open var fullUppercasePlaceholder:Bool?
     
     // Corners
     open var cornerRadius:CGFloat?
@@ -56,8 +59,8 @@ open class Style {
     private (set) var styledTextDictionary:[String:Any]?
     
     // Placeholder
-    open var placeholderFont:UIFont?
-    private (set) var placeholderColorString:String?
+    private (set) var styledPlaceholderDictionary:[String:Any]?
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -98,8 +101,7 @@ open class Style {
         self.selectedBorderColorString = parentStyle.selectedBorderColorString
         self.disabledBorderColorString = parentStyle.disabledBorderColorString
         self.borderStyle = parentStyle.borderStyle
-        
-        
+		
         // - image tinting
         self.tintImageWithForegroundColor = parentStyle.tintImageWithForegroundColor
         
@@ -112,14 +114,17 @@ open class Style {
         
         // - text
         self.fullUppercaseText = parentStyle.fullUppercaseText
-        
+		
+		// - styled text
+		self.styledTextDictionary = parentStyle.styledTextDictionary
+		
+		// - styled placeholder
+		self.styledPlaceholderDictionary = parentStyle.styledPlaceholderDictionary
+		self.fullUppercasePlaceholder = parentStyle.fullUppercasePlaceholder
+		
         // - other
         self.cornerRadius = parentStyle.cornerRadius
         self.clipsToBounds = parentStyle.clipsToBounds
-        
-        // - placeholder
-        self.placeholderColorString = parentStyle.placeholderColorString
-        self.placeholderFont = parentStyle.placeholderFont
         
         // Set overrides
         self.parseData(overridesData)
@@ -197,12 +202,16 @@ open class Style {
         }
     }
     
-    // Placeholder color
-    open var placeholderColor:UIColor? {
-        return self.colorFromString(self.placeholderColorString)
+    // Styled placeholder
+    open var styledPlaceholderAttributes:[NSAttributedStringKey:Any]? {
+        if let styledPlaceholderDictionary = self.styledPlaceholderDictionary {
+            return self.stringAttributesFromDictionary(styledPlaceholderDictionary)
+        } else {
+            return nil
+        }
     }
     
-    
+
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: Internal methods
@@ -324,11 +333,11 @@ open class Style {
         }
         
         // Placeholder
-        if let placeholderColorString = data["placeholderColor"] as? String {
-            self.placeholderColorString = placeholderColorString
+        if let styledPlaceholderDictionary = data["styledPlaceholderAttributes"] as? [String:Any] {
+            self.styledPlaceholderDictionary = styledPlaceholderDictionary
         }
-        if let placeholderFont = self.parseFont(data: data, key: "placeholderFont") {
-            self.placeholderFont = placeholderFont
+        if let fullUppercasePlaceholder = data["fullUppercasePlaceholder"] as? Bool {
+            self.fullUppercasePlaceholder = fullUppercasePlaceholder
         }
     }
     
