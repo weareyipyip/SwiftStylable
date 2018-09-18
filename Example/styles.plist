@@ -29,6 +29,8 @@
 			<dict>
 				<key>foregroundColor</key>
 				<string>#ff0000</string>
+				<key>underlineStyle</key>
+				<string>none</string>
 			</dict>
 			<key>font</key>
 			<dict>

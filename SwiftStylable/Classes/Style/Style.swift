@@ -15,13 +15,13 @@ open class Style {
     
     // Border style
     open var borderWidth:CGFloat?
-    open var borderStyle:UITextBorderStyle?
+    open var borderStyle:UITextField.BorderStyle?
     
     // Image tinting
     open var tintImageWithForegroundColor:Bool?
     
     // Cell separator style
-    open var tableViewSeparatorStyle:UITableViewCellSeparatorStyle?
+    open var tableViewSeparatorStyle:UITableViewCell.SeparatorStyle?
     
     // Text
     open var font:UIFont?
@@ -194,7 +194,7 @@ open class Style {
     }
     
     // Styled text
-    open var styledTextAttributes:[NSAttributedStringKey:Any]? {
+    open var styledTextAttributes:[NSAttributedString.Key:Any]? {
         if let styledTextDictionary = self.styledTextDictionary {
             return self.stringAttributesFromDictionary(styledTextDictionary)
         } else {
@@ -203,7 +203,7 @@ open class Style {
     }
     
     // Styled placeholder
-    open var styledPlaceholderAttributes:[NSAttributedStringKey:Any]? {
+    open var styledPlaceholderAttributes:[NSAttributedString.Key:Any]? {
         if let styledPlaceholderDictionary = self.styledPlaceholderDictionary {
             return self.stringAttributesFromDictionary(styledPlaceholderDictionary)
         } else {
@@ -267,16 +267,16 @@ open class Style {
         if let borderStyle = data["borderStyle"] as? String {
             switch borderStyle {
             case "none":
-                self.borderStyle = UITextBorderStyle.none
+                self.borderStyle = UITextField.BorderStyle.none
                 
             case "line":
-                self.borderStyle = UITextBorderStyle.line
+                self.borderStyle = UITextField.BorderStyle.line
                 
             case "bezel":
-                self.borderStyle = UITextBorderStyle.bezel
+                self.borderStyle = UITextField.BorderStyle.bezel
                 
             case "roundedRect":
-                self.borderStyle = UITextBorderStyle.roundedRect
+                self.borderStyle = UITextField.BorderStyle.roundedRect
                 
             default:
                 break
@@ -293,13 +293,13 @@ open class Style {
         if let tableViewSeparatorStyleString = data["tableViewSeparatorStyle"] as? String {
             switch tableViewSeparatorStyleString {
             case "none":
-                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.none
+                self.tableViewSeparatorStyle = UITableViewCell.SeparatorStyle.none
                 
             case "singleLine":
-                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.singleLine
+                self.tableViewSeparatorStyle = UITableViewCell.SeparatorStyle.singleLine
                 
             case "singleLineEtched":
-                self.tableViewSeparatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
+                self.tableViewSeparatorStyle = UITableViewCell.SeparatorStyle.singleLineEtched
                 
             default:
                 break
@@ -368,12 +368,12 @@ open class Style {
         return color
     }
     
-    private func stringAttributesFromDictionary(_ data:[String:Any]?)->[NSAttributedStringKey:Any]? {
+    private func stringAttributesFromDictionary(_ data:[String:Any]?)->[NSAttributedString.Key:Any]? {
         guard let data = data else {
             return nil
         }
 
-        var attributes = [NSAttributedStringKey:Any]()
+        var attributes = [NSAttributedString.Key:Any]()
         
         var paragraphStyleNeeded = false
         let paragraphStyle = NSMutableParagraphStyle()
@@ -410,44 +410,44 @@ open class Style {
                 underlineStyle = NSUnderlineStyle.patternDot.rawValue
                 
             case "double":
-                underlineStyle = NSUnderlineStyle.styleDouble.rawValue
+                underlineStyle = NSUnderlineStyle.double.rawValue
                 
             case "single":
-                underlineStyle = NSUnderlineStyle.styleSingle.rawValue
+                underlineStyle = NSUnderlineStyle.single.rawValue
                 
             case "thick":
-                underlineStyle = NSUnderlineStyle.styleThick.rawValue
+                underlineStyle = NSUnderlineStyle.thick.rawValue
 
             case "none":
                 fallthrough
             default:
-                underlineStyle = NSUnderlineStyle.styleNone.rawValue
+                underlineStyle = 0
             }
-            attributes[NSAttributedStringKey.underlineStyle] = underlineStyle
+            attributes[NSAttributedString.Key.underlineStyle] = underlineStyle
         }
         
         // Underline color
         if let underlineColorString = data["underlineColor"] as? String, let color = self.colorFromString(underlineColorString) {
-            attributes[NSAttributedStringKey.underlineColor] = color
+            attributes[NSAttributedString.Key.underlineColor] = color
         }
         
         // Font
         if let font = self.parseFont(data: data, key: "font") {
-            attributes[NSAttributedStringKey.font] = font
+            attributes[NSAttributedString.Key.font] = font
         }
         
         // ForegroundColor
         if let foregroundColorString = data["foregroundColor"] as? String, let color = self.colorFromString(foregroundColorString) {
-            attributes[NSAttributedStringKey.foregroundColor] = color
+            attributes[NSAttributedString.Key.foregroundColor] = color
         }
         
         // Kern
         if let kern = data["kern"] as? CGFloat {
-            attributes[NSAttributedStringKey.kern] = kern
+            attributes[NSAttributedString.Key.kern] = kern
         }
         
         if paragraphStyleNeeded {
-            attributes[NSAttributedStringKey.paragraphStyle] = paragraphStyle
+            attributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
         }
         
         return attributes

@@ -117,7 +117,7 @@ import UIKit
 	
 	private func updateImageRenderingMode() {
 		if let image = self.image {
-			let renderingMode = self.tintImageWithForegroundColor ? UIImageRenderingMode.alwaysTemplate : UIImageRenderingMode.alwaysOriginal
+			let renderingMode = self.tintImageWithForegroundColor ? UIImage.RenderingMode.alwaysTemplate : UIImage.RenderingMode.alwaysOriginal
 			super.image = image.withRenderingMode(renderingMode)
 		}
 	}

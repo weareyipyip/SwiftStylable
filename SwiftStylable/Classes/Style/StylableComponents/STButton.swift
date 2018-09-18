@@ -57,7 +57,7 @@ import Foundation
 	
     @IBInspectable open var imageName:String? {
         didSet {
-            self.processImageName(self.imageName, forState: UIControlState())
+            self.processImageName(self.imageName, forState: UIControl.State())
         }
     }
     
@@ -226,7 +226,7 @@ import Foundation
 		])
 	}
 	
-    private func processImageName(_ imageName:String?, forState state: UIControlState) {
+    private func processImageName(_ imageName:String?, forState state: UIControl.State) {
         if let name = imageName, let image = self.paintCodeImageNamed(name) {
             self.setImage(image, for: state)
         } else {

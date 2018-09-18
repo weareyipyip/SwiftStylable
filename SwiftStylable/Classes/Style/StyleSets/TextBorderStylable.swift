@@ -9,5 +9,5 @@ import Foundation
 
 protocol TextBorderStylable : class {
     var layer:CALayer { get }
-    var borderStyle: UITextBorderStyle { get set }
+    var borderStyle: UITextField.BorderStyle { get set }
 }

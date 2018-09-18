@@ -9,5 +9,5 @@ import Foundation
 
 protocol TableViewSeparatorStylable : class {
     var separatorColor: UIColor? { get set }
-    var separatorStyle: UITableViewCellSeparatorStyle { get set }
+    var separatorStyle: UITableViewCell.SeparatorStyle { get set }
 }
