@@ -1,15 +1,15 @@
 //
-//  ButtonStyleSet.swift
-//  SwiftStylable
+//  PlaceholderTextStylePropertySet.swift
+//  Pods-SwiftStylableExample
 //
-//  Created by Marcel Bloemendaal on 17/04/2018.
+//  Created by Bob De Kort-Goossens on 19/07/2018.
 //
 
 import Foundation
 
-class TableViewSeparatorStylePropertySet : StylePropertySet {
+class PlaceholderTextStyler : Styler {
     
-    private weak var _view: TableViewSeparatorStylable?
+    private weak var _view: PlaceholderStylable?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class TableViewSeparatorStylePropertySet : StylePropertySet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(_ view: TableViewSeparatorStylable) {
+    init(_ view: PlaceholderStylable) {
         self._view = view
     }
     
@@ -35,11 +35,11 @@ class TableViewSeparatorStylePropertySet : StylePropertySet {
             return
         }
         
-        if let tableViewSeparatorStyle = style.tableViewSeparatorStyle {
-            view.separatorStyle = tableViewSeparatorStyle
+        if let fullUppercasePlaceholder = style.placeholderStyle.fullUppercasePlaceholder {
+            view.fullUppercasePlaceholder = fullUppercasePlaceholder
         }
-        if let tableViewSeparatorColor = style.tableViewSeparatorColor {
-            view.separatorColor = tableViewSeparatorColor
+        if let styledPlaceholderAttributes = style.placeholderStyle.styledPlaceholderAttributes {
+            view.styledPlaceholderAttributes = styledPlaceholderAttributes
         }
     }
 }

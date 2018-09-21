@@ -7,9 +7,9 @@
 
 import Foundation
 
-class TextBorderStylePropertySet : StylePropertySet {
+class TableViewSeparatorStyler : Styler {
     
-    private weak var _view: TextBorderStylable?
+    private weak var _view: TableViewSeparatorStylable?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class TextBorderStylePropertySet : StylePropertySet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(_ view: TextBorderStylable) {
+    init(_ view: TableViewSeparatorStylable) {
         self._view = view
     }
     
@@ -35,9 +35,11 @@ class TextBorderStylePropertySet : StylePropertySet {
             return
         }
         
-        if let borderStyle = style.borderStyle {
-            view.layer.masksToBounds = true
-            view.borderStyle = borderStyle
+        if let tableViewSeparatorStyle = style.tableViewSeparatorStyle.tableViewSeparatorStyle {
+            view.separatorStyle = tableViewSeparatorStyle
+        }
+        if let tableViewSeparatorColor = style.tableViewSeparatorStyle.tableViewSeparatorColor {
+            view.separatorColor = tableViewSeparatorColor
         }
     }
 }

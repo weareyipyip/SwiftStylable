@@ -61,7 +61,7 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     public func applyStyle(_ style:SwiftStylable.Style) {
-        self.color = style.foregroundColor
+        self.color = style.foregroundStyle.foregroundColor
     }
     
     

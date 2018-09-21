@@ -143,13 +143,13 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        if let font = style.font {
+        if let font = style.textStyle.font {
             self.font = font
         }
-        if let foregroundColor = style.foregroundColor {
+        if let foregroundColor = style.foregroundStyle.foregroundColor {
             self.textColor = foregroundColor
         }
-        if let fullUppercaseText = style.fullUppercaseText {
+        if let fullUppercaseText = style.textStyle.fullUppercaseText {
             self.fullUppercaseText = fullUppercaseText
         }
     }
@@ -163,10 +163,10 @@ import UIKit
     
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-            BackgroundAndBorderStylePropertySet(self),
-            ForegroundStylePropertySet(self),
-            TextStylePropertySet(self),
-            StyledTextStylePropertySet(self)
+            BackgroundAndBorderStyler(self),
+            ForegroundStyler(self),
+            TextStyler(self),
+            StyledTextStyler(self)
         ])
     }
 }

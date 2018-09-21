@@ -9,7 +9,7 @@ import Foundation
 
 class STComponentHelper {
     private weak var _stylable:Stylable?
-	private let _stylePropertySets:[StylePropertySet]
+	private let _stylePropertySets:[Styler]
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class STComponentHelper {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-    init(stylable: Stylable, stylePropertySets: [StylePropertySet]) {
+    init(stylable: Stylable, stylePropertySets: [Styler]) {
         self._stylable = stylable
 		self._stylePropertySets = stylePropertySets
 		

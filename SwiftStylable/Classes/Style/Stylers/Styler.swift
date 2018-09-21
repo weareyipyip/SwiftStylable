@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol StylePropertySet {
+protocol Styler {
 	func applyStyle(_ style:Style)
 }

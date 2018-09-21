@@ -99,7 +99,7 @@ open class Styles {
 	
 	private func processStyleDataWithFileAtPath(_ path:String, publishUpdate:Bool) {
 		
-        guard let styleData = NSDictionary(contentsOfFile: path) as? [String:AnyObject] else {
+        guard let styleData = NSDictionary(contentsOfFile: path) as? [String:Any] else {
                 return
         }
         
@@ -130,7 +130,7 @@ open class Styles {
             }
         }
         
-        var styleDatas = styleData["styles"] as? [String:[String:AnyObject]]
+        var styleDatas = styleData["styles"] as? [String:[String:Any]]
         if styleDatas != nil {
             
             // Read styles
@@ -145,7 +145,7 @@ open class Styles {
                             if style != nil {
                                 print("WARNING: You cannot override the parent property of a style! Style named '\(name)' will be replaced completely.")
                             }
-                            let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData)
+                            let style = Style(name: name, parent: parentStyle, data: styleData)
                             self._styles[name] = style
                             styleDatas!.removeValue(forKey: name)
                             numParsedStyles += 1
