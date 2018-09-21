@@ -22,9 +22,9 @@ public class StyledTextStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:StyledTextStyle? = nil, data:[String:Any]) {
+    internal init(name:String, parent:StyledTextStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent)
+        super.init(name: name, parent: parent, colorCollection: colorCollection)
         self.applyData(data)
     }
     

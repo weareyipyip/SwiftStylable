@@ -14,7 +14,8 @@ public class StyleSetBase : StyleSet {
     
     internal let name:String
     
-    private let parent:StyleSet?
+    private let _parent:StyleSet?
+    private let _colorCollection:ColorCollection
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -23,10 +24,11 @@ public class StyleSetBase : StyleSet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(name:String, parent:StyleSet?) {
+    init(name:String, parent:StyleSet?, colorCollection:ColorCollection) {
         self.name = name
-        self.parent = parent
-        if let parent = self.parent {
+        self._parent = parent
+        self._colorCollection = colorCollection
+        if let parent = self._parent {
             NotificationCenter.default.addObserver(self, selector: #selector(StyleSetBase.parentDidChange), name: StyleSetBase.didChangeNotification, object: parent)
         }
     }
@@ -71,7 +73,7 @@ public class StyleSetBase : StyleSet {
             return nil
         }
         
-        if let namedColor = Styles.shared.colorNamed(string) {
+        if let namedColor = self._colorCollection.colorHolderNamed(string)?.color {
             color = namedColor
         } else {
             color = UIColor(hexString: string)

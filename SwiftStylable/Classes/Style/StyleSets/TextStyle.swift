@@ -25,9 +25,9 @@ public class TextStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:TextStyle? = nil, data:[String:Any]) {
+    internal init(name:String, parent:TextStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent)
+        super.init(name: name, parent: parent, colorCollection: colorCollection)
         self.applyData(data)
     }
     

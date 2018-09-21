@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-open class Style {
+public class Style {
     public let name:String
     
     public let foregroundStyle:ForegroundStyle
@@ -29,17 +29,17 @@ open class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public init(name:String, parent:Style? = nil, data:[String:Any]) {
+    internal init(name:String, parent:Style? = nil, data:[String:Any], colorCollection:ColorCollection) {
         self.name = name
         
-        self.foregroundStyle = ForegroundStyle(name: name, parent: parent?.foregroundStyle, data: data)
-        self.backgroundAndBorderStyle = BackgroundAndBorderStyle(name: name, parent: parent?.backgroundAndBorderStyle, data: data)
-        self.textStyle = TextStyle(name: name, parent: parent?.textStyle, data: data)
-        self.textBorderStyle = TextBorderStyle(name: name, parent: parent?.textBorderStyle, data: data)
-        self.styledTextStyle = StyledTextStyle(name: name, parent: parent?.styledTextStyle, data: data)
-        self.placeholderStyle = PlaceholderStyle(name: name, parent: parent?.placeholderStyle, data: data)
-        self.imageStyle = ImageStyle(name: name, parent: parent?.imageStyle, data: data)
-        self.tableViewSeparatorStyle = TableViewSeparatorStyle(name: name, parent: parent?.tableViewSeparatorStyle, data: data)
+        self.foregroundStyle = ForegroundStyle(name: name, parent: parent?.foregroundStyle, data: data, colorCollection: colorCollection)
+        self.backgroundAndBorderStyle = BackgroundAndBorderStyle(name: name, parent: parent?.backgroundAndBorderStyle, data: data, colorCollection: colorCollection)
+        self.textStyle = TextStyle(name: name, parent: parent?.textStyle, data: data, colorCollection: colorCollection)
+        self.textBorderStyle = TextBorderStyle(name: name, parent: parent?.textBorderStyle, data: data, colorCollection: colorCollection)
+        self.styledTextStyle = StyledTextStyle(name: name, parent: parent?.styledTextStyle, data: data, colorCollection: colorCollection)
+        self.placeholderStyle = PlaceholderStyle(name: name, parent: parent?.placeholderStyle, data: data, colorCollection: colorCollection)
+        self.imageStyle = ImageStyle(name: name, parent: parent?.imageStyle, data: data, colorCollection: colorCollection)
+        self.tableViewSeparatorStyle = TableViewSeparatorStyle(name: name, parent: parent?.tableViewSeparatorStyle, data: data, colorCollection: colorCollection)
     }
     
     
@@ -49,7 +49,7 @@ open class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func parseData(_ data:[String:Any]) {
+    internal func parseData(_ data:[String:Any]) {
         self.foregroundStyle.applyData(data)
         self.backgroundAndBorderStyle.applyData(data)
         self.textStyle.applyData(data)

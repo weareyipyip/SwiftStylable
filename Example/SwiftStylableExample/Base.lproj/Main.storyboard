@@ -24,7 +24,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u62-Nb-TLZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phoebe" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-h9-Np0" customClass="STImageView" customModule="SwiftStylableExample" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phoebe" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-h9-Np0" customClass="STImageView" customModule="SwiftStylable">
                                         <rect key="frame" x="16" y="16" width="96" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="96" id="5rp-wn-JXJ"/>
@@ -35,7 +35,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phoebe Buffay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="54" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="49.5" width="231" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (mobile)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-ca-RSP" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="144" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="144" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)612345678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAQ-E3-Oxc" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="144" width="125" height="20.5"/>
+                                        <rect key="frame" x="128" y="144" width="125" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (home)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzj-S4-M0l" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="172.5" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="166.5" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)54123456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT4-in-JBj" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="172.5" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="166.5" width="231" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (work)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSR-mo-9SI" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="201" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="189" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+31)1053377882" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enw-CD-tGE" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="201" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="189" width="231" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -98,13 +98,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHY-4r-woC" customClass="STHorizontalHairline" customModule="SwiftStylable">
-                                        <rect key="frame" x="0.0" y="237.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="219.5" width="375" height="1"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentDivider"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bw-v6-zBI" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="254.5" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="236.5" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Park Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esU-It-iqQ" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="254.5" width="183" height="20.5"/>
+                                        <rect key="frame" x="128" y="236.5" width="183" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xe-9u-BaK" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="283" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="259" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -131,7 +131,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiA-Du-V0Z" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="283" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="259" width="231" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f6-DV-Owx" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="311.5" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="281.5" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEa-Nu-Syl" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="311.5" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="281.5" width="231" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -158,7 +158,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbm-s9-SWE" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="340" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="304" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -167,7 +167,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwP-D0-17n" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="340" width="231" height="20.5"/>
+                                        <rect key="frame" x="128" y="304" width="231" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -176,13 +176,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbA-rc-rAC" customClass="STHorizontalHairline" customModule="SwiftStylable">
-                                        <rect key="frame" x="0.0" y="376.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="334" width="375" height="1"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="contentDivider"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-BM-6dF" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="393.5" width="96" height="20.5"/>
+                                        <rect key="frame" x="16" y="351" width="96" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoebe.buffay@e-mail.us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-mB-fHb" customClass="STLabel" customModule="SwiftStylable">
-                                        <rect key="frame" x="128" y="393.5" width="183" height="20.5"/>
+                                        <rect key="frame" x="128" y="351" width="183" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -200,7 +200,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-Ld-B2L" customClass="STButton" customModule="SwiftStylable">
-                                        <rect key="frame" x="16" y="446" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="397.5" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="f1m-TM-ryH"/>
                                         </constraints>
@@ -217,10 +217,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-tM-snC" userLabel="bottomBar" customClass="STView" customModule="SwiftStylable">
-                                        <rect key="frame" x="0.0" y="522" width="375" height="81"/>
+                                        <rect key="frame" x="0.0" y="473.5" width="375" height="129.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share this contact:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pac-Nr-5To" customClass="STLabel" customModule="SwiftStylable">
-                                                <rect key="frame" x="16" y="16" width="215" height="20.5"/>
+                                                <rect key="frame" x="16" y="16" width="215" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -262,7 +262,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAz-5b-Nmn" customClass="STTextField" customModule="SwiftStylable">
-                                                <rect key="frame" x="20" y="56.5" width="335" height="30"/>
+                                                <rect key="frame" x="20" y="50.5" width="335" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -293,7 +293,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-IN-22t" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="138.5" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="135" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="0kc-nQ-ob8"/>
                                             <constraint firstAttribute="width" constant="32" id="Wbp-uy-aFR"/>
@@ -304,7 +304,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t85-J6-aiu" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="249" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="227.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="1GV-Zy-sdp"/>
                                             <constraint firstAttribute="width" constant="32" id="Shd-ib-Bv4"/>
@@ -315,7 +315,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goM-NE-dVA" customClass="PCButton" customModule="SwiftStylableExample" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="388" width="32" height="32"/>
+                                        <rect key="frame" x="327" y="342" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Xk6-Iv-lCO"/>
                                             <constraint firstAttribute="width" constant="32" id="m3H-iQ-mFb"/>

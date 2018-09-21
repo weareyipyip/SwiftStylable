@@ -48,9 +48,9 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    required internal init(name:String, parent:BackgroundAndBorderStyle? = nil, data:[String:Any]) {
+    required internal init(name:String, parent:BackgroundAndBorderStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent)
+        super.init(name: name, parent: parent, colorCollection: colorCollection)
         self.applyData(data)
     }
     
