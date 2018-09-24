@@ -46,6 +46,8 @@
 			<string>emphasisColor</string>
 			<key>styledTextAttributes</key>
 			<dict>
+				<key>alignment</key>
+				<string>right</string>
 				<key>lineSpacing</key>
 				<integer>0</integer>
 				<key>lineHeightMultiple</key>

@@ -154,6 +154,33 @@ public class StyleSetBase : StyleSet {
             paragraphStyleNeeded = true
         }
         
+        // Alignment
+        if let alignmentString = data["alignment"] as? String {
+            let alignment:NSTextAlignment
+            paragraphStyleNeeded = true
+            switch alignmentString {
+            case "center":
+                alignment = NSTextAlignment.center
+                
+            case "justified":
+                alignment = NSTextAlignment.justified
+                
+            case "left":
+                alignment = NSTextAlignment.left
+                
+            case "natural":
+                alignment = NSTextAlignment.natural
+                
+            case "right":
+                alignment = NSTextAlignment.right
+                
+            default:
+                alignment = NSTextAlignment.left
+            }
+            paragraphStyle.alignment = alignment
+        }
+        
+        
         // Underline style
         if let underlineStyleString = data["underlineStyle"] as? String {
             let underlineStyle:Int
