@@ -73,8 +73,8 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     open func applyStyle(_ style:Style) {
-        self.tintColor = style.backgroundColor
-        self.onTintColor = style.selectedBackgroundColor
-        self.thumbTintColor = style.foregroundColor
+        self.tintColor = style.backgroundAndBorderStyle.backgroundColor
+        self.onTintColor = style.backgroundAndBorderStyle.selectedBackgroundColor
+        self.thumbTintColor = style.foregroundStyle.foregroundColor
     }
 }

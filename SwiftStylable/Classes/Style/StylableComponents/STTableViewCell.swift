@@ -108,7 +108,7 @@ import UIKit
     
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-            BackgroundAndBorderStylePropertySet(self, canBeHighlighted: true, canBeSelected: true)
+            BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true)
         ])
     }
     

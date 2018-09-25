@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ForegroundStylePropertySet : StylePropertySet {
+class ForegroundStyler : Styler {
 	
 	private weak var _view: ForegroundStylable?
 	private var _canBeHighlighted:Bool
@@ -41,23 +41,23 @@ class ForegroundStylePropertySet : StylePropertySet {
 			return
 		}
 		
-		if let foregroundColor = style.foregroundColor {
+		if let foregroundColor = style.foregroundStyle.foregroundColor {
 			view.foregroundColor = foregroundColor
 		}
 		
 		if self._canBeHighlighted {
-			if let highlightedForegroundColor = style.highlightedForegroundColor {
+			if let highlightedForegroundColor = style.foregroundStyle.highlightedForegroundColor {
 				view.highlightedForegroundColor = highlightedForegroundColor
 			}
 		}
 		if self._canBeSelected {
-			if let selectedForegroundColor = style.selectedForegroundColor {
+			if let selectedForegroundColor = style.foregroundStyle.selectedForegroundColor {
 				view.selectedForegroundColor = selectedForegroundColor
 			}
 		}
 		
 		if self._canBeDisabled {
-			if let disabledForegroundColor = style.disabledForegroundColor {
+			if let disabledForegroundColor = style.foregroundStyle.disabledForegroundColor {
 				view.disabledForegroundColor = disabledForegroundColor
 			}
 		}

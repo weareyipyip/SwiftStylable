@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ButtonTextStylePropertySet : StylePropertySet {
+class ImageStyler : Styler {
 	
-	private weak var _view: ButtonTextStylable?
+	private weak var _view: ImageStylable?
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,10 +18,10 @@ class ButtonTextStylePropertySet : StylePropertySet {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	init(_ view: ButtonTextStylable) {
+	init(_ view: ImageStylable) {
 		self._view = view
 	}
-
+	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
@@ -35,12 +35,8 @@ class ButtonTextStylePropertySet : StylePropertySet {
 			return
 		}
 		
-		// Text
-		if let font = style.font {
-			view.titleLabel?.font = font
-		}
-		if let fullUppercaseText = style.fullUppercaseText {
-			view.fullUppercaseText = fullUppercaseText
+		if let tintImageWithForegroundColor = style.imageStyle.tintImageWithForegroundColor {
+			view.tintImageWithForegroundColor = tintImageWithForegroundColor
 		}
 	}
 }

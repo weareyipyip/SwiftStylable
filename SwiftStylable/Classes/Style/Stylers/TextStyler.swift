@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ImageStylePropertySet : StylePropertySet {
+class TextStyler : Styler {
 	
-	private weak var _view: ImageStylable?
+	private weak var _view: TextStylable?
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class ImageStylePropertySet : StylePropertySet {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	init(_ view: ImageStylable) {
+	init(_ view: TextStylable) {
 		self._view = view
 	}
 	
@@ -35,8 +35,11 @@ class ImageStylePropertySet : StylePropertySet {
 			return
 		}
 		
-		if let tintImageWithForegroundColor = style.tintImageWithForegroundColor {
-			view.tintImageWithForegroundColor = tintImageWithForegroundColor
+		if let font = style.textStyle.font {
+			view.textFont = font
+		}
+		if let fullUppercaseText = style.textStyle.fullUppercaseText {
+			view.fullUppercaseText = fullUppercaseText
 		}
 	}
 }
