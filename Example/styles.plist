@@ -25,6 +25,10 @@
 		<dict>
 			<key>foregroundColor</key>
 			<string>secondaryActionForegroundColor</string>
+			<key>fullUppercaseText</key>
+			<true/>
+			<key>fullUppercasePlaceholder</key>
+			<true/>
 			<key>styledPlaceholderAttributes</key>
 			<dict>
 				<key>foregroundColor</key>
@@ -39,6 +43,11 @@
 				<key>size</key>
 				<integer>12</integer>
 			</dict>
+		</dict>
+		<key>textViewStyle</key>
+		<dict>
+			<key>fullUppercaseText</key>
+			<true/>
 		</dict>
 		<key>testText</key>
 		<dict>

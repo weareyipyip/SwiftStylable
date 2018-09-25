@@ -9,25 +9,12 @@
 import Foundation
 import UIKit
 
-
-//
-//  STLabel.swift
-//  SwiftStylable
-//
-//  Created by Marcel Bloemendaal on 10/08/16.
-//  Copyright © 2016 YipYip. All rights reserved.
-//
-
-import Foundation
-import UIKit
-
-@IBDesignable open class STTextView : UITextView, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable {
+@IBDesignable open class STTextView : UITextView, UITextViewDelegate, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable {
 
     private var _stComponentHelper: STComponentHelper!
-    private var _text:String?
     private var _styledText:String?
-
-    
+	
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Initializers & deinit
@@ -37,14 +24,12 @@ import UIKit
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self._text = super.text
         self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect, textContainer:NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
         
-        self._text = super.text
         self.setUpSTComponentHelper()
     }
     
@@ -74,13 +59,8 @@ import UIKit
     }
 
     open override var text: String? {
-        set {
-            self._text = newValue
-            super.text = self.fullUppercaseText ? newValue?.uppercased() : newValue
+		didSet {
             self._styledText = nil
-        }
-        get {
-            return self._text
         }
     }
     
@@ -89,7 +69,7 @@ import UIKit
             self._styledText = nil
         }
     }
-    
+	
     var foregroundColor: UIColor? {
         set {
             self.textColor = newValue ?? UIColor.black
@@ -118,14 +98,15 @@ import UIKit
 
     open var fullUppercaseText = false {
         didSet {
-            self.text = self._text
+			if self.fullUppercaseText {
+				print("WARNING: fullUppercaseText is not supported by STTextView and STTextField!")
+			}
         }
     }
     
     @IBInspectable open var styledText:String? {
         set {
             self._styledText = newValue
-            self._text = newValue
             if let text = newValue {
                 super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
             }
@@ -154,13 +135,13 @@ import UIKit
         }
     }
     
-    
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Private methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
+	
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
             BackgroundAndBorderStyler(self),
