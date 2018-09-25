@@ -219,10 +219,10 @@ import Foundation
 	
 	private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-			BackgroundAndBorderStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
-			ForegroundStylePropertySet(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
-			ImageStylePropertySet(self),
-            ButtonTextStylePropertySet(self)
+			BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
+			ForegroundStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
+			ImageStyler(self),
+            ButtonTextStyler(self)
 		])
 	}
 	

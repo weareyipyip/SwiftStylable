@@ -7,9 +7,9 @@
 
 import Foundation
 
-class TextStylePropertySet : StylePropertySet {
+class ButtonTextStyler : Styler {
 	
-	private weak var _view: TextStylable?
+	private weak var _view: ButtonTextStylable?
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,10 +18,10 @@ class TextStylePropertySet : StylePropertySet {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	init(_ view: TextStylable) {
+	init(_ view: ButtonTextStylable) {
 		self._view = view
 	}
-	
+
 	
 	// -----------------------------------------------------------------------------------------------------------------------
 	//
@@ -35,10 +35,11 @@ class TextStylePropertySet : StylePropertySet {
 			return
 		}
 		
-		if let font = style.font {
-			view.textFont = font
+		// Text
+		if let font = style.textStyle.font {
+			view.titleLabel?.font = font
 		}
-		if let fullUppercaseText = style.fullUppercaseText {
+		if let fullUppercaseText = style.textStyle.fullUppercaseText {
 			view.fullUppercaseText = fullUppercaseText
 		}
 	}

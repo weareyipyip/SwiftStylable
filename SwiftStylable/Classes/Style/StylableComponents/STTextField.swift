@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class STTextField : UITextField, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, PlaceholderStylable  {
+@IBDesignable open class STTextField : UITextField, UITextFieldDelegate, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, PlaceholderStylable  {
     
     private var _stComponentHelper: STComponentHelper!
-    private var _text:String?
     private var _styledText:String?
     private var _placeholder:String?
     private var _styledPlaceholder:String?
+	private var _delegate:UITextFieldDelegate?
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -26,15 +26,17 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+		self._placeholder = super.placeholder
         self.setUpSTComponentHelper()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
+		self._placeholder = super.placeholder
         self.setUpSTComponentHelper()
     }
-    
-    
+	
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Computed properties
@@ -59,17 +61,6 @@ import UIKit
         }
     }
     
-    open override var text: String? {
-        set {
-            self._text = newValue
-            super.text = self.fullUppercaseText ? newValue?.uppercased() : newValue
-            self._styledText = nil
-        }
-        get {
-            return self._text
-        }
-    }
-    
     open override var attributedText: NSAttributedString? {
         didSet {
             self._styledText = nil
@@ -87,7 +78,6 @@ import UIKit
     @IBInspectable open var styledText:String? {
         set {
             self._styledText = newValue
-            self._text = newValue
             if let text = newValue {
                 super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
             }
@@ -117,12 +107,14 @@ import UIKit
         }
     }
     
-    open var fullUppercaseText:Bool = false {
-        didSet {
-            self.text = self._text
-        }
-    }
-    
+	open var fullUppercaseText = false {
+		didSet {
+			if self.fullUppercaseText {
+				print("WARNING: fullUppercaseText is not supported by STTextView and STTextField!")
+			}
+		}
+	}
+
     open override var placeholder: String? {
         set {
             self._placeholder = newValue
@@ -130,7 +122,7 @@ import UIKit
             self._styledPlaceholder = nil
         }
         get {
-            return self._text
+            return self._placeholder
         }
     }
     
@@ -153,7 +145,8 @@ import UIKit
             self._styledPlaceholder = newValue
             self._placeholder = newValue
             if let placeholder = newValue {
-                super.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: self.styledPlaceholderAttributes ?? [NSAttributedString.Key:Any]())
+				let casedPlaceholder = self.fullUppercasePlaceholder ? placeholder.uppercased() : placeholder
+                super.attributedPlaceholder = NSAttributedString(string: casedPlaceholder, attributes: self.styledPlaceholderAttributes ?? [NSAttributedString.Key:Any]())
             }
         }
         get {
@@ -166,11 +159,7 @@ import UIKit
             self.placeholder = self._placeholder
         }
     }
-    
-//    var fullUppercasePlaceholderText:Bool? { get set }
-//    var styledPlaceholderTextAttributes:[NSAttributedStringKey:Any]? { get set }
-
-    
+	
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -181,8 +170,8 @@ import UIKit
     open func applyStyle(_ style:Style) {
         self._stComponentHelper.applyStyle(style)
     }
-    
-    
+	
+	
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Private methods
@@ -191,11 +180,11 @@ import UIKit
     
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-            BackgroundAndBorderStylePropertySet(self),
-            TextBorderStylePropertySet(self),
-            ForegroundStylePropertySet(self),
-            TextStylePropertySet(self),
-            PlaceholderTextStylePropertySet(self)
+            BackgroundAndBorderStyler(self),
+            TextBorderStyler(self),
+            ForegroundStyler(self),
+            TextStyler(self),
+            PlaceholderTextStyler(self)
         ])
     }
 }

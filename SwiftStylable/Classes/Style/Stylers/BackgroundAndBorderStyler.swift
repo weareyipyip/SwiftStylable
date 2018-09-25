@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BackgroundAndBorderStylePropertySet : StylePropertySet {
+class BackgroundAndBorderStyler : Styler {
 	
 	private weak var _view: BackgroundAndBorderStylable?
 	private var _canBeHighlighted:Bool
@@ -41,45 +41,45 @@ class BackgroundAndBorderStylePropertySet : StylePropertySet {
 			return
 		}
 
-		if let backgroundColor = style.backgroundColor {
+		if let backgroundColor = style.backgroundAndBorderStyle.backgroundColor {
 			view.normalBackgroundColor = backgroundColor
 		}
-		if let borderWidth = style.borderWidth {
+		if let borderWidth = style.backgroundAndBorderStyle.borderWidth {
 			view.layer.borderWidth = borderWidth
 		}
-		if let borderColor = style.borderColor {
+		if let borderColor = style.backgroundAndBorderStyle.borderColor {
 			view.borderColor = borderColor
 		}
-		if let cornerRadius = style.cornerRadius {
+		if let cornerRadius = style.backgroundAndBorderStyle.cornerRadius {
 			view.layer.cornerRadius = cornerRadius
 		}
-		if let clipsToBounds = style.clipsToBounds {
+		if let clipsToBounds = style.backgroundAndBorderStyle.clipsToBounds {
 			view.clipsToBounds = clipsToBounds
 		}
 		
 		if self._canBeHighlighted {
-			if let highlightedBackgroundColor = style.highlightedBackgroundColor {
+			if let highlightedBackgroundColor = style.backgroundAndBorderStyle.highlightedBackgroundColor {
 				view.highlightedBackgroundColor = highlightedBackgroundColor
 			}
-			if let highlightedBorderColor = style.highlightedBorderColor {
+			if let highlightedBorderColor = style.backgroundAndBorderStyle.highlightedBorderColor {
 				view.highlightedBorderColor = highlightedBorderColor
 			}
 		}
 		
 		if self._canBeSelected {
-			if let selectedBackgroundColor = style.selectedBackgroundColor {
+			if let selectedBackgroundColor = style.backgroundAndBorderStyle.selectedBackgroundColor {
 				view.selectedBackgroundColor = selectedBackgroundColor
 			}
-			if let selectedBorderColor = style.selectedBorderColor {
+			if let selectedBorderColor = style.backgroundAndBorderStyle.selectedBorderColor {
 				view.selectedBorderColor = selectedBorderColor
 			}
 		}
 		
 		if self._canBeDisabled {
-			if let disabledBackgroundColor = style.disabledBackgroundColor {
+			if let disabledBackgroundColor = style.backgroundAndBorderStyle.disabledBackgroundColor {
 				view.disabledBackgroundColor = disabledBackgroundColor
 			}
-			if let disabledBorderColor = style.disabledBorderColor {
+			if let disabledBorderColor = style.backgroundAndBorderStyle.disabledBorderColor {
 				view.disabledBorderColor = disabledBorderColor
 			}
 		}

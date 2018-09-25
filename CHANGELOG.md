@@ -2,6 +2,16 @@
 
 Significant changes to the project will be documented here.
 
+## [1.4.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- Refactor of Style class into subcomponents
+- Changes some scopes from open to public (result of Swift 4.2 not allowing open anymore in some cases)
+- Added styledPlaceholder and fullUppercasePlaceholder to STTextField
+- Added styledPlaceholderAttributes to style attributes
+- Added alignment to styledTextAttributes
+- Fixed issues in STTextField
+- Removed fullUppercaseText from STTextField en STTextView as it needed a technically undesirable implementation
+
 ## [1.3.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
 
 - Fixed .swift-version file for cocoapods

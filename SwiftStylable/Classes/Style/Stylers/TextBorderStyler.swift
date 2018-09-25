@@ -7,9 +7,9 @@
 
 import Foundation
 
-class StyledTextStylePropertySet : StylePropertySet {
+class TextBorderStyler : Styler {
     
-    private weak var _view: StyledTextStylable?
+    private weak var _view: TextBorderStylable?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class StyledTextStylePropertySet : StylePropertySet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(_ view: StyledTextStylable) {
+    init(_ view: TextBorderStylable) {
         self._view = view
     }
     
@@ -35,8 +35,9 @@ class StyledTextStylePropertySet : StylePropertySet {
             return
         }
         
-        if let styledTextAttributes = style.styledTextAttributes {
-            view.styledTextAttributes = styledTextAttributes
+        if let borderStyle = style.textBorderStyle.borderStyle {
+            view.layer.masksToBounds = true
+            view.borderStyle = borderStyle
         }
     }
 }

@@ -91,6 +91,8 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- kern (number)
 	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
 	- underlineColor (string)
+	- alignment (string: "left", "right", "center", "justified" or "natural")
+- styledPlaceholderAttributes (dictionary, same as 'styledTextAttributes')
 
 #### Colors
 All color properties should reference a named color from the colors section of the styles descriptor. For most colors there are 3 varieties besided the normal one: highlighted, selected and disabled. Most components do not use these varieties. They are mainly meant to define button states.

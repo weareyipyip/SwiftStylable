@@ -76,8 +76,8 @@ import UIKit
     
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-            BackgroundAndBorderStylePropertySet(self),
-            TableViewSeparatorStylePropertySet(self)
+            BackgroundAndBorderStyler(self),
+            TableViewSeparatorStyler(self)
         ])
     }
 }

@@ -18,7 +18,7 @@ open class Styles {
     public static let shared = Styles()
     
     private var _styles = [String:Style]()
-    private var _colorHolders = [String:ColorHolder]()
+    private let _colorCollection = ColorCollection()
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ open class Styles {
     }
     
     open func colorNamed(_ name:String)->UIColor? {
-        return self._colorHolders[name]?.color
+        return self._colorCollection.colorHolderNamed(name)?.color
     }
         
     open func processStyleDataWithFileNamed(_ fileName:String) {
@@ -99,38 +99,16 @@ open class Styles {
 	
 	private func processStyleDataWithFileAtPath(_ path:String, publishUpdate:Bool) {
 		
-        guard let styleData = NSDictionary(contentsOfFile: path) as? [String:AnyObject] else {
+        guard let styleData = NSDictionary(contentsOfFile: path) as? [String:Any] else {
                 return
         }
         
         // Parse color strings
-        if var colorEntries = styleData["colors"] as? [String:String] {
-            var numParsedColors = 1
-            while colorEntries.count > 0 && numParsedColors > 0 {
-                numParsedColors = 0
-                for (name, colorString) in colorEntries {
-                    if let color = UIColor(hexString: colorString) {
-                        if let colorHolder = self._colorHolders[name] {
-                            colorHolder.color = color
-                        } else {
-                            self._colorHolders[name] = ColorHolder(color: color)
-                        }
-                        colorEntries.removeValue(forKey: name)
-                        numParsedColors += 1
-                    } else if let colorHolder = self._colorHolders[colorString] {
-                        self._colorHolders[name] = colorHolder
-                        colorEntries.removeValue(forKey: name)
-                        numParsedColors += 1
-                    }
-                }
-            }
-            if colorEntries.count > 0 {
-                // Not everything was parsed in the above code, this means there are unsatifyable colorStrings
-                print("WARNING: not all colors could be parsed, this probably means a name is used, but no actual color is ever assigned to it")
-            }
+        if let colorData = styleData["colors"] as? [String:String] {
+            self._colorCollection.applyData(colorData)
         }
         
-        var styleDatas = styleData["styles"] as? [String:[String:AnyObject]]
+        var styleDatas = styleData["styles"] as? [String:[String:Any]]
         if styleDatas != nil {
             
             // Read styles
@@ -145,7 +123,7 @@ open class Styles {
                             if style != nil {
                                 print("WARNING: You cannot override the parent property of a style! Style named '\(name)' will be replaced completely.")
                             }
-                            let style = Style(name: name, parentStyle: parentStyle, overridesData: styleData)
+                            let style = Style(name: name, parent: parentStyle, data: styleData, colorCollection: self._colorCollection)
                             self._styles[name] = style
                             styleDatas!.removeValue(forKey: name)
                             numParsedStyles += 1
@@ -153,7 +131,7 @@ open class Styles {
                     } else {
                         if style == nil {
                             // Create a new style with the data
-                            style = Style(name: name, data: styleData)
+                            style = Style(name: name, data: styleData, colorCollection: self._colorCollection)
                         } else {
                             style!.parseData(styleData)
                         }

@@ -1,15 +1,15 @@
 //
-//  PlaceholderTextStylePropertySet.swift
-//  Pods-SwiftStylableExample
+//  ButtonStyleSet.swift
+//  SwiftStylable
 //
-//  Created by Bob De Kort-Goossens on 19/07/2018.
+//  Created by Marcel Bloemendaal on 17/04/2018.
 //
 
 import Foundation
 
-class PlaceholderTextStylePropertySet : StylePropertySet {
+class StyledTextStyler : Styler {
     
-    private weak var _view: PlaceholderStylable?
+    private weak var _view: StyledTextStylable?
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class PlaceholderTextStylePropertySet : StylePropertySet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(_ view: PlaceholderStylable) {
+    init(_ view: StyledTextStylable) {
         self._view = view
     }
     
@@ -35,11 +35,8 @@ class PlaceholderTextStylePropertySet : StylePropertySet {
             return
         }
         
-        if let fullUppercasePlaceholder = style.fullUppercasePlaceholder {
-            view.fullUppercasePlaceholder = fullUppercasePlaceholder
-        }
-        if let styledPlaceholderAttributes = style.styledPlaceholderAttributes {
-            view.styledPlaceholderAttributes = styledPlaceholderAttributes
+        if let styledTextAttributes = style.styledTextStyle.styledTextAttributes {
+            view.styledTextAttributes = styledTextAttributes
         }
     }
 }

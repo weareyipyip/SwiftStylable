@@ -147,10 +147,10 @@ import UIKit
 	
 	private func setUpSTComponentHelper() {
 		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-			BackgroundAndBorderStylePropertySet(self),
-			ForegroundStylePropertySet(self),
-			TextStylePropertySet(self),
-            StyledTextStylePropertySet(self)
+			BackgroundAndBorderStyler(self),
+			ForegroundStyler(self),
+			TextStyler(self),
+            StyledTextStyler(self)
 		])
 	}
 

@@ -124,9 +124,9 @@ import UIKit
 	
 	private func setUpSTComponentHelper() {
 		self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-			BackgroundAndBorderStylePropertySet(self),
-			ForegroundStylePropertySet(self),
-			ImageStylePropertySet(self)
+			BackgroundAndBorderStyler(self),
+			ForegroundStyler(self),
+			ImageStyler(self)
 		])
 	}
 }
