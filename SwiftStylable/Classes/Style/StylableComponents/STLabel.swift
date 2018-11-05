@@ -34,10 +34,6 @@ import UIKit
 		self.setUpSTComponentHelper()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -153,5 +149,4 @@ import UIKit
             StyledTextStyler(self)
 		])
 	}
-
 }

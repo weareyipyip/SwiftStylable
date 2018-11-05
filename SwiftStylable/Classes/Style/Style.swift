@@ -59,4 +59,15 @@ public class Style {
         self.imageStyle.applyData(data)
         self.tableViewSeparatorStyle.applyData(data)
     }
+    
+    internal func update() {
+        self.foregroundStyle.update()
+        self.backgroundAndBorderStyle.update()
+        self.textStyle.update()
+        self.textBorderStyle.update()
+        self.styledTextStyle.update()
+        self.placeholderStyle.update()
+        self.imageStyle.update()
+        self.tableViewSeparatorStyle.update()
+    }
 }
