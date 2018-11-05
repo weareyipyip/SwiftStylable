@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -407,26 +407,12 @@
                                     <constraint firstAttribute="trailing" secondItem="v9r-OP-m5c" secondAttribute="trailing" constant="16" id="zqK-6l-ZCe"/>
                                 </constraints>
                             </scrollView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lm3-s1-1Ys" customClass="STTextView" customModule="SwiftStylable">
-                                <rect key="frame" x="46" y="30" width="283" height="273"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="textViewStyle"/>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="u62-Nb-TLZ" secondAttribute="bottom" id="7JG-54-2NX"/>
                             <constraint firstItem="u62-Nb-TLZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Hf4-C3-oFb"/>
-                            <constraint firstItem="Lm3-s1-1Ys" firstAttribute="top" secondItem="3f7-Fe-EMZ" secondAttribute="bottom" constant="30" id="Jlo-En-CFp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Lm3-s1-1Ys" secondAttribute="trailing" constant="30" id="Mq2-zF-Kux"/>
-                            <constraint firstItem="Lm3-s1-1Ys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="XO5-Ic-kew"/>
                             <constraint firstAttribute="trailing" secondItem="u62-Nb-TLZ" secondAttribute="trailing" id="bKK-UC-hxC"/>
-                            <constraint firstItem="QoM-mn-acl" firstAttribute="top" secondItem="Lm3-s1-1Ys" secondAttribute="bottom" constant="300" id="r90-FI-47g"/>
                             <constraint firstItem="u62-Nb-TLZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rj7-AM-jGY"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -434,9 +420,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="czl-vb-0xd"/>
-                    <connections>
-                        <outlet property="textView" destination="Lm3-s1-1Ys" id="Iei-zg-0p4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

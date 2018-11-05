@@ -106,6 +106,11 @@ open class Styles {
         // Parse color strings
         if let colorData = styleData["colors"] as? [String:String] {
             self._colorCollection.applyData(colorData)
+            
+            // Force update all styles, to make them process the new color information
+            for keyValuePair in self._styles {
+                keyValuePair.value.update()
+            }
         }
         
         var styleDatas = styleData["styles"] as? [String:[String:Any]]

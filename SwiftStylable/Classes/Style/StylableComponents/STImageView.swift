@@ -33,6 +33,7 @@ import UIKit
 	
 	public override init(image: UIImage?) {
 		super.init(image: image)
+        self.setUpSTComponentHelper()
 	}
 	
 	

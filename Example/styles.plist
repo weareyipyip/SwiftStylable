@@ -31,6 +31,13 @@
 			<true/>
 			<key>styledPlaceholderAttributes</key>
 			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>italicSystemFont</string>
+					<key>size</key>
+					<integer>16</integer>
+				</dict>
 				<key>foregroundColor</key>
 				<string>#ff0000</string>
 				<key>underlineStyle</key>
@@ -91,7 +98,7 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>HelveticaNeue</string>
+				<string>Arial</string>
 				<key>size</key>
 				<integer>12</integer>
 			</dict>
