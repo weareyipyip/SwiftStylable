@@ -14,8 +14,8 @@ public class TextStyle : StyleSetBase {
     
     private let _parent:TextStyle?
     
-    private var _fontName:String?
-    private var _fontSize:CGFloat?
+    private (set) var fontName:String?
+    private (set) var fontSize:CGFloat?
     private var _fullUppercaseText:Bool?
     
     
@@ -43,11 +43,11 @@ public class TextStyle : StyleSetBase {
         
         if let font = data["font"] as? [String:Any] {
             if let name = font["name"] as? String {
-                self._fontName = name
+                self.fontName = name
             }
             if let sizeAny = font["size"] {
                 if let size = sizeAny as? CGFloat {
-                    self._fontSize = size
+                    self.fontSize = size
                 } else {
                     print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
                 }
@@ -61,13 +61,7 @@ public class TextStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        let parentFont = self._parent?.font
-        if let name = self._fontName ?? parentFont?.fontName,
-            let size = self._fontSize ?? parentFont?.pointSize, let font = UIFont(name: name, size: size) {
-            self.font = font
-        } else {
-            self.font = nil
-        }
+        self.font = self.createFont(name: self.fontName, size: self.fontSize, defaultName: self._parent?.fontName, defaultSize: self._parent?.fontSize)
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
 }
