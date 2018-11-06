@@ -11,9 +11,9 @@ public class StyledTextStyle : StyleSetBase {
     
     public private(set) var styledTextAttributes:[NSAttributedString.Key:Any]?
     
+	internal var styledTextDictionary:[String:Any]?
+	
     private let _parent:StyledTextStyle?
-
-    private var _styledTextDictionary:[String:Any]?
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -39,13 +39,30 @@ public class StyledTextStyle : StyleSetBase {
         super._applyData(data)
         
         if let styledTextDictionary = data["styledTextAttributes"] as? [String:Any] {
-            self._styledTextDictionary = styledTextDictionary
+            self.styledTextDictionary = styledTextDictionary
         }
     }
     
     override internal func update() {
         super.update()
-        
-        self.styledTextAttributes = self.stringAttributesFromDictionary(self._styledTextDictionary) ?? self._parent?.styledTextAttributes
+		
+		if let ownStyledTextDictionary = self.styledTextDictionary, let parentStyledTextDictionary = self._parent?.styledTextDictionary {
+			let mergedDictionary = self.mergeDictionariesRecursively(priorityDictionary: ownStyledTextDictionary, otherDictionary: parentStyledTextDictionary)
+			self.styledTextAttributes = self.stringAttributesFromDictionary(mergedDictionary)
+		} else {
+			self.styledTextAttributes = self.stringAttributesFromDictionary(self.styledTextDictionary ?? self._parent?.styledTextDictionary)
+		}
     }
+	
+	private func mergeDictionariesRecursively(priorityDictionary:[String:Any], otherDictionary:[String:Any])->[String:Any] {
+		return priorityDictionary.merging(otherDictionary, uniquingKeysWith: { (priorityValue, otherValue) -> Any in
+			var result:Any
+			if let priorityValueDictionary = priorityValue as? [String:Any], let otherValueDictionary = otherValue as? [String:Any] {
+				result = self.mergeDictionariesRecursively(priorityDictionary: priorityValueDictionary, otherDictionary: otherValueDictionary)
+			} else {
+				result = priorityValue
+			}
+			return result
+		})
+	}
 }

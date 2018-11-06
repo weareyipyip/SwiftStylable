@@ -106,12 +106,7 @@ open class Styles {
         // Parse color strings
         if let colorData = styleData["colors"] as? [String:String] {
             self._colorCollection.applyData(colorData)
-            
-            // Force update all styles, to make them process the new color information
-            for keyValuePair in self._styles {
-                keyValuePair.value.update()
-            }
-        }
+		}
         
         var styleDatas = styleData["styles"] as? [String:[String:Any]]
         if styleDatas != nil {
@@ -151,7 +146,12 @@ open class Styles {
                 print("WARNING: not all styles could be parsed, this probably means a parent style does not exist, or there are 2 or more styles referring to eachother as a parentStyle.")
             }
         }
-        
+		
+		// Update all styles
+		for keyValuePair in self._styles {
+			keyValuePair.value.update()
+		}
+		
         if publishUpdate {
             NotificationCenter.default.post(name: STYLES_DID_UPDATE, object: self)
         }
