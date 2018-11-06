@@ -2,6 +2,15 @@
 
 Significant changes to the project will be documented here.
 
+## [1.4.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- Corrected the behaviour of styledTextAttributes so the attribute dictionaries always merge with ther parents
+
+## [1.4.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+
+- Fixed an issue causing fonts to sometimes be parsed incorrectly
+- Fixed STImage initializer
+
 ## [1.4.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
 
 - Refactor of Style class into subcomponents
