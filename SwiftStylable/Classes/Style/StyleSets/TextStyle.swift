@@ -14,8 +14,8 @@ public class TextStyle : StyleSetBase {
     
     private let _parent:TextStyle?
     
-    private (set) var fontName:String?
-    private (set) var fontSize:CGFloat?
+    private var _fontName:String?
+    private var _fontSize:CGFloat?
     private var _fullUppercaseText:Bool?
     
     
@@ -34,6 +34,25 @@ public class TextStyle : StyleSetBase {
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    var fontName:String? {
+        get {
+            return self._fontName ?? self._parent?.fontName
+        }
+    }
+    
+    var fontSize:CGFloat? {
+        get {
+            return self._fontSize ?? self._parent?.fontSize
+        }
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
     // MARK: - Internal methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
@@ -43,11 +62,11 @@ public class TextStyle : StyleSetBase {
         
         if let font = data["font"] as? [String:Any] {
             if let name = font["name"] as? String {
-                self.fontName = name
+                self._fontName = name
             }
             if let sizeAny = font["size"] {
                 if let size = sizeAny as? CGFloat {
-                    self.fontSize = size
+                    self._fontSize = size
                 } else {
                     print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
                 }
@@ -61,7 +80,7 @@ public class TextStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        self.font = self.createFont(name: self.fontName, size: self.fontSize, defaultName: self._parent?.fontName, defaultSize: self._parent?.fontSize)
+        self.font = self.createFont(name: self.fontName, size: self.fontSize)
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
 }
