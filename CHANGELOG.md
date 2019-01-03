@@ -2,20 +2,25 @@
 
 Significant changes to the project will be documented here.
 
+## [1.4.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.4)
+
+- More fixes in color inheritance of foreground and background colors
+- Fixed STTableViewCell not doing color mangement right at all
+
 ## [1.4.3](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.3)
 
 - Corrected font inheritance, fonts would previously not be inherited form ancestors more than 1 generation away
 
-## [1.4.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.4.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.2)
 
 - Corrected the behaviour of styledTextAttributes so the attribute dictionaries always merge with ther parents
 
-## [1.4.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.4.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.1)
 
 - Fixed an issue causing fonts to sometimes be parsed incorrectly
 - Fixed STImage initializer
 
-## [1.4.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.4.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.0)
 
 - Refactor of Style class into subcomponents
 - Changes some scopes from open to public (result of Swift 4.2 not allowing open anymore in some cases)
@@ -25,15 +30,15 @@ Significant changes to the project will be documented here.
 - Fixed issues in STTextField
 - Removed fullUppercaseText from STTextField en STTextView as it needed a technically undesirable implementation
 
-## [1.3.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.3.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.3.2)
 
 - Fixed .swift-version file for cocoapods
 
-## [1.3.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.3.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.3.1)
 
 - Migrated to Swift 4.2
 
-## [1.3.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
+## [1.3.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.3.0)
 
 - Improved error warnings in logs
 - Fixed some missing style properties in STTextField
