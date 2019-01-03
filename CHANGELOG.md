@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.4.3](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.3)
+
+- Corrected font inheritance, fonts would previously not be inherited form ancestors more than 1 generation away
+
 ## [1.4.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.2.0)
 
 - Corrected the behaviour of styledTextAttributes so the attribute dictionaries always merge with ther parents
