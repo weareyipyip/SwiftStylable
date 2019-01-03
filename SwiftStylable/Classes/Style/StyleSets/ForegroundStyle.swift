@@ -16,12 +16,12 @@ public class ForegroundStyle : StyleSetBase {
     
     private let _parent:ForegroundStyle?
     
-    private var _foregroundColorString:String?
-    private var _highlightedForegroundColorString:String?
-    private var _selectedForegroundColorString:String?
-    private var _disabledForegroundColorString:String?
+    private var _foregroundColorName:String?
+    private var _highlightedForegroundColorName:String?
+    private var _selectedForegroundColorName:String?
+    private var _disabledForegroundColorName:String?
     
-
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Initializers
@@ -37,6 +37,29 @@ public class ForegroundStyle : StyleSetBase {
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    var foregroundColorName:String? {
+        return self._foregroundColorName ?? self._parent?.foregroundColorName
+    }
+    
+    var highlightedForegroundColorName:String? {
+        return self._highlightedForegroundColorName ?? self._parent?.highlightedForegroundColorName
+    }
+    
+    var selectedForegroundColorName:String? {
+        return self._selectedForegroundColorName ?? self._parent?.selectedForegroundColorName
+    }
+    
+    var disabledForegroundColorName:String? {
+        return self._disabledForegroundColorName ?? self._parent?.disabledForegroundColorName
+    }
+    
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
     // MARK: - Internal methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
@@ -45,25 +68,25 @@ public class ForegroundStyle : StyleSetBase {
         super._applyData(data)
         
         if let foregroundColorString = data["foregroundColor"] as? String {
-            self._foregroundColorString = foregroundColorString
+            self._foregroundColorName = foregroundColorString
         }
         if let highlightedForegroundColorString = data["highlightedForegroundColor"] as? String {
-            self._highlightedForegroundColorString = highlightedForegroundColorString
+            self._highlightedForegroundColorName = highlightedForegroundColorString
         }
         if let selectedForegroundColorString = data["selectedForegroundColor"] as? String {
-            self._selectedForegroundColorString = selectedForegroundColorString
+            self._selectedForegroundColorName = selectedForegroundColorString
         }
         if let disabledForegroundColorString = data["disabledForegroundColor"] as? String {
-            self._disabledForegroundColorString = disabledForegroundColorString
+            self._disabledForegroundColorName = disabledForegroundColorString
         }
     }
     
     override internal func update() {
         super.update()
         
-        self.foregroundColor = self.colorFromString(self._foregroundColorString) ?? self._parent?.foregroundColor
-        self.highlightedForegroundColor = self.colorFromString(self._highlightedForegroundColorString) ?? self._parent?.highlightedForegroundColor
-        self.selectedForegroundColor = self.colorFromString(self._highlightedForegroundColorString) ?? self._parent?.selectedForegroundColor
-        self.disabledForegroundColor = self.colorFromString(self._disabledForegroundColorString) ?? self._parent?.disabledForegroundColor
+        self.foregroundColor = self.colorFromString(self.foregroundColorName)
+        self.highlightedForegroundColor = self.colorFromString(self.highlightedForegroundColorName)
+        self.selectedForegroundColor = self.colorFromString(self.highlightedForegroundColorName)
+        self.disabledForegroundColor = self.colorFromString(self.disabledForegroundColorName)
     }
 }

@@ -20,7 +20,7 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     public private(set) var highlightedBorderColor:UIColor?
     public private(set) var selectedBorderColor:UIColor?
     public private(set) var disabledBorderColor:UIColor?
-
+    
     private let _parent:BackgroundAndBorderStyle?
     
     private var _borderWidth:CGFloat?
@@ -28,16 +28,16 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     private var _cornerRadius:CGFloat?
     
     // Background color names
-    private var _backgroundColorString: String?
-    private var _highlightedBackgroundColorString: String?
-    private var _selectedBackgroundColorString: String?
-    private var _disabledBackgroundColorString: String?
+    private var _backgroundColorName: String?
+    private var _highlightedBackgroundColorName: String?
+    private var _selectedBackgroundColorName: String?
+    private var _disabledBackgroundColorName: String?
     
     // Border color names
-    private var _borderColorString: String?
-    private var _highlightedBorderColorString: String?
-    private var _selectedBorderColorString: String?
-    private var _disabledBorderColorString: String?
+    private var _borderColorName: String?
+    private var _highlightedBorderColorName: String?
+    private var _selectedBorderColorName: String?
+    private var _disabledBorderColorName: String?
     
     // Caches
     
@@ -54,43 +54,82 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         self.applyData(data)
     }
     
-        
+    
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    var backgroundColorName:String? {
+        return self._backgroundColorName ?? self._parent?.backgroundColorName
+    }
+    
+    var highlightedBackgroundColorName:String? {
+        return self._highlightedBackgroundColorName ?? self._parent?.highlightedBackgroundColorName
+    }
+    
+    var selectedBackgroundColorName:String? {
+        return self._selectedBackgroundColorName ?? self._parent?.selectedBackgroundColorName
+    }
+    
+    var disabledBackgroundColorName:String? {
+        return self._disabledBackgroundColorName ?? self._parent?.disabledBackgroundColorName
+    }
+    
+    var borderColorName:String? {
+        return self._borderColorName ?? self._parent?.borderColorName
+    }
+    
+    var highlightedBorderColorName:String? {
+        return self._highlightedBorderColorName ?? self._parent?.highlightedBorderColorName
+    }
+    
+    var selectedBorderColorName:String? {
+        return self._selectedBorderColorName ?? self._parent?.selectedBorderColorName
+    }
+    
+    var disabledBorderColorName:String? {
+        return self._disabledBorderColorName ?? self._parent?.disabledBorderColorName
+    }
+    
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Internal methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-
+    
     override internal func _applyData(_ data:[String:Any]) {
         
         super._applyData(data)
         
         // Background colors
         if let backgroundColorString = data["backgroundColor"] as? String {
-            self._backgroundColorString = backgroundColorString
+            self._backgroundColorName = backgroundColorString
         }
         if let highlightedBackgroundColorString = data["highlightedBackgroundColor"] as? String {
-            self._highlightedBackgroundColorString = highlightedBackgroundColorString
+            self._highlightedBackgroundColorName = highlightedBackgroundColorString
         }
         if let selectedBackgroundColorString = data["selectedBackgroundColor"] as? String {
-            self._selectedBackgroundColorString = selectedBackgroundColorString
+            self._selectedBackgroundColorName = selectedBackgroundColorString
         }
         if let disabledBackgroundColorString = data["disabledBackgroundColor"] as? String {
-            self._disabledBackgroundColorString = disabledBackgroundColorString
+            self._disabledBackgroundColorName = disabledBackgroundColorString
         }
         
         // Border colors
         if let borderColorString = data["borderColor"] as? String {
-            self._borderColorString = borderColorString
+            self._borderColorName = borderColorString
         }
         if let highlightedBorderColorString = data["highlightedBorderColor"] as? String {
-            self._highlightedBorderColorString = highlightedBorderColorString
+            self._highlightedBorderColorName = highlightedBorderColorString
         }
         if let selectedBorderColorString = data["selectedBorderColor"] as? String {
-            self._selectedBorderColorString = selectedBorderColorString
+            self._selectedBorderColorName = selectedBorderColorString
         }
         if let disabledBorderColorString = data["disabledBorderColor"] as? String {
-            self._disabledBorderColorString = disabledBorderColorString
+            self._disabledBorderColorName = disabledBorderColorString
         }
         
         // Other
@@ -114,13 +153,13 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         self.clipsToBounds = self._clipsToBounds ?? self._parent?.clipsToBounds
         self.cornerRadius = self._cornerRadius ?? self._parent?.cornerRadius
         
-        self.backgroundColor = self.colorFromString(self._backgroundColorString) ?? self._parent?.backgroundColor
-        self.highlightedBackgroundColor = self.colorFromString(self._highlightedBackgroundColorString) ?? self._parent?.highlightedBackgroundColor
-        self.selectedBackgroundColor = self.colorFromString(self._selectedBackgroundColorString) ?? self._parent?.selectedBackgroundColor
-        self.disabledBackgroundColor = self.colorFromString(self._disabledBackgroundColorString) ?? self._parent?.disabledBackgroundColor
-        self.borderColor = self.colorFromString(self._borderColorString) ?? self._parent?.borderColor
-        self.highlightedBorderColor = self.colorFromString(self._highlightedBorderColorString) ?? self._parent?.highlightedBorderColor
-        self.selectedBorderColor = self.colorFromString(self._selectedBorderColorString) ?? self._parent?.selectedBorderColor
-        self.disabledBorderColor = self.colorFromString(self._disabledBorderColorString) ?? self._parent?.disabledBorderColor
+        self.backgroundColor = self.colorFromString(self.backgroundColorName)
+        self.highlightedBackgroundColor = self.colorFromString(self.highlightedBackgroundColorName)
+        self.selectedBackgroundColor = self.colorFromString(self.selectedBackgroundColorName)
+        self.disabledBackgroundColor = self.colorFromString(self.disabledBackgroundColorName)
+        self.borderColor = self.colorFromString(self.borderColorName)
+        self.highlightedBorderColor = self.colorFromString(self.highlightedBorderColorName)
+        self.selectedBorderColor = self.colorFromString(self.selectedBorderColorName)
+        self.disabledBorderColor = self.colorFromString(self.disabledBorderColorName)
     }
 }
