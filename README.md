@@ -126,6 +126,10 @@ The STLabel and the STTextView both support 'styled text'. This is basically att
 
 If you want to define a style that is much like a previously defined style, you can use this previous style as a parent. This way you only have to set the properties that are different from the parent style, in the new style you are creating. The other properties will simply be inherited from the parent style. To set a parent syle, just add a 'parent' property to your style definition, with the name of the desired parent style as the value.
 
+#### Substyles
+
+Every style component has a styleName property and a substyleName property. Substyles can be used to apply a set of overrides to a style. Suppose you have a large number of styles, but in certain sections of your app you want to apply a theme that overrides the foreground color of some styles. (and may be some other properties) You could make new styles that have your normal styles as parents and override their foreground colors, but you would have to override all your styles, for all your possible themes. You can also define styles for all of your themes in which you only override the foreground color (and any other properties that have to change for your theme). You than apply a theme style as substyle for any component that should have this theme and there you go: your theme look is applied.
+
 ## Using styles in your project
 
 To use your defined styles in a component in Interface Builder, change the class of the component to the SwiftStylable version of the component. (For example: to style a UIButton, you change its class to 'STButton') Make sure the Module field (underneith the Class field) is then set to 'SwiftStylable'. This usually happens automatically. The component should now have a 'styleName' and a 'substyleName' property. To apply the desired style to your component, you now simply set the 'styleName' property of the component to the name of the style. You may have to refresh the views in your Storyboard for styles to take effect. (With Interface Builder in focus, select Editor->Refresh all views.)
