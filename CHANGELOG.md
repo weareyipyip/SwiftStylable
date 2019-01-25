@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.4.5](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.5)
+
+- Fixed incorrect selectedForegroundColor in ForegroundStylable
+
 ## [1.4.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.4)
 
 - More fixes in color inheritance of foreground and background colors
