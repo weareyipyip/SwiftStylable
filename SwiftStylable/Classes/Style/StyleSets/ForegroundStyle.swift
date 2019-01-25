@@ -86,7 +86,7 @@ public class ForegroundStyle : StyleSetBase {
         
         self.foregroundColor = self.colorFromString(self.foregroundColorName)
         self.highlightedForegroundColor = self.colorFromString(self.highlightedForegroundColorName)
-        self.selectedForegroundColor = self.colorFromString(self.highlightedForegroundColorName)
+        self.selectedForegroundColor = self.colorFromString(self.selectedForegroundColorName)
         self.disabledForegroundColor = self.colorFromString(self.disabledForegroundColorName)
     }
 }
