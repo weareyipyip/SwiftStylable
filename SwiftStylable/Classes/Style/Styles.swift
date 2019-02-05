@@ -6,7 +6,6 @@
 //  Copyright © 2016 YipYip. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 
@@ -19,6 +18,7 @@ open class Styles {
     
     private var _styles = [String:Style]()
     private let _colorCollection = ColorCollection()
+    private let _dimensionCollection = DimensionCollection()
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -60,6 +60,10 @@ open class Styles {
     open func colorNamed(_ name:String)->UIColor? {
         return self._colorCollection.colorHolderNamed(name)?.color
     }
+    
+    open func dimentionNamed(_ name:String)->CGFloat? {
+        return self._dimensionCollection.dimensionHolderNamed(name)?.size
+    }
         
     open func processStyleDataWithFileNamed(_ fileName:String) {
 		self.processStyleDataWithFileNamed(fileName, publishUpdate: true)
@@ -97,16 +101,21 @@ open class Styles {
 		}
 	}
 	
-	private func processStyleDataWithFileAtPath(_ path:String, publishUpdate:Bool) {
-		
+    private func processStyleDataWithFileAtPath(_ path:String, publishUpdate:Bool) {
+        
         guard let styleData = NSDictionary(contentsOfFile: path) as? [String:Any] else {
-                return
+            return
         }
         
         // Parse color strings
         if let colorData = styleData["colors"] as? [String:String] {
             self._colorCollection.applyData(colorData)
 		}
+        
+        // Parse dimensions strings
+        if let dimentionData = styleData["dimensions"] as? [String:Any] {
+            self._dimensionCollection.applyData(dimentionData)
+        }
         
         var styleDatas = styleData["styles"] as? [String:[String:Any]]
         if styleDatas != nil {
@@ -123,7 +132,7 @@ open class Styles {
                             if style != nil {
                                 print("WARNING: You cannot override the parent property of a style! Style named '\(name)' will be replaced completely.")
                             }
-                            let style = Style(name: name, parent: parentStyle, data: styleData, colorCollection: self._colorCollection)
+                            let style = Style(name: name, parent: parentStyle, data: styleData, colorCollection: self._colorCollection, dimensionCollection: self._dimensionCollection)
                             self._styles[name] = style
                             styleDatas!.removeValue(forKey: name)
                             numParsedStyles += 1
@@ -131,7 +140,7 @@ open class Styles {
                     } else {
                         if style == nil {
                             // Create a new style with the data
-                            style = Style(name: name, data: styleData, colorCollection: self._colorCollection)
+                            style = Style(name: name, data: styleData, colorCollection: self._colorCollection, dimensionCollection: self._dimensionCollection)
                         } else {
                             style!.parseData(styleData)
                         }

@@ -30,9 +30,9 @@ public class ImageStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:ImageStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    internal init(name:String, parent:ImageStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent, colorCollection: colorCollection)
+        super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
     }
     

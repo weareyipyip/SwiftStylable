@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class TableViewSeparatorStyle : StyleSetBase {
     
@@ -24,9 +24,9 @@ public class TableViewSeparatorStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:TableViewSeparatorStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    internal init(name:String, parent:TableViewSeparatorStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent, colorCollection: colorCollection)
+        super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
     }
 

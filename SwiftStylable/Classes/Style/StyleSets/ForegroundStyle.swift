@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class ForegroundStyle : StyleSetBase {
     
@@ -28,9 +28,9 @@ public class ForegroundStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:ForegroundStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    internal init(name:String, parent:ForegroundStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent, colorCollection: colorCollection)
+        super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
     }
     
