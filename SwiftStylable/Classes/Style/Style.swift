@@ -6,9 +6,7 @@
 //  Copyright © 2016 YipYip. All rights reserved.
 //
 
-import Foundation
 import UIKit
-
 
 public class Style {
     public let name:String
@@ -29,17 +27,17 @@ public class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:Style? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    internal init(name:String, parent:Style? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self.name = name
         
-        self.foregroundStyle = ForegroundStyle(name: name, parent: parent?.foregroundStyle, data: data, colorCollection: colorCollection)
-        self.backgroundAndBorderStyle = BackgroundAndBorderStyle(name: name, parent: parent?.backgroundAndBorderStyle, data: data, colorCollection: colorCollection)
-        self.textStyle = TextStyle(name: name, parent: parent?.textStyle, data: data, colorCollection: colorCollection)
-        self.textBorderStyle = TextBorderStyle(name: name, parent: parent?.textBorderStyle, data: data, colorCollection: colorCollection)
-        self.styledTextStyle = StyledTextStyle(name: name, parent: parent?.styledTextStyle, data: data, colorCollection: colorCollection)
-        self.placeholderStyle = PlaceholderStyle(name: name, parent: parent?.placeholderStyle, data: data, colorCollection: colorCollection)
-        self.imageStyle = ImageStyle(name: name, parent: parent?.imageStyle, data: data, colorCollection: colorCollection)
-        self.tableViewSeparatorStyle = TableViewSeparatorStyle(name: name, parent: parent?.tableViewSeparatorStyle, data: data, colorCollection: colorCollection)
+        self.foregroundStyle = ForegroundStyle(name: name, parent: parent?.foregroundStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.backgroundAndBorderStyle = BackgroundAndBorderStyle(name: name, parent: parent?.backgroundAndBorderStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.textStyle = TextStyle(name: name, parent: parent?.textStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.textBorderStyle = TextBorderStyle(name: name, parent: parent?.textBorderStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.styledTextStyle = StyledTextStyle(name: name, parent: parent?.styledTextStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.placeholderStyle = PlaceholderStyle(name: name, parent: parent?.placeholderStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.imageStyle = ImageStyle(name: name, parent: parent?.imageStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.tableViewSeparatorStyle = TableViewSeparatorStyle(name: name, parent: parent?.tableViewSeparatorStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
     }
     
     

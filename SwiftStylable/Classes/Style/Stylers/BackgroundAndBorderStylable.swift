@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 17/04/2018.
 //
 
-import Foundation
+import UIKit
 
 protocol BackgroundAndBorderStylable : class {
 	var backgroundColor: UIColor? { get set }

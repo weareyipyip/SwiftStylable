@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.x.x](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.x.x)
+
+- You can now use variable dimension in your styles. You can add a dimensions dictionary to your styles.plist and use it for all the current "number" values. We also added the STLayoutContraint to set the constant from your xib or storyboard.
+
 ## [1.4.5](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.4.5)
 
 - Fixed incorrect selectedForegroundColor in ForegroundStylable

@@ -5,8 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
-
+import UIKit
 
 public class StyleSetBase : StyleSet {
     
@@ -16,6 +15,7 @@ public class StyleSetBase : StyleSet {
     
     private let _parent:StyleSet?
     private let _colorCollection:ColorCollection
+    private let _dimensionCollection:DimensionCollection
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -24,10 +24,11 @@ public class StyleSetBase : StyleSet {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    init(name:String, parent:StyleSet?, colorCollection:ColorCollection) {
+    init(name:String, parent:StyleSet?, colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self.name = name
         self._parent = parent
         self._colorCollection = colorCollection
+        self._dimensionCollection = dimensionCollection
         if let parent = self._parent {
             NotificationCenter.default.addObserver(self, selector: #selector(StyleSetBase.parentDidChange), name: StyleSetBase.didChangeNotification, object: parent)
         }
@@ -85,16 +86,32 @@ public class StyleSetBase : StyleSet {
         return color
     }
     
-    internal func parseFont(data:[String:Any]?, defaultName:String? = nil, defaultSize:CGFloat? = nil)->UIFont? {
-        let name = data?["name"] as? String ?? defaultName
-        let sizeAny = data?["size"]
+    internal func dimensionFromValue(_ value:Any?)->CGFloat? {
         var size:CGFloat?
-        if sizeAny != nil {
-            size = sizeAny as? CGFloat
-            if size == nil {
-                print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
+        guard let value = value else {
+            return nil
+        }
+        
+        if let value = value as? String{
+            if let dimensionHolder = self._dimensionCollection.dimensionHolderNamed(value){
+                size = dimensionHolder.size
+            } else {
+                print("WARNING: Dimention named \(value) could not be found/parsed. HINT: Check if the type in the plist is of type number or the value is an dimentions string.")
             }
         }
+        else if let value = value as? CGFloat{
+            size = value
+        }
+        else {
+            print("WARNING: Dimention named \(value) could not be found/parsed. HINT: Check if the type in the plist is of type number or the value is an dimentions string.")
+        }
+        
+        return size
+    }
+    
+    internal func parseFont(data:[String:Any]?, defaultName:String? = nil, defaultSize:CGFloat? = nil)->UIFont? {
+        let name = data?["name"] as? String ?? defaultName
+        let size = self.dimensionFromValue(data?["size"]) ?? defaultSize
         return self.createFont(name: name, size: size, defaultName: defaultName, defaultSize: defaultSize)
     }
     
@@ -155,13 +172,13 @@ public class StyleSetBase : StyleSet {
         let paragraphStyle = NSMutableParagraphStyle()
         
         // Line spacing
-        if let lineSpacing = data["lineSpacing"] as? CGFloat {
+        if let lineSpacing = self.dimensionFromValue(data["lineSpacing"]) {
             paragraphStyle.lineSpacing = lineSpacing
             paragraphStyleNeeded = true
         }
         
         // Line height multiple
-        if let lineHeightMultiple = data["lineHeightMultiple"] as? CGFloat {
+        if let lineHeightMultiple = self.dimensionFromValue(data["lineHeightMultiple"]) {
             paragraphStyle.lineHeightMultiple = lineHeightMultiple
             paragraphStyleNeeded = true
         }
@@ -245,7 +262,7 @@ public class StyleSetBase : StyleSet {
         }
         
         // Kern
-        if let kern = data["kern"] as? CGFloat {
+        if let kern = self.dimensionFromValue(data["kern"]) {
             attributes[NSAttributedString.Key.kern] = kern
         }
         

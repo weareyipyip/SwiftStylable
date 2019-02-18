@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 19/04/2018.
 //
 
-import Foundation
+import UIKit
 
 protocol TextBorderStylable : class {
     var layer:CALayer { get }

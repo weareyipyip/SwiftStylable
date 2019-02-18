@@ -1,15 +1,15 @@
 //
-//  STActivityIndicator.swift
-//  Pods
+//  STLayoutContraint.swift
+//  Pods-SwiftStylableExample
 //
-//  Created by Marcel Bloemendaal on 31/08/16.
-//
+//  Created by Rens Wijnmalen on 04/02/2019.
 //
 
 import UIKit
 
-@IBDesignable open class STActivityIndicator : UIActivityIndicatorView, Stylable {
+@IBDesignable open class STLayoutContraint: NSLayoutConstraint {
     
+    private var _dimension:String?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -17,14 +17,14 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    public override init() {
+        super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    open override func awakeFromNib() {
+        super.awakeFromNib()
         
         NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
@@ -33,25 +33,21 @@ import UIKit
         NotificationCenter.default.removeObserver(self)
     }
     
-    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Computed properties
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	@IBInspectable open var styleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
-	@IBInspectable open var substyleName:String? {
-		didSet {
-			self.updateStyles()
-		}
-	}
-	
+    @IBInspectable open var dimenstion:String? {
+        set {
+            self._dimension = newValue
+            self.updateDimension()
+        }
+        get {
+            return self._dimension
+        }
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -59,10 +55,22 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func applyStyle(_ style:SwiftStylable.Style) {
-        self.color = style.foregroundStyle.foregroundColor
+    public func applyDimension(_ name:String){
+        if self._dimension != name{
+            self._dimension = name
+            self.updateDimension()
+        }
     }
     
+    public func updateDimension(){
+        if let dimentionName = self._dimension{
+            if let size = Styles.shared.dimensionNamed(dimentionName){
+                self.constant = size
+            } else {
+                print("WARNING: Dimention \(dimentionName) does not exist. (Is the dimention of type \"number\" in the plist 😉)")
+            }
+        }
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -70,7 +78,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-	@objc func stylesDidUpdate(_ notification:Notification) {
-		self.updateStyles()
-	}
+    @objc internal func stylesDidUpdate(_ notification:Notification) {
+        self.updateDimension()
+    }
 }
