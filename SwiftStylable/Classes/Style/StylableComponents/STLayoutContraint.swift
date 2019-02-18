@@ -9,7 +9,7 @@ import UIKit
 
 @IBDesignable open class STLayoutContraint: NSLayoutConstraint {
     
-    private var _dimenstion:String?
+    private var _dimension:String?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -41,11 +41,11 @@ import UIKit
     
     @IBInspectable open var dimenstion:String? {
         set {
-            self._dimenstion = newValue
-            self.updateDimention()
+            self._dimension = newValue
+            self.updateDimension()
         }
         get {
-            return self._dimenstion
+            return self._dimension
         }
     }
     
@@ -55,16 +55,16 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    public func applyDimention(_ name:String){
-        if self._dimenstion != name{
-            self._dimenstion = name
-            self.updateDimention()
+    public func applyDimension(_ name:String){
+        if self._dimension != name{
+            self._dimension = name
+            self.updateDimension()
         }
     }
     
-    public func updateDimention(){
-        if let dimentionName = self._dimenstion{
-            if let size = Styles.shared.dimentionNamed(dimentionName){
+    public func updateDimension(){
+        if let dimentionName = self._dimension{
+            if let size = Styles.shared.dimensionNamed(dimentionName){
                 self.constant = size
             } else {
                 print("WARNING: Dimention \(dimentionName) does not exist. (Is the dimention of type \"number\" in the plist 😉)")
@@ -79,6 +79,6 @@ import UIKit
     // -----------------------------------------------------------------------------------------------------------------------
     
     @objc internal func stylesDidUpdate(_ notification:Notification) {
-        self.updateDimention()
+        self.updateDimension()
     }
 }

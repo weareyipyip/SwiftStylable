@@ -93,14 +93,17 @@ public class StyleSetBase : StyleSet {
         }
         
         if let value = value as? String{
-            if let dimentionNamed = self._dimensionCollection.dimensionHolderNamed(value){
-                size = dimentionNamed.size
+            if let dimensionHolder = self._dimensionCollection.dimensionHolderNamed(value){
+                size = dimensionHolder.size
             } else {
-                print("WARNING: Dimention named \(value) could not be found/parsed")
+                print("WARNING: Dimention named \(value) could not be found/parsed. HINT: Check if the type in the plist is of type number or the value is an dimentions string.")
             }
         }
         else if let value = value as? CGFloat{
             size = value
+        }
+        else {
+            print("WARNING: Dimention named \(value) could not be found/parsed. HINT: Check if the type in the plist is of type number or the value is an dimentions string.")
         }
         
         return size

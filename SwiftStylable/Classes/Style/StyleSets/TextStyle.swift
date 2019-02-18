@@ -15,7 +15,7 @@ public class TextStyle : StyleSetBase {
     private let _parent:TextStyle?
     
     private var _fontName:String?
-    private var _fontSizeValue:Any?
+    private var _fontSizeDescription:Any?
     private var _fullUppercaseText:Bool?
     
     
@@ -46,7 +46,7 @@ public class TextStyle : StyleSetBase {
     
     var fontSizeValue:Any? {
         get {
-            return self._fontSizeValue ?? self._parent?.fontSizeValue
+            return self._fontSizeDescription ?? self._parent?.fontSizeValue
         }
     }
     
@@ -64,7 +64,7 @@ public class TextStyle : StyleSetBase {
             if let name = font["name"] as? String {
                 self._fontName = name
             }
-            self._fontSizeValue = font["size"]
+            self._fontSizeDescription = font["size"]
         }
         if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
             self._fullUppercaseText = fullUppercaseText

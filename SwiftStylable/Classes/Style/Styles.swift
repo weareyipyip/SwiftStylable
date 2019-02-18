@@ -61,7 +61,7 @@ open class Styles {
         return self._colorCollection.colorHolderNamed(name)?.color
     }
     
-    open func dimentionNamed(_ name:String)->CGFloat? {
+    open func dimensionNamed(_ name:String)->CGFloat? {
         return self._dimensionCollection.dimensionHolderNamed(name)?.size
     }
         
@@ -113,8 +113,8 @@ open class Styles {
 		}
         
         // Parse dimensions strings
-        if let dimentionData = styleData["dimensions"] as? [String:Any] {
-            self._dimensionCollection.applyData(dimentionData)
+        if let dimensionData = styleData["dimensions"] as? [String:Any] {
+            self._dimensionCollection.applyData(dimensionData)
         }
         
         var styleDatas = styleData["styles"] as? [String:[String:Any]]

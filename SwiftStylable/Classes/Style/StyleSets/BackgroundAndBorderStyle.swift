@@ -93,11 +93,11 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         return self._disabledBorderColorName ?? self._parent?.disabledBorderColorName
     }
     
-    var borderWidthValue:Any? {
+    var borderWidthDescription:Any? {
         return self._borderWidthValue ?? self._parent?._borderWidthValue
     }
     
-    var cornerRadiusValue:Any? {
+    var cornerRadiusDescription:Any? {
         return self._cornerRadiusValue ?? self._parent?._cornerRadiusValue
     }
     
@@ -156,8 +156,8 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         
         self.clipsToBounds = self._clipsToBounds ?? self._parent?._clipsToBounds
         
-        self.borderWidth = self.dimensionFromValue(self.borderWidthValue)
-        self.cornerRadius = self.dimensionFromValue(self.cornerRadiusValue)
+        self.borderWidth = self.dimensionFromValue(self.borderWidthDescription)
+        self.cornerRadius = self.dimensionFromValue(self.cornerRadiusDescription)
         
         self.backgroundColor = self.colorFromString(self.backgroundColorName)
         self.highlightedBackgroundColor = self.colorFromString(self.highlightedBackgroundColorName)
