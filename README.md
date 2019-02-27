@@ -56,7 +56,7 @@ Colors can be defined as strings in the colors dictionary of your styles descrip
 
 ### Dimensions
 
-Dimesions can be defined as number in the dimensions dictionary of your styles descriptor file. You can choose names freely, and set values as whole numbers of decimals. Under the hood they will be parsed as CGFloat. For example, you can have a dimension named 'defaultTextSSize' with a value of '15' or you can have a dimension named 'defaultTextLineHeightMultiple' with the value '0,5'.
+Dimensions can be defined as numbers in the dimensions dictionary of your styles descriptor file. You can choose names freely, and set values as whole numbers or decimals. Under the hood they will be parsed as CGFloat. For example, you can have a dimension named 'defaultTextSize' with a value of '15' or you can have a dimension named 'defaultTextLineHeightMultiple' with the value '0,5'.
 
 ### Styles
 
@@ -155,7 +155,7 @@ The following components are currently available:
 - STTableViewCell
 - STHorizontalHairline
 
-### Dimesion components
+### Dimension components
 
 The following components are currently available:
 
