@@ -19,14 +19,27 @@
 		<key>contentAreaBackgroundColor</key>
 		<string>#ffffff</string>
 	</dict>
+	<key>dimensions</key>
+	<dict>
+		<key>defaultViewHorizontalMargin</key>
+		<integer>20</integer>
+		<key>defaultViewTopMargin</key>
+		<string>defaultViewHorizontalMargin</string>
+		<key>defaultViewBottomMargin</key>
+		<integer>32</integer>
+		<key>avatarPhotoBorderWidth</key>
+		<integer>3</integer>
+		<key>avatarPhotoCornerRadius</key>
+		<integer>48</integer>
+		<key>contentTextFontSize</key>
+		<integer>14</integer>
+	</dict>
 	<key>styles</key>
 	<dict>
 		<key>textfieldStyle</key>
 		<dict>
 			<key>foregroundColor</key>
 			<string>secondaryActionForegroundColor</string>
-			<key>fullUppercaseText</key>
-			<true/>
 			<key>fullUppercasePlaceholder</key>
 			<true/>
 			<key>styledPlaceholderAttributes</key>
@@ -52,10 +65,7 @@
 			</dict>
 		</dict>
 		<key>textViewStyle</key>
-		<dict>
-			<key>fullUppercaseText</key>
-			<true/>
-		</dict>
+		<dict/>
 		<key>testText</key>
 		<dict>
 			<key>foregroundColor</key>
@@ -87,9 +97,9 @@
 			<key>borderColor</key>
 			<string>emphasisColor</string>
 			<key>borderWidth</key>
-			<integer>3</integer>
+			<string>avatarPhotoBorderWidth</string>
 			<key>cornerRadius</key>
-			<integer>48</integer>
+			<string>avatarPhotoCornerRadius</string>
 			<key>clipsToBounds</key>
 			<true/>
 		</dict>
@@ -100,7 +110,7 @@
 				<key>name</key>
 				<string>Arial</string>
 				<key>size</key>
-				<integer>12</integer>
+				<string>contentTextFontSize</string>
 			</dict>
 			<key>foregroundColor</key>
 			<string>defaultForegroundColor</string>

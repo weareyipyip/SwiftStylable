@@ -47,11 +47,16 @@ To define your styles you need to create a 'styles.plist' file in your project. 
 
 - Root
 	- colors (Dictionary)
+	- dimensions (Dictionary)
 	- styles (Dictionary)
 
 ### Colors
 
 Colors can be defined as strings in the colors dictionary of your styles descriptor file. You can choose names freely, and set hex strings as values, in the format '#XXXXXX' (fully opaque) or '#XXXXXXXX' (with alpha digits). For example, you can have a color named 'defaultForegroundColor' with a value of '#ffa8bb'.
+
+### Dimensions
+
+Dimesions can be defined as number in the dimensions dictionary of your styles descriptor file. You can choose names freely, and set values as whole numbers of decimals. Under the hood they will be parsed as CGFloat. For example, you can have a dimension named 'defaultTextSSize' with a value of '15' or you can have a dimension named 'defaultTextLineHeightMultiple' with the value '0,5'.
 
 ### Styles
 
@@ -79,16 +84,16 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 - tableViewSeparatorColor (string)
 - font (dictionary)
 	- name (string, PostScript name of the font
-	- size (number)
+	- size (number or string, name of a dimensions)
 - fullUppercaseText (boolean)
 - styledTextAttributes (dictionary --> see 'Styled text' below)
 	- foregroundColor (string)
 	- font (dictionary)
 		- name (string)
-		- size (number)
-	- lineSpacing (number)
-	- lineHeightMultiple (number)
-	- kern (number)
+		- size (number or string, name of a dimensions)
+	- lineSpacing (number or string, name of a dimensions)
+	- lineHeightMultiple (number or string, name of a dimensions)
+	- kern (number or string, name of a dimensions)
 	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
 	- underlineColor (string)
 	- alignment (string: "left", "right", "center", "justified" or "natural")
@@ -149,6 +154,12 @@ The following components are currently available:
 - STTableView
 - STTableViewCell
 - STHorizontalHairline
+
+### Dimesion components
+
+The following components are currently available:
+
+- STLayoutConstraint
 
 ## PaintCode support
 

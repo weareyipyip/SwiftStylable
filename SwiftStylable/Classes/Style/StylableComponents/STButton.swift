@@ -6,8 +6,7 @@
 //  Copyright © 2016 YipYip. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 
 @IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable {
 	

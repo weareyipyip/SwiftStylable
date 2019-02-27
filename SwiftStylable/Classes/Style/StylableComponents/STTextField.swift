@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable open class STTextField : UITextField, UITextFieldDelegate, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, PlaceholderStylable  {
