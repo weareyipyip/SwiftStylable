@@ -5,12 +5,12 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class BackgroundAndBorderStyle : StyleSetBase {
     
-    public private(set) var borderWidth:CGFloat?
     public private(set) var clipsToBounds:Bool?
+    public private(set) var borderWidth:CGFloat?
     public private(set) var cornerRadius:CGFloat?
     public private(set) var backgroundColor:UIColor?
     public private(set) var highlightedBackgroundColor:UIColor?
@@ -23,9 +23,9 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     
     private let _parent:BackgroundAndBorderStyle?
     
-    private var _borderWidth:CGFloat?
+    private var _borderWidthValue:Any?
+    private var _cornerRadiusValue:Any?
     private var _clipsToBounds: Bool?
-    private var _cornerRadius:CGFloat?
     
     // Background color names
     private var _backgroundColorName: String?
@@ -48,9 +48,9 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    required internal init(name:String, parent:BackgroundAndBorderStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    required internal init(name:String, parent:BackgroundAndBorderStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent, colorCollection: colorCollection)
+        super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
     }
     
@@ -93,6 +93,14 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         return self._disabledBorderColorName ?? self._parent?.disabledBorderColorName
     }
     
+    var borderWidthDescription:Any? {
+        return self._borderWidthValue ?? self._parent?._borderWidthValue
+    }
+    
+    var cornerRadiusDescription:Any? {
+        return self._cornerRadiusValue ?? self._parent?._cornerRadiusValue
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -133,14 +141,11 @@ public class BackgroundAndBorderStyle : StyleSetBase {
         }
         
         // Other
-        if let cornerRadius = data["cornerRadius"] as? CGFloat {
-            self._cornerRadius = cornerRadius
-        }
+        self._cornerRadiusValue = data["cornerRadius"]
+        self._borderWidthValue = data["borderWidth"]
+        
         if let clipsToBounds = data["clipsToBounds"] as? Bool {
             self._clipsToBounds = clipsToBounds
-        }
-        if let borderWidth = data["borderWidth"] as? CGFloat {
-            self._borderWidth = borderWidth
         }
         
         NotificationCenter.default.post(name: StyleSetBase.didChangeNotification, object: self)
@@ -149,9 +154,10 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        self.borderWidth = self._borderWidth ?? self._parent?.borderWidth
-        self.clipsToBounds = self._clipsToBounds ?? self._parent?.clipsToBounds
-        self.cornerRadius = self._cornerRadius ?? self._parent?.cornerRadius
+        self.clipsToBounds = self._clipsToBounds ?? self._parent?._clipsToBounds
+        
+        self.borderWidth = self.dimensionFromValue(self.borderWidthDescription)
+        self.cornerRadius = self.dimensionFromValue(self.cornerRadiusDescription)
         
         self.backgroundColor = self.colorFromString(self.backgroundColorName)
         self.highlightedBackgroundColor = self.colorFromString(self.highlightedBackgroundColorName)

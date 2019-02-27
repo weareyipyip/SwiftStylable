@@ -6,7 +6,6 @@
 //  Copyright © 2016 YipYip. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable open class STLabel : UILabel, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable {

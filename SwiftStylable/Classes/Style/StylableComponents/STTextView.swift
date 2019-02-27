@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable open class STTextView : UITextView, UITextViewDelegate, Stylable, BackgroundAndBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable {

@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class TextStyle : StyleSetBase {
     
@@ -15,7 +15,7 @@ public class TextStyle : StyleSetBase {
     private let _parent:TextStyle?
     
     private var _fontName:String?
-    private var _fontSize:CGFloat?
+    private var _fontSizeDescription:Any?
     private var _fullUppercaseText:Bool?
     
     
@@ -25,9 +25,9 @@ public class TextStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:TextStyle? = nil, data:[String:Any], colorCollection:ColorCollection) {
+    internal init(name:String, parent:TextStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
         self._parent = parent
-        super.init(name: name, parent: parent, colorCollection: colorCollection)
+        super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
     }
     
@@ -44,9 +44,9 @@ public class TextStyle : StyleSetBase {
         }
     }
     
-    var fontSize:CGFloat? {
+    var fontSizeValue:Any? {
         get {
-            return self._fontSize ?? self._parent?.fontSize
+            return self._fontSizeDescription ?? self._parent?.fontSizeValue
         }
     }
     
@@ -64,13 +64,7 @@ public class TextStyle : StyleSetBase {
             if let name = font["name"] as? String {
                 self._fontName = name
             }
-            if let sizeAny = font["size"] {
-                if let size = sizeAny as? CGFloat {
-                    self._fontSize = size
-                } else {
-                    print("WARNING: Style definition for '\(self.name)' has a font size of type String, change to a Number in the styles.plist")
-                }
-            }
+            self._fontSizeDescription = font["size"]
         }
         if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
             self._fullUppercaseText = fullUppercaseText
@@ -80,7 +74,9 @@ public class TextStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        self.font = self.createFont(name: self.fontName, size: self.fontSize)
+        if let fontSize = self.dimensionFromValue(self.fontSizeValue){
+            self.font = self.createFont(name: self.fontName, size: fontSize)
+        }
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
 }
