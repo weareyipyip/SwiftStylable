@@ -155,7 +155,7 @@ The following components are currently available:
 - STTableViewCell
 - STHorizontalHairline
 
-### Dimesion components
+### Dimension components
 
 The following components are currently available:
 
