@@ -39,7 +39,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    @IBInspectable open var dimenstion:String? {
+    @IBInspectable open var dimension:String? {
         set {
             self._dimension = newValue
             self.updateDimension()

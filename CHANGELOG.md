@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.5.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.1)
+
+- Fixed a type. Changed IBDesignable name from dimenstion to dimension for the STLayoutConstraint
+
 ## [1.5.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.0)
 
 - You can now use variable dimension in your styles. You can add a dimensions dictionary to your styles.plist and use it for all the current "number" values. We also added the STLayoutContraint to set the constant from your xib or storyboard.
