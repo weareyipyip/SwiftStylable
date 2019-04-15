@@ -28,7 +28,8 @@ Swift framework to enable project wide styles that can be used in storyboards. Y
   s.source           = { :git => 'https://github.com/weareyipyip/SwiftStylable.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.swift_version = '5.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'SwiftStylable/Classes/**/*'
   
