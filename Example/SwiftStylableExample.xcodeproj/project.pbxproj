@@ -242,7 +242,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftStylable/SwiftStylable.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -251,7 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -420,7 +420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nl.yipyip.SwiftStylableExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -439,7 +439,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nl.yipyip.SwiftStylableExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
