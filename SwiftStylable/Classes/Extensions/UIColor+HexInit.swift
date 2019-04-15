@@ -19,7 +19,7 @@ public extension UIColor
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	public convenience init?(hexString: String)
+    convenience init?(hexString: String)
 	{
         guard hexString.count > 3 && hexString.hasPrefix("#") else {
             return nil
