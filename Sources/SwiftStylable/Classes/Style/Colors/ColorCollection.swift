@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 21/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class ColorCollection {
 
