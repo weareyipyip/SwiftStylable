@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStylable'
-  s.version          = '1.5.1'
+  s.version          = '1.5.2'
   s.summary          = 'Swift framework to enable project wide styles that can be used in Interface Builder.'
 
 # This description is used to generate tags and improve search results.
@@ -28,9 +28,11 @@ Swift framework to enable project wide styles that can be used in storyboards. Y
   s.source           = { :git => 'https://github.com/weareyipyip/SwiftStylable.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.platform = :ios
+  s.swift_version = '5.0'
+  s.ios.deployment_target = '11.0'
 
-  s.source_files = 'SwiftStylable/Classes/**/*'
+  s.source_files = 'Sources/SwiftStylable/Classes/**/*'
   
   # s.resource_bundles = {
   #   'SwiftStylable' => ['SwiftStylable/Assets/*.png']

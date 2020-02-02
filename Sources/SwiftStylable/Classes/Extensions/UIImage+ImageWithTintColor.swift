@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIImage
 {
-	public func imageWithTintColor(_ color: UIColor) -> UIImage
+	func imageWithTintColor(_ color: UIColor) -> UIImage
 	{
 		UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
 		
