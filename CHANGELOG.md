@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.5.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.2)
+
+- Added SwiftPackage support
+
 ## [1.5.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.1)
 
 - Fixed a type. Changed IBDesignable name from dimenstion to dimension for the STLayoutConstraint
