@@ -30,9 +30,9 @@ Swift framework to enable project wide styles that can be used in storyboards. Y
 
   s.platform = :ios
   s.swift_version = '5.0'
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
 
-  s.source_files = 'SwiftStylable/Classes/**/*'
+  s.source_files = 'Sources/SwiftStylable/Classes/**/*'
   
   # s.resource_bundles = {
   #   'SwiftStylable' => ['SwiftStylable/Assets/*.png']
