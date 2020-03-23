@@ -20,13 +20,13 @@ import UIKit
     public override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STLayoutContraint.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STLayoutContraint.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     deinit {
