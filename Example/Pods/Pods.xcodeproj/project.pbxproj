@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		012070B3A9EE9B4998F9B82FF3769A92 /* ButtonTextStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE631B410C0407D792FFF889DA11BD6 /* ButtonTextStylable.swift */; };
 		014761CE3CA31157B8B020D48A294DA2 /* ForegroundStyleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD77156B4A814A848F5E7A39257B6A /* ForegroundStyleable.swift */; };
+		058977D024289AF8005D06F7 /* STStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058977CE242899ED005D06F7 /* STStackView.swift */; };
 		084284663AA87D8641FDA077E64A68BC /* ImageStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EB1424C7E377E40540ABC35881C5C /* ImageStyler.swift */; };
 		0B5337944BF259856338D80360CF9BC8 /* STHorizontalHairline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD4BBF429F3E7D7B4EA4A516543FB0 /* STHorizontalHairline.swift */; };
 		1657D76E775894F40402462C25E90611 /* StyleSetBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C75701D04ED901D78EC1E286B831DF /* StyleSetBase.swift */; };
@@ -81,7 +82,8 @@
 		001EB1424C7E377E40540ABC35881C5C /* ImageStyler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageStyler.swift; sourceTree = "<group>"; };
 		03463B42C346C1E5139E4CA1D4064FE3 /* DimensionCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DimensionCollection.swift; sourceTree = "<group>"; };
 		050167EC37B511339E8CFE6495F408E7 /* ColorCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
-		0806A6DB4E602A086A03356C2794E295 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		058977CE242899ED005D06F7 /* STStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STStackView.swift; sourceTree = "<group>"; };
+		0806A6DB4E602A086A03356C2794E295 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0AE7E7743364EDE1BB859F53B27F51A8 /* ExtendedButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExtendedButton.swift; sourceTree = "<group>"; };
 		0D3FD939F76176E3E2144443DF9A8803 /* TableViewSeparatorStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewSeparatorStylable.swift; sourceTree = "<group>"; };
 		14F2B80F98F96D68176628810B75E25D /* STTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STTextView.swift; sourceTree = "<group>"; };
@@ -98,11 +100,11 @@
 		39AA0C1CCA6963712E4B659F58CDF6B7 /* SwiftStylable-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftStylable-Info.plist"; sourceTree = "<group>"; };
 		4127DE3A2521E617FCE5B13704B27C8F /* DimensionHolder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DimensionHolder.swift; sourceTree = "<group>"; };
 		46CC6D39FFDE7AE4EFB07BE3CE2337B2 /* ImageStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
-		4878CBA77CC73D3B0E78DEAA4075C28D /* Pods_SwiftStylableExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftStylableExample.framework; path = "Pods-SwiftStylableExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4878CBA77CC73D3B0E78DEAA4075C28D /* Pods_SwiftStylableExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftStylableExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA57FC6E8EF975C165349CD6B2D6179 /* Pods-SwiftStylableExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftStylableExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		503C0997A27A1D556CACBCDC5DD561C7 /* STLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STLabel.swift; sourceTree = "<group>"; };
 		51152DF361F111593DCFC48A6B28F2E4 /* SwiftStylable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftStylable.modulemap; sourceTree = "<group>"; };
-		5FF1F4E34B6CC9849B199A0C1C0CC833 /* SwiftStylable.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SwiftStylable.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5FF1F4E34B6CC9849B199A0C1C0CC833 /* SwiftStylable.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SwiftStylable.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		64879B67ABD56476DAB61E6F44169782 /* Stylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
 		692B4677B678551A2C803DEADAB263EE /* UIImage+ImageWithTintColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageWithTintColor.swift"; sourceTree = "<group>"; };
 		6C3468667ED306ED133F0D8F87F06DC5 /* ColorHolder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorHolder.swift; sourceTree = "<group>"; };
@@ -121,12 +123,12 @@
 		8E78AA1D8F5711C0388A14D01ECE87E7 /* TableViewSeparatorStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewSeparatorStyle.swift; sourceTree = "<group>"; };
 		9C28A9B17B45F42F8929FDBC50D7387D /* PlaceholderStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaceholderStylable.swift; sourceTree = "<group>"; };
 		9CA678137F4A5D62ED1C7627E322F4EE /* ImageStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageStylable.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EEA791AA0D843498DD838C7FC03AD36 /* PlaceholderStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaceholderStyle.swift; sourceTree = "<group>"; };
 		A6C75701D04ED901D78EC1E286B831DF /* StyleSetBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StyleSetBase.swift; sourceTree = "<group>"; };
 		A6F5558184BAB0D636DED07F196409EF /* Styler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Styler.swift; sourceTree = "<group>"; };
 		A8FE0FAB90D64CEECD100941C35E96A0 /* BackgroundAndBorderStyler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BackgroundAndBorderStyler.swift; sourceTree = "<group>"; };
-		A9D310CC626E27B20CE60E15E50CAFDB /* SwiftStylable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftStylable.framework; path = SwiftStylable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D310CC626E27B20CE60E15E50CAFDB /* SwiftStylable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftStylable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB15C98359341479F757F32CE3CF427 /* STImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STImageView.swift; sourceTree = "<group>"; };
 		B19066369045C44EEF3497702F38863F /* Pods-SwiftStylableExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftStylableExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		B7F5843B59906C537E3E95A83026E63C /* SwiftStylable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftStylable-dummy.m"; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 		D6F63FCAAF8CCBAB19971BADA6BF7BF7 /* STView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STView.swift; sourceTree = "<group>"; };
 		D75E6F50BCBF763C7DDEC7F936072A2A /* SwiftStylable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftStylable-umbrella.h"; sourceTree = "<group>"; };
 		D8CA158E7BEDF32EA53DD6F711C0A1F2 /* STActivityIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STActivityIndicator.swift; sourceTree = "<group>"; };
-		DCAAA9ACB1538436CAE622AF98D3C472 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		DCAAA9ACB1538436CAE622AF98D3C472 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DCD9BAB3E1F3AF2D7AD21EEABEFD863D /* PlaceholderStyler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaceholderStyler.swift; sourceTree = "<group>"; };
 		DD9B54ED96DC907A505B8D5E7077DB83 /* TextStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextStylable.swift; sourceTree = "<group>"; };
 		DEBD4BBF429F3E7D7B4EA4A516543FB0 /* STHorizontalHairline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STHorizontalHairline.swift; sourceTree = "<group>"; };
@@ -216,7 +218,6 @@
 				DD9B54ED96DC907A505B8D5E7077DB83 /* TextStylable.swift */,
 				6CF66AF93A9CFD5EB2BAED0FC485042C /* TextStyler.swift */,
 			);
-			name = Stylers;
 			path = Stylers;
 			sourceTree = "<group>";
 		};
@@ -239,7 +240,6 @@
 				03463B42C346C1E5139E4CA1D4064FE3 /* DimensionCollection.swift */,
 				4127DE3A2521E617FCE5B13704B27C8F /* DimensionHolder.swift */,
 			);
-			name = Dimensions;
 			path = Dimensions;
 			sourceTree = "<group>";
 		};
@@ -263,7 +263,6 @@
 				050167EC37B511339E8CFE6495F408E7 /* ColorCollection.swift */,
 				6C3468667ED306ED133F0D8F87F06DC5 /* ColorHolder.swift */,
 			);
-			name = Colors;
 			path = Colors;
 			sourceTree = "<group>";
 		};
@@ -315,7 +314,6 @@
 				271BB075CF2697D49B00D92346E2EFEE /* TextBorderStyle.swift */,
 				7863B0C2EB9C7612475A15C0D821F74E /* TextStyle.swift */,
 			);
-			name = StyleSets;
 			path = StyleSets;
 			sourceTree = "<group>";
 		};
@@ -324,7 +322,6 @@
 			children = (
 				0AE7E7743364EDE1BB859F53B27F51A8 /* ExtendedButton.swift */,
 			);
-			name = Components;
 			path = Components;
 			sourceTree = "<group>";
 		};
@@ -399,6 +396,7 @@
 				AAB15C98359341479F757F32CE3CF427 /* STImageView.swift */,
 				503C0997A27A1D556CACBCDC5DD561C7 /* STLabel.swift */,
 				714FDC2D3A4700E20BDF30B1419CC06D /* STLayoutContraint.swift */,
+				058977CE242899ED005D06F7 /* STStackView.swift */,
 				6E7B6F775382D6EE2ECD207E9A7B7E7C /* STSwitch.swift */,
 				35DF25098646F85CBA06030652BABA5F /* STTableView.swift */,
 				BB32D650D1E6EC4CF4E209F1D02E4014 /* STTableViewCell.swift */,
@@ -406,7 +404,6 @@
 				14F2B80F98F96D68176628810B75E25D /* STTextView.swift */,
 				D6F63FCAAF8CCBAB19971BADA6BF7BF7 /* STView.swift */,
 			);
-			name = StylableComponents;
 			path = StylableComponents;
 			sourceTree = "<group>";
 		};
@@ -477,6 +474,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					3C92B5FDD6F8FE7E1A42741F9FD7DA06 = {
+						LastSwiftMigration = 1130;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -544,6 +546,7 @@
 				8AB7A315A9993C887448ADD402C930EB /* STImageView.swift in Sources */,
 				9A696AFF8F41ABE8FC7C00D6DEBA3E98 /* STLabel.swift in Sources */,
 				387FDB74A031B707790D365E4EB2ABA3 /* STLayoutContraint.swift in Sources */,
+				058977D024289AF8005D06F7 /* STStackView.swift in Sources */,
 				D829C8506B449CCA2966ED86CF3B95F2 /* STSwitch.swift in Sources */,
 				D4B6BF6E6777F3527CC13A4D024D4961 /* STTableView.swift in Sources */,
 				4B31B37C0162C641096C76419BA966F2 /* STTableViewCell.swift in Sources */,
@@ -599,6 +602,7 @@
 			baseConfigurationReference = 2B91798E0838F996867542947FA87653 /* Pods-SwiftStylableExample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -626,6 +630,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -835,6 +840,7 @@
 			baseConfigurationReference = CB397D3B530F08B3C6B413B9FC9F184E /* Pods-SwiftStylableExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -862,6 +868,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
