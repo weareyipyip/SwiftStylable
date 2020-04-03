@@ -8,7 +8,27 @@
 import UIKit
 
 open class DimensionHolder {
-    var size: CGFloat
+    
+    var reference: DimensionHolder?
+    
+    var _size: CGFloat?
+    var size: CGFloat {
+        set(newVal) {
+            self._size = newVal
+        }
+        get {
+            if let reference = self.reference {
+                return reference.size
+            }
+            
+            if let size = self._size {
+                return size
+            }
+            
+            print("WARNING: one of the DimensionHolder objects has no reference or size property set, the default value 0 will be retunred")
+            return 0
+        }
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -17,6 +37,10 @@ open class DimensionHolder {
     // -----------------------------------------------------------------------------------------------------------------------
     
     init(size: CGFloat) {
-        self.size = size
+        self._size = size
+    }
+    
+    init(reference: DimensionHolder) {
+        self.reference = reference
     }
 }

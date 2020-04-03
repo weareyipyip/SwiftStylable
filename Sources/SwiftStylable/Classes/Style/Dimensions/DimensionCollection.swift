@@ -33,6 +33,7 @@ public class DimensionCollection {
             for (name, dimensionValue) in dimensionsEntries {
                 if let size = dimensionValue as? CGFloat {
                     if let dimensionHolder = self._dimensionHolders[name] {
+                        dimensionHolder.reference = nil
                         dimensionHolder.size = size
                     } else {
                         self._dimensionHolders[name] = DimensionHolder(size: size)
@@ -40,7 +41,7 @@ public class DimensionCollection {
                     dimensionsEntries.removeValue(forKey: name)
                     numParsedDimensions += 1
                 } else if let parentString = dimensionValue as? String, let dimensionHolder = self._dimensionHolders[parentString] {
-                    self._dimensionHolders[name] = dimensionHolder
+                    self._dimensionHolders[name] = DimensionHolder(reference: dimensionHolder)
                     dimensionsEntries.removeValue(forKey: name)
                     numParsedDimensions += 1
                 }
