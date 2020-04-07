@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class STStackView: UIStackView, Stylable, StackViewSpacingStylable {
+@IBDesignable open class STStackView: UIStackView, Stylable, SpacingStylable {
     
     private var _stComponentHelper: STComponentHelper!
     
@@ -51,14 +51,6 @@ import UIKit
         }
     }
     
-    var stackViewSpacing: CGFloat? {
-        didSet {
-            if let spacing = self.stackViewSpacing, spacing != oldValue {
-                self.spacing = spacing
-            }
-        }
-    }
-    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: Public methods
@@ -83,7 +75,7 @@ import UIKit
     
     private func setUpSTComponentHelper() {
         self._stComponentHelper = STComponentHelper(stylable: self, stylePropertySets: [
-            StackViewSpacingStyler(self)
+            SpacingStyler(self)
         ])
     }
     
