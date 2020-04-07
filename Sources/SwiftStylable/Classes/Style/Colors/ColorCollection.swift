@@ -41,7 +41,11 @@ public class ColorCollection {
                     colorEntries.removeValue(forKey: name)
                     numParsedColors += 1
                 } else if let colorHolder = self._colorHolders[colorString] {
-                    self._colorHolders[name] = ColorHolder(reference: colorHolder)
+                    if let existingHolder = self._colorHolders[name] {
+                        existingHolder.reference = colorHolder
+                    } else {
+                        self._colorHolders[name] = ColorHolder(reference: colorHolder)
+                    }
                     colorEntries.removeValue(forKey: name)
                     numParsedColors += 1
                 }

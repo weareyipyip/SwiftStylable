@@ -41,7 +41,11 @@ public class DimensionCollection {
                     dimensionsEntries.removeValue(forKey: name)
                     numParsedDimensions += 1
                 } else if let parentString = dimensionValue as? String, let dimensionHolder = self._dimensionHolders[parentString] {
-                    self._dimensionHolders[name] = DimensionHolder(reference: dimensionHolder)
+                    if let existingHolder = self._dimensionHolders[name] {
+                        existingHolder.reference = dimensionHolder
+                    } else {
+                        self._dimensionHolders[name] = DimensionHolder(reference: dimensionHolder)
+                    }
                     dimensionsEntries.removeValue(forKey: name)
                     numParsedDimensions += 1
                 }
