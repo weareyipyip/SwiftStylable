@@ -63,11 +63,11 @@ import UIKit
     }
     
     public func updateDimension(){
-        if let dimentionName = self._dimension{
-            if let size = Styles.shared.dimensionNamed(dimentionName){
+        if let dimensionName = self._dimension{
+            if let size = Styles.shared.dimensionNamed(dimensionName){
                 self.constant = size
             } else {
-                print("WARNING: Dimention \(dimentionName) does not exist. (Is the dimention of type \"number\" in the plist 😉)")
+                print("WARNING: Dimension \(dimensionName) does not exist. (Is the dimension of type \"number\" in the plist 😉)")
             }
         }
     }
