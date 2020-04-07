@@ -33,8 +33,7 @@ public class ColorCollection {
             for (name, colorString) in colorEntries {
                 if let color = UIColor(hexString: colorString) {
                     if let colorHolder = self._colorHolders[name] {
-                        colorHolder.reference = nil
-                        colorHolder.color = color
+                        colorHolder.set(with: color)
                     } else {
                         self._colorHolders[name] = ColorHolder(color: color)
                     }
@@ -42,7 +41,7 @@ public class ColorCollection {
                     numParsedColors += 1
                 } else if let colorHolder = self._colorHolders[colorString] {
                     if let existingHolder = self._colorHolders[name] {
-                        existingHolder.reference = colorHolder
+                        existingHolder.set(with: colorHolder)
                     } else {
                         self._colorHolders[name] = ColorHolder(reference: colorHolder)
                     }
