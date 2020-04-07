@@ -13,8 +13,7 @@ public class StackViewSpacingStyle: StyleSetBase {
     
     private let _parent: StackViewSpacingStyle?
     
-    private var _stackViewSpacing: CGFloat?
-
+    private var _stackViewSpacingValue: Any?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -36,6 +35,10 @@ public class StackViewSpacingStyle: StyleSetBase {
     // -----------------------------------------------------------------------------------------------------------------------
     
     
+    var stackViewSpacingDescription:Any? {
+        return self._stackViewSpacingValue ?? self._parent?._stackViewSpacingValue
+    }
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Internal methods
@@ -44,14 +47,11 @@ public class StackViewSpacingStyle: StyleSetBase {
     
     override internal func _applyData(_ data: [String:Any]) {
         super._applyData(data)
-        
-        if let stackViewSpacing = data["stackViewSpacing"] as? CGFloat {
-            self._stackViewSpacing = stackViewSpacing
-        }
+        self._stackViewSpacingValue = data["stackViewSpacing"]
     }
     
     override internal func update() {
         super.update()
-        self.stackViewSpacing = self._stackViewSpacing ?? self._parent?.stackViewSpacing
+        self.stackViewSpacing = self.dimensionFromValue(self.stackViewSpacingDescription)
     }
 }

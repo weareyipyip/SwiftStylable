@@ -9,7 +9,6 @@ import UIKit
 
 @IBDesignable open class STStackView: UIStackView, Stylable, StackViewSpacingStylable {
     
-//    private var _dimension:String?
     private var _stComponentHelper: STComponentHelper!
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -17,11 +16,6 @@ import UIKit
     // MARK: - Initializers & deinit
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
-//    public init() {
-//        super.init(frame: CGRect.zero)
-//        NotificationCenter.default.addObserver(self, selector: #selector(STStackView.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
-//    }
     
     public required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -80,33 +74,6 @@ import UIKit
     // MARK: - Public methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
-    
-//    public func applyDimension(_ name:String){
-//        if self._dimension != name{
-//            self._dimension = name
-//            self.updateDimension()
-//        }
-//    }
-    
-//    public func updateDimension(){
-//        if let dimentionName = self._dimension{
-//            if let size = Styles.shared.dimensionNamed(dimentionName){
-//                self.spacing = size
-//            } else {
-//                print("WARNING: Dimention \(dimentionName) does not exist. (Is the dimention of type \"number\" in the plist 😉)")
-//            }
-//        }
-//    }
-    
-    // -----------------------------------------------------------------------------------------------------------------------
-    //
-    // MARK: - Internal methods
-    //
-    // -----------------------------------------------------------------------------------------------------------------------
-    
-    @objc internal func stylesDidUpdate(_ notification:Notification) {
-//        self.updateDimension()
-    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
