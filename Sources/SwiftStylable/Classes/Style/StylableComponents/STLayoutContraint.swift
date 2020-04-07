@@ -20,13 +20,13 @@ import UIKit
     public override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STLayoutContraint.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(STActivityIndicator.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(STLayoutContraint.stylesDidUpdate(_:)), name: STYLES_DID_UPDATE, object: nil)
     }
     
     deinit {
@@ -63,11 +63,11 @@ import UIKit
     }
     
     public func updateDimension(){
-        if let dimentionName = self._dimension{
-            if let size = Styles.shared.dimensionNamed(dimentionName){
+        if let dimensionName = self._dimension{
+            if let size = Styles.shared.dimensionNamed(dimensionName){
                 self.constant = size
             } else {
-                print("WARNING: Dimention \(dimentionName) does not exist. (Is the dimention of type \"number\" in the plist 😉)")
+                print("WARNING: Dimension \(dimensionName) does not exist. (Is the dimension of type \"number\" in the plist 😉)")
             }
         }
     }
