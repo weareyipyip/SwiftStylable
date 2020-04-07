@@ -13,8 +13,8 @@ class ColorHolder {
     
     var _color: UIColor?
     var color: UIColor {
-        set(newVal) {
-            self._color = newVal
+        set {
+            self._color = newValue
         }
         get {
             if let reference = self.reference {

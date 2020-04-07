@@ -13,8 +13,8 @@ open class DimensionHolder {
     
     var _size: CGFloat?
     var size: CGFloat {
-        set(newVal) {
-            self._size = newVal
+        set {
+            self._size = newValue
         }
         get {
             if let reference = self.reference {
