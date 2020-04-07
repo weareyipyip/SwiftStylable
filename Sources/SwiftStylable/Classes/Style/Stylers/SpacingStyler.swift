@@ -1,5 +1,5 @@
 //
-//  StackViewSpacing.swift
+//  Spacing.swift
 //  SwiftStylable
 //
 //  Created by Rens Wijnmalen on 07/04/2020.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class StackViewSpacingStyler: Styler {
+class SpacingStyler: Styler {
 	
-	private weak var _view: StackViewSpacingStylable?
+	private weak var _view: SpacingStylable?
 	
 	
 	// -----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class StackViewSpacingStyler: Styler {
 	//
 	// -----------------------------------------------------------------------------------------------------------------------
 	
-	init(_ view: StackViewSpacingStylable) {
+	init(_ view: SpacingStylable) {
 		self._view = view
 	}
 	
@@ -35,8 +35,8 @@ class StackViewSpacingStyler: Styler {
 			return
 		}
 		
-        if let spacing = style.stackViewSpacingStyle.stackViewSpacing {
-            view.stackViewSpacing = spacing
+        if let spacing = style.spacingStyle.spacing {
+            view.spacing = spacing
         }
 	}
 }

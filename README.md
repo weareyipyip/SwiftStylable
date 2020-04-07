@@ -82,7 +82,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 - tintImageWithForegroundColor (boolean)
 - tableViewSeparatorStyle (string: "none", "singleLine", "singleLineEtched")
 - tableViewSeparatorColor (string)
-- stackViewSpacing (number or string, name of a dimensions)
+- spacing (number or string, name of a dimensions)
 - font (dictionary)
 	- name (string, PostScript name of the font
 	- size (number or string, name of a dimensions)

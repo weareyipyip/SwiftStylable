@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol StackViewSpacingStylable : class {
-	var stackViewSpacing: CGFloat? { get set }
+protocol SpacingStylable : class {
+	var spacing: CGFloat { get set }
 }

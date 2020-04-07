@@ -1,19 +1,19 @@
 //
-//  StackViewSpacingStyle.swift
+//  SpacingStyle.swift
 //  SwiftStylable
 //
 //  Created by Marcel Bloemendaal on 07/04/2020.
 //
 
-import Foundation
+import UIKit
 
-public class StackViewSpacingStyle: StyleSetBase {
+public class SpacingStyle: StyleSetBase {
     
-    public private(set) var stackViewSpacing: CGFloat?
+    public private(set) var spacing: CGFloat?
     
-    private let _parent: StackViewSpacingStyle?
+    private let _parent: SpacingStyle?
     
-    private var _stackViewSpacingValue: Any?
+    private var _spacingValue: Any?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -21,7 +21,7 @@ public class StackViewSpacingStyle: StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name: String, parent: StackViewSpacingStyle? = nil, data: [String:Any], colorCollection: ColorCollection, dimensionCollection: DimensionCollection) {
+    internal init(name: String, parent: SpacingStyle? = nil, data: [String:Any], colorCollection: ColorCollection, dimensionCollection: DimensionCollection) {
         self._parent = parent
         super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
@@ -35,8 +35,8 @@ public class StackViewSpacingStyle: StyleSetBase {
     // -----------------------------------------------------------------------------------------------------------------------
     
     
-    var stackViewSpacingDescription:Any? {
-        return self._stackViewSpacingValue ?? self._parent?._stackViewSpacingValue
+    var spacingDescription:Any? {
+        return self._spacingValue ?? self._parent?._spacingValue
     }
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -47,11 +47,13 @@ public class StackViewSpacingStyle: StyleSetBase {
     
     override internal func _applyData(_ data: [String:Any]) {
         super._applyData(data)
-        self._stackViewSpacingValue = data["stackViewSpacing"]
+        self._spacingValue = data["spacing"]
     }
     
     override internal func update() {
         super.update()
-        self.stackViewSpacing = self.dimensionFromValue(self.stackViewSpacingDescription)
+        if let spacing = self.dimensionFromValue(self.spacingDescription) {
+            self.spacing = spacing
+        }
     }
 }
