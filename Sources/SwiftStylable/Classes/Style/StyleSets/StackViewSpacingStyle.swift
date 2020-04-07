@@ -1,19 +1,19 @@
 //
-//  ImageStyleSet.swift
+//  StackViewSpacingStyle.swift
 //  SwiftStylable
 //
-//  Created by Marcel Bloemendaal on 21/09/2018.
+//  Created by Marcel Bloemendaal on 07/04/2020.
 //
 
 import Foundation
 
-public class ImageStyle : StyleSetBase {
+public class StackViewSpacingStyle: StyleSetBase {
     
-    public private(set) var tintImageWithForegroundColor:Bool?
+    public private(set) var stackViewSpacing: CGFloat?
     
-    private let _parent:ImageStyle?
+    private let _parent: StackViewSpacingStyle?
     
-    private var _tintImageWithForegroundColor:Bool?
+    private var _stackViewSpacing: CGFloat?
 
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ public class ImageStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:ImageStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
+    internal init(name: String, parent: StackViewSpacingStyle? = nil, data: [String:Any], colorCollection: ColorCollection, dimensionCollection: DimensionCollection) {
         self._parent = parent
         super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
@@ -42,16 +42,16 @@ public class ImageStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    override internal func _applyData(_ data:[String:Any]) {
+    override internal func _applyData(_ data: [String:Any]) {
         super._applyData(data)
         
-        if let tintImageWithForegroundColor = data["tintImageWithForegroundColor"] as? Bool {
-            self._tintImageWithForegroundColor = tintImageWithForegroundColor
+        if let stackViewSpacing = data["stackViewSpacing"] as? CGFloat {
+            self._stackViewSpacing = stackViewSpacing
         }
     }
     
     override internal func update() {
         super.update()
-        self.tintImageWithForegroundColor = self._tintImageWithForegroundColor ?? self._parent?.tintImageWithForegroundColor
+        self.stackViewSpacing = self._stackViewSpacing ?? self._parent?.stackViewSpacing
     }
 }
