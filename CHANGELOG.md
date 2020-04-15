@@ -2,13 +2,18 @@
 
 Significant changes to the project will be documented here.
 
+## [1.6.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.0)
+
+- Added STStackView
+- Fixed a bug in overriding dimensions and colors
+
 ## [1.5.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.2)
 
 - Added SwiftPackage support
 
 ## [1.5.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.1)
 
-- Fixed a type. Changed IBDesignable name from dimenstion to dimension for the STLayoutConstraint
+- Fixed a typo. Changed IBDesignable name from dimenstion to dimension for the STLayoutConstraint
 
 ## [1.5.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.5.0)
 

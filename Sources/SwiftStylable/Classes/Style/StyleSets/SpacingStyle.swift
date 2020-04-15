@@ -1,20 +1,19 @@
 //
-//  ImageStyleSet.swift
+//  SpacingStyle.swift
 //  SwiftStylable
 //
-//  Created by Marcel Bloemendaal on 21/09/2018.
+//  Created by Marcel Bloemendaal on 07/04/2020.
 //
 
-import Foundation
+import UIKit
 
-public class ImageStyle : StyleSetBase {
+public class SpacingStyle: StyleSetBase {
     
-    public private(set) var tintImageWithForegroundColor:Bool?
+    public private(set) var spacing: CGFloat?
     
-    private let _parent:ImageStyle?
+    private let _parent: SpacingStyle?
     
-    private var _tintImageWithForegroundColor:Bool?
-
+    private var _spacingValue: Any?
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -22,7 +21,7 @@ public class ImageStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:ImageStyle? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
+    internal init(name: String, parent: SpacingStyle? = nil, data: [String:Any], colorCollection: ColorCollection, dimensionCollection: DimensionCollection) {
         self._parent = parent
         super.init(name: name, parent: parent, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.applyData(data)
@@ -36,22 +35,25 @@ public class ImageStyle : StyleSetBase {
     // -----------------------------------------------------------------------------------------------------------------------
     
     
+    var spacingDescription:Any? {
+        return self._spacingValue ?? self._parent?._spacingValue
+    }
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Internal methods
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    override internal func _applyData(_ data:[String:Any]) {
+    override internal func _applyData(_ data: [String:Any]) {
         super._applyData(data)
-        
-        if let tintImageWithForegroundColor = data["tintImageWithForegroundColor"] as? Bool {
-            self._tintImageWithForegroundColor = tintImageWithForegroundColor
-        }
+        self._spacingValue = data["spacing"]
     }
     
     override internal func update() {
         super.update()
-        self.tintImageWithForegroundColor = self._tintImageWithForegroundColor ?? self._parent?.tintImageWithForegroundColor
+        if let spacing = self.dimensionFromValue(self.spacingDescription) {
+            self.spacing = spacing
+        }
     }
 }

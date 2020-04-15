@@ -82,6 +82,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 - tintImageWithForegroundColor (boolean)
 - tableViewSeparatorStyle (string: "none", "singleLine", "singleLineEtched")
 - tableViewSeparatorColor (string)
+- spacing (number or string, name of a dimensions)
 - font (dictionary)
 	- name (string, PostScript name of the font
 	- size (number or string, name of a dimensions)
@@ -154,6 +155,7 @@ The following components are currently available:
 - STTableView
 - STTableViewCell
 - STHorizontalHairline
+- STStackView
 
 ### Dimension components
 

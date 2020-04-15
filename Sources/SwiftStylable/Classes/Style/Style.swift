@@ -19,6 +19,7 @@ public class Style {
     public let placeholderStyle:PlaceholderStyle
     public let imageStyle:ImageStyle
     public let tableViewSeparatorStyle:TableViewSeparatorStyle
+    public let spacingStyle:SpacingStyle
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ public class Style {
         self.placeholderStyle = PlaceholderStyle(name: name, parent: parent?.placeholderStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.imageStyle = ImageStyle(name: name, parent: parent?.imageStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
         self.tableViewSeparatorStyle = TableViewSeparatorStyle(name: name, parent: parent?.tableViewSeparatorStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
+        self.spacingStyle = SpacingStyle(name: name, parent: parent?.spacingStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
     }
     
     
@@ -56,6 +58,7 @@ public class Style {
         self.placeholderStyle.applyData(data)
         self.imageStyle.applyData(data)
         self.tableViewSeparatorStyle.applyData(data)
+        self.spacingStyle.applyData(data)
     }
     
     internal func update() {
@@ -67,5 +70,6 @@ public class Style {
         self.placeholderStyle.update()
         self.imageStyle.update()
         self.tableViewSeparatorStyle.update()
+        self.spacingStyle.update()
     }
 }
