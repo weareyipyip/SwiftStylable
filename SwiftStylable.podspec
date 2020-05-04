@@ -29,7 +29,7 @@ Swift framework to enable project wide styles that can be used in storyboards. Y
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform = :ios
-  s.swift_version = '5.0'
+  s.swift_versions = ['5.0']
   s.ios.deployment_target = '11.0'
 
   s.source_files = 'Sources/SwiftStylable/Classes/**/*'
