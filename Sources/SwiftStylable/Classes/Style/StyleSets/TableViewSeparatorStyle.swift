@@ -48,9 +48,6 @@ public class TableViewSeparatorStyle : StyleSetBase {
             case "singleLine":
                 self._tableViewSeparatorStyle = UITableViewCell.SeparatorStyle.singleLine
                 
-            case "singleLineEtched":
-                self._tableViewSeparatorStyle = UITableViewCell.SeparatorStyle.singleLineEtched
-                
             default:
                 break
             }
