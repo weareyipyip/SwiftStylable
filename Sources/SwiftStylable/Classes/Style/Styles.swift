@@ -129,9 +129,7 @@ open class Styles {
                     var style = self._styles[name]
                     if let parentName = styleData["parent"] as? String {
                         if let parentStyle = self._styles[parentName] {
-                            if style != nil {
-                                print("WARNING: You cannot override the parent property of a style! Style named '\(name)' will be replaced completely.")
-                            }
+                            // WARNING: You cannot override the parent property of a style! Style will be replaced completely.
                             let style = Style(name: name, parent: parentStyle, data: styleData, colorCollection: self._colorCollection, dimensionCollection: self._dimensionCollection)
                             self._styles[name] = style
                             styleDatas!.removeValue(forKey: name)
