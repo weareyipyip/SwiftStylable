@@ -4,6 +4,10 @@ Significant changes to the project will be documented here.
 
 ## [1.6.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.1)
 
+- Removed warning if the parent style element well be overwritten and it already exists.
+
+## [1.6.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.1)
+
 - Resolved deprecation warning
 
 ## [1.6.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.0)
