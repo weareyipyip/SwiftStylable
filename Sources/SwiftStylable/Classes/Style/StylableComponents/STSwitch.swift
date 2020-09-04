@@ -71,7 +71,7 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    open func applyStyle(_ style:Style) {
+    open func applyStyle(_ style:SwiftStylable.Style) {
         self.tintColor = style.backgroundAndBorderStyle.backgroundColor
         self.onTintColor = style.backgroundAndBorderStyle.selectedBackgroundColor
         self.thumbTintColor = style.foregroundStyle.foregroundColor
