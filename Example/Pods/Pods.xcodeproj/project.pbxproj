@@ -669,6 +669,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6.4;
 				MODULEMAP_FILE = "Target Support Files/SwiftStylable/SwiftStylable.modulemap";
 				PRODUCT_MODULE_NAME = SwiftStylable;
 				PRODUCT_NAME = SwiftStylable;
@@ -766,6 +767,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6.4;
 				MODULEMAP_FILE = "Target Support Files/SwiftStylable/SwiftStylable.modulemap";
 				PRODUCT_MODULE_NAME = SwiftStylable;
 				PRODUCT_NAME = SwiftStylable;
