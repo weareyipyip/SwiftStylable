@@ -69,7 +69,7 @@ import UIKit
         }
     }
 	
-    var foregroundColor: UIColor? {
+    open var foregroundColor: UIColor? {
         set {
             self.textColor = newValue ?? UIColor.black
         }
@@ -78,16 +78,18 @@ import UIKit
         }
     }
     
-    var textFont: UIFont? {
+    open var textFont:UIFont? {
         set {
-            self.font = font
+            if let font = newValue {
+                self.font = font
+            }
         }
         get {
             return self.font
         }
     }
     
-    var styledTextAttributes:[NSAttributedString.Key:Any]? {
+    open var styledTextAttributes:[NSAttributedString.Key:Any]? {
         didSet {
             if self._styledText != nil {
                 self.styledText = self._styledText
