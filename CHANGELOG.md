@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.6.5](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.5)
+
+- Fix a class a bug for setting the font of the STTextView 
+
 ## [1.6.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.4)
 
 - Fix a class collision with UISwitch.Style on iOS 14
