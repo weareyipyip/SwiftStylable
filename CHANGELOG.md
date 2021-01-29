@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.7.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.0)
+
+- Added lineBreakMode as propery for the styledTextAttributes dictionary
+
 ## [1.6.5](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.6.5)
 
 - Fix a class a bug for setting the font of the STTextView 
