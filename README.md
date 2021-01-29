@@ -98,6 +98,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
 	- underlineColor (string)
 	- alignment (string: "left", "right", "center", "justified" or "natural")
+        - lineBreakMode (string: "byTruncatingTail", "byTruncatingMiddle", "byTruncatingHead", "byClipping", "byCharWrapping", "byWordWrapping")
 - styledPlaceholderAttributes (dictionary, same as 'styledTextAttributes')
 
 #### Colors

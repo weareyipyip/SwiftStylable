@@ -183,6 +183,27 @@ public class StyleSetBase : StyleSet {
             paragraphStyleNeeded = true
         }
         
+        // Line break mode
+        if let lineBreakModeString = data["lineBreakMode"] as? String {
+            switch lineBreakModeString {
+            case "byTruncatingTail":
+                paragraphStyle.lineBreakMode = .byTruncatingTail
+            case "byTruncatingMiddle":
+                paragraphStyle.lineBreakMode = .byTruncatingMiddle
+            case "byTruncatingHead":
+                paragraphStyle.lineBreakMode = .byTruncatingHead
+            case "byClipping":
+                paragraphStyle.lineBreakMode = .byClipping
+            case "byCharWrapping":
+                paragraphStyle.lineBreakMode = .byCharWrapping
+            case "byWordWrapping":
+                paragraphStyle.lineBreakMode = .byWordWrapping
+            default:
+                paragraphStyle.lineBreakMode = .byTruncatingTail
+            }
+            paragraphStyleNeeded = true
+        }
+        
         // Alignment
         if let alignmentString = data["alignment"] as? String {
             let alignment:NSTextAlignment
