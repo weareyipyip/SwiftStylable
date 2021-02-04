@@ -2,6 +2,12 @@
 
 Significant changes to the project will be documented here.
 
+
+
+## [1.7.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.0)
+
+- Fix access level of STHorizontalHairline
+
 ## [1.7.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.0)
 
 - Added lineBreakMode as propery for the styledTextAttributes dictionary
