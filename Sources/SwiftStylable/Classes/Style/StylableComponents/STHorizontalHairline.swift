@@ -9,7 +9,7 @@
 import UIKit
 
 
-@IBDesignable class STHorizontalHairline : UIView, Stylable, BackgroundAndBorderStylable {
+@IBDesignable open class STHorizontalHairline : UIView, Stylable, BackgroundAndBorderStylable {
 	
 	private var _stComponentHelper: STComponentHelper!
 	
@@ -37,17 +37,17 @@ import UIKit
     //
     // -----------------------------------------------------------------------------------------------------------------------
 
-    override var intrinsicContentSize:CGSize {
+    override open var intrinsicContentSize:CGSize {
         get {
             return CGSize(width: 1.0, height: CGFloat(1.0 / UIScreen.main.nativeScale))
         }
     }
     
-    override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
+    override open func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
         return CGSize(width: targetSize.width, height: CGFloat(1.0 / UIScreen.main.nativeScale))
     }
     
-    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+    override open func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
         return CGSize(width: targetSize.width, height: CGFloat(1.0 / UIScreen.main.nativeScale))
     }
     
