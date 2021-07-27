@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol StyledTextStylable : class {
+protocol StyledTextStylable : AnyObject {
     var styledTextAttributes:[NSAttributedString.Key:Any]? { get set }
 }

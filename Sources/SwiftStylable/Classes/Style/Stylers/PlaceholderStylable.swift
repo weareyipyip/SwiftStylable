@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PlaceholderStylable : class {
+protocol PlaceholderStylable : AnyObject {
     var fullUppercasePlaceholder:Bool { get set }
     var styledPlaceholderAttributes:[NSAttributedString.Key:Any]? { get set }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ForegroundStylable : class {
+protocol ForegroundStylable : AnyObject {
 	var foregroundColor: UIColor? { get set }
 	var highlightedForegroundColor: UIColor? { get set }
 	var selectedForegroundColor: UIColor? { get set }

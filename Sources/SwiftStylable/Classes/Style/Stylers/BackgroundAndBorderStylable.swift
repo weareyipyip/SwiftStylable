@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BackgroundAndBorderStylable : class {
+protocol BackgroundAndBorderStylable : AnyObject {
 	var backgroundColor: UIColor? { get set }
     var normalBackgroundColor:UIColor? { get set }
 	var highlightedBackgroundColor: UIColor? { get set }
