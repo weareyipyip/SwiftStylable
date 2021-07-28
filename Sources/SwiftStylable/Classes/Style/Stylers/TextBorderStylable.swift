@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TextBorderStylable : class {
+protocol TextBorderStylable : AnyObject {
     var layer:CALayer { get }
     var borderStyle: UITextField.BorderStyle { get set }
 }

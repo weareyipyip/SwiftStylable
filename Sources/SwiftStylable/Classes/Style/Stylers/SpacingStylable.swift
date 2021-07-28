@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol SpacingStylable : class {
+protocol SpacingStylable : AnyObject {
 	var spacing: CGFloat { get set }
 }

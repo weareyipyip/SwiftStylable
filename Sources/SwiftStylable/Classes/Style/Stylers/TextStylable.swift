@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TextStylable : class {
+protocol TextStylable : AnyObject {
 
     /*
     The type optionality of the font property varies across components. This makes a generic implementation impossible. For

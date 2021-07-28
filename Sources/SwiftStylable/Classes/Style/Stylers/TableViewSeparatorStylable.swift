@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TableViewSeparatorStylable : class {
+protocol TableViewSeparatorStylable : AnyObject {
     var separatorColor: UIColor? { get set }
     var separatorStyle: UITableViewCell.SeparatorStyle { get set }
 }
