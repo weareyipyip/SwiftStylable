@@ -2,7 +2,9 @@
 
 Significant changes to the project will be documented here.
 
+## [1.7.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.2)
 
+- Resolved deprecation warnings
 
 ## [1.7.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.0)
 
