@@ -68,16 +68,16 @@
 		<dict/>
 		<key>testText</key>
 		<dict>
+			<key>parent</key>
+			<string>header1Text</string>
 			<key>foregroundColor</key>
 			<string>emphasisColor</string>
 			<key>styledTextAttributes</key>
 			<dict>
-				<key>alignment</key>
-				<string>right</string>
-				<key>lineSpacing</key>
-				<integer>0</integer>
-				<key>lineHeightMultiple</key>
-				<real>0.5</real>
+				<key>strikethroughStyle</key>
+				<string>thick</string>
+				<key>strikethroughColor</key>
+				<string>#00FF00</string>
 			</dict>
 		</dict>
 		<key>contentArea</key>

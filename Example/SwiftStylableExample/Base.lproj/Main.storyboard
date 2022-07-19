@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="QoM-mn-acl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="STView" customModule="SwiftStylable">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u62-Nb-TLZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phoebe" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-h9-Np0" customClass="STImageView" customModule="SwiftStylable">
                                         <rect key="frame" x="16" y="16" width="96" height="96"/>
@@ -34,13 +32,14 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="avatarPhoto"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phoebe Buffay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test texst" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-OP-m5c" customClass="STLabel" customModule="SwiftStylable">
                                         <rect key="frame" x="128" y="54" width="231" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="header1Text"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="testText"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="styledText" value="Phoebe Buffay"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone (mobile)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-ca-RSP" customClass="STLabel" customModule="SwiftStylable">
@@ -210,7 +209,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac4-FE-PXR" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="623"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="KYi-sB-37f"/>
@@ -262,8 +261,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAz-5b-Nmn" customClass="STTextField" customModule="SwiftStylable">
-                                                <rect key="frame" x="20" y="56.5" width="335" height="30"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="20" y="56.5" width="335" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -446,7 +444,7 @@
             <objects>
                 <navigationController id="5oM-D5-avw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tiL-5D-081">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.93333333333333335" green="0.22745098039215686" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -459,6 +457,89 @@
             <point key="canvasLocation" x="-386" y="-99"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="1f6-DV-Owx">
+            <size key="intrinsicContentSize" width="30.5" height="20.5"/>
+        </designable>
+        <designable name="7I1-Ld-B2L">
+            <size key="intrinsicContentSize" width="118" height="34"/>
+        </designable>
+        <designable name="8xe-9u-BaK">
+            <size key="intrinsicContentSize" width="61.5" height="20.5"/>
+        </designable>
+        <designable name="9bw-v6-zBI">
+            <size key="intrinsicContentSize" width="46.5" height="20.5"/>
+        </designable>
+        <designable name="DAz-5b-Nmn">
+            <size key="intrinsicContentSize" width="32" height="34"/>
+        </designable>
+        <designable name="Nid-BM-6dF">
+            <size key="intrinsicContentSize" width="48.5" height="20.5"/>
+        </designable>
+        <designable name="QEa-Nu-Syl">
+            <size key="intrinsicContentSize" width="72.5" height="20.5"/>
+        </designable>
+        <designable name="QwP-D0-17n">
+            <size key="intrinsicContentSize" width="103.5" height="20.5"/>
+        </designable>
+        <designable name="TyE-NU-fNI">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="UiA-Du-V0Z">
+            <size key="intrinsicContentSize" width="28.5" height="20.5"/>
+        </designable>
+        <designable name="e9L-h9-Np0">
+            <size key="intrinsicContentSize" width="300" height="415"/>
+        </designable>
+        <designable name="enw-CD-tGE">
+            <size key="intrinsicContentSize" width="138" height="20.5"/>
+        </designable>
+        <designable name="esU-It-iqQ">
+            <size key="intrinsicContentSize" width="137.5" height="20.5"/>
+        </designable>
+        <designable name="fbm-s9-SWE">
+            <size key="intrinsicContentSize" width="61" height="20.5"/>
+        </designable>
+        <designable name="fhW-IR-pEp">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="fzj-S4-M0l">
+            <size key="intrinsicContentSize" width="108" height="20.5"/>
+        </designable>
+        <designable name="goM-NE-dVA">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="i9r-mB-fHb">
+            <size key="intrinsicContentSize" width="196" height="20.5"/>
+        </designable>
+        <designable name="nAQ-E3-Oxc">
+            <size key="intrinsicContentSize" width="128.5" height="20.5"/>
+        </designable>
+        <designable name="oSR-mo-9SI">
+            <size key="intrinsicContentSize" width="102" height="20.5"/>
+        </designable>
+        <designable name="pac-Nr-5To">
+            <size key="intrinsicContentSize" width="143" height="20.5"/>
+        </designable>
+        <designable name="t85-J6-aiu">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="tNb-ca-RSP">
+            <size key="intrinsicContentSize" width="116" height="20.5"/>
+        </designable>
+        <designable name="uoV-IN-22t">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="v9r-OP-m5c">
+            <size key="intrinsicContentSize" width="73.5" height="20.5"/>
+        </designable>
+        <designable name="wT4-in-JBj">
+            <size key="intrinsicContentSize" width="119" height="20.5"/>
+        </designable>
+        <designable name="zgK-ob-GiK">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Phoebe" width="300" height="415"/>
     </resources>
