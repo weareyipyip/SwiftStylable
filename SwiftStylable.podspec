@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStylable'
-  s.version          = '1.7.2'
+  s.version          = '1.8.0'
   s.summary          = 'Swift framework to enable project wide styles that can be used in Interface Builder.'
 
 # This description is used to generate tags and improve search results.
