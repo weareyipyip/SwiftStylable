@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [1.8.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.8.0)
+
+- Added support for strikethrough (Style and Color) in the styledTextAttributes
+
 ## [1.7.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/1.7.2)
 
 - Resolved deprecation warnings
