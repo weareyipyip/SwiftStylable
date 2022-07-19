@@ -97,6 +97,8 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- kern (number or string, name of a dimensions)
 	- underlineStyle (string: "byWord", "patternDash", "patternDashDot", "patternDashDotDot", "patternDot", "double", "single", "thick" or "none")
 	- underlineColor (string)
+    - strikethroughStyle (string: "single", "thick", "double" or "none")
+    - strikethroughColor (string)   
 	- alignment (string: "left", "right", "center", "justified" or "natural")
         - lineBreakMode (string: "byTruncatingTail", "byTruncatingMiddle", "byTruncatingHead", "byClipping", "byCharWrapping", "byWordWrapping")
 - styledPlaceholderAttributes (dictionary, same as 'styledTextAttributes')

@@ -226,6 +226,7 @@ public class StyleSetBase : StyleSet {
                 
             default:
                 alignment = NSTextAlignment.left
+                
             }
             paragraphStyle.alignment = alignment
         }
@@ -261,6 +262,7 @@ public class StyleSetBase : StyleSet {
                 
             case "none":
                 fallthrough
+                
             default:
                 underlineStyle = 0
             }
@@ -270,6 +272,33 @@ public class StyleSetBase : StyleSet {
         // Underline color
         if let underlineColorString = data["underlineColor"] as? String, let color = self.colorFromString(underlineColorString) {
             attributes[NSAttributedString.Key.underlineColor] = color
+        }
+        
+        // Strikethrough color
+        if let strikethroughColorString = data["strikethroughColor"] as? String, let color = self.colorFromString(strikethroughColorString) {
+            attributes[NSAttributedString.Key.strikethroughColor] = color
+        }
+        
+        // Strikethrough style
+        if let strikethroughStyleString = data["strikethroughStyle"] as? String {
+            let strikethroughStyle:Int
+            switch strikethroughStyleString {
+            case "single":
+                strikethroughStyle = NSUnderlineStyle.single.rawValue
+                
+            case "thick":
+                strikethroughStyle = NSUnderlineStyle.thick.rawValue
+                
+            case "double":
+                strikethroughStyle = NSUnderlineStyle.double.rawValue
+                
+            case "none":
+                fallthrough
+                
+            default:
+                strikethroughStyle = 0
+            }
+            attributes[NSAttributedString.Key.strikethroughStyle] = strikethroughStyle
         }
         
         // Font
