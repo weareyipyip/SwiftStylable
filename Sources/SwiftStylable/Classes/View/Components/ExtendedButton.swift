@@ -576,7 +576,7 @@ import UIKit
                 self.configuration?.title = self._selectedTitle ?? self._normalTitle
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
-                    newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    newAttributes.foregroundColor = self.titleColor(for: .selected)
                     newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
@@ -598,7 +598,7 @@ import UIKit
                 self.configuration?.title = self._disabledTitle ?? self._normalTitle
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
-                    newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    newAttributes.foregroundColor = self.titleColor(for: .disabled)
                     newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
