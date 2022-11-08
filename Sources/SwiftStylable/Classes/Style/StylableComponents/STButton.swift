@@ -29,6 +29,9 @@ import UIKit
 		self.setUpSTComponentHelper()
     }
     
+    open override func updateConfiguration() {
+        super.updateConfiguration()
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -77,13 +80,16 @@ import UIKit
             self.processImageName(self.disabledImageName, forState: .disabled)
         }
     }
-	
+    
 	open var foregroundColor: UIColor? {
 		get {
 			return self.titleColor(for: .normal)
 		}
 		set {
-			self.setTitleColor(newValue, for: .normal)
+            if #available(iOS 15.0, *) {
+                self.configuration?.baseForegroundColor = newValue
+            }
+            self.setTitleColor(newValue, for: .normal)
 		}
 	}
 	
@@ -92,7 +98,7 @@ import UIKit
 			return self.titleColor(for: .highlighted)
 		}
 		set {
-			self.setTitleColor(newValue, for: .highlighted)
+            self.setTitleColor(newValue, for: .highlighted)
 		}
 	}
 	

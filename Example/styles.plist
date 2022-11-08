@@ -4,6 +4,12 @@
 <dict>
 	<key>colors</key>
 	<dict>
+		<key>primaryColor</key>
+		<string>#00ff00</string>
+		<key>lightestTextColor</key>
+		<string>#ffffff</string>
+		<key>=== Old ===</key>
+		<string>clearColor</string>
 		<key>emphasisColor</key>
 		<string>#ee3a85</string>
 		<key>secondaryActionForegroundColor</key>
@@ -36,6 +42,27 @@
 	</dict>
 	<key>styles</key>
 	<dict>
+		<key>defaultButton</key>
+		<dict>
+			<key>foregroundColor</key>
+			<string>lightestTextColor</string>
+			<key>highlightedForegroundColor</key>
+			<string>#000FFF</string>
+			<key>backgroundColor</key>
+			<string>primaryColor</string>
+			<key>highlightedBackgroundColor</key>
+			<string>#ff0000</string>
+			<key>tintImageWithForegroundColor</key>
+			<true/>
+			<key>borderColor</key>
+			<string>#000000</string>
+			<key>highlightedBorderColor</key>
+			<string>#ff00ff</string>
+			<key>borderWidth</key>
+			<integer>3</integer>
+		</dict>
+		<key>=== old ===</key>
+		<dict/>
 		<key>textfieldStyle</key>
 		<dict>
 			<key>foregroundColor</key>
@@ -63,6 +90,8 @@
 				<key>size</key>
 				<integer>12</integer>
 			</dict>
+			<key>New item</key>
+			<string></string>
 		</dict>
 		<key>textViewStyle</key>
 		<dict/>

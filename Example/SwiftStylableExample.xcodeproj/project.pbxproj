@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051F1A3C291A38D500AC770E /* NewMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051F1A3B291A38D500AC770E /* NewMain.storyboard */; };
 		0F95D7B1393096ADD25E885E /* Pods_SwiftStylableExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FCA5675799BBD91F5C7924 /* Pods_SwiftStylableExample.framework */; };
 		F734DA422085D5730097FE6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F734DA402085D5730097FE6B /* Main.storyboard */; };
 		F734DA442085D5750097FE6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F734DA432085D5750097FE6B /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051F1A3B291A38D500AC770E /* NewMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMain.storyboard; sourceTree = "<group>"; };
 		16FCA5675799BBD91F5C7924 /* Pods_SwiftStylableExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftStylableExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70AF863D1940C8530B77E6A2 /* Pods-SwiftStylableExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStylableExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample.release.xcconfig"; sourceTree = "<group>"; };
 		E4F7FD828EED55C3CCF0994E /* Pods-SwiftStylableExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStylableExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftStylableExample/Pods-SwiftStylableExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				F734DA502085D6E20097FE6B /* Classes */,
 				F734DA592085D6E20097FE6B /* Resources */,
+				051F1A3B291A38D500AC770E /* NewMain.storyboard */,
 				F734DA402085D5730097FE6B /* Main.storyboard */,
 				F734DA432085D5750097FE6B /* Assets.xcassets */,
 				F734DA452085D5750097FE6B /* LaunchScreen.storyboard */,
@@ -207,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051F1A3C291A38D500AC770E /* NewMain.storyboard in Resources */,
 				F734DA472085D5750097FE6B /* LaunchScreen.storyboard in Resources */,
 				F734DA442085D5750097FE6B /* Assets.xcassets in Resources */,
 				F734DA642085D7970097FE6B /* styles.plist in Resources */,

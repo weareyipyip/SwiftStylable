@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -206,7 +207,11 @@
                                         <state key="normal" title="Delete contact"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="roundedButton"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="callIcon"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="LxY-k5-i4Q" kind="show" id="mKi-Yo-ZJy"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac4-FE-PXR" userLabel="Spacer">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="623"/>
@@ -439,6 +444,33 @@
             </objects>
             <point key="canvasLocation" x="421.60000000000002" y="-99.400299850074973"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Wcf-Ep-80Y">
+            <objects>
+                <viewController id="LxY-k5-i4Q" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x4v-1d-O2w"/>
+                        <viewControllerLayoutGuide type="bottom" id="XkN-9W-9NS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hIJ-iM-fFu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khL-6y-p2g">
+                                <rect key="frame" x="51" y="75" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="acg-BB-Hj9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gAj-Bb-IgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="-99"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tHc-dn-I4p">
             <objects>
@@ -542,5 +574,8 @@
     </designables>
     <resources>
         <image name="Phoebe" width="300" height="415"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

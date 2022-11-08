@@ -11,7 +11,7 @@ import UIKit
 
 
 @IBDesignable open class ExtendedButton: UIButton {
-	
+    
 	private var _normalBackgroundColor:UIColor?
 	private var _highlightedBackgroundColor:UIColor?
 	private var _selectedBackgroundColor:UIColor?
@@ -168,23 +168,23 @@ import UIKit
 	// -----------------------------------------------------------
 	
 	override open var isHighlighted:Bool {
-		get	{
-			return super.isHighlighted
-		}
-		set(value) {
-			super.isHighlighted = value
-			self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.setNeedsUpdateConfiguration()
+            } else {
+                self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+            }
 		}
 	}
 	
-	override open var isSelected:Bool {
-		get	{
-			return super.isSelected
-		}
-		set(value) {
-			super.isSelected = value
-			self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
-		}
+    override open var isSelected:Bool {
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.setNeedsUpdateConfiguration()
+            } else {
+                self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+            }
+        }
 	}
 	
 	override open var isEnabled:Bool {
@@ -193,19 +193,27 @@ import UIKit
 		}
 		set(value) {
 			super.isEnabled = value
-			self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+            if #available(iOS 15.0, *) {
+                self.setNeedsUpdateConfiguration()
+            } else {
+                self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+            }
 		}
 	}
 	
 	@IBInspectable open var tintImageWithTitleColor:Bool = false {
 		didSet {
 			if self.tintImageWithTitleColor != oldValue {
-				self.updateImageRenderingModeForState(UIControl.State())
+                self.updateImageRenderingModeForState(.normal)
 				self.updateImageRenderingModeForState(.highlighted)
 				self.updateImageRenderingModeForState(.selected)
 				self.updateImageRenderingModeForState(.disabled)
 			}
-			self.updateColors(updateImageTintColor: true)
+            if #available(iOS 15.0, *) {
+                self.setNeedsUpdateConfiguration()
+            } else {
+                self.updateColors(updateImageTintColor: true)
+            }
 		}
 	}
 	
@@ -258,7 +266,11 @@ import UIKit
 		default:
 			break;
 		}
-		self.updateColors(updateImageTintColor: false)
+        if #available(iOS 15.0, *) {
+            self.setNeedsUpdateConfiguration()
+        } else {
+            self.updateColors(updateImageTintColor: false)
+        }
 	}
 	
 	open func backgroundColor(for state:UIControl.State)->UIColor? {
@@ -307,7 +319,11 @@ import UIKit
 		default:
 			break
 		}
-		self.updateColors(updateImageTintColor: false)
+        if #available(iOS 15.0, *) {
+            self.setNeedsUpdateConfiguration()
+        } else {
+            self.updateColors(updateImageTintColor: false)
+        }
 	}
 	
 	open func borderColor(for state:UIControl.State)->UIColor? {
@@ -333,15 +349,25 @@ import UIKit
 		return color
 	}
 
+    
+    
 	open override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
-		super.setTitleColor(color, for: state)
-		self.updateColors(updateImageTintColor: self.tintImageWithTitleColor && self.state == state)
+        super.setTitleColor(color, for: state)
+        if #available(iOS 15.0, *) {
+            self.setNeedsUpdateConfiguration()
+        } else {
+            self.updateColors(updateImageTintColor: self.tintImageWithTitleColor && self.state == state)
+        }
 	}
 	
 	open override func setImage(_ image: UIImage?, for state: UIControl.State) {
 		super.setImage(image, for: state)
-		self.updateImageRenderingModeForState(state)
-		self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+        self.updateImageRenderingModeForState(state)
+        if #available(iOS 15.0, *) {
+            self.setNeedsUpdateConfiguration()
+        } else {
+            self.updateColors(updateImageTintColor: self.tintImageWithTitleColor)
+        }
 	}
 	
 	open override func setTitle(_ title: String?, for state: UIControl.State) {
@@ -485,10 +511,66 @@ import UIKit
 		
 		self._defaultHorizontalContentAlignment = self.contentHorizontalAlignment
 		self._defaultVerticalContentAlignment = self.contentVerticalAlignment
+        
+        if #available(iOS 15.0, *) {
+            var config = UIButton.Configuration.plain()
+            self.configuration = config
+        }
 	}
 	
+    open override func updateConfiguration() {
+        if #available(iOS 15.0, *) {
+            super.updateConfiguration()
+            
+            if self.isEnabled {
+                if (self.isHighlighted)
+                {
+                    self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
+                    self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                    if self.tintImageWithTitleColor, self.imageView != nil {
+                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                            return self.titleColor(for: .highlighted) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
+                        }
+                    }
+                }
+                else if (self.isSelected)
+                {
+                    self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
+                    self.layer.borderColor = self._selectedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                    if self.tintImageWithTitleColor, self.imageView != nil {
+                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                            return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
+                        }
+                    }
+                }
+                else
+                {
+                    self.backgroundColor = self._normalBackgroundColor
+                    self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
+                    if self.tintImageWithTitleColor, self.imageView != nil {
+                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                            return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
+                        }
+                    }
+                }
+            } else {
+                self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
+                self.layer.borderColor = self._disabledBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                if self.tintImageWithTitleColor, let imageView = self.imageView, imageView.image != nil {
+                    self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                        return self.titleColor(for: .disabled) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
+                    }
+                }
+            }
+        }
+    }
+    
 	private func updateColors(updateImageTintColor:Bool)
 	{
+        if #available(iOS 15.0, *) {
+            return
+        }
+        
 		if self.isEnabled
 		{
 			if (self.isHighlighted)
