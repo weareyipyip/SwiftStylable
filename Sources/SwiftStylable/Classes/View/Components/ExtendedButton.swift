@@ -533,6 +533,7 @@ import UIKit
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
                     newAttributes.foregroundColor = self.titleColor(for: .normal)
+                    newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
                 
@@ -554,6 +555,7 @@ import UIKit
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
                     newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
                 
@@ -575,6 +577,7 @@ import UIKit
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
                     newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
                 
@@ -596,6 +599,7 @@ import UIKit
                 self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
                     var newAttributes = attributes
                     newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    newAttributes.font = self.titleLabel?.font
                     return newAttributes
                 }
                 
