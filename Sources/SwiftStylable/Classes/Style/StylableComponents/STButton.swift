@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable {
+@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable, SpacingStylable {
 	
-	private var _stComponentHelper:STComponentHelper!
+	private var _stComponentHelper: STComponentHelper!
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -200,6 +200,22 @@ import UIKit
 		}
 	}
 
+    open var imagePadding: CGFloat? {
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.configuration?.imagePadding = self.imagePadding ?? 0
+            }
+        }
+    }
+    
+    open var titlePadding: CGFloat? {
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.configuration?.titlePadding = self.titlePadding ?? 0
+            }
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -227,7 +243,8 @@ import UIKit
 			BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ForegroundStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ImageStyler(self),
-            ButtonTextStyler(self)
+            ButtonTextStyler(self),
+            SpacingStyler(self)
 		])
 	}
 	

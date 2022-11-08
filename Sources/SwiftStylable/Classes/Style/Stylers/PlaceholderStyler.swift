@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlaceholderTextStyler : Styler {
+class PlaceholderTextStyler: Styler {
     
     private weak var _view: PlaceholderStylable?
     
@@ -29,7 +29,7 @@ class PlaceholderTextStyler : Styler {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    open func applyStyle(_ style:Style) {
+    open func applyStyle(_ style: Style) {
         
         guard let view = self._view else {
             return

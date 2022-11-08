@@ -513,8 +513,7 @@ import UIKit
 		self._defaultVerticalContentAlignment = self.contentVerticalAlignment
         
         if #available(iOS 15.0, *) {
-            var config = UIButton.Configuration.plain()
-            self.configuration = config
+            self.configuration = UIButton.Configuration.plain()
         }
 	}
 	
@@ -522,51 +521,101 @@ import UIKit
         if #available(iOS 15.0, *) {
             super.updateConfiguration()
             
-            if self.isEnabled {
-                if (self.isHighlighted)
-                {
-                    self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
-                    self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
-                    if self.tintImageWithTitleColor, self.imageView != nil {
-                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
-                            return self.titleColor(for: .highlighted) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
-                        }
+            switch self.state {
+            case .normal:
+                
+                // Apperance
+                self.backgroundColor = self._normalBackgroundColor
+                self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
+                
+                // Title
+                self.configuration?.title = self._normalTitle
+                self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var newAttributes = attributes
+                    newAttributes.foregroundColor = self.titleColor(for: .normal)
+                    return newAttributes
+                }
+                
+                // Image
+                if self.tintImageWithTitleColor, self.imageView != nil {
+                    self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                        return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
                     }
                 }
-                else if (self.isSelected)
-                {
-                    self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
-                    self.layer.borderColor = self._selectedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
-                    if self.tintImageWithTitleColor, self.imageView != nil {
-                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
-                            return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
-                        }
+                
+            case .highlighted:
+                
+                // Apperance
+                self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
+                self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                
+                // Title
+                self.configuration?.title = self._highlightedTitle ?? self._normalTitle
+                self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var newAttributes = attributes
+                    newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    return newAttributes
+                }
+                
+                // Image
+                if self.tintImageWithTitleColor, self.imageView != nil {
+                    self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                        return self.titleColor(for: .highlighted) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
                     }
                 }
-                else
-                {
-                    self.backgroundColor = self._normalBackgroundColor
-                    self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
-                    if self.tintImageWithTitleColor, self.imageView != nil {
-                        self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
-                            return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
-                        }
+                
+            case .selected:
+                
+                // Apperance
+                self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
+                self.layer.borderColor = self._selectedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                
+                // Title
+                self.configuration?.title = self._selectedTitle ?? self._normalTitle
+                self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var newAttributes = attributes
+                    newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    return newAttributes
+                }
+                
+                // Image
+                if self.tintImageWithTitleColor, self.imageView != nil {
+                    self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
+                        return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
                     }
                 }
-            } else {
+                
+            case .disabled:
+                
+                // Apperance
                 self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
                 self.layer.borderColor = self._disabledBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
+                
+                // Title
+                self.configuration?.title = self._disabledTitle ?? self._normalTitle
+                self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
+                    var newAttributes = attributes
+                    newAttributes.foregroundColor = self.titleColor(for: .highlighted)
+                    return newAttributes
+                }
+                
+                // Image
                 if self.tintImageWithTitleColor, let imageView = self.imageView, imageView.image != nil {
                     self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
                         return self.titleColor(for: .disabled) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
                     }
                 }
+                
+            default:
+                
+                // Do nothing
+                break;
             }
         }
     }
     
-	private func updateColors(updateImageTintColor:Bool)
-	{
+    private func updateColors(updateImageTintColor:Bool)
+    {
         if #available(iOS 15.0, *) {
             return
         }

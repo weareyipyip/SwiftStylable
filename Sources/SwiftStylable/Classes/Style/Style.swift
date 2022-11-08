@@ -9,17 +9,17 @@
 import UIKit
 
 public class Style {
-    public let name:String
+    public let name: String
     
-    public let foregroundStyle:ForegroundStyle
-    public let backgroundAndBorderStyle:BackgroundAndBorderStyle
-    public let textStyle:TextStyle
-    public let textBorderStyle:TextBorderStyle
-    public let styledTextStyle:StyledTextStyle
-    public let placeholderStyle:PlaceholderStyle
-    public let imageStyle:ImageStyle
-    public let tableViewSeparatorStyle:TableViewSeparatorStyle
-    public let spacingStyle:SpacingStyle
+    public let foregroundStyle: ForegroundStyle
+    public let backgroundAndBorderStyle: BackgroundAndBorderStyle
+    public let textStyle: TextStyle
+    public let textBorderStyle: TextBorderStyle
+    public let styledTextStyle: StyledTextStyle
+    public let placeholderStyle: PlaceholderStyle
+    public let imageStyle: ImageStyle
+    public let tableViewSeparatorStyle: TableViewSeparatorStyle
+    public let spacingStyle: SpacingStyle
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ public class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal init(name:String, parent:Style? = nil, data:[String:Any], colorCollection:ColorCollection, dimensionCollection:DimensionCollection) {
+    internal init(name: String, parent: Style? = nil, data: [String: Any], colorCollection: ColorCollection, dimensionCollection: DimensionCollection) {
         self.name = name
         
         self.foregroundStyle = ForegroundStyle(name: name, parent: parent?.foregroundStyle, data: data, colorCollection: colorCollection, dimensionCollection: dimensionCollection)
@@ -49,7 +49,7 @@ public class Style {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    internal func parseData(_ data:[String:Any]) {
+    internal func parseData(_ data: [String: Any]) {
         self.foregroundStyle.applyData(data)
         self.backgroundAndBorderStyle.applyData(data)
         self.textStyle.applyData(data)
