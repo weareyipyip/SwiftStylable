@@ -8,6 +8,6 @@
 import UIKit
 
 protocol ButtonTextStylable : AnyObject {
-	var titleLabel:UILabel? { get }
+    var titleLabel:UILabel? { get }
     var fullUppercaseText:Bool { get set }
 }

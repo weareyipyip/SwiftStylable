@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SpacingStylable : AnyObject {
-	var spacing: CGFloat? { get set }
+    var spacing: CGFloat? { get set }
     var imagePadding: CGFloat? { get set }
 }
 
