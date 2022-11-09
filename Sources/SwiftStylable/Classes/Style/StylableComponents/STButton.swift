@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable open class STButton : ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable {
+@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable, SpacingStylable {
 	
-	private var _stComponentHelper:STComponentHelper!
+	private var _stComponentHelper: STComponentHelper!
     
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -29,6 +29,9 @@ import UIKit
 		self.setUpSTComponentHelper()
     }
     
+    open override func updateConfiguration() {
+        super.updateConfiguration()
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -77,13 +80,16 @@ import UIKit
             self.processImageName(self.disabledImageName, forState: .disabled)
         }
     }
-	
+    
 	open var foregroundColor: UIColor? {
 		get {
 			return self.titleColor(for: .normal)
 		}
 		set {
-			self.setTitleColor(newValue, for: .normal)
+            if #available(iOS 15.0, *) {
+                self.configuration?.baseForegroundColor = newValue
+            }
+            self.setTitleColor(newValue, for: .normal)
 		}
 	}
 	
@@ -92,7 +98,7 @@ import UIKit
 			return self.titleColor(for: .highlighted)
 		}
 		set {
-			self.setTitleColor(newValue, for: .highlighted)
+            self.setTitleColor(newValue, for: .highlighted)
 		}
 	}
 	
@@ -194,6 +200,22 @@ import UIKit
 		}
 	}
 
+    open var imagePadding: CGFloat? {
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.configuration?.imagePadding = self.imagePadding ?? 0
+            }
+        }
+    }
+    
+    open var titlePadding: CGFloat? {
+        didSet {
+            if #available(iOS 15.0, *) {
+                self.configuration?.titlePadding = self.titlePadding ?? 0
+            }
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -221,7 +243,8 @@ import UIKit
 			BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ForegroundStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ImageStyler(self),
-            ButtonTextStyler(self)
+            ButtonTextStyler(self),
+            SpacingStyler(self)
 		])
 	}
 	

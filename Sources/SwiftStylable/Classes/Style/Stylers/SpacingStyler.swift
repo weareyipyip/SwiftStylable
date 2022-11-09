@@ -38,5 +38,10 @@ class SpacingStyler: Styler {
         if let spacing = style.spacingStyle.spacing {
             view.spacing = spacing
         }
+        
+        if let imagePadding = style.spacingStyle.imagePadding {
+            view.imagePadding = imagePadding
+        }
+        
 	}
 }

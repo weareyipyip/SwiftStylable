@@ -102,6 +102,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- alignment (string: "left", "right", "center", "justified" or "natural")
         - lineBreakMode (string: "byTruncatingTail", "byTruncatingMiddle", "byTruncatingHead", "byClipping", "byCharWrapping", "byWordWrapping")
 - styledPlaceholderAttributes (dictionary, same as 'styledTextAttributes')
+- imagePadding (number or string, name of a dimensions) (available since iOS15)
 
 #### Colors
 All color properties should reference a named color from the colors section of the styles descriptor. For most colors there are 3 varieties besided the normal one: highlighted, selected and disabled. Most components do not use these varieties. They are mainly meant to define button states.
@@ -111,6 +112,7 @@ This property is meant for images and buttons. When this property is set to true
 
 #### Buttons
 When styling buttons, keep in mind that you have to set the type of your button to 'custom' when your button is created in Interface Builder. You also have to disable the 'Highlighted Ajusts Image' and 'Disabled Adjusts Image', unless this is the behaviour you desire.
+Since iOS15, the `UIButton.Configuration` is available. As of iOS15, SwiftStylable also uses this configuration. So if you want to overwrite certain functionalities, use the configuration in the button.
 
 #### Fonts
 Fonts contain a name and a size. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.

@@ -129,6 +129,7 @@ open class Styles {
                     var style = self._styles[name]
                     if let parentName = styleData["parent"] as? String {
                         if let parentStyle = self._styles[parentName] {
+                            
                             // WARNING: You cannot override the parent property of a style! Style will be replaced completely.
                             let style = Style(name: name, parent: parentStyle, data: styleData, colorCollection: self._colorCollection, dimensionCollection: self._dimensionCollection)
                             self._styles[name] = style
@@ -137,6 +138,7 @@ open class Styles {
                         }
                     } else {
                         if style == nil {
+                            
                             // Create a new style with the data
                             style = Style(name: name, data: styleData, colorCollection: self._colorCollection, dimensionCollection: self._dimensionCollection)
                         } else {
