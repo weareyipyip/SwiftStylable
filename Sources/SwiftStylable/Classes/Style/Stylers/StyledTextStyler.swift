@@ -36,7 +36,11 @@ class StyledTextStyler : Styler {
         }
         
         if let styledTextAttributes = style.styledTextStyle.styledTextAttributes {
-            view.styledTextAttributes = styledTextAttributes
+            if view.styledTextAttributes != nil {
+                styledTextAttributes.keys.forEach({ view.styledTextAttributes![$0] = styledTextAttributes[$0] })
+            } else {
+                view.styledTextAttributes = styledTextAttributes
+            }
         }
     }
 }
