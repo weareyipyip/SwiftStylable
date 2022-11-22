@@ -81,6 +81,16 @@ import UIKit
         }
     }
     
+    @IBInspectable open var adjustsFontForContentSizeCategory: Bool {
+        get {
+            self.titleLabel?.adjustsFontForContentSizeCategory ?? false
+            
+        }
+        set {
+            self.titleLabel?.adjustsFontForContentSizeCategory = newValue
+        }
+    }
+    
 	open var foregroundColor: UIColor? {
 		get {
 			return self.titleColor(for: .normal)
