@@ -122,6 +122,14 @@ import UIKit
         }
     }
 
+    @IBInspectable open override var adjustsFontForContentSizeCategory: Bool {
+        get {
+            super.adjustsFontForContentSizeCategory
+        }
+        set {
+            super.adjustsFontForContentSizeCategory = newValue
+        }
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
