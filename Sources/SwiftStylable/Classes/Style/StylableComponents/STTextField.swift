@@ -153,6 +153,16 @@ import UIKit
         }
     }
 
+    @IBInspectable override open var adjustsFontForContentSizeCategory: Bool {
+        get {
+            super.adjustsFontForContentSizeCategory
+            
+        }
+        set {
+            super.adjustsFontForContentSizeCategory = newValue
+        }
+    }
+    
     open var fullUppercasePlaceholder:Bool = false {
         didSet {
             self.placeholder = self._placeholder
