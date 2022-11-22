@@ -16,6 +16,7 @@ public class TextStyle : StyleSetBase {
     
     private var _fontName:String?
     private var _fontSizeDescription:Any?
+    private var _fontTextStyle:UIFont.TextStyle?
     private var _fullUppercaseText:Bool?
     
     
@@ -50,6 +51,12 @@ public class TextStyle : StyleSetBase {
         }
     }
     
+    var fontTextStyle:UIFont.TextStyle? {
+        get {
+            return self._fontTextStyle ?? self._parent?.fontTextStyle
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -64,7 +71,12 @@ public class TextStyle : StyleSetBase {
             if let name = font["name"] as? String {
                 self._fontName = name
             }
+            
             self._fontSizeDescription = font["size"]
+            
+            if let textStyle = UIFont.TextStyle(rawStyleValue: font["textStyle"] as? String) {
+                self._fontTextStyle = textStyle
+            }
         }
         if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
             self._fullUppercaseText = fullUppercaseText
@@ -75,7 +87,12 @@ public class TextStyle : StyleSetBase {
         super.update()
         
         if let fontSize = self.dimensionFromValue(self.fontSizeValue){
-            self.font = self.createFont(name: self.fontName, size: fontSize)
+            let font = self.createFont(name: self.fontName, size: fontSize)
+            if let fontTextStyle {
+                self.font = self.createDynamicFont(fromFont: font, withTextStyle: fontTextStyle)
+            } else {
+                self.font = font
+            }
         }
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
