@@ -86,6 +86,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 - font (dictionary)
 	- name (string, PostScript name of the font
 	- size (number or string, name of a dimensions)
+	- textStyle (string: "largeTitle", "title1", "title2", "title3", "headline", "subheadline", "body", "callout", "footnote", "caption1", "caption2", "none")
 - fullUppercaseText (boolean)
 - styledTextAttributes (dictionary --> see 'Styled text' below)
 	- foregroundColor (string)

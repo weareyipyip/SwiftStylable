@@ -37,7 +37,11 @@ class ButtonTextStyler : Styler {
 		
 		// Text
 		if let font = style.textStyle.font {
-			view.titleLabel?.font = font
+            if let textFontStyle = style.textStyle.fontTextStyle {
+                view.titleLabel?.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: font)
+            } else {
+                view.titleLabel?.font = font
+            }
 		}
 		if let fullUppercaseText = style.textStyle.fullUppercaseText {
 			view.fullUppercaseText = fullUppercaseText

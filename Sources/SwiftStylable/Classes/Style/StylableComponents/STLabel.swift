@@ -90,14 +90,16 @@ import UIKit
 		}
 	}
     
-    var textFont: UIFont? {
-        set {
-            if let font = newValue {
-                self.font = font
-            }
+    open var textFont:UIFont? {
+        didSet {
+            self.font = self.textFont
         }
-        get {
-            return self.font
+    }
+    
+    var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            guard let textFontStyle, let textFont else { return }
+            self.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
         }
     }
     
@@ -108,13 +110,25 @@ import UIKit
             }
         }
     }
+    
+    var styledTextFontStyle: UIFont.TextStyle? {
+        didSet {
+            if oldValue != self.styledTextFontStyle, self.styledTextAttributes != nil, self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
 
     @IBInspectable open var styledText:String? {
         set {
             self._styledText = newValue
             self._text = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
+                var attributes = self.styledTextAttributes ?? [:]
+                if let styledTextFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
+                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: styledTextFontStyle).scaledFont(for: textFont)
+                }
+                super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }
         }
         get {

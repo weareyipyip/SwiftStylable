@@ -79,19 +79,29 @@ import UIKit
     }
     
     open var textFont:UIFont? {
-        set {
-            if let font = newValue {
-                self.font = font
-            }
+        didSet {
+            self.font = self.textFont
         }
-        get {
-            return self.font
+    }
+    
+    open var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            guard let textFontStyle, let textFont else { return }
+            self.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
         }
     }
     
     open var styledTextAttributes:[NSAttributedString.Key:Any]? {
         didSet {
             if self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
+    
+    var styledTextFontStyle: UIFont.TextStyle? {
+        didSet {
+            if oldValue != self.styledTextFontStyle, self.styledTextAttributes != nil, self._styledText != nil {
                 self.styledText = self._styledText
             }
         }
@@ -109,11 +119,24 @@ import UIKit
         set {
             self._styledText = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
+                var attributes = self.styledTextAttributes ?? [:]
+                if let styledTextFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
+                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: styledTextFontStyle).scaledFont(for: textFont)
+                }
+                super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }
         }
         get {
             return self._styledText
+        }
+    }
+    
+    @IBInspectable open override var adjustsFontForContentSizeCategory: Bool {
+        get {
+            return super.adjustsFontForContentSizeCategory
+        }
+        set {
+            super.adjustsFontForContentSizeCategory = newValue
         }
     }
 

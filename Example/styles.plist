@@ -109,7 +109,7 @@
 				<key>font</key>
 				<dict>
 					<key>name</key>
-					<string>Arial</string>
+					<string>AvantGardeMdITCTTBold</string>
 					<key>size</key>
 					<string>contentTextFontSize</string>
 				</dict>
@@ -124,14 +124,14 @@
 			<key>font</key>
 			<dict>
 				<key>textStyle</key>
-				<string>title0</string>
+				<string>largeTitle</string>
 			</dict>
 			<key>styledTextAttributes</key>
 			<dict>
 				<key>font</key>
 				<dict>
 					<key>textStyle</key>
-					<string>title0</string>
+					<string>largeTitle</string>
 				</dict>
 			</dict>
 		</dict>
@@ -214,14 +214,14 @@
 			<key>font</key>
 			<dict>
 				<key>textStyle</key>
-				<string>subhead</string>
+				<string>subheadline</string>
 			</dict>
 			<key>styledTextAttributes</key>
 			<dict>
 				<key>font</key>
 				<dict>
 					<key>textStyle</key>
-					<string>subhead</string>
+					<string>subheadline</string>
 				</dict>
 			</dict>
 		</dict>
@@ -327,6 +327,22 @@
 				<string>contentTextFontSize</string>
 			</dict>
 		</dict>
+		<key>noneTextStyle</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>textStyle</key>
+				<string>none</string>
+			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyle</key>
+					<string>none</string>
+				</dict>
+			</dict>
+		</dict>
 		<key>=== Button Styles ===</key>
 		<dict/>
 		<key>roundedButton</key>
@@ -376,7 +392,12 @@
 		<key>=== Component Styles ===</key>
 		<dict/>
 		<key>textViewStyle</key>
-		<dict/>
+		<dict>
+			<key>parent</key>
+			<string>textStyleTest</string>
+			<key>backgroundColor</key>
+			<string>dividerColor</string>
+		</dict>
 		<key>textfieldStyle</key>
 		<dict>
 			<key>foregroundColor</key>

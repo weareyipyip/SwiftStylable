@@ -118,10 +118,6 @@ public class StyleSetBase : StyleSet {
             defaultName: defaultName,
             defaultSize: defaultSize
         )
-        
-        if let textStyle = UIFont.TextStyle(rawStyleValue: data?["textStyle"] as? String) {
-            return self.createDynamicFont(fromFont: font, withTextStyle: textStyle)
-        }
         return font
     }
     
@@ -165,11 +161,6 @@ public class StyleSetBase : StyleSet {
             }
         }
         return font
-    }
-	
-    internal func createDynamicFont(fromFont font: UIFont?, withTextStyle textStyle: UIFont.TextStyle) -> UIFont? {
-        guard let font else { return nil }
-        return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: font)
     }
     
     internal func stringAttributesFromDictionary(_ data:[String:Any]?)->[NSAttributedString.Key:Any]? {

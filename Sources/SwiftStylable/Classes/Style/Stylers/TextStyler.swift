@@ -38,6 +38,11 @@ class TextStyler : Styler {
 		if let font = style.textStyle.font {
 			view.textFont = font
 		}
+        
+        if let fontTextStyle = style.textStyle.fontTextStyle {
+            view.textFontStyle = fontTextStyle
+        }
+        
 		if let fullUppercaseText = style.textStyle.fullUppercaseText {
 			view.fullUppercaseText = fullUppercaseText
 		}

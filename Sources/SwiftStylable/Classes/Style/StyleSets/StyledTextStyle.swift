@@ -14,7 +14,20 @@ public class StyledTextStyle : StyleSetBase {
 	internal var styledTextDictionary:[String:Any]?
 	
     private let _parent:StyledTextStyle?
+    
+    private var _fontTextStyle:UIFont.TextStyle?
 
+    // -----------------------------------------------------------------------------------------------------------------------
+    //
+    // MARK: - Computed properties
+    //
+    // -----------------------------------------------------------------------------------------------------------------------
+    
+    var fontTextStyle:UIFont.TextStyle? {
+        get {
+            return self._fontTextStyle ?? self._parent?.fontTextStyle
+        }
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -52,6 +65,14 @@ public class StyledTextStyle : StyleSetBase {
 		} else {
 			self.styledTextAttributes = self.stringAttributesFromDictionary(self.styledTextDictionary ?? self._parent?.styledTextDictionary)
 		}
+        
+        if
+            let font = self.styledTextDictionary?["font"] as? [String:Any],
+            let rawTextStyleValue = font["textStyle"] as? String,
+            let textStyle = UIFont.TextStyle(rawStyleValue: rawTextStyleValue)
+        {
+            self._fontTextStyle = textStyle
+        }
     }
 	
 	private func mergeDictionariesRecursively(priorityDictionary:[String:Any], otherDictionary:[String:Any])->[String:Any] {

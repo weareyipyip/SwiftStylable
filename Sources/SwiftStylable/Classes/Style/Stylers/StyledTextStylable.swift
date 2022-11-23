@@ -9,4 +9,5 @@ import Foundation
 
 protocol StyledTextStylable : AnyObject {
     var styledTextAttributes:[NSAttributedString.Key:Any]? { get set }
+    var styledTextFontStyle: UIFont.TextStyle? { get set }
 }

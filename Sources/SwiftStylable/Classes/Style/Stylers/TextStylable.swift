@@ -14,5 +14,6 @@ protocol TextStylable : AnyObject {
     this reason a textFont property is used, the implementation is left to specific components.
     */
 	var textFont: UIFont? { get set }
+    var textFontStyle: UIFont.TextStyle? { get set }
 	var fullUppercaseText: Bool { get set }
 }

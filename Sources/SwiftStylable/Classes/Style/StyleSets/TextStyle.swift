@@ -74,7 +74,7 @@ public class TextStyle : StyleSetBase {
             
             self._fontSizeDescription = font["size"]
             
-            if let textStyle = UIFont.TextStyle(rawStyleValue: font["textStyle"] as? String) {
+            if let rawTextStyleValue = font["textStyle"] as? String, let textStyle = UIFont.TextStyle(rawStyleValue: rawTextStyleValue) {
                 self._fontTextStyle = textStyle
             }
         }
@@ -88,12 +88,9 @@ public class TextStyle : StyleSetBase {
         
         if let fontSize = self.dimensionFromValue(self.fontSizeValue){
             let font = self.createFont(name: self.fontName, size: fontSize)
-            if let fontTextStyle {
-                self.font = self.createDynamicFont(fromFont: font, withTextStyle: fontTextStyle)
-            } else {
-                self.font = font
-            }
+            self.font = font
         }
+        
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
 }

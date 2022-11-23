@@ -35,12 +35,18 @@ class StyledTextStyler : Styler {
             return
         }
         
+
+        
         if let styledTextAttributes = style.styledTextStyle.styledTextAttributes {
             if view.styledTextAttributes != nil {
                 styledTextAttributes.keys.forEach({ view.styledTextAttributes![$0] = styledTextAttributes[$0] })
             } else {
                 view.styledTextAttributes = styledTextAttributes
             }
+        }
+        
+        if let fontTextStyle = style.styledTextStyle.fontTextStyle {
+            view.styledTextFontStyle = fontTextStyle
         }
     }
 }

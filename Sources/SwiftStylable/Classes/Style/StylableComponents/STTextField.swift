@@ -78,7 +78,11 @@ import UIKit
         set {
             self._styledText = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
+                var attributes = self.styledTextAttributes ?? [:]
+                if let textFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
+                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+                }
+                super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }
         }
         get {
@@ -96,13 +100,15 @@ import UIKit
     }
     
     open var textFont:UIFont? {
-        set {
-            if let font = newValue {
-                self.font = font
-            }
+        didSet {
+            self.font = self.textFont
         }
-        get {
-            return self.font
+    }
+    
+    open var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            guard let textFontStyle, let textFont else { return }
+            self.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
         }
     }
     
@@ -144,8 +150,12 @@ import UIKit
             self._styledPlaceholder = newValue
             self._placeholder = newValue
             if let placeholder = newValue {
+                var attributes = self.styledPlaceholderAttributes ?? [:]
+                if let textFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
+                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+                }
 				let casedPlaceholder = self.fullUppercasePlaceholder ? placeholder.uppercased() : placeholder
-                super.attributedPlaceholder = NSAttributedString(string: casedPlaceholder, attributes: self.styledPlaceholderAttributes ?? [NSAttributedString.Key:Any]())
+                super.attributedPlaceholder = NSAttributedString(string: casedPlaceholder, attributes: attributes)
             }
         }
         get {
