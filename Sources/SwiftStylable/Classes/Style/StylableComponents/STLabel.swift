@@ -96,10 +96,19 @@ import UIKit
         }
     }
     
-    var textFontStyle: UIFont.TextStyle? {
+    open var textFontStyle: UIFont.TextStyle? {
         didSet {
-            guard let textFontStyle, let textFont else { return }
-            self.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
+        }
+    }
+    
+    open var textFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
         }
     }
     
@@ -113,7 +122,15 @@ import UIKit
     
     var styledTextFontStyle: UIFont.TextStyle? {
         didSet {
-            if oldValue != self.styledTextFontStyle, self.styledTextAttributes != nil, self._styledText != nil {
+            if self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
+    
+    var styledTextFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if self._styledText != nil {
                 self.styledText = self._styledText
             }
         }
@@ -125,8 +142,8 @@ import UIKit
             self._text = newValue
             if let text = newValue {
                 var attributes = self.styledTextAttributes ?? [:]
-                if let styledTextFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
-                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: styledTextFontStyle).scaledFont(for: textFont)
+                if attributes[NSAttributedString.Key.font] != nil, let dynamicFont = self.createStyledTextDynamicFont() {
+                    attributes[NSAttributedString.Key.font] = dynamicFont
                 }
                 super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }

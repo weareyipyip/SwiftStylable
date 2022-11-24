@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable, SpacingStylable {
+@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, TextStylable, SpacingStylable {
 	
 	private var _stComponentHelper: STComponentHelper!
     
@@ -88,6 +88,28 @@ import UIKit
         }
         set {
             self.titleLabel?.adjustsFontForContentSizeCategory = newValue
+        }
+    }
+    
+    open var textFont:UIFont? {
+        didSet {
+            self.titleLabel?.font = self.textFont
+        }
+    }
+    
+    open var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.titleLabel?.font = font
+            }
+        }
+    }
+    
+    open var textFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.titleLabel?.font = font
+            }
         }
     }
     
@@ -253,7 +275,7 @@ import UIKit
 			BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ForegroundStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ImageStyler(self),
-            ButtonTextStyler(self),
+            TextStyler(self),
             SpacingStyler(self)
 		])
 	}

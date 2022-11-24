@@ -107,8 +107,17 @@ import UIKit
     
     open var textFontStyle: UIFont.TextStyle? {
         didSet {
-            guard let textFontStyle, let textFont else { return }
-            self.font = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
+        }
+    }
+    
+    open var textFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
         }
     }
     

@@ -10,12 +10,13 @@ import Foundation
 public class StyledTextStyle : StyleSetBase {
     
     public private(set) var styledTextAttributes:[NSAttributedString.Key:Any]?
+    public private(set) var fontTextStyleMaximumSize:CGFloat?
     
-	internal var styledTextDictionary:[String:Any]?
-	
     private let _parent:StyledTextStyle?
     
+    internal var _styledTextDictionary:[String:Any]?
     private var _fontTextStyle:UIFont.TextStyle?
+    private var _fontTextStyleMaximumSizeDescription:Any?
 
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -23,10 +24,21 @@ public class StyledTextStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    var fontTextStyle:UIFont.TextStyle? {
-        get {
-            return self._fontTextStyle ?? self._parent?.fontTextStyle
+    var styledTextDictionary:[String:Any]? {
+        if let ownStyledTextDictionary = self._styledTextDictionary, let parentStyledTextDictionary = self._parent?.styledTextDictionary {
+            let mergedDictionary = self.mergeDictionariesRecursively(priorityDictionary: ownStyledTextDictionary, otherDictionary: parentStyledTextDictionary)
+            return mergedDictionary
+        } else {
+            return self._styledTextDictionary ?? self._parent?.styledTextDictionary
         }
+    }
+    
+    var fontTextStyle:UIFont.TextStyle? {
+        return self._fontTextStyle ?? self._parent?.fontTextStyle
+    }
+    
+    var fontTextStyleMaximumSizeValue:Any? {
+        return self._fontTextStyleMaximumSizeDescription ?? self._parent?.fontTextStyleMaximumSizeValue
     }
     
     // -----------------------------------------------------------------------------------------------------------------------
@@ -52,27 +64,28 @@ public class StyledTextStyle : StyleSetBase {
         super._applyData(data)
         
         if let styledTextDictionary = data["styledTextAttributes"] as? [String:Any] {
-            self.styledTextDictionary = styledTextDictionary
+            self._styledTextDictionary = styledTextDictionary
+            if let font = styledTextDictionary["font"] as? [String:Any] {
+                self._fontTextStyleMaximumSizeDescription = font["textStyleMaximumSize"]
+                if
+                    let rawTextStyleValue = font["textStyle"] as? String,
+                    let textStyle = UIFont.TextStyle(rawStyleValue: rawTextStyleValue)
+                {
+                    self._fontTextStyle = textStyle
+                }
+            }
         }
     }
     
     override internal func update() {
         super.update()
-		
-		if let ownStyledTextDictionary = self.styledTextDictionary, let parentStyledTextDictionary = self._parent?.styledTextDictionary {
-			let mergedDictionary = self.mergeDictionariesRecursively(priorityDictionary: ownStyledTextDictionary, otherDictionary: parentStyledTextDictionary)
-			self.styledTextAttributes = self.stringAttributesFromDictionary(mergedDictionary)
-		} else {
-			self.styledTextAttributes = self.stringAttributesFromDictionary(self.styledTextDictionary ?? self._parent?.styledTextDictionary)
-		}
         
-        if
-            let font = self.styledTextDictionary?["font"] as? [String:Any],
-            let rawTextStyleValue = font["textStyle"] as? String,
-            let textStyle = UIFont.TextStyle(rawStyleValue: rawTextStyleValue)
-        {
-            self._fontTextStyle = textStyle
+        self.styledTextAttributes = self.stringAttributesFromDictionary(self.styledTextDictionary)
+        
+        if let fontTextStyleMaximumSize = self.dimensionFromValue(self.fontTextStyleMaximumSizeValue) {
+            self.fontTextStyleMaximumSize = fontTextStyleMaximumSize
         }
+
     }
 	
 	private func mergeDictionariesRecursively(priorityDictionary:[String:Any], otherDictionary:[String:Any])->[String:Any] {

@@ -101,6 +101,8 @@
 				<string>AvantGardeMdITCTTBold</string>
 				<key>size</key>
 				<string>contentTextFontSize</string>
+				<key>textStyleMaximumSize</key>
+				<integer>30</integer>
 			</dict>
 			<key>foregroundColor</key>
 			<string>emphasizedAreaForegroundColor</string>
@@ -112,6 +114,8 @@
 					<string>AvantGardeMdITCTTBold</string>
 					<key>size</key>
 					<string>contentTextFontSize</string>
+					<key>textStyleMaximumSize</key>
+					<integer>300</integer>
 				</dict>
 				<key>foregroundColor</key>
 				<string>emphasizedAreaForegroundColor</string>
@@ -389,6 +393,16 @@
 			<key>tintImageWithForegroundColor</key>
 			<true/>
 		</dict>
+		<key>roundedAccessibleButton</key>
+		<dict>
+			<key>parent</key>
+			<string>roundedButton</string>
+			<key>font</key>
+			<dict>
+				<key>textStyle</key>
+				<string>caption2</string>
+			</dict>
+		</dict>
 		<key>=== Component Styles ===</key>
 		<dict/>
 		<key>textViewStyle</key>
@@ -397,6 +411,24 @@
 			<string>textStyleTest</string>
 			<key>backgroundColor</key>
 			<string>dividerColor</string>
+		</dict>
+		<key>textViewAccessibleStyle</key>
+		<dict>
+			<key>parent</key>
+			<string>textViewStyle</string>
+			<key>font</key>
+			<dict>
+				<key>textStyle</key>
+				<string>caption2</string>
+			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyle</key>
+					<string>caption2</string>
+				</dict>
+			</dict>
 		</dict>
 		<key>textfieldStyle</key>
 		<dict>
@@ -424,6 +456,20 @@
 				<string>AmericanTypewriter-CondensedBold</string>
 				<key>size</key>
 				<integer>12</integer>
+			</dict>
+		</dict>
+		<key>textfieldAccessibleStyle</key>
+		<dict>
+			<key>parent</key>
+			<string>textfieldStyle</string>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>AvantGardeMdITCTTBold</string>
+				<key>size</key>
+				<string>contentTextFontSize</string>
+				<key>testStyle</key>
+				<string>caption2</string>
 			</dict>
 		</dict>
 		<key>contentArea</key>

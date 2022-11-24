@@ -15,5 +15,18 @@ protocol TextStylable : AnyObject {
     */
 	var textFont: UIFont? { get set }
     var textFontStyle: UIFont.TextStyle? { get set }
+    var textFontStyleMaximumSize: CGFloat? { get set }
 	var fullUppercaseText: Bool { get set }
+    func createDynamicFont() -> UIFont?
+}
+
+extension TextStylable {
+    func createDynamicFont() -> UIFont? {
+        guard let textFontStyle, let textFont else { return self.textFont }
+        if let textFontStyleMaximumSize {
+            return UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont, maximumPointSize: textFontStyleMaximumSize)
+        } else {
+            return UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+        }
+    }
 }
