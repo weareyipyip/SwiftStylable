@@ -521,7 +521,7 @@
                                 <rect key="frame" x="16" y="0.0" width="343" height="623"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="200" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Cay-mX-VDn">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="2125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="2185"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BXX-FF-nFQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="561"/>
@@ -680,7 +680,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CzI-Xp-VtS">
-                                                <rect key="frame" x="0.0" y="625" width="343" height="164"/>
+                                                <rect key="frame" x="0.0" y="625" width="343" height="224"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx4-Mr-37R" customClass="STButton" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -704,8 +704,20 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontForContentSizeCategory" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4N5-rr-bRj" customClass="STButton" customModule="SwiftStylable">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fL-SV-H7D" customClass="STButton" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="120" width="343" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="kuN-TU-jiN"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Dynamic font type (max size 30)"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="roundedAccessibleButton"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontForContentSizeCategory" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="substyleName" value="maxSizeTextStyle"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4N5-rr-bRj" customClass="STButton" customModule="SwiftStylable">
+                                                        <rect key="frame" x="0.0" y="180" width="343" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="wl1-a4-veR"/>
                                                         </constraints>
@@ -719,7 +731,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="nSa-4w-dNZ">
-                                                <rect key="frame" x="0.0" y="853" width="343" height="184"/>
+                                                <rect key="frame" x="0.0" y="913" width="343" height="184"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="73n-U5-DJq" customClass="STTextField" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -766,7 +778,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-cX-4Dz">
-                                                <rect key="frame" x="0.0" y="1101" width="343" height="560"/>
+                                                <rect key="frame" x="0.0" y="1161" width="343" height="560"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Normal" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dq5-hV-5wy" customClass="STTextView" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
@@ -829,7 +841,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXw-KM-olF">
-                                                <rect key="frame" x="0.0" y="1725" width="343" height="400"/>
+                                                <rect key="frame" x="0.0" y="1785" width="343" height="400"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="400" id="ido-cM-5nK"/>
@@ -879,6 +891,9 @@
         </designable>
         <designable name="7I1-Ld-B2L">
             <size key="intrinsicContentSize" width="118" height="34"/>
+        </designable>
+        <designable name="8fL-SV-H7D">
+            <size key="intrinsicContentSize" width="261" height="34"/>
         </designable>
         <designable name="8nY-CH-BcB">
             <size key="intrinsicContentSize" width="45" height="20.5"/>

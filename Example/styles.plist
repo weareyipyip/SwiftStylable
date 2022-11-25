@@ -355,6 +355,30 @@
 				</dict>
 			</dict>
 		</dict>
+		<key>maxSizeTextStyle</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>textStyleMaximumSize</key>
+				<integer>30</integer>
+			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyleMaximumSize</key>
+					<integer>30</integer>
+				</dict>
+			</dict>
+			<key>styledPlaceholderAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyleMaximumSize</key>
+					<integer>30</integer>
+				</dict>
+			</dict>
+		</dict>
 		<key>=== Button Styles ===</key>
 		<dict/>
 		<key>roundedButton</key>
