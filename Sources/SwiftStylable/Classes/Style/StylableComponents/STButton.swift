@@ -94,6 +94,7 @@ import UIKit
     var textFont:UIFont? {
         didSet {
             self.titleLabel?.font = self.textFont
+            self.updateConfiguration()
         }
     }
     
@@ -101,6 +102,7 @@ import UIKit
         didSet {
             if let font = self.createDynamicFont() {
                 self.titleLabel?.font = font
+                self.updateConfiguration()
             }
         }
     }
@@ -109,6 +111,7 @@ import UIKit
         didSet {
             if let font = self.createDynamicFont() {
                 self.titleLabel?.font = font
+                self.updateConfiguration()
             }
         }
     }
