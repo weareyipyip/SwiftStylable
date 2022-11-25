@@ -91,13 +91,13 @@ import UIKit
         }
     }
     
-    open var textFont:UIFont? {
+    var textFont:UIFont? {
         didSet {
             self.titleLabel?.font = self.textFont
         }
     }
     
-    open var textFontStyle: UIFont.TextStyle? {
+    var textFontStyle: UIFont.TextStyle? {
         didSet {
             if let font = self.createDynamicFont() {
                 self.titleLabel?.font = font
@@ -105,7 +105,7 @@ import UIKit
         }
     }
     
-    open var textFontStyleMaximumSize: CGFloat? {
+    var textFontStyleMaximumSize: CGFloat? {
         didSet {
             if let font = self.createDynamicFont() {
                 self.titleLabel?.font = font

@@ -90,13 +90,13 @@ import UIKit
 		}
 	}
     
-    open var textFont:UIFont? {
+    var textFont:UIFont? {
         didSet {
             self.font = self.textFont
         }
     }
     
-    open var textFontStyle: UIFont.TextStyle? {
+    var textFontStyle: UIFont.TextStyle? {
         didSet {
             if let font = self.createDynamicFont() {
                 self.font = font
@@ -104,7 +104,7 @@ import UIKit
         }
     }
     
-    open var textFontStyleMaximumSize: CGFloat? {
+    var textFontStyleMaximumSize: CGFloat? {
         didSet {
             if let font = self.createDynamicFont() {
                 self.font = font
