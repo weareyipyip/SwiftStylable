@@ -746,9 +746,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="textfieldStyle"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="textfieldAccessibleStyle"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="styledPlaceholder" value="Placeholder"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="substyleName" value="caption2Text"/>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontForContentSizeCategory" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="styledText" value="Test Text"/>
                                                         </userDefinedRuntimeAttributes>

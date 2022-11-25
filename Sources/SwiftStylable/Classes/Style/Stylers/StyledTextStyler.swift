@@ -35,8 +35,6 @@ class StyledTextStyler : Styler {
             return
         }
         
-
-        
         if let styledTextAttributes = style.styledTextStyle.styledTextAttributes {
             if view.styledTextAttributes != nil {
                 styledTextAttributes.keys.forEach({ view.styledTextAttributes![$0] = styledTextAttributes[$0] })

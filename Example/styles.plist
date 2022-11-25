@@ -118,7 +118,7 @@
 					<integer>300</integer>
 				</dict>
 				<key>foregroundColor</key>
-				<string>emphasizedAreaForegroundColor</string>
+				<string>#0000ff</string>
 			</dict>
 		</dict>
 		<key>largeTitleText</key>
@@ -346,6 +346,14 @@
 					<string>none</string>
 				</dict>
 			</dict>
+			<key>styledPlaceholderAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyle</key>
+					<string>none</string>
+				</dict>
+			</dict>
 		</dict>
 		<key>=== Button Styles ===</key>
 		<dict/>
@@ -432,8 +440,10 @@
 		</dict>
 		<key>textfieldStyle</key>
 		<dict>
+			<key>parent</key>
+			<string>textStyleTest</string>
 			<key>foregroundColor</key>
-			<string>secondaryActionForegroundColor</string>
+			<string>#ff0000</string>
 			<key>fullUppercasePlaceholder</key>
 			<true/>
 			<key>styledPlaceholderAttributes</key>
@@ -444,18 +454,13 @@
 					<string>italicSystemFont</string>
 					<key>size</key>
 					<integer>16</integer>
+					<key>textStyle</key>
+					<string>caption2</string>
 				</dict>
 				<key>foregroundColor</key>
-				<string>#ff0000</string>
+				<string>#00ff00</string>
 				<key>underlineStyle</key>
 				<string>none</string>
-			</dict>
-			<key>font</key>
-			<dict>
-				<key>name</key>
-				<string>AmericanTypewriter-CondensedBold</string>
-				<key>size</key>
-				<integer>12</integer>
 			</dict>
 		</dict>
 		<key>textfieldAccessibleStyle</key>
@@ -464,12 +469,16 @@
 			<string>textfieldStyle</string>
 			<key>font</key>
 			<dict>
-				<key>name</key>
-				<string>AvantGardeMdITCTTBold</string>
-				<key>size</key>
-				<string>contentTextFontSize</string>
-				<key>testStyle</key>
+				<key>textStyle</key>
 				<string>caption2</string>
+			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>textStyle</key>
+					<string>caption2</string>
+				</dict>
 			</dict>
 		</dict>
 		<key>contentArea</key>

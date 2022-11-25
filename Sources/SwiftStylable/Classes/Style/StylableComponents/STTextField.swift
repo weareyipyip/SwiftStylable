@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable open class STTextField : UITextField, UITextFieldDelegate, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, PlaceholderStylable  {
+@IBDesignable open class STTextField : UITextField, UITextFieldDelegate, Stylable, BackgroundAndBorderStylable, TextBorderStylable, ForegroundStylable, TextStylable, StyledTextStylable, PlaceholderStylable  {
     
     private var _stComponentHelper: STComponentHelper!
     private var _styledText:String?
@@ -68,19 +68,29 @@ import UIKit
 
     var styledTextAttributes:[NSAttributedString.Key:Any]? {
         didSet {
-            if self._styledText != nil {
-                self.styledText = self._styledText
-            }
+            self.updatePlaceholderStyledText()
         }
     }
     
+    var styledTextFontStyle: UIFont.TextStyle? {
+        didSet {
+            self.updatePlaceholderStyledText()
+        }
+    }
+    
+    var styledTextFontStyleMaximumSize: CGFloat? {
+        didSet {
+            self.updatePlaceholderStyledText()
+        }
+    }
+
     @IBInspectable open var styledText:String? {
         set {
             self._styledText = newValue
             if let text = newValue {
                 var attributes = self.styledTextAttributes ?? [:]
-                if let textFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
-                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+                if attributes[NSAttributedString.Key.font] != nil, let dynamicFont = self.createStyledTextDynamicFont() {
+                    attributes[NSAttributedString.Key.font] = dynamicFont
                 }
                 super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }
@@ -102,6 +112,7 @@ import UIKit
     open var textFont:UIFont? {
         didSet {
             self.font = self.textFont
+            self.updatePlaceholderStyledText()
         }
     }
     
@@ -110,6 +121,7 @@ import UIKit
             if let font = self.createDynamicFont() {
                 self.font = font
             }
+            self.updatePlaceholderStyledText()
         }
     }
     
@@ -118,6 +130,7 @@ import UIKit
             if let font = self.createDynamicFont() {
                 self.font = font
             }
+            self.updatePlaceholderStyledText()
         }
     }
     
@@ -154,14 +167,30 @@ import UIKit
         }
     }
     
+    var styledPlaceholderFontStyle: UIFont.TextStyle? {
+        didSet {
+            if self._styledPlaceholder != nil {
+                self.styledPlaceholder = self._styledPlaceholder
+            }
+        }
+    }
+    
+    var styledPlaceholderFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if self._styledPlaceholder != nil {
+                self.styledPlaceholder = self._styledPlaceholder
+            }
+        }
+    }
+    
     @IBInspectable open var styledPlaceholder:String? {
         set {
             self._styledPlaceholder = newValue
             self._placeholder = newValue
             if let placeholder = newValue {
                 var attributes = self.styledPlaceholderAttributes ?? [:]
-                if let textFontStyle, let textFont = attributes[NSAttributedString.Key.font] as? UIFont {
-                    attributes[NSAttributedString.Key.font] = UIFontMetrics(forTextStyle: textFontStyle).scaledFont(for: textFont)
+                if attributes[NSAttributedString.Key.font] != nil, let dynamicFont = self.createStyledPlaceholderDynamicFont() {
+                    attributes[NSAttributedString.Key.font] = dynamicFont
                 }
 				let casedPlaceholder = self.fullUppercasePlaceholder ? placeholder.uppercased() : placeholder
                 super.attributedPlaceholder = NSAttributedString(string: casedPlaceholder, attributes: attributes)
@@ -184,7 +213,11 @@ import UIKit
     
     open var fullUppercasePlaceholder:Bool = false {
         didSet {
-            self.placeholder = self._placeholder
+            if self._styledPlaceholder != nil {
+                self.styledPlaceholder = self._styledPlaceholder
+            } else {
+                self.placeholder = self._placeholder
+            }
         }
     }
 	
@@ -212,7 +245,24 @@ import UIKit
             TextBorderStyler(self),
             ForegroundStyler(self),
             TextStyler(self),
+            StyledTextStyler(self),
             PlaceholderTextStyler(self)
         ])
     }
+    
+    private func updatePlaceholderStyledText() {
+        if self._styledPlaceholder != nil {
+            self.styledPlaceholder = self._styledPlaceholder
+        }
+    }
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        // Need to update the placeholder manually when content size is changing
+        if self.adjustsFontForContentSizeCategory {
+            self.updatePlaceholderStyledText()
+        }
+    }
+    
 }
