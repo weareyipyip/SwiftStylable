@@ -119,7 +119,7 @@ When styling buttons, keep in mind that you have to set the type of your button 
 Since iOS15, the `UIButton.Configuration` is available. As of iOS15, SwiftStylable also uses this configuration. So if you want to overwrite certain functionalities, use the configuration in the button.
 
 #### Fonts
-Fonts contain a name, a size and an optional text style. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.
+Fonts contain a name, a size, an optional text style and an optiona maximum size for the given text style. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.
 Instead of specifying a postScriptName, you can also use the system font by using predefined strings. The available strings for system fonts are:
 
 - "systemFont"
