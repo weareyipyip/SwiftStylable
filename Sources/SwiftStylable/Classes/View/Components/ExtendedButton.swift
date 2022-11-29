@@ -88,6 +88,34 @@ import UIKit
         }
     }
     
+    open override var contentEdgeInsets: UIEdgeInsets {
+        set {
+            if #available(iOS 15.0, *) {
+                self.configuration?.contentInsets = NSDirectionalEdgeInsets(
+                    top: newValue.top,
+                    leading: newValue.left,
+                    bottom: newValue.bottom,
+                    trailing: newValue.right
+                )
+                super.contentEdgeInsets = newValue
+            } else {
+                super.contentEdgeInsets = newValue
+            }
+        }
+        get {
+            if #available(iOS 15.0, *), let contentInsets = self.configuration?.contentInsets {
+                return UIEdgeInsets(
+                    top: contentInsets.top,
+                    left: contentInsets.leading,
+                    bottom: contentInsets.bottom,
+                    right: contentInsets.trailing
+                )
+            } else {
+                return super.contentEdgeInsets
+            }
+        }
+    }
+    
     @IBInspectable open var customItemPlacement:Bool = false {
         didSet {
             if self.customItemPlacement {

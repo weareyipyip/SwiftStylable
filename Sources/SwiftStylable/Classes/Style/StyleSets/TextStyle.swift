@@ -10,12 +10,15 @@ import UIKit
 public class TextStyle : StyleSetBase {
     
     public private(set) var font:UIFont?
+    public private(set) var fontTextStyleMaximumSize:CGFloat?
     public private(set) var fullUppercaseText:Bool?
     
     private let _parent:TextStyle?
     
     private var _fontName:String?
     private var _fontSizeDescription:Any?
+    private var _fontTextStyle:UIFont.TextStyle?
+    private var _fontTextStyleMaximumSizeDescription:Any?
     private var _fullUppercaseText:Bool?
     
     
@@ -50,6 +53,18 @@ public class TextStyle : StyleSetBase {
         }
     }
     
+    var fontTextStyleMaximumSizeValue:Any? {
+        get {
+            return self._fontTextStyleMaximumSizeDescription ?? self._parent?.fontTextStyleMaximumSizeValue
+        }
+    }
+    
+    var fontTextStyle:UIFont.TextStyle? {
+        get {
+            return self._fontTextStyle ?? self._parent?.fontTextStyle
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -64,7 +79,13 @@ public class TextStyle : StyleSetBase {
             if let name = font["name"] as? String {
                 self._fontName = name
             }
+            
             self._fontSizeDescription = font["size"]
+            self._fontTextStyleMaximumSizeDescription = font["textStyleMaximumSize"]
+            
+            if let rawTextStyleValue = font["textStyle"] as? String, let textStyle = UIFont.TextStyle(rawStyleValue: rawTextStyleValue) {
+                self._fontTextStyle = textStyle
+            }
         }
         if let fullUppercaseText = data["fullUppercaseText"] as? Bool {
             self._fullUppercaseText = fullUppercaseText
@@ -75,8 +96,14 @@ public class TextStyle : StyleSetBase {
         super.update()
         
         if let fontSize = self.dimensionFromValue(self.fontSizeValue){
-            self.font = self.createFont(name: self.fontName, size: fontSize)
+            let font = self.createFont(name: self.fontName, size: fontSize)
+            self.font = font
         }
+
+        if let fontTextStyleMaximumSize = self.dimensionFromValue(self.fontTextStyleMaximumSizeValue) {
+            self.fontTextStyleMaximumSize = fontTextStyleMaximumSize
+        }
+        
         self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
     }
 }

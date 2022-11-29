@@ -78,18 +78,45 @@ import UIKit
         }
     }
     
-    open var textFont:UIFont? {
-        set {
-            if let font = newValue {
-                self.font = font
-            }
-        }
-        get {
-            return self.font
+    var textFont:UIFont? {
+        didSet {
+            self.font = self.textFont
         }
     }
     
-    open var styledTextAttributes:[NSAttributedString.Key:Any]? {
+    var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
+        }
+    }
+    
+    var textFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.font = font
+            }
+        }
+    }
+    
+     var styledTextAttributes:[NSAttributedString.Key:Any]? {
+        didSet {
+            if self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
+    
+    var styledTextFontStyle: UIFont.TextStyle? {
+        didSet {
+            if self._styledText != nil {
+                self.styledText = self._styledText
+            }
+        }
+    }
+    
+    var styledTextFontStyleMaximumSize: CGFloat? {
         didSet {
             if self._styledText != nil {
                 self.styledText = self._styledText
@@ -109,11 +136,24 @@ import UIKit
         set {
             self._styledText = newValue
             if let text = newValue {
-                super.attributedText = NSAttributedString(string: text, attributes: self.styledTextAttributes ?? [NSAttributedString.Key:Any]())
+                var attributes = self.styledTextAttributes ?? [:]
+                if attributes[NSAttributedString.Key.font] != nil, let dynamicFont = self.createStyledTextDynamicFont() {
+                    attributes[NSAttributedString.Key.font] = dynamicFont
+                }
+                super.attributedText = NSAttributedString(string: text, attributes: attributes)
             }
         }
         get {
             return self._styledText
+        }
+    }
+    
+    @IBInspectable open override var adjustsFontForContentSizeCategory: Bool {
+        get {
+            return super.adjustsFontForContentSizeCategory
+        }
+        set {
+            super.adjustsFontForContentSizeCategory = newValue
         }
     }
 

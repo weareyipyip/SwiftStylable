@@ -42,5 +42,13 @@ class StyledTextStyler : Styler {
                 view.styledTextAttributes = styledTextAttributes
             }
         }
+        
+        if let fontTextStyle = style.styledTextStyle.fontTextStyle {
+            view.styledTextFontStyle = fontTextStyle
+        }
+        
+        if let fontTextStyleMaximumSize = style.styledTextStyle.fontTextStyleMaximumSize {
+            view.styledTextFontStyleMaximumSize = fontTextStyleMaximumSize
+        }
     }
 }

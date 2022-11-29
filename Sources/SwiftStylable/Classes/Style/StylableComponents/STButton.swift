@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, ButtonTextStylable, SpacingStylable {
+@IBDesignable open class STButton: ExtendedButton, Stylable, BackgroundAndBorderStylable, ForegroundStylable, ImageStylable, TextStylable, SpacingStylable {
 	
 	private var _stComponentHelper: STComponentHelper!
     
@@ -78,6 +78,41 @@ import UIKit
     @IBInspectable open var disabledImageName:String? {
         didSet {
             self.processImageName(self.disabledImageName, forState: .disabled)
+        }
+    }
+    
+    @IBInspectable open var adjustsFontForContentSizeCategory: Bool {
+        get {
+            self.titleLabel?.adjustsFontForContentSizeCategory ?? false
+            
+        }
+        set {
+            self.titleLabel?.adjustsFontForContentSizeCategory = newValue
+        }
+    }
+    
+    var textFont:UIFont? {
+        didSet {
+            self.titleLabel?.font = self.textFont
+            self.updateConfiguration()
+        }
+    }
+    
+    var textFontStyle: UIFont.TextStyle? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.titleLabel?.font = font
+                self.updateConfiguration()
+            }
+        }
+    }
+    
+    var textFontStyleMaximumSize: CGFloat? {
+        didSet {
+            if let font = self.createDynamicFont() {
+                self.titleLabel?.font = font
+                self.updateConfiguration()
+            }
         }
     }
     
@@ -243,7 +278,7 @@ import UIKit
 			BackgroundAndBorderStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ForegroundStyler(self, canBeHighlighted: true, canBeSelected: true, canBeDisabled: true),
 			ImageStyler(self),
-            ButtonTextStyler(self),
+            TextStyler(self),
             SpacingStyler(self)
 		])
 	}

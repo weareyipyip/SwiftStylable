@@ -86,12 +86,16 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 - font (dictionary)
 	- name (string, PostScript name of the font
 	- size (number or string, name of a dimensions)
+	- textStyle (string: "largeTitle", "title1", "title2", "title3", "headline", "subheadline", "body", "callout", "footnote", "caption1", "caption2", "none")
+	- textStyleMaximumSize (number or string, name of a dimensions)
 - fullUppercaseText (boolean)
 - styledTextAttributes (dictionary --> see 'Styled text' below)
 	- foregroundColor (string)
 	- font (dictionary)
 		- name (string)
 		- size (number or string, name of a dimensions)
+		- textStyle (string: "largeTitle", "title1", "title2", "title3", "headline", "subheadline", "body", "callout", "footnote", "caption1", "caption2", "none")
+		- textStyleMaximumSize (number or string, name of a dimensions)
 	- lineSpacing (number or string, name of a dimensions)
 	- lineHeightMultiple (number or string, name of a dimensions)
 	- kern (number or string, name of a dimensions)
@@ -115,7 +119,7 @@ When styling buttons, keep in mind that you have to set the type of your button 
 Since iOS15, the `UIButton.Configuration` is available. As of iOS15, SwiftStylable also uses this configuration. So if you want to overwrite certain functionalities, use the configuration in the button.
 
 #### Fonts
-Fonts contain a name and a size. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.
+Fonts contain a name, a size, an optional text style and an optiona maximum size for the given text style. The name is the PostScript name of the desired font. To support custom fonts, the fonts will still have to be added to the project as normal, and set properly in the info.plist of your project under 'Fonts provided by application'.
 Instead of specifying a postScriptName, you can also use the system font by using predefined strings. The available strings for system fonts are:
 
 - "systemFont"
