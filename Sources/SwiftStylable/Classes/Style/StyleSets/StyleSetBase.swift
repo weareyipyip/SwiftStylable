@@ -111,21 +111,29 @@ public class StyleSetBase : StyleSet {
     
     internal func parseFont(data:[String:Any]?, defaultName:String? = nil, defaultSize:CGFloat? = nil)->UIFont? {
         let name = data?["name"] as? String ?? defaultName
+        let accessibilityBoldName = data?["accessibilityBoldName"] as? String
         let size = self.dimensionFromValue(data?["size"]) ?? defaultSize
         let font = self.createFont(
             name: name,
             size: size,
+            accessibilityBoldName: accessibilityBoldName,
             defaultName: defaultName,
             defaultSize: defaultSize
         )
         return font
     }
     
-    internal func createFont(name:String?, size:CGFloat?, defaultName:String? = nil, defaultSize:CGFloat? = nil)->UIFont? {
+    internal func createFont(name:String?, size:CGFloat?, accessibilityBoldName: String? = nil, defaultName:String? = nil, defaultSize:CGFloat? = nil)->UIFont? {
         var font:UIFont?
         if let name = name ?? defaultName,
             let size = size ?? defaultSize {
-            switch name {
+            
+            var nameToUse = name
+            if UIAccessibility.isBoldTextEnabled, let boldName = accessibilityBoldName {
+                nameToUse = boldName
+            }
+            
+            switch nameToUse {
             case "systemFont":
                 font = UIFont.systemFont(ofSize: size)
                 
@@ -157,7 +165,7 @@ public class StyleSetBase : StyleSet {
                 font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.ultraLight)
                 
             default:
-                font = UIFont(name: name, size: size)
+                font = UIFont(name: nameToUse, size: size)
             }
         }
         return font

@@ -88,6 +88,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 	- size (number or string, name of a dimensions)
 	- textStyle (string: "largeTitle", "title1", "title2", "title3", "headline", "subheadline", "body", "callout", "footnote", "caption1", "caption2", "none")
 	- textStyleMaximumSize (number or string, name of a dimensions)
+    - accessibilityBoldName (string)
 - fullUppercaseText (boolean)
 - styledTextAttributes (dictionary --> see 'Styled text' below)
 	- foregroundColor (string)
@@ -96,6 +97,7 @@ Styles are defined as dictionaries in the styles dictionary of your styles descr
 		- size (number or string, name of a dimensions)
 		- textStyle (string: "largeTitle", "title1", "title2", "title3", "headline", "subheadline", "body", "callout", "footnote", "caption1", "caption2", "none")
 		- textStyleMaximumSize (number or string, name of a dimensions)
+        - accessibilityBoldName (string)      
 	- lineSpacing (number or string, name of a dimensions)
 	- lineHeightMultiple (number or string, name of a dimensions)
 	- kern (number or string, name of a dimensions)
@@ -132,6 +134,10 @@ Instead of specifying a postScriptName, you can also use the system font by usin
 - "mediumSystemFont"
 - "semiboldSystemFont"
 - "ultraLightSystemFont"
+
+##### Accessibility
+If you want to use the accessibility settings, the text scaling and the bold text options are currently supported. The text scaling can be turned on by giving your font a `textStyle`. If this property is set, the text will be automatically scalled. Use the `textStyleMaximumSize` property to set a maximum font size. If the text style "none" is set or the `textStyle` will be left empty the text scaling will be turned off.
+To support the bold text accessibility setting, the `accessibilityBoldName` property should be set. This is the postScriptName of the (bold) font to be used. 
 
 #### Styled text
 The STLabel and the STTextView both support 'styled text'. This is basically attributedText, set with the attributes specified for this in a style. A normal Label / TextView has a 'text' property and an 'attributedText' property. The corresponding STComponents have an additional 'styledText' property (also available in the Interface Builder inspector). If you use this property for setting the component's text, the 'styledTextAttributes' from the selected style will automatically be applied. Setting the styledText will create the attributedText for you, this then becomes available through the attributedText property. The styledText property itself will contain the string you set it to, until you set any of the other text properties (text / attributedText), then it will be nilled. See the 'styledTextAttributes' property in the 'Styles' section of this document for a list of supported text attributes.
