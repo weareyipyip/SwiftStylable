@@ -54,12 +54,26 @@
 		</dict>
 		<key>contentText</key>
 		<dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>Arial</string>
+					<key>size</key>
+					<string>contentTextFontSize</string>
+					<key>accessibilityBoldName</key>
+					<string>HelveticaNeue-Bold</string>
+				</dict>
+			</dict>
 			<key>font</key>
 			<dict>
 				<key>name</key>
 				<string>Arial</string>
 				<key>size</key>
 				<string>contentTextFontSize</string>
+				<key>accessibilityBoldName</key>
+				<string>HelveticaNeue-Bold</string>
 			</dict>
 			<key>foregroundColor</key>
 			<string>defaultForegroundColor</string>
@@ -73,6 +87,14 @@
 				<key>name</key>
 				<string>HelveticaNeue-Bold</string>
 			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>HelveticaNeue-Bold</string>
+				</dict>
+			</dict>
 		</dict>
 		<key>header1Text</key>
 		<dict>
@@ -84,6 +106,18 @@
 				<string>AvantGardeMdITCTTBold</string>
 				<key>size</key>
 				<integer>24</integer>
+			</dict>
+			<key>styledTextAttributes</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>AvantGardeMdITCTTBold</string>
+					<key>size</key>
+					<integer>24</integer>
+					<key>accessibilityBoldName</key>
+					<string>AvantGardeMdITCTTBold</string>
+				</dict>
 			</dict>
 		</dict>
 		<key>highlightedContentItemLabelText</key>
