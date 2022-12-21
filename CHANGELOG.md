@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [2.1.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.0)
+
+- Added support for the "Bold text" accessibility setting.
+
 ## [2.0.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.0.0)
 
 - Added support for dynamic font types
