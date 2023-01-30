@@ -2,6 +2,11 @@
 
 Significant changes to the project will be documented here.
 
+## [2.1.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.1)
+
+- Added dynamicFont property to TextStyle.
+- Made dynamic font properties accessible outside of SwiftStylable
+
 ## [2.1.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.0)
 
 - Added support for the "Bold text" accessibility setting.
