@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import UIKit
+import Foundation
 
 public class TextStyle : StyleSetBase {
     
@@ -42,33 +42,42 @@ public class TextStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
-    var fontName:String? {
+    internal var fontName: String? {
         get {
             return self._fontName ?? self._parent?.fontName
         }
     }
     
-    var fontSizeValue:Any? {
+    internal var fontSizeValue: Any? {
         get {
             return self._fontSizeDescription ?? self._parent?.fontSizeValue
         }
     }
     
-    var fontTextStyleMaximumSizeValue:Any? {
+    internal var fontTextStyleMaximumSizeValue: Any? {
         get {
             return self._fontTextStyleMaximumSizeDescription ?? self._parent?.fontTextStyleMaximumSizeValue
         }
     }
     
-    var fontTextStyle:UIFont.TextStyle? {
+    public var fontTextStyle: UIFont.TextStyle? {
         get {
             return self._fontTextStyle ?? self._parent?.fontTextStyle
         }
     }
     
-    var fontTextStyleAccessibilityBoldName:String? {
+    internal var fontTextStyleAccessibilityBoldName:String? {
         get {
             return self._fontTextStyleAccessibilityBoldName ?? self._parent?.fontTextStyleAccessibilityBoldName
+        }
+    }
+    
+    public var dynamicFont: UIFont? {
+        guard let fontTextStyle, let font else { return self.font }
+        if let fontTextStyleMaximumSize {
+            return UIFontMetrics(forTextStyle: fontTextStyle).scaledFont(for: font, maximumPointSize: fontTextStyleMaximumSize)
+        } else {
+            return UIFontMetrics(forTextStyle: fontTextStyle).scaledFont(for: font)
         }
     }
     
