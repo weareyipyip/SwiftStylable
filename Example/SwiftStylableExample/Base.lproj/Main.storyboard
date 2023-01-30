@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5oM-D5-avw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -507,10 +507,11 @@
             </objects>
             <point key="canvasLocation" x="-386" y="-99"/>
         </scene>
-        <!--View Controller-->
+        <!--Accessibility View Controller-->
         <scene sceneID="Tc7-Se-ct6">
             <objects>
-                <viewController id="7lo-FA-KD5" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVt-ag-Q9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="7lo-FA-KD5" customClass="AccessibilityViewController" customModule="SwiftStylableExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="etA-Ts-WSv"/>
                         <viewControllerLayoutGuide type="bottom" id="c2W-gw-87L"/>
@@ -523,10 +524,21 @@
                                 <rect key="frame" x="16" y="0.0" width="343" height="623"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="200" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Cay-mX-VDn">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="2185"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="2269.5"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="66m-pf-E9N">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gc-zg-9ke" userLabel="Manual" customClass="STLabel" customModule="SwiftStylable">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BXX-FF-nFQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="561"/>
+                                                <rect key="frame" x="0.0" y="84.5" width="343" height="561"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DU5-RF-Uxx" customClass="STLabel" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -682,7 +694,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CzI-Xp-VtS">
-                                                <rect key="frame" x="0.0" y="625" width="343" height="224"/>
+                                                <rect key="frame" x="0.0" y="709.5" width="343" height="224"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx4-Mr-37R" customClass="STButton" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -733,7 +745,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="nSa-4w-dNZ">
-                                                <rect key="frame" x="0.0" y="913" width="343" height="184"/>
+                                                <rect key="frame" x="0.0" y="997.5" width="343" height="184"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="73n-U5-DJq" customClass="STTextField" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -780,7 +792,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-cX-4Dz">
-                                                <rect key="frame" x="0.0" y="1161" width="343" height="560"/>
+                                                <rect key="frame" x="0.0" y="1245.5" width="343" height="560"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Normal" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dq5-hV-5wy" customClass="STTextView" customModule="SwiftStylable">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
@@ -843,7 +855,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXw-KM-olF">
-                                                <rect key="frame" x="0.0" y="1785" width="343" height="400"/>
+                                                <rect key="frame" x="0.0" y="1869.5" width="343" height="400"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="400" id="ido-cM-5nK"/>
@@ -872,8 +884,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KOb-lH-gjB"/>
+                    <connections>
+                        <outlet property="manualStyleLabel" destination="8gc-zg-9ke" id="WfI-lJ-gas"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UVt-ag-Q9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="422" y="612"/>
         </scene>
@@ -896,6 +910,9 @@
         </designable>
         <designable name="8fL-SV-H7D">
             <size key="intrinsicContentSize" width="261" height="34"/>
+        </designable>
+        <designable name="8gc-zg-9ke">
+            <size key="intrinsicContentSize" width="55.5" height="20.5"/>
         </designable>
         <designable name="8nY-CH-BcB">
             <size key="intrinsicContentSize" width="45" height="20.5"/>
