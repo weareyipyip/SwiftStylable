@@ -66,9 +66,9 @@ public class TextStyle : StyleSetBase {
         }
     }
     
-    internal var fontTextStyleAccessibilityBoldNameValue:String? {
+    internal var fontTextStyleAccessibilityBoldName:String? {
         get {
-            return self._fontTextStyleAccessibilityBoldName ?? self._parent?.fontTextStyleAccessibilityBoldNameValue
+            return self._fontTextStyleAccessibilityBoldName ?? self._parent?.fontTextStyleAccessibilityBoldName
         }
     }
     
@@ -113,7 +113,7 @@ public class TextStyle : StyleSetBase {
         super.update()
         
         if let fontSize = self.dimensionFromValue(self.fontSizeValue){
-            self.font = self.createFont(name: self.fontName, size: fontSize, accessibilityBoldName: self.fontTextStyleAccessibilityBoldNameValue)
+            self.font = self.createFont(name: self.fontName, size: fontSize, accessibilityBoldName: self.fontTextStyleAccessibilityBoldName)
         }
 
         if let fontTextStyleMaximumSize = self.dimensionFromValue(self.fontTextStyleMaximumSizeValue) {
