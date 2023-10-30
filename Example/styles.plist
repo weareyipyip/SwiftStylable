@@ -574,6 +574,11 @@
 			<key>clipsToBounds</key>
 			<true/>
 		</dict>
+		<key>testStackView</key>
+		<dict>
+			<key>spacing</key>
+			<integer>50</integer>
+		</dict>
 	</dict>
 </dict>
 </plist>
