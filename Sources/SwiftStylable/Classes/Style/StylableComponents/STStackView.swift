@@ -51,6 +51,15 @@ import UIKit
         }
     }
     
+    open var spacingValue: CGFloat? {
+        set {
+            self.spacing = newValue ?? 0
+        }
+        get {
+            return self.spacing
+        }
+    }
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: Public methods
