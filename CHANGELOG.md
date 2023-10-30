@@ -2,6 +2,10 @@
 
 Significant changes to the project will be documented here.
 
+## [2.1.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.2)
+
+- Fix the spacing property of the STStackView
+
 ## [2.1.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.1)
 
 - Added dynamicFont property to TextStyle.
