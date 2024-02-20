@@ -568,7 +568,7 @@ import UIKit
                 // Image
                 if self.tintImageWithTitleColor, self.imageView != nil {
                     self.configuration?.imageColorTransformer = UIConfigurationColorTransformer { _ in
-                        return self.titleColor(for: .selected) ?? self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
+                        return self.titleColor(for: .normal) ?? self.configuration?.baseForegroundColor ?? UIColor.white
                     }
                 }
                 
