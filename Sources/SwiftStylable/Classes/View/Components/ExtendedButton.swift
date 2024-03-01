@@ -553,7 +553,9 @@ import UIKit
             case .normal:
                 
                 // Apperance
-                self.backgroundColor = self._normalBackgroundColor
+                let backgroundColor = self._normalBackgroundColor
+                self.backgroundColor = backgroundColor
+                self.configuration?.baseBackgroundColor = backgroundColor
                 self.layer.borderColor = (self._normalBorderColor ?? UIColor.clear).cgColor
                 
                 // Title
@@ -575,7 +577,9 @@ import UIKit
             case .highlighted:
                 
                 // Apperance
-                self.backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
+                let backgroundColor = self._highlightedBackgroundColor ?? self._normalBackgroundColor
+                self.backgroundColor = backgroundColor
+                self.configuration?.baseBackgroundColor = backgroundColor
                 self.layer.borderColor = self._highlightedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
                 
                 // Title
@@ -597,7 +601,9 @@ import UIKit
             case .selected:
                 
                 // Apperance
-                self.backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
+                let backgroundColor = self._selectedBackgroundColor ?? self._normalBackgroundColor
+                self.backgroundColor = backgroundColor
+                self.configuration?.baseBackgroundColor = backgroundColor
                 self.layer.borderColor = self._selectedBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
                 
                 // Title
@@ -619,7 +625,9 @@ import UIKit
             case .disabled:
                 
                 // Apperance
-                self.backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
+                let backgroundColor = self._disabledBackgroundColor ?? self._normalBackgroundColor
+                self.backgroundColor = backgroundColor
+                self.configuration?.baseBackgroundColor = backgroundColor
                 self.layer.borderColor = self._disabledBorderColor?.cgColor ?? (self._normalBorderColor ?? UIColor.clear).cgColor
                 
                 // Title
