@@ -70,7 +70,11 @@ import UIKit
         }
         set {
             self._defaultHorizontalContentAlignment = newValue
-            if !self.customItemPlacement {
+            if #unavailable(iOS 15.0) {
+                if !self.customItemPlacement {
+                    super.contentHorizontalAlignment = newValue
+                }
+            } else {
                 super.contentHorizontalAlignment = newValue
             }
         }
@@ -82,7 +86,11 @@ import UIKit
         }
         set {
             self._defaultVerticalContentAlignment = newValue
-            if !self.customItemPlacement {
+            if #unavailable(iOS 15.0) {
+                if !self.customItemPlacement {
+                    super.contentVerticalAlignment = newValue
+                }
+            } else {
                 super.contentVerticalAlignment = newValue
             }
         }
@@ -97,25 +105,29 @@ import UIKit
                     bottom: newValue.bottom,
                     trailing: newValue.right
                 )
-                super.contentEdgeInsets = newValue
             } else {
                 super.contentEdgeInsets = newValue
             }
         }
         get {
-            if #available(iOS 15.0, *), let contentInsets = self.configuration?.contentInsets {
-                return UIEdgeInsets(
-                    top: contentInsets.top,
-                    left: contentInsets.leading,
-                    bottom: contentInsets.bottom,
-                    right: contentInsets.trailing
-                )
+            if #available(iOS 15.0, *) {
+                if let contentInsets = self.configuration?.contentInsets {
+                    return UIEdgeInsets(
+                        top: contentInsets.top,
+                        left: contentInsets.leading,
+                        bottom: contentInsets.bottom,
+                        right: contentInsets.trailing
+                    )
+                } else {
+                    return .zero
+                }
             } else {
                 return super.contentEdgeInsets
             }
         }
     }
     
+    @available(iOS, deprecated: 15, message: "'customItemPlacement' is deprecated since the use of UIButtonConfiguration.")
     @IBInspectable open var customItemPlacement:Bool = false {
         didSet {
             if self.customItemPlacement {
@@ -128,6 +140,7 @@ import UIKit
         }
     }
     
+    @available(iOS, deprecated: 15, message: "'titlePlacementIndex' is deprecated since the use of UIButtonConfiguration.")
     @IBInspectable open var titlePlacementIndex:Int = 4 {
         didSet {
             if self.titlePlacementIndex > -1 && self.titlePlacementIndex < 9 {
@@ -159,6 +172,7 @@ import UIKit
         }
     }
     
+    @available(iOS, deprecated: 15, message: "'imagePlacementIndex' is deprecated since the use of UIButtonConfiguration.")
     @IBInspectable open var imagePlacementIndex:Int = 4 {
         didSet {
             if self.imagePlacementIndex > -1 && self.imagePlacementIndex < 9 {
@@ -444,6 +458,7 @@ import UIKit
     // MARK: -- Layout methods
     // -----------------------------------------------------------
     
+    @available(iOS, deprecated: 15, message: "'titleRect(forContentRect:)' is deprecated since the use of UIButtonConfiguration.")
     open override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
         if self.customItemPlacement {
             let titleSize = super.titleRect(forContentRect: CGRect(x: 0.0, y: 0.0, width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).size
@@ -484,6 +499,7 @@ import UIKit
         }
     }
     
+    @available(iOS, deprecated: 15, message: "'imageRect(forContentRect:)' is deprecated since the use of UIButtonConfiguration.")
     open override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
         if self.customItemPlacement {
             let imageSize = super.imageRect(forContentRect: CGRect(x: 0.0, y: 0.0, width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).size

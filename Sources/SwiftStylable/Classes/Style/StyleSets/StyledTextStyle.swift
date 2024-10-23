@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 20/09/2018.
 //
 
-import Foundation
+import UIKit
 
 public class StyledTextStyle : StyleSetBase {
     
