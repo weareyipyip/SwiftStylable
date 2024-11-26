@@ -5,7 +5,7 @@
 //  Created by Bob De Kort-Goossens on 19/07/2018.
 //
 
-import Foundation
+import UIKit
 
 protocol PlaceholderStylable : AnyObject {
     var fullUppercasePlaceholder:Bool { get set }

@@ -5,7 +5,7 @@
 //  Created by Marcel Bloemendaal on 19/04/2018.
 //
 
-import Foundation
+import UIKit
 
 protocol StyledTextStylable : AnyObject {
     var styledTextAttributes:[NSAttributedString.Key:Any]? { get set }
