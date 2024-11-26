@@ -2,6 +2,11 @@
 
 Significant changes to the project will be documented here.
 
+## [2.2.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.2.0)
+
+- Update deployment target to iOS 12
+- Fix deprecation warnings
+
 ## [2.1.4](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.1.4)
 
 - Fix the background color of the STButton on iOS 15+
