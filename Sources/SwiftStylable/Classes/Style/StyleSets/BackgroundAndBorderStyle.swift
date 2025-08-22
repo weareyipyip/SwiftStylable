@@ -94,13 +94,16 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     }
     
     var borderWidthDescription:Any? {
-        return self._borderWidthValue ?? self._parent?._borderWidthValue
+        return self._borderWidthValue ?? self._parent?.borderWidthDescription
     }
     
     var cornerRadiusDescription:Any? {
-        return self._cornerRadiusValue ?? self._parent?._cornerRadiusValue
+        return self._cornerRadiusValue ?? self._parent?.cornerRadiusDescription
     }
     
+    var clipsToBoundsValue: Bool? {
+        return self._clipsToBounds ?? self._parent?.clipsToBoundsValue
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -154,7 +157,7 @@ public class BackgroundAndBorderStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        self.clipsToBounds = self._clipsToBounds ?? self._parent?._clipsToBounds
+        self.clipsToBounds = self.clipsToBoundsValue
         
         self.borderWidth = self.dimensionFromValue(self.borderWidthDescription)
         self.cornerRadius = self.dimensionFromValue(self.cornerRadiusDescription)

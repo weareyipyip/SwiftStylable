@@ -563,7 +563,7 @@
 			<key>foregroundColor</key>
 			<string>emphasizedAreaForegroundColor</string>
 		</dict>
-		<key>avatarPhoto</key>
+		<key>avatarPhotoMain</key>
 		<dict>
 			<key>borderColor</key>
 			<string>emphasisColor</string>
@@ -573,6 +573,16 @@
 			<string>avatarPhotoCornerRadius</string>
 			<key>clipsToBounds</key>
 			<true/>
+		</dict>
+		<key>avatarPhotoSecond</key>
+		<dict>
+			<key>parent</key>
+			<string>avatarPhotoMain</string>
+		</dict>
+		<key>avatarPhoto</key>
+		<dict>
+			<key>parent</key>
+			<string>avatarPhotoSecond</string>
 		</dict>
 		<key>testStackView</key>
 		<dict>

@@ -14,7 +14,6 @@ public class ImageStyle : StyleSetBase {
     private let _parent:ImageStyle?
     
     private var _tintImageWithForegroundColor:Bool?
-
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -35,6 +34,9 @@ public class ImageStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
+    internal var tintImageWithForegroundColorValue: Bool? {
+        return self._tintImageWithForegroundColor ?? self._parent?.tintImageWithForegroundColorValue
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -52,6 +54,6 @@ public class ImageStyle : StyleSetBase {
     
     override internal func update() {
         super.update()
-        self.tintImageWithForegroundColor = self._tintImageWithForegroundColor ?? self._parent?.tintImageWithForegroundColor
+        self.tintImageWithForegroundColor = self.tintImageWithForegroundColorValue
     }
 }

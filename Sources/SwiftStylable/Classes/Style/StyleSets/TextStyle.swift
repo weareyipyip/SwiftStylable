@@ -81,6 +81,10 @@ public class TextStyle : StyleSetBase {
         }
     }
     
+    internal var fullUppercaseTextValue: Bool? {
+        return self._fullUppercaseText ?? self._parent?.fullUppercaseTextValue
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -120,6 +124,6 @@ public class TextStyle : StyleSetBase {
             self.fontTextStyleMaximumSize = fontTextStyleMaximumSize
         }
         
-        self.fullUppercaseText = self._fullUppercaseText ?? self._parent?.fullUppercaseText
+        self.fullUppercaseText = self.fullUppercaseTextValue
     }
 }

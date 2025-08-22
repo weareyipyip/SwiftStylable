@@ -17,6 +17,13 @@ public class TableViewSeparatorStyle : StyleSetBase {
     private var _tableViewSeparatorStyle:UITableViewCell.SeparatorStyle?
     private var _tableViewSeparatorColorString:String?
 
+    internal var tableViewSeparatorStyleValue: UITableViewCell.SeparatorStyle? {
+        return self._tableViewSeparatorStyle ?? self._parent?.tableViewSeparatorStyleValue
+    }
+    
+    internal var tableViewSeparatorColorValue: UIColor? {
+        return self.colorFromString(self._tableViewSeparatorColorString) ?? self._parent?.tableViewSeparatorColorValue
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -59,7 +66,7 @@ public class TableViewSeparatorStyle : StyleSetBase {
     
     override internal func update() {
         super.update()
-        self.tableViewSeparatorStyle = self._tableViewSeparatorStyle ?? self._parent?.tableViewSeparatorStyle
-        self.tableViewSeparatorColor = self.colorFromString(self._tableViewSeparatorColorString) ?? self._parent?.tableViewSeparatorColor
+        self.tableViewSeparatorStyle = self.tableViewSeparatorStyleValue
+        self.tableViewSeparatorColor = self.tableViewSeparatorColorValue
     }
 }

@@ -35,6 +35,9 @@ public class TextBorderStyle : StyleSetBase {
     //
     // -----------------------------------------------------------------------------------------------------------------------
     
+    internal var borderStyleValue: UITextField.BorderStyle? {
+        return self._borderStyle ?? self._parent?.borderStyleValue
+    }
     
     // -----------------------------------------------------------------------------------------------------------------------
     //
@@ -67,6 +70,6 @@ public class TextBorderStyle : StyleSetBase {
     
     override internal func update() {
         super.update()
-        self.borderStyle = self._borderStyle ?? self._parent?.borderStyle
+        self.borderStyle = self.borderStyleValue
     }
 }

@@ -51,7 +51,10 @@ class BackgroundAndBorderStyler : Styler {
 			view.borderColor = borderColor
 		}
 		if let cornerRadius = style.backgroundAndBorderStyle.cornerRadius {
-			view.layer.cornerRadius = cornerRadius
+            view.layer.cornerRadius = cornerRadius
+            if #available(iOS 15.0, *) {
+                (view as? STButton)?.configuration?.background.cornerRadius = cornerRadius
+            }
 		}
 		if let clipsToBounds = style.backgroundAndBorderStyle.clipsToBounds {
 			view.clipsToBounds = clipsToBounds
