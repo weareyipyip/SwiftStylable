@@ -2,6 +2,11 @@
 
 Significant changes to the project will be documented here.
 
+## [2.2.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.2.1)
+
+- Fix corner radius of the STButton on iOS 15+
+- Fix certain parent properties not being used when using more than 1 parent
+
 ## [2.2.0](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.2.0)
 
 - Update deployment target to iOS 12
