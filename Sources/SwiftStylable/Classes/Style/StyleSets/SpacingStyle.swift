@@ -37,12 +37,12 @@ public class SpacingStyle: StyleSetBase {
     // -----------------------------------------------------------------------------------------------------------------------
     
     
-    var spacingDescription: Any? {
-        return self._spacingValue ?? self._parent?._spacingValue
+    internal var spacingDescription: Any? {
+        return self._spacingValue ?? self._parent?.spacingDescription
     }
     
-    var imagePaddingDescription: Any? {
-        return self._imageSpacingValue ?? self._parent?._imageSpacingValue
+    internal var imagePaddingDescription: Any? {
+        return self._imageSpacingValue ?? self._parent?.imagePaddingDescription
     }
     
     // -----------------------------------------------------------------------------------------------------------------------

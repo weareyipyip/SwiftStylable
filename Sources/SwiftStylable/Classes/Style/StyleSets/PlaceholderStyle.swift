@@ -34,6 +34,14 @@ public class PlaceholderStyle : StyleSetBase {
         return self._fontTextStyleMaximumSizeDescription ?? self._parent?.fontTextStyleMaximumSizeValue
     }
     
+    var fullUppercasePlaceholderValue: Bool? {
+        return  self._fullUppercasePlaceholder ?? self._parent?.fullUppercasePlaceholderValue
+    }
+    
+    var styledPlaceholderAttributesValue: [NSAttributedString.Key: Any]? {
+        return self.stringAttributesFromDictionary(self._styledPlaceholderDictionary) ?? self._parent?.styledPlaceholderAttributesValue
+    }
+    
     // -----------------------------------------------------------------------------------------------------------------------
     //
     // MARK: - Initializers
@@ -76,8 +84,8 @@ public class PlaceholderStyle : StyleSetBase {
     override internal func update() {
         super.update()
         
-        self.fullUppercasePlaceholder = self._fullUppercasePlaceholder ?? self._parent?.fullUppercasePlaceholder
-        self.styledPlaceholderAttributes = self.stringAttributesFromDictionary(self._styledPlaceholderDictionary) ?? self._parent?.styledPlaceholderAttributes
+        self.fullUppercasePlaceholder = self.fullUppercasePlaceholderValue
+        self.styledPlaceholderAttributes = self.styledPlaceholderAttributesValue
         
         if let fontTextStyleMaximumSize = self.dimensionFromValue(self.fontTextStyleMaximumSizeValue) {
             self.fontTextStyleMaximumSize = fontTextStyleMaximumSize
