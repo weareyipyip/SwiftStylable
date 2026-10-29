@@ -103,7 +103,7 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>AvantGardeMdITCTTBold</string>
+				<string>Poppins-Medium</string>
 				<key>size</key>
 				<integer>24</integer>
 			</dict>
@@ -112,11 +112,11 @@
 				<key>font</key>
 				<dict>
 					<key>name</key>
-					<string>AvantGardeMdITCTTBold</string>
+					<string>Poppins-Medium</string>
 					<key>size</key>
 					<integer>24</integer>
 					<key>accessibilityBoldName</key>
-					<string>AvantGardeMdITCTTBold</string>
+					<string>Poppins-Medium</string>
 				</dict>
 			</dict>
 		</dict>
@@ -132,7 +132,7 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>AvantGardeMdITCTTBold</string>
+				<string>Poppins-Medium</string>
 				<key>size</key>
 				<string>contentTextFontSize</string>
 				<key>textStyleMaximumSize</key>
@@ -145,7 +145,7 @@
 				<key>font</key>
 				<dict>
 					<key>name</key>
-					<string>AvantGardeMdITCTTBold</string>
+					<string>Poppins-Medium</string>
 					<key>size</key>
 					<string>contentTextFontSize</string>
 					<key>textStyleMaximumSize</key>

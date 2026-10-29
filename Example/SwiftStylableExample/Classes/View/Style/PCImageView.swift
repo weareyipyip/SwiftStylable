@@ -6,7 +6,7 @@
 //  Copyright © 2017 YipYip. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftStylable
 
 @IBDesignable class PCImageView : STImageView {
