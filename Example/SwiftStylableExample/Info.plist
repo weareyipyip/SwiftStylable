@@ -22,7 +22,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AVANGMB.TTF</string>
+		<string>Poppins-Medium.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

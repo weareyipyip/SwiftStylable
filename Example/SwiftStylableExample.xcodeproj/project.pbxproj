@@ -18,7 +18,7 @@
 		F734DA5F2085D6E20097FE6B /* PCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA562085D6E20097FE6B /* PCImageView.swift */; };
 		F734DA602085D6E20097FE6B /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA572085D6E20097FE6B /* StyleKit.swift */; };
 		F734DA612085D6E20097FE6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA582085D6E20097FE6B /* ViewController.swift */; };
-		F734DA622085D6E20097FE6B /* AVANGMB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F734DA5B2085D6E20097FE6B /* AVANGMB.TTF */; };
+		F734DA622085D6E20097FE6B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F734DA5B2085D6E20097FE6B /* Poppins-Medium.ttf */; };
 		F734DA642085D7970097FE6B /* styles.plist in Resources */ = {isa = PBXBuildFile; fileRef = F734DA632085D7970097FE6B /* styles.plist */; };
 		F734DA712085D6E20097FE6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA702085D6E20097FE6B /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +36,7 @@
 		F734DA562085D6E20097FE6B /* PCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCImageView.swift; sourceTree = "<group>"; };
 		F734DA572085D6E20097FE6B /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		F734DA582085D6E20097FE6B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F734DA5B2085D6E20097FE6B /* AVANGMB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = AVANGMB.TTF; sourceTree = "<group>"; };
+		F734DA5B2085D6E20097FE6B /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppins-Medium.ttf; sourceTree = "<group>"; };
 		F734DA632085D7970097FE6B /* styles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = styles.plist; sourceTree = "<group>"; };
 		F734DA702085D6E20097FE6B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +125,7 @@
 		F734DA5A2085D6E20097FE6B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				F734DA5B2085D6E20097FE6B /* AVANGMB.TTF */,
+				F734DA5B2085D6E20097FE6B /* Poppins-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				F734DA442085D5750097FE6B /* Assets.xcassets in Resources */,
 				F734DA642085D7970097FE6B /* styles.plist in Resources */,
 				F734DA422085D5730097FE6B /* Main.storyboard in Resources */,
-				F734DA622085D6E20097FE6B /* AVANGMB.TTF in Resources */,
+				F734DA622085D6E20097FE6B /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
