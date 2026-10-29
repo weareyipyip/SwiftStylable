@@ -13,6 +13,7 @@
 		F734DA442085D5750097FE6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F734DA432085D5750097FE6B /* Assets.xcassets */; };
 		F734DA472085D5750097FE6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F734DA452085D5750097FE6B /* LaunchScreen.storyboard */; };
 		F734DA5C2085D6E20097FE6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA512085D6E20097FE6B /* AppDelegate.swift */; };
+		F734DA712085D6E20097FE6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA702085D6E20097FE6B /* SceneDelegate.swift */; };
 		F734DA5D2085D6E20097FE6B /* PaintCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA542085D6E20097FE6B /* PaintCodeHelper.swift */; };
 		F734DA5E2085D6E20097FE6B /* PCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA552085D6E20097FE6B /* PCButton.swift */; };
 		F734DA5F2085D6E20097FE6B /* PCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734DA562085D6E20097FE6B /* PCImageView.swift */; };
@@ -33,6 +34,7 @@
 		F734DA462085D5750097FE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F734DA482085D5750097FE6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F734DA512085D6E20097FE6B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F734DA702085D6E20097FE6B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F734DA542085D6E20097FE6B /* PaintCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintCodeHelper.swift; sourceTree = "<group>"; };
 		F734DA552085D6E20097FE6B /* PCButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCButton.swift; sourceTree = "<group>"; };
 		F734DA562085D6E20097FE6B /* PCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCImageView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				F734DA512085D6E20097FE6B /* AppDelegate.swift */,
+				F734DA702085D6E20097FE6B /* SceneDelegate.swift */,
 				F734DA522085D6E20097FE6B /* View */,
 			);
 			path = Classes;
@@ -266,6 +269,7 @@
 				467EC9A52987CE170056BE9D /* AccessibilityViewController.swift in Sources */,
 				F734DA602085D6E20097FE6B /* StyleKit.swift in Sources */,
 				F734DA5C2085D6E20097FE6B /* AppDelegate.swift in Sources */,
+				F734DA712085D6E20097FE6B /* SceneDelegate.swift in Sources */,
 				F734DA5F2085D6E20097FE6B /* PCImageView.swift in Sources */,
 				F734DA5D2085D6E20097FE6B /* PaintCodeHelper.swift in Sources */,
 				F734DA612085D6E20097FE6B /* ViewController.swift in Sources */,
@@ -347,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -402,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
