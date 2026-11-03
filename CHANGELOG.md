@@ -2,6 +2,13 @@
 
 Significant changes to the project will be documented here.
 
+## [2.2.2](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.2.2)
+
+- Update deployment target to iOS 15
+- Fix loading the styles plist for IBDesignables in storyboards when not installed through CocoaPods (e.g. SPM)
+- Update the example project to use SPM instead of CocoaPods and to support UIScene
+- Update the font of the example project from Avant Garde to Poppins
+
 ## [2.2.1](https://github.com/weareyipyip/SwiftStylable/releases/tag/2.2.1)
 
 - Fix corner radius of the STButton on iOS 15+
