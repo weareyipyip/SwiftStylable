@@ -81,18 +81,19 @@ open class Styles {
     // -----------------------------------------------------------------------------------------------------------------------
     
     private func pathForStylesDescriptorNamed(_ name:String)->String? {
-        var filePath:String?
         if let interfaceBuilderProjectResourcePaths = ProcessInfo.processInfo.environment["IB_PROJECT_SOURCE_DIRECTORIES"]?.components(separatedBy: ":") {
-            for path in interfaceBuilderProjectResourcePaths {
-                let url = URL(fileURLWithPath: path)
-                if url.lastPathComponent == "Pods" {
-                    filePath = url.deletingLastPathComponent().appendingPathComponent(name + ".plist").path
+            // The styles file sits next to the Xcode project, which is either one of the source directories
+            // itself or the parent of one (e.g. the Pods directory when installed through CocoaPods)
+            let directories = interfaceBuilderProjectResourcePaths.map { URL(fileURLWithPath: $0) }
+            let candidates = directories + directories.map { $0.deletingLastPathComponent() }
+            for directory in candidates {
+                let filePath = directory.appendingPathComponent(name + ".plist").path
+                if FileManager.default.fileExists(atPath: filePath) {
+                    return filePath
                 }
             }
-        } else {
-            filePath = Bundle.main.path(forResource: name, ofType: "plist")
         }
-        return filePath
+        return Bundle.main.path(forResource: name, ofType: "plist")
     }
 	
 	private func processStyleDataWithFileNamed(_ fileName:String, publishUpdate:Bool) {

@@ -29,7 +29,7 @@ use_frameworks!
 pod "SwiftStylable"
 ```
 ## Requirements
-- iOS 9 or higher
+- iOS 15 or higher
 
 ## Author
 
